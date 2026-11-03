@@ -1,20 +1,23 @@
 # Scheduled task backup: One-Pot Puzzles daily set
 
-Backup of the Claude scheduled task that adds a daily set to the claude.ai page and pushes it to this repository. Use it to recreate the task if it is deleted, and update this file whenever the task is edited.
+Backup of the Claude Code scheduled task that adds a daily set to the claude.ai page and pushes it to this repository. Use it to recreate the task if it is deleted, and update this file whenever the task is edited.
 
 | Setting | Value |
 |---|---|
-| Name | One-Pot Puzzles daily set |
+| Name | One-Pot Puzzles daily set (Claude Code) |
+| Where | Claude Code scheduled tasks: https://claude.ai/code/routines |
 | Schedule | Daily at 20:43, America/New_York (Ottawa time) — cron `CRON_TZ=America/New_York 43 20 * * *` |
-| Type | Cloud scheduled task, a new session on each run |
 | Model | Opus 5.5 |
-| Permission mode | Auto |
-| Connectors | Claude_Docs, ChEMBL, PubMed, Claude_Code_Remote, SciSpace |
+| Repository attached | `QDher/Daily-organic-chemistry-puzzles` (cloned at the start of each run; the run pushes to `main`) |
+| Connectors | PubMed, ChEMBL, SciSpace |
+| Environment network | Allowed domains must include the literature sites, `api.crossref.org` and `pubchem.ncbi.nlm.nih.gov` |
 | Notifications | Push on |
 | claude.ai page | https://claude.ai/artifact/VNMwZFHw9dA5bR2Hps9d3p |
 | GitHub Pages site | https://qdher.github.io/Daily-organic-chemistry-puzzles/ |
 
-Backed up on 2026-11-02.
+The earlier Cowork task "One-Pot Puzzles daily set" is disabled and kept as a fallback; it cannot push to GitHub.
+
+Backed up on 2026-11-03.
 
 ## Prompt
 
@@ -65,6 +68,12 @@ Append {"date": "<target date YYYY-MM-DD>", "problems": [undergraduate, graduate
 Structure rules: stereochemistry is not needed. Intermediates in mechanism order; draw the species derived from the substrate (with reagent fragments attached when bonded). Charges as charged atoms ([O-], [C+], [O+]=), radicals as [C], [N]. "forms" lists every drawing a student could reasonably give for the same species (resonance forms of carbanions/carbocations, ylide C=P and [C-][P+], alternative esters when the paper uses a mixture). Give a reagent a SMILES when its atoms end up in an intermediate or the product; catalysts and simple acids/bases can be text only. When the same reagent is consumed twice (e.g. two equivalents of an imine), list it again with its SMILES in the step where the second equivalent reacts. Check every SMILES with RDKit before use (ring sizes, atom counts). Never write "hints" or "difficulty" by hand. Do not edit existing sets or any src/ file.
 Steps without reagents: if no reagent is added in a step, write "reagents": [] (the page shows "—") and give NO indication of the mechanism for that step: no words such as "none (cyclisation ...)", "intramolecular", "[3,3]", "fragmentation", "elimination" in reagents or conditions. Its "conditions" give only the solvent and/or temperature when available (e.g. "PhMe, 110 °C"), otherwise "same pot"; a work-up may be mentioned (e.g. "same pot, then acidic work-up"). Mechanistic descriptions belong only in intermediate labels and "reaction", which are shown after solving.
 
+5b. CHECK STRUCTURES AGAINST PUBCHEM
+For the substrate, the product and every reagent that has a SMILES, compare your SMILES with PubChem through its PUG-REST API (curl, at most 5 requests per second, URL-encode names and SMILES):
+- By name, when the species has a name PubChem knows (reagents, natural products, known building blocks): https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/<name>/property/IsomericSMILES,MolecularFormula,InChIKey/JSON
+- By structure, for any species: https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/smiles/property/MolecularFormula,InChIKey,IUPACName/JSON?smiles=<SMILES>
+Compare the first 14 characters of the InChIKey (connectivity layer) computed from your SMILES with RDKit (Chem.MolToInchiKey) with PubChem's for the named compound. A mismatch means your SMILES is wrong: fix it, then continue. Synthetic intermediates of a total synthesis are usually not in PubChem; a species with no CID is not an error. For a natural-product target, also compare the molecular formula with the paper. Intermediates are not checked. Record in verificationNote which structures matched PubChem (with CID) and which have no PubChem entry. If the proxy or PubChem refuses the connection, do not retry or work around it: skip this check and say so in the report.
+
 6. CHECK AND BUILD (inside the folder)
   python3 src/curate.py data/problems.json --write
     Read the bond changes it prints for the new problems: each transition must show the bonds the mechanism makes/breaks, on the right atoms. Unexpected bonds mean an intermediate SMILES is wrong; fix and rerun. In symmetric rings the atom mapping can put a new bond on an equivalent but wrong atom (e.g. C5 instead of the imine C2 of a pyrroline); if so, rewrite the substrate/reagent SMILES with a different atom order (e.g. "C1=NCCC1") until the printed bonds and hints sit on the reacting atoms.
@@ -80,16 +89,18 @@ Artifact tool, action "publish": url = the artifact URL above, file_path = <fold
 If the publish is refused because a newer version exists, read data/problems.json again, re-add only your new set, rerun step 6 and publish again. Never pass force.
 
 8. UPDATE GITHUB (only after a successful publish in step 7, or when step 3 found the queue full; skip if nothing was published for another reason)
-Repository: QDher/Daily-organic-chemistry-puzzles, branch main. It contains index.html, data/, src/, rdkit/, .github/workflows/pages.yml, README.md, .gitignore. Its GitHub Actions workflow deploys the site to https://qdher.github.io/Daily-organic-chemistry-puzzles/ (the path is case-sensitive) on every push to main.
-- Attach the repository with push access: call the add_repo tool (claude-code-remote server; load it with ToolSearch query "add_repo" if needed) with owner "QDher", repo "Daily-organic-chemistry-puzzles", access "push". Clone it with the exact command the tool returns.
-- Copy from <folder> into the clone, same relative paths: index.html, data/problems.json, src/index.src.html, src/chemkey.js, src/curate.py, src/validate_problems.js, src/build.js, src/test_chemkey.js, src/PIPELINE.md. Do not copy node_modules, package.json, package-lock.json, whl/ or any other file. Do not change rdkit/, .github/, README.md or .gitignore.
-- If git status shows no change, skip the commit. Otherwise: git add index.html data src; git commit -m "Add daily set <target date>"; git push -u origin main. Only on network errors, retry the push up to 4 times with waits of 2, 4, 8, 16 s. If the push is rejected because the remote has new commits, git pull --rebase origin main and push again.
-- No GitHub token is used or needed. If add_repo or the push is refused, do not work around it (no tokens, no other remote): the claude.ai page is already updated; report the GitHub failure and the exact error in step 9.
+Repository: QDher/Daily-organic-chemistry-puzzles, branch main. It contains index.html, data/, src/, rdkit/, .github/workflows/pages.yml, README.md, .gitignore, TASK_PROMPT.md. Its GitHub Actions workflow deploys the site to https://qdher.github.io/Daily-organic-chemistry-puzzles/ (the path is case-sensitive) on every push to main.
+- Find the clone: the repository is attached to this scheduled task and cloned at the start of the run. Check the working directory and each folder under /home/user with `git -C <dir> remote get-url origin` until one names github.com/QDher/Daily-organic-chemistry-puzzles (letter case may differ). Only if no clone is present: call the add_repo tool (claude-code-remote server; load it with ToolSearch query "add_repo") with owner "QDher", repo "Daily-organic-chemistry-puzzles", access "push", and clone with the exact command it returns. If neither is possible, report it in step 9 and stop.
+- In the clone: git fetch origin main && git checkout -B main origin/main. Push to main only, never to a claude/ branch and never open a pull request.
+- Copy from <folder> into the clone, same relative paths: index.html, data/problems.json, src/index.src.html, src/chemkey.js, src/curate.py, src/validate_problems.js, src/build.js, src/test_chemkey.js, src/PIPELINE.md. Do not copy node_modules, package.json, package-lock.json, whl/ or any other file. Do not change rdkit/, .github/, README.md, .gitignore or TASK_PROMPT.md.
+- If git status shows no change, skip the commit. Otherwise: git add index.html data src; git commit -m "Add daily set <target date>"; git push origin main. Only on network errors, retry the push up to 4 times with waits of 2, 4, 8, 16 s. If the push is rejected because the remote has new commits, git pull --rebase origin main and push again.
+- No GitHub token is used or needed. If the push is refused, do not work around it (no tokens, no other remote): the claude.ai page is already updated; report the GitHub failure and the exact error in step 9.
 
 9. REPORT (your final response; neutral, objective tone)
 - Date of the new set.
 - For each level: reaction; paper (authors, journal, year, DOI link); online publication date for the advanced paper and which window was needed (31 days or extended); whether the advanced problem is one pot or two sequential reactions; number of steps, intermediates and hints; difficulty score.
 - What was read (full text / SI / abstract) and which structures should be checked by a chemist.
+- PubChem: which structures matched (CID), which were corrected, which have no entry; or that PubChem could not be reached.
 - GitHub: commit hash pushed to QDher/Daily-organic-chemistry-puzzles main, or "no change", or the failure and its error message.
 - If nothing was published: the reason.
 ```
