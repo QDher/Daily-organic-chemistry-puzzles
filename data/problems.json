@@ -2324,6 +2324,378 @@
           }
         }
       ]
+    },
+    {
+      "date": "2026-11-04",
+      "problems": [
+        {
+          "id": "jacs2026-rawal-diels-alder-gummiferolate",
+          "level": "undergraduate",
+          "textbookLevel": "undergraduate",
+          "reaction": "Diels–Alder cycloaddition of a 1-amino-3-siloxy-1,3-butadiene (Rawal diene) with methacrolein, then acid treatment: C-protonation of the silyl enol ether (silyloxocarbenium ion), desilylation to the β-dimethylamino ketone and β-elimination of dimethylamine to the cyclohexenone",
+          "source": {
+            "citation": "W. Zhao, J. Zhen, M. Dai. Convergent Total Synthesis of (−)-Methyl Gummiferolate Enabled by Pattern Recognition and Radical Cyclization. J. Am. Chem. Soc. 2026, 148, 42898–42903.",
+            "doi": "10.1021/jacs.6c15246",
+            "context": "Start of the route: known cyclohexenone 12 was prepared by an enantioselective Diels–Alder reaction between the Rawal diene and methacrolein followed by acetal formation (86% ee; procedure cited from Rawal). Only the Diels–Alder reaction and the acid treatment that unmasks the enone (4-formyl-4-methylcyclohex-2-en-1-one) are the problem; the later acetalisation is not."
+          },
+          "verified": false,
+          "verificationNote": "Full text of the source read (PubMed Central); schemes and SI not seen. The paper only states that 12 was made by an enantioselective Diels–Alder reaction of the Rawal diene with methacrolein followed by acetal formation; the catalyst (Cr(III)–salen, Rawal) and the acid used to convert the cycloadduct into the enone (HF, CH₃CN) were taken from Rawal's general procedure and should be checked against the SI. The diene was taken as 1-(dimethylamino)-3-(tert-butyldimethylsiloxy)-1,3-butadiene (TBS rather than another silyl group should be checked). Regiochemistry (diene C4 to the methacrolein CH₂, amine carbon next to the quaternary carbon) follows the usual 'ortho' rule and gives 4-formyl-4-methylcyclohex-2-enone; a chemist should check the order of desilylation and amine loss in the acid step.",
+          "substrate": {
+            "label": "Rawal diene: 1-(dimethylamino)-3-(tert-butyldimethylsiloxy)-1,3-butadiene",
+            "smiles": "CN(C)C=CC(=C)O[Si](C)(C)C(C)(C)C"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "reagents": [
+                {
+                  "text": "methacrolein",
+                  "smiles": "C=C(C)C=O"
+                },
+                {
+                  "text": "Cr(III)–salen catalyst"
+                }
+              ],
+              "conditions": "see SI / Rawal procedure (toluene or CH₂Cl₂, low temperature)",
+              "intermediates": [
+                {
+                  "label": "Diels–Alder cycloadduct: 4-dimethylamino-1-siloxy-cyclohexene bearing the quaternary C(Me)CHO next to the amine carbon (two C–C bonds formed)",
+                  "forms": [
+                    "CN(C)C1C=C(O[Si](C)(C)C(C)(C)C)CCC1(C)C=O"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "reagents": [
+                {
+                  "text": "HF (aq.)"
+                }
+              ],
+              "conditions": "CH₃CN, rt, same pot",
+              "intermediates": [
+                {
+                  "label": "Silyloxocarbenium ion after C-protonation of the silyl enol ether",
+                  "forms": [
+                    "CN(C)C1CC(=[O+][Si](C)(C)C(C)(C)C)CCC1(C)C=O",
+                    "CN(C)C1C[C+](O[Si](C)(C)C(C)(C)C)CCC1(C)C=O"
+                  ]
+                },
+                {
+                  "label": "β-Dimethylamino ketone after loss of the silyl group (O–Si broken)",
+                  "forms": [
+                    "CN(C)C1CC(=O)CCC1(C)C=O"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "4-Formyl-4-methylcyclohex-2-en-1-one (after β-elimination of Me₂NH, C–N broken)",
+            "smiles": "CC1(C=O)CCC(=O)C=C1"
+          },
+          "byproducts": "TBSF, Me₂NH (as its HF salt)",
+          "mechanismRefs": [
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., OUP, 2012, ch. 34 (Diels–Alder reaction, regioselectivity with 1- and 2-donor-substituted dienes, Danishefsky-type dienes) and ch. 20/26 (enol ether hydrolysis, E1cB elimination).",
+            "S. A. Kozmin, V. H. Rawal, J. Org. Chem. 1997, 62, 5252 (1-amino-3-siloxy-1,3-butadienes).",
+            "Y. Huang, T. Iwama, V. H. Rawal, J. Am. Chem. Soc. 2000, 122, 7843 (Cr(III)–salen catalysed enantioselective Diels–Alder reactions of 1-amino-3-siloxy dienes; conversion of the adducts to cyclohexenones)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 3
+            },
+            {
+              "transition": "step 2 int 2",
+              "mol": "substrate",
+              "atom": 7
+            },
+            {
+              "transition": "product",
+              "mol": "substrate",
+              "atom": 1
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 3,
+            "sigmaBondEvents": 4,
+            "textbookLevel": "undergraduate",
+            "score": 7.0
+          }
+        },
+        {
+          "id": "jacs2026-staudinger-boc-stemocurtisine",
+          "level": "graduate",
+          "textbookLevel": "graduate",
+          "reaction": "Staudinger reduction of a secondary alkyl azide (PPh₃: phosphazide, four-membered phosphatriazene, loss of N₂ to the iminophosphorane, hydrolysis to the amine and Ph₃PO), then in situ Boc protection of the amine with Boc₂O",
+          "source": {
+            "citation": "M. Zhang, H. Yu, X. Huang, M. Dai. Total Synthesis of (±)-Stemocurtisine via Catalytic Carbonylation. J. Am. Chem. Soc. 2026, 148, 37600–37605.",
+            "doi": "10.1021/jacs.6c12593",
+            "context": "First approach to the pyrido[1,2-a]azepine (SN2 route): the α-methylated C10a azide was subjected to a one-pot Staudinger reduction with triphenylphosphine followed by protection of the resulting amine as its Boc carbamate, before hydrogenolysis of the two benzyl ethers, ditosylation, Boc removal and double N-alkylation."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central); schemes and SI not seen. The azide was reconstructed from the structure of stemocurtisine (C19H25NO5, InChI from a vendor page) and the text: 2,6-dioxabicyclo[3.3.0]octan-3-one (tetrahydrofuro[2,3-b]furanone) core with the α-methyl group, the azide at C10a and two 3-(benzyloxy)propyl chains (on the acetal carbon and on the adjacent ring CH–O carbon). Conditions (THF/H₂O, temperature, base for the Boc step) were not given in the text. A chemist should check the positions of the two benzyloxypropyl chains and the azide against Scheme 1. Intermediates follow the established Staudinger mechanism.",
+          "substrate": {
+            "label": "α-Methylated azido furofuranone bearing two 3-(benzyloxy)propyl chains",
+            "smiles": "CC1C2C(N=[N+]=[N-])C(CCCOCc3ccccc3)OC2(CCCOCc2ccccc2)OC1=O"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "reagents": [
+                {
+                  "text": "PPh₃",
+                  "smiles": "c1ccc(cc1)P(c1ccccc1)c1ccccc1"
+                }
+              ],
+              "conditions": "THF (see SI)",
+              "intermediates": [
+                {
+                  "label": "Phosphazide: PPh₃ adds to the terminal azide nitrogen (N–P formed)",
+                  "forms": [
+                    "CC1C2C(N=NN=P(c4ccccc4)(c4ccccc4)c4ccccc4)C(CCCOCc3ccccc3)OC2(CCCOCc2ccccc2)OC1=O",
+                    "CC1C2C([N-]N=N[P+](c4ccccc4)(c4ccccc4)c4ccccc4)C(CCCOCc3ccccc3)OC2(CCCOCc2ccccc2)OC1=O"
+                  ]
+                },
+                {
+                  "label": "Four-membered phosphatriazene ring (N–P bond to the substituted nitrogen)",
+                  "forms": [
+                    "CC1C2C(N5N=NP5(c4ccccc4)(c4ccccc4)c4ccccc4)C(CCCOCc3ccccc3)OC2(CCCOCc2ccccc2)OC1=O"
+                  ]
+                },
+                {
+                  "label": "Iminophosphorane (aza-ylide) after loss of N₂ (N–N broken)",
+                  "forms": [
+                    "CC1C2C(N=P(c4ccccc4)(c4ccccc4)c4ccccc4)C(CCCOCc3ccccc3)OC2(CCCOCc2ccccc2)OC1=O",
+                    "CC1C2C([N-][P+](c4ccccc4)(c4ccccc4)c4ccccc4)C(CCCOCc3ccccc3)OC2(CCCOCc2ccccc2)OC1=O"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "reagents": [
+                {
+                  "text": "H₂O"
+                },
+                {
+                  "text": "Boc₂O",
+                  "smiles": "CC(C)(C)OC(=O)OC(=O)OC(C)(C)C"
+                }
+              ],
+              "conditions": "same pot: H₂O, then Boc₂O (see SI)",
+              "intermediates": [
+                {
+                  "label": "Aminophosphonium ion after N-protonation by water",
+                  "forms": [
+                    "CC1C2C(N[P+](c4ccccc4)(c4ccccc4)c4ccccc4)C(CCCOCc3ccccc3)OC2(CCCOCc2ccccc2)OC1=O"
+                  ]
+                },
+                {
+                  "label": "Primary amine after hydrolysis (N–P broken, Ph₃PO released)",
+                  "forms": [
+                    "CC1C2C(N)C(CCCOCc3ccccc3)OC2(CCCOCc2ccccc2)OC1=O"
+                  ]
+                },
+                {
+                  "label": "Tetrahedral intermediate from amine addition to Boc₂O (N–C formed)",
+                  "forms": [
+                    "CC1C2C(NC([O-])(OC(C)(C)C)OC(=O)OC(C)(C)C)C(CCCOCc3ccccc3)OC2(CCCOCc2ccccc2)OC1=O",
+                    "CC1C2C(NC(O)(OC(C)(C)C)OC(=O)OC(C)(C)C)C(CCCOCc3ccccc3)OC2(CCCOCc2ccccc2)OC1=O"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Boc carbamate (C–O broken: tert-butyl carbonate leaves, then CO₂ + t-BuOH)",
+            "smiles": "CC1C2C(NC(=O)OC(C)(C)C)C(CCCOCc3ccccc3)OC2(CCCOCc2ccccc2)OC1=O"
+          },
+          "byproducts": "N₂, Ph₃PO, CO₂, t-BuOH",
+          "mechanismRefs": [
+            "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis, Elsevier, 2005 (Staudinger reaction).",
+            "H. Staudinger, J. Meyer, Helv. Chim. Acta 1919, 2, 635.",
+            "Y. G. Gololobov, L. F. Kasukhin, Tetrahedron 1992, 48, 1353 (mechanism of the Staudinger reaction: phosphazide, four-membered transition structure, iminophosphorane)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 6
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 4
+            },
+            {
+              "transition": "step 1 int 3",
+              "mol": "substrate",
+              "atom": 5
+            },
+            {
+              "transition": "step 2 int 3",
+              "mol": "reagent",
+              "step": 2,
+              "reagent": "Boc₂O",
+              "atom": 5
+            },
+            {
+              "transition": "product",
+              "mol": "reagent",
+              "step": 2,
+              "reagent": "Boc₂O",
+              "atom": 7
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 6,
+            "sigmaBondEvents": 7,
+            "textbookLevel": "graduate",
+            "score": 14.5
+          }
+        },
+        {
+          "id": "jacs2026-borrowing-hydrogen-double-amination-stemocurtisine",
+          "level": "advanced",
+          "textbookLevel": "specialized",
+          "reaction": "Ruthenium (Shvo catalyst)/Brønsted acid cooperative borrowing-hydrogen double N-alkylation: dehydrogenation of a primary alcohol to the aldehyde, condensation with the primary amine (hemiaminal, cyclic imine), return of the hydrogen to give the piperidine, then dehydrogenation of the second primary alcohol, hemiaminal and iminium formation and reduction to close the azepane (pyrido[1,2-a]azepine)",
+          "source": {
+            "citation": "M. Zhang, H. Yu, X. Huang, M. Dai. Total Synthesis of (±)-Stemocurtisine via Catalytic Carbonylation. J. Am. Chem. Soc. 2026, 148, 37600–37605.",
+            "doi": "10.1021/jacs.6c12593",
+            "context": "Second (borrowing hydrogen) approach to the pyrido[1,2-a]azepine: the azido bis(benzyl ether) was converted in one pot (Pd(OH)₂/C, H₂) into the crude amino diol, which with Shvo's catalyst and dibenzyl phosphate formed both C–N bonds in a single operation to give the tetracyclic lactone (40% over 2 steps), later converted to stemocurtisine. Only the borrowing-hydrogen step is the problem; steps 1–3 are stages of one operation in one pot."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central); schemes and SI not seen. Substrate and product were reconstructed from the structure of stemocurtisine (C19H25NO5, InChI/SMILES from a vendor page, consistent with the stemocurtisinol InChI on SpectraBase) and the text: the product is the tetracyclic lactone of stemocurtisine (butenolide replaced by C=O), the substrate the corresponding C10a amine with two 3-hydroxypropyl chains. The order of the two ring closures (piperidine first via the cyclic imine, then azepane via the iminium ion) is assumed, not stated; the paper gives the catalysts but not solvent or temperature in the text. Intermediates follow the established borrowing-hydrogen mechanism (Shvo/acid cooperative catalysis, Barta; Zhao); Ru–H species are not drawn. A chemist should check the substrate constitution, the ring-closure order and the conditions against the SI.",
+          "substrate": {
+            "label": "Amino diol: C10a-amine with two 3-hydroxypropyl chains on the furofuranone core",
+            "smiles": "CC1C2C(N)C(CCCO)OC2(CCCO)OC1=O"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "reagents": [
+                {
+                  "text": "Shvo's catalyst (Ru)"
+                },
+                {
+                  "text": "dibenzyl phosphate"
+                }
+              ],
+              "conditions": "see SI",
+              "intermediates": [
+                {
+                  "label": "Aldehyde from dehydrogenation of the primary alcohol on the CH–O ring carbon (H₂ stored on Ru)",
+                  "forms": [
+                    "CC1C2C(N)C(CCC=O)OC2(CCCO)OC1=O"
+                  ]
+                },
+                {
+                  "label": "Cyclic hemiaminal (2-hydroxypiperidine; N–C formed)",
+                  "forms": [
+                    "CC1C2C3NC(O)CCC3OC2(CCCO)OC1=O"
+                  ]
+                },
+                {
+                  "label": "Cyclic imine (Δ¹-piperideine) after loss of water (C–O broken)",
+                  "forms": [
+                    "CC1C2C3N=CCCC3OC2(CCCO)OC1=O",
+                    "CC1C2C3NC=CCC3OC2(CCCO)OC1=O"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "reagents": [],
+              "conditions": "same pot",
+              "intermediates": [
+                {
+                  "label": "Piperidine (secondary amine) after transfer of the stored hydrogen to the imine",
+                  "forms": [
+                    "CC1C2C3NCCCC3OC2(CCCO)OC1=O"
+                  ]
+                },
+                {
+                  "label": "Aldehyde from dehydrogenation of the second primary alcohol (chain on the acetal carbon)",
+                  "forms": [
+                    "CC1C2C3NCCCC3OC2(CCC=O)OC1=O"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 3,
+              "reagents": [],
+              "conditions": "same pot",
+              "intermediates": [
+                {
+                  "label": "Bicyclic hemiaminal closing the seven-membered ring (N–C formed)",
+                  "forms": [
+                    "CC1C2C3C4CCCN3C(O)CCC2(O4)OC1=O"
+                  ]
+                },
+                {
+                  "label": "Iminium ion after loss of water (C–O broken)",
+                  "forms": [
+                    "CC1C2C3C4CCC[N+]3=CCCC2(O4)OC1=O",
+                    "CC1C2C3C4CCCN3[CH+]CCC2(O4)OC1=O"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Tetracyclic lactone with the pyrido[1,2-a]azepine (after hydride transfer to the iminium ion)",
+            "smiles": "CC1C2C3C4CCCN3CCCC2(O4)OC1=O"
+          },
+          "byproducts": "2 H₂O (no net H₂ consumed or released)",
+          "mechanismRefs": [
+            "M. H. S. A. Hamid, P. A. Slatford, J. M. J. Williams, Adv. Synth. Catal. 2007, 349, 1555 (borrowing hydrogen in the activation of alcohols).",
+            "T. Yan, B. L. Feringa, K. Barta, Nat. Commun. 2014, 5, 5602 (iron/Brønsted acid and Shvo-type catalysts with phosphoric acid for direct amination of alcohols).",
+            "Y. Zhang, C.-S. Lim, D. S. B. Sim, H.-J. Pan, Y. Zhao, Angew. Chem. Int. Ed. 2014, 53, 1399 (cooperative metal/phosphoric acid borrowing-hydrogen amination).",
+            "B. L. Conley, M. K. Pennington-Boggio, E. Boz, T. J. Williams, Chem. Rev. 2010, 110, 2294 (Shvo's catalyst)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 8
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 4
+            },
+            {
+              "transition": "step 1 int 3",
+              "mol": "substrate",
+              "atom": 9
+            },
+            {
+              "transition": "step 3 int 1",
+              "mol": "substrate",
+              "atom": 14
+            },
+            {
+              "transition": "step 3 int 2",
+              "mol": "substrate",
+              "atom": 15
+            }
+          ],
+          "difficulty": {
+            "steps": 3,
+            "intermediates": 7,
+            "sigmaBondEvents": 4,
+            "textbookLevel": "specialized",
+            "score": 19.0
+          }
+        }
+      ]
     }
   ]
 }
