@@ -2696,6 +2696,324 @@
           }
         }
       ]
+    },
+    {
+      "date": "2026-11-05",
+      "problems": [
+        {
+          "id": "jlac1850-strecker-alanine",
+          "level": "undergraduate",
+          "textbookLevel": "undergraduate",
+          "reaction": "Strecker amino acid synthesis: addition of ammonia to acetaldehyde (hemiaminal), dehydration to the imine/iminium ion, addition of cyanide (α-aminonitrile), then acid hydrolysis of the nitrile via the amide to the α-amino acid",
+          "source": {
+            "citation": "A. Strecker. Ueber die künstliche Bildung der Milchsäure und einen neuen, dem Glycocoll homologen Körper. Justus Liebigs Ann. Chem. 1850, 75, 27–45.",
+            "doi": "10.1002/jlac.18500750103",
+            "context": "First laboratory synthesis of an α-amino acid (alanine): acetaldehyde (used as aldehyde-ammonia) was treated with aqueous hydrogen cyanide and then with hydrochloric acid, and the aminonitrile formed was hydrolysed in the same mixture on heating to give alanine (isolated after neutralisation)."
+          },
+          "verified": false,
+          "verificationNote": "Original paper not read (only the Crossref record was checked); the procedure is reconstructed from the well-known historical account of Strecker's alanine synthesis (aldehyde-ammonia + HCN, then HCl, heat). The intermediates follow the textbook Strecker mechanism; under the acidic conditions the amine/imine are protonated (the key ignores this). PubChem (connectivity layer of the InChIKey): acetaldehyde CID 177, ammonia CID 222, hydrogen cyanide CID 768 and alanine CID 5950 (L-alanine; same connectivity) all match. A chemist should check against the original that the hydrolysis was carried out in the same pot and the exact conditions (solvent water, heating).",
+          "substrate": {
+            "label": "Acetaldehyde",
+            "smiles": "CC=O"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "reagents": [
+                {
+                  "text": "NH₃ (as aldehyde-ammonia)",
+                  "smiles": "N"
+                },
+                {
+                  "text": "HCN (aq.)",
+                  "smiles": "C#N"
+                }
+              ],
+              "conditions": "water",
+              "intermediates": [
+                {
+                  "label": "Hemiaminal (N–C formed by addition of NH₃ to C=O)",
+                  "forms": [
+                    "CC(N)O"
+                  ]
+                },
+                {
+                  "label": "Imine / iminium ion after loss of water (C–O broken)",
+                  "forms": [
+                    "CC=N",
+                    "CC=[NH2+]"
+                  ]
+                },
+                {
+                  "label": "α-Aminonitrile (C–C formed by addition of cyanide)",
+                  "forms": [
+                    "CC(N)C#N"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "reagents": [
+                {
+                  "text": "HCl (aq.)"
+                }
+              ],
+              "conditions": "same pot, heat; then neutralisation",
+              "intermediates": [
+                {
+                  "label": "α-Aminoamide (water added to the protonated nitrile; imidic acid tautomerised)",
+                  "forms": [
+                    "CC(N)C(N)=O",
+                    "CC(N)C(O)=N"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Alanine (racemic)",
+            "smiles": "CC(N)C(=O)O"
+          },
+          "byproducts": "H₂O; NH₄Cl (from the amide hydrolysis)",
+          "mechanismRefs": [
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., Oxford University Press, 2012, ch. 11 (imines; Strecker synthesis of amino acids) and ch. 10 (nitrile hydrolysis).",
+            "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis, Elsevier, 2005, 'Strecker reaction'."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 1
+            },
+            {
+              "transition": "step 1 int 3",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "HCN (aq.)",
+              "atom": 0
+            },
+            {
+              "transition": "product",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "HCN (aq.)",
+              "atom": 1
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 4,
+            "sigmaBondEvents": 6,
+            "textbookLevel": "undergraduate",
+            "score": 9.0
+          }
+        },
+        {
+          "id": "ber1909-hofmann-loffler-freytag-nicotine",
+          "level": "graduate",
+          "textbookLevel": "graduate",
+          "reaction": "Hofmann–Löffler–Freytag reaction: in strong acid the N-bromoammonium ion undergoes N–Br homolysis to an aminium radical cation, 1,5-hydrogen atom transfer from the δ-carbon (benzylic to the pyridine) gives a carbon radical, which abstracts Br from another N-bromoammonium ion (chain); basification then lets the free amine displace bromide intramolecularly to close the pyrrolidine",
+          "source": {
+            "citation": "K. Löffler, S. Kober. Über die Bildung des i-Nicotins aus N-Methyl-p-pyridyl-butylamin (Dihydrometanicotin). Ber. Dtsch. Chem. Ges. 1909, 42, 3431–3438.",
+            "doi": "10.1002/cber.19090420378",
+            "context": "Synthesis of racemic nicotine: the N-bromo derivative of N-methyl-4-(3-pyridyl)butylamine (dihydrometanicotine) was heated in concentrated sulfuric acid and the mixture was then made basic, giving nicotine in one pot."
+          },
+          "verified": false,
+          "verificationNote": "Original paper not read (title and bibliographic data checked on Crossref only). Substrate and conditions follow the standard account of this synthesis in reviews of the Hofmann–Löffler–Freytag reaction (Wolff, Chem. Rev. 1963). The halogen of the N-haloamine (Br assumed; Cl in some later work) and the exact conditions (temperature, irradiation, base) should be checked against the original. The pyridine nitrogen is also protonated in H₂SO₄ (not drawn). PubChem (connectivity layer of the InChIKey): nicotine matches CID 89594 and the N-bromoamine substrate matches CID 162413051.",
+          "substrate": {
+            "label": "N-Bromo-N-methyl-4-(3-pyridyl)butan-1-amine (N-bromodihydrometanicotine)",
+            "smiles": "CN(Br)CCCCc1cccnc1"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "reagents": [
+                {
+                  "text": "conc. H₂SO₄"
+                }
+              ],
+              "conditions": "heat",
+              "intermediates": [
+                {
+                  "label": "Aminium radical cation after homolysis of the N–Br bond of the N-bromoammonium ion",
+                  "forms": [
+                    "C[NH+]CCCCc1cccnc1"
+                  ]
+                },
+                {
+                  "label": "Benzylic carbon radical after 1,5-hydrogen atom transfer to nitrogen",
+                  "forms": [
+                    "C[NH2+]CCC[CH]c1cccnc1"
+                  ]
+                },
+                {
+                  "label": "δ-Bromoammonium ion (C–Br formed by Br transfer from another N-bromoammonium ion; chain propagation)",
+                  "forms": [
+                    "C[NH2+]CCCC(Br)c1cccnc1"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "reagents": [
+                {
+                  "text": "NaOH (aq.)"
+                }
+              ],
+              "conditions": "same pot",
+              "intermediates": []
+            }
+          ],
+          "product": {
+            "label": "(±)-Nicotine (N–C formed, Br⁻ displaced)",
+            "smiles": "CN1CCCC1c1cccnc1"
+          },
+          "byproducts": "NaBr; Na₂SO₄",
+          "mechanismRefs": [
+            "M. E. Wolff, Chem. Rev. 1963, 63, 55–64 (cyclization of N-halogenated amines: the Hofmann–Löffler reaction).",
+            "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis, Elsevier, 2005, 'Hofmann–Löffler–Freytag reaction'.",
+            "E. J. Corey, W. R. Hertler, J. Am. Chem. Soc. 1960, 82, 1657–1668 (radical-chain mechanism, 1,5-H transfer)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 1
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 2
+            },
+            {
+              "transition": "step 1 int 3",
+              "mol": "substrate",
+              "atom": 6
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 3,
+            "sigmaBondEvents": 4,
+            "textbookLevel": "graduate",
+            "score": 10.0
+          }
+        },
+        {
+          "id": "jacs2026-dithiane-hydrolysis-arnicenone",
+          "level": "advanced",
+          "textbookLevel": "specialized",
+          "reaction": "Methyl iodide-mediated hydrolysis of a 1,3-dithiolane (thioketal): S-methylation to the sulfonium ion, C–S cleavage to the sulfur-stabilised (thionium) cation, addition of water to the hemithioketal, then expulsion of the thiol to release the cyclopentanone",
+          "source": {
+            "citation": "C.-H. Liu, H.-T. Huang, H.-J. Li, S. A. Dighe, D.-L. Hou, L.-Y. Wu, Y.-W. Huang. Diastereodivergent Access to cis,cis- and cis,trans-Angular Triquinanes: Total Synthesis of (±)-Arnicenone. J. Am. Chem. Soc. 2026, 148, 41724–41732.",
+            "doi": "10.1021/jacs.6c09019",
+            "context": "Endgame of the [2+2] cycloaddition / ring-expansion route (Scheme 4): after dithiane protection of one carbonyl of the 1,3-diketone, Wittig methylenation and TsOH olefin isomerisation, the thioketal was removed with MeI in the presence of CaCO₃ to give the angular triquinane ketone (80%), which was converted to (±)-arnicenone by Saegusa–Ito oxidation and conjugate methyl addition. Steps 1–3 are stages of this single one-pot operation."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central, PMC13651531) without schemes or SI. The substrate and product were reconstructed backwards from the structure of arnicenone (PubChem CID 42608193, C15H22O; InChIKey connectivity layer matched by RDKit) and the steps described in the text (ketone → Saegusa–Ito enone → MeLi/CuI conjugate methylation; the trisubstituted C=C from Wittig methylenation and TsOH isomerisation; the dithiolane on the other carbonyl of the 1,3-diketone flanking the quaternary methyl carbon). Solvent and temperature are not given in the text (aqueous MeCN assumed); a chemist should check against Scheme 4/SI which carbonyl carries the dithiolane and the conditions. Intermediates follow the established mechanism of alkylative thioketal hydrolysis. PubChem: methyl iodide CID 6328 and water CID 962 match; the ketone product matches CID 85344642 (structure search, C14H20O); the dithiolane substrate has no PubChem entry.",
+          "substrate": {
+            "label": "Angular triquinane 1,3-dithiolane (thioketal) with the trisubstituted alkene",
+            "smiles": "CC12C(C)=CC3(C)CCCC13CCC24SCCS4"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "reagents": [
+                {
+                  "text": "MeI",
+                  "smiles": "CI"
+                },
+                {
+                  "text": "CaCO₃"
+                },
+                {
+                  "text": "H₂O",
+                  "smiles": "O"
+                }
+              ],
+              "conditions": "aq. MeCN (see SI)",
+              "intermediates": [
+                {
+                  "label": "S-Methylsulfonium ion (S–CH₃ formed, I⁻ released)",
+                  "forms": [
+                    "CC12C(C)=CC3(C)CCCC13CCC24SCC[S+]4C"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "reagents": [],
+              "conditions": "same pot",
+              "intermediates": [
+                {
+                  "label": "Thionium ion (sulfur-stabilised carbocation) after C–S cleavage; the ring opens to a 2-(methylthio)ethyl chain",
+                  "forms": [
+                    "CC12C(C)=CC3(C)CCCC13CCC2=[S+]CCSC",
+                    "CC12C(C)=CC3(C)CCCC13CC[C+]2SCCSC"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 3,
+              "reagents": [],
+              "conditions": "same pot",
+              "intermediates": [
+                {
+                  "label": "Hemithioketal after addition of water to the thionium ion (C–O formed)",
+                  "forms": [
+                    "CC12C(C)=CC3(C)CCCC13CCC2(O)SCCSC"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Angular triquinane cyclopentanone (C–S broken; precursor of arnicenone)",
+            "smiles": "CC12C(C)=CC3(C)CCCC13CCC2=O"
+          },
+          "byproducts": "2-(Methylthio)ethanethiol (further S-methylated by excess MeI); HI neutralised by CaCO₃",
+          "mechanismRefs": [
+            "M. Fétizon, M. Jurion, J. Chem. Soc., Chem. Commun. 1972, 382 (MeI/CaCO₃ hydrolysis of thioacetals).",
+            "E. J. Corey, D. Seebach, Angew. Chem. Int. Ed. Engl. 1965, 4, 1075 and J. Org. Chem. 1966, 31, 4097 (dithiane chemistry; hydrolysis by alkylation/metal assistance).",
+            "P. G. M. Wuts, T. W. Greene, Greene's Protective Groups in Organic Synthesis, 4th ed., Wiley, 2007, ch. 4 (cleavage of S,S-acetals and ketals)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 17
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "substrate",
+              "atom": 13
+            },
+            {
+              "transition": "step 3 int 1",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "H₂O",
+              "atom": 0
+            },
+            {
+              "transition": "product",
+              "mol": "substrate",
+              "atom": 14
+            }
+          ],
+          "difficulty": {
+            "steps": 3,
+            "intermediates": 3,
+            "sigmaBondEvents": 4,
+            "textbookLevel": "specialized",
+            "score": 15.0
+          }
+        }
+      ]
     }
   ]
 }
