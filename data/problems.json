@@ -2909,7 +2909,7 @@
           "source": {
             "citation": "C.-H. Liu, H.-T. Huang, H.-J. Li, S. A. Dighe, D.-L. Hou, L.-Y. Wu, Y.-W. Huang. Diastereodivergent Access to cis,cis- and cis,trans-Angular Triquinanes: Total Synthesis of (±)-Arnicenone. J. Am. Chem. Soc. 2026, 148, 41724–41732.",
             "doi": "10.1021/jacs.6c09019",
-            "context": "Endgame of the [2+2] cycloaddition / ring-expansion route (Scheme 4): after dithiane protection of one carbonyl of the 1,3-diketone, Wittig methylenation and TsOH olefin isomerisation, the thioketal was removed with MeI in the presence of CaCO₃ to give the angular triquinane ketone (80%), which was converted to (±)-arnicenone by Saegusa–Ito oxidation and conjugate methyl addition. Steps 1–3 are stages of this single one-pot operation."
+            "context": "Endgame of the [2+2] cycloaddition / ring-expansion route (Scheme 4): after dithiane protection of one carbonyl of the 1,3-diketone, Wittig methylenation and TsOH olefin isomerisation, the thioketal was removed with MeI in the presence of CaCO₃ to give the angular triquinane ketone (80%), which was converted to (±)-arnicenone by Saegusa–Ito oxidation and conjugate methyl addition. Single operation: all intermediates belong to one step (no reagent added and no change of solvent or temperature after the start)."
           },
           "verified": false,
           "verificationNote": "Full text read (PubMed Central, PMC13651531) without schemes or SI. The substrate and product were reconstructed backwards from the structure of arnicenone (PubChem CID 42608193, C15H22O; InChIKey connectivity layer matched by RDKit) and the steps described in the text (ketone → Saegusa–Ito enone → MeLi/CuI conjugate methylation; the trisubstituted C=C from Wittig methylenation and TsOH isomerisation; the dithiolane on the other carbonyl of the 1,3-diketone flanking the quaternary methyl carbon). Solvent and temperature are not given in the text (aqueous MeCN assumed); a chemist should check against Scheme 4/SI which carbonyl carries the dithiolane and the conditions. Intermediates follow the established mechanism of alkylative thioketal hydrolysis. PubChem: methyl iodide CID 6328 and water CID 962 match; the ketone product matches CID 85344642 (structure search, C14H20O); the dithiolane substrate has no PubChem entry.",
@@ -2940,28 +2940,14 @@
                   "forms": [
                     "CC12C(C)=CC3(C)CCCC13CCC24SCC[S+]4C"
                   ]
-                }
-              ]
-            },
-            {
-              "n": 2,
-              "reagents": [],
-              "conditions": "same pot",
-              "intermediates": [
+                },
                 {
                   "label": "Thionium ion (sulfur-stabilised carbocation) after C–S cleavage; the ring opens to a 2-(methylthio)ethyl chain",
                   "forms": [
                     "CC12C(C)=CC3(C)CCCC13CCC2=[S+]CCSC",
                     "CC12C(C)=CC3(C)CCCC13CC[C+]2SCCSC"
                   ]
-                }
-              ]
-            },
-            {
-              "n": 3,
-              "reagents": [],
-              "conditions": "same pot",
-              "intermediates": [
+                },
                 {
                   "label": "Hemithioketal after addition of water to the thionium ion (C–O formed)",
                   "forms": [
@@ -2988,12 +2974,12 @@
               "atom": 17
             },
             {
-              "transition": "step 2 int 1",
+              "transition": "step 1 int 2",
               "mol": "substrate",
               "atom": 13
             },
             {
-              "transition": "step 3 int 1",
+              "transition": "step 1 int 3",
               "mol": "reagent",
               "step": 1,
               "reagent": "H₂O",
@@ -3006,11 +2992,11 @@
             }
           ],
           "difficulty": {
-            "steps": 3,
+            "steps": 1,
             "intermediates": 3,
             "sigmaBondEvents": 4,
             "textbookLevel": "specialized",
-            "score": 15.0
+            "score": 11.0
           }
         }
       ]

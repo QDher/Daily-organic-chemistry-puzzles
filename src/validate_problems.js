@@ -10,6 +10,10 @@ const data = JSON.parse(fs.readFileSync(file, 'utf8'));
 
 const LEVELS = ['undergraduate', 'graduate', 'advanced'];
 const MAX_HINTS = { undergraduate: 3, graduate: 5, advanced: 8 };
+// From this date on: a step starts only when a reagent is added or the solvent/temperature changes,
+// and the advanced problem has at least 2 such steps. Earlier sets were written under the old rule.
+const STEP_RULE_FROM = '2026-11-06';
+const NO_CHANGE = /^\s*(same pot|see si|n\/a|-|—)?\s*\.?\s*$/i;
 
 init().then(R => {
   const errors = [];
@@ -35,6 +39,14 @@ init().then(R => {
       for (const k of ['reaction', 'source', 'substrate', 'steps', 'product', 'mechanismRefs', 'hints', 'difficulty', 'textbookLevel'])
         if (!(k in P)) err(w, `missing field "${k}"`);
       if (!P.source || !/^10\.\d{4,9}\//.test(P.source.doi || '')) err(w, 'source.doi missing or malformed');
+      if (day.date >= STEP_RULE_FROM) {
+        P.steps.forEach((st, i) => {
+          if (i === 0 || st.reagents.length) return;
+          const c = (st.conditions || '').trim(), prev = (P.steps[i - 1].conditions || '').trim();
+          if (NO_CHANGE.test(c) || c === prev) err(w, `step ${st.n} adds no reagent and does not change solvent or temperature; merge its intermediates into step ${P.steps[i - 1].n}`);
+        });
+        if (P.level === 'advanced' && P.steps.length < 2) err(w, 'advanced problem needs at least 2 steps (each starting with an added reagent or a change of solvent/temperature)');
+      }
 
       let fp;
       try { fp = substrateFingerprint(R, P.substrate.smiles); } catch (e) { err(w, 'substrate SMILES unreadable'); continue; }
