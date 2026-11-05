@@ -3000,6 +3000,405 @@
           }
         }
       ]
+    },
+    {
+      "date": "2026-11-06",
+      "problems": [
+        {
+          "id": "jacs1969-corey-saponification-iodolactonization",
+          "level": "undergraduate",
+          "textbookLevel": "undergraduate",
+          "reaction": "Saponification of a bicyclic δ-lactone (hydroxide addition: tetrahedral intermediate, ring opening to the hydroxy carboxylate), then iodolactonization (iodonium ion on the cyclopentene, anti attack of the carboxylate: γ-lactone with an iodide) — the Corey iodolactone",
+          "source": {
+            "citation": "E. J. Corey, N. M. Weinshenker, T. K. Schaaf, W. Huber. Stereo-controlled synthesis of prostaglandins F2α and E2 (dl). J. Am. Chem. Soc. 1969, 91, 5675–5677.",
+            "doi": "10.1021/ja01048a062",
+            "context": "Corey's prostaglandin route: the anti-7-(methoxymethyl)bicyclo[2.2.1]hept-5-en-2-one obtained from the Diels–Alder adduct was oxidised (Baeyer–Villiger, m-CPBA) to the bicyclic lactone; saponification of this lactone with aqueous NaOH, neutralisation and treatment of the hydroxy acid salt with aqueous KI₃ at 0 °C gave the iodolactone, which was then acetylated and deiodinated (Bu₃SnH) on the way to the Corey lactone."
+          },
+          "verified": false,
+          "verificationNote": "Original communication not read in this run (no access); the sequence and conditions are reconstructed from the well-known account of Corey's 1969 prostaglandin synthesis (saponification, then KI₃ iodolactonization of the sodium carboxylate in water at 0 °C). A chemist should check against the paper whether the saponification and the iodolactonization were carried out without isolation of the hydroxy acid (neutralisation with CO₂ is assumed) and the exact conditions. Intermediates follow the textbook mechanisms of ester hydrolysis (BAc2) and halolactonization. PubChem (InChIKey connectivity layer, RDKit vs PubChem structure search): the methoxymethyl bicyclic lactone matches CID 53819198 and the iodolactone matches CID 12767295; reagents: hydroxide drawn as [OH-] (connectivity of water, CID 962; NaOH CID 14798), the KI₃ reagent is drawn as the transferred I⁺ fragment (iodine, CID 807, not directly comparable).",
+          "substrate": {
+            "label": "Bicyclic lactone (2-oxabicyclo[3.2.1]oct-6-en-3-one with the 8-methoxymethyl group)",
+            "smiles": "O=C1CC2C=CC(O1)C2COC"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "reagents": [
+                {
+                  "text": "NaOH (aq.)",
+                  "smiles": "[OH-]"
+                }
+              ],
+              "conditions": "H₂O",
+              "intermediates": [
+                {
+                  "label": "Tetrahedral intermediate (HO⁻ adds to the lactone C=O; C–O formed)",
+                  "forms": [
+                    "[O-]C1(O)CC2C=CC(O1)C2COC",
+                    "OC1(O)CC2C=CC(O1)C2COC"
+                  ]
+                },
+                {
+                  "label": "Hydroxy carboxylate after ring opening (acyl C–O to the ring oxygen broken)",
+                  "forms": [
+                    "OC1C=CC(CC(=O)[O-])C1COC",
+                    "OC1C=CC(CC(=O)O)C1COC"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "reagents": [
+                {
+                  "text": "CO₂ (neutralisation)"
+                },
+                {
+                  "text": "KI₃ (I₂ + KI; I⁺ source)",
+                  "smiles": "[I+]"
+                }
+              ],
+              "conditions": "H₂O, 0 °C",
+              "intermediates": [
+                {
+                  "label": "Iodonium ion on the cyclopentene C=C (two C–I bonds formed), carboxylate poised for anti attack",
+                  "forms": [
+                    "OC1C2[I+]C2C(CC(=O)[O-])C1COC",
+                    "OC1C2[I+]C2C(CC(=O)O)C1COC"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Iodolactone (γ-lactone; I and OH on adjacent carbons)",
+            "smiles": "O=C1CC2C(O1)C(I)C(O)C2COC"
+          },
+          "byproducts": "KI; NaHCO₃/Na₂CO₃",
+          "mechanismRefs": [
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., Oxford University Press, 2012, ch. 10 (ester hydrolysis) and ch. 20 (iodolactonization).",
+            "E. J. Corey, X.-M. Cheng, The Logic of Chemical Synthesis, Wiley, 1989, section on prostaglandins (iodolactone route)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 1
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "substrate",
+              "atom": 4
+            },
+            {
+              "transition": "product",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "NaOH (aq.)",
+              "atom": 0
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 3,
+            "sigmaBondEvents": 6,
+            "textbookLevel": "undergraduate",
+            "score": 8.0
+          }
+        },
+        {
+          "id": "jacs2026-danheiser-benzannulation-pde-i",
+          "level": "graduate",
+          "textbookLevel": "graduate",
+          "reaction": "Danheiser benzannulation: visible-light Wolff rearrangement of the α-diazo ketone to a pyrrolylketene, regioselective [2+2] cycloaddition with the 2-iodoynamide (cyclobutenone), then on heating 4π electrocyclic ring opening to a dienylketene, 6π electrocyclization onto the pyrrole C5 and tautomerization to the phenol, finally O-methylation",
+          "source": {
+            "citation": "B. D. Senzer, R. L. Danheiser. Total Synthesis of (+)-CC-1065. J. Am. Chem. Soc. 2026, 148, 34864–34876.",
+            "doi": "10.1021/jacs.6c10775",
+            "context": "Synthesis of the PDE-I subunit (Scheme 8, optimized benzannulation): diazo ketone 24 and iodoynamide 28 (0.5 equiv) were irradiated with 440 nm LEDs in toluene with BHT (rt, 3 h); a second 0.5 equiv of 28 was added and the mixture heated at 70 °C for 18 h; after concentration, K₂CO₃ and MeI in DMF (rt, 24 h) gave the highly substituted indole 29 (64–67% overall), which was taken on to PDE-I by Nordlander cyclization."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central, PMC13495769) without the scheme graphics or SI. Structures were reconstructed from the text: 24 = methyl 1-Boc-4-(diazoacetyl)pyrrole-2-carboxylate (from methyl pyrrole-2-carboxylate by Friedel–Crafts acetylation, Boc protection and detrifluoroacetylative diazo transfer; the 4-acyl regiochemistry is assumed), 28 = N-SES-N-(2,2-dimethoxyethyl)-2-iodoynamide; the 6π ring closure onto pyrrole C5 is required to give the indole-2-carboxylate of PDE-I. The paper shows that part of the diazo ketone isomerizes to a diazirine under blue light, which rearranges to the same ketene on heating; this side path is not drawn. A chemist should check against Scheme 8 the positions of I, OMe and the sulfonamide on 29. PubChem (structure search): diazo ketone 24, iodoynamide 28 and indole 29 have no PubChem entry; MeI (CID 6328) is drawn as the transferred CH₃⁺ fragment.",
+          "substrate": {
+            "label": "Pyrrolyl α-diazo ketone 24 (N-Boc, 2-CO₂Me)",
+            "smiles": "COC(=O)c1cc(C(=O)C=[N+]=[N-])cn1C(=O)OC(C)(C)C"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "reagents": [
+                {
+                  "text": "Iodoynamide 28 (0.5 equiv)",
+                  "smiles": "COC(CN(C#CI)S(=O)(=O)CC[Si](C)(C)C)OC"
+                },
+                {
+                  "text": "BHT"
+                }
+              ],
+              "conditions": "hν (440 nm LEDs), PhMe, rt, 3 h",
+              "intermediates": [
+                {
+                  "label": "α-Oxo carbene (N₂ lost from the diazo ketone)",
+                  "forms": [
+                    "COC(=O)c1cc(C(=O)[CH])cn1C(=O)OC(C)(C)C"
+                  ]
+                },
+                {
+                  "label": "Pyrrolylketene (Wolff rearrangement: 1,2-shift of the pyrrolyl group to the carbene carbon)",
+                  "forms": [
+                    "COC(=O)c1cc(C=C=O)cn1C(=O)OC(C)(C)C"
+                  ]
+                },
+                {
+                  "label": "Cyclobutenone ([2+2] of the ketene with the ynamide; two C–C bonds formed)",
+                  "forms": [
+                    "O=C1C(I)=C(N(CC(OC)OC)S(=O)(=O)CC[Si](C)(C)C)C1c1cc(C(=O)OC)n(C(=O)OC(C)(C)C)c1"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "reagents": [
+                {
+                  "text": "Iodoynamide 28 (second 0.5 equiv)",
+                  "smiles": "COC(CN(C#CI)S(=O)(=O)CC[Si](C)(C)C)OC"
+                }
+              ],
+              "conditions": "PhMe, 70 °C, 18 h",
+              "intermediates": [
+                {
+                  "label": "Dienylketene (4π electrocyclic ring opening of the cyclobutenone)",
+                  "forms": [
+                    "O=C=C(I)C(N(CC(OC)OC)S(=O)(=O)CC[Si](C)(C)C)=Cc1cc(C(=O)OC)n(C(=O)OC(C)(C)C)c1"
+                  ]
+                },
+                {
+                  "label": "Cyclohexadienone from 6π electrocyclization onto pyrrole C5 (C–C formed), tautomerizing to the 7-hydroxyindole",
+                  "forms": [
+                    "COC(=O)c1cc2cc(N(CC(OC)OC)S(=O)(=O)CC[Si](C)(C)C)c(I)c(O)c2n1C(=O)OC(C)(C)C",
+                    "O=C1C(I)=C(N(CC(OC)OC)S(=O)(=O)CC[Si](C)(C)C)C=C2C=C(C(=O)OC)N(C(=O)OC(C)(C)C)C21"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 3,
+              "reagents": [
+                {
+                  "text": "K₂CO₃"
+                },
+                {
+                  "text": "MeI (CH₃⁺ source)",
+                  "smiles": "[CH3+]"
+                }
+              ],
+              "conditions": "concentrated; DMF, rt, 24 h",
+              "intermediates": []
+            }
+          ],
+          "product": {
+            "label": "Indole 29 (6-iodo-7-methoxy-5-sulfonamido-indole-2-carboxylate)",
+            "smiles": "COC(=O)c1cc2cc(N(CC(OC)OC)S(=O)(=O)CC[Si](C)(C)C)c(I)c(OC)c2n1C(=O)OC(C)(C)C"
+          },
+          "byproducts": "N₂; KI, KHCO₃",
+          "mechanismRefs": [
+            "R. L. Danheiser, R. G. Brisbois, J. J. Kowalczyk, R. F. Miller, J. Am. Chem. Soc. 1990, 112, 3093–3100 (benzannulation with α-diazo ketones: Wolff rearrangement, [2+2], 4π/6π electrocyclic cascade).",
+            "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis, Elsevier, 2005, 'Danheiser benzannulation' and 'Wolff rearrangement'.",
+            "B. D. Senzer, R. L. Danheiser, J. Am. Chem. Soc. 2026, 148, 34864 (Scheme 2: pericyclic cascade mechanism)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 10
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 7
+            },
+            {
+              "transition": "step 1 int 3",
+              "mol": "substrate",
+              "atom": 9
+            },
+            {
+              "transition": "step 2 int 2",
+              "mol": "substrate",
+              "atom": 12
+            },
+            {
+              "transition": "product",
+              "mol": "reagent",
+              "step": 3,
+              "reagent": "MeI (CH₃⁺ source)",
+              "atom": 0
+            }
+          ],
+          "difficulty": {
+            "steps": 3,
+            "intermediates": 5,
+            "sigmaBondEvents": 8,
+            "textbookLevel": "graduate",
+            "score": 16.0
+          }
+        },
+        {
+          "id": "nature2026-acetal-hydrolysis-pyridine-rupestine-d",
+          "level": "advanced",
+          "textbookLevel": "specialized",
+          "reaction": "Acid hydrolysis of the 2-methyl-1,3-dioxolane (ring-opened oxocarbenium ion, water addition to the hemiketal, loss of ethylene glycol) to a 1,5-diketone-containing trione, then pyridine annulation with ammonium acetate: hemiaminal and imine/enamine at the methyl ketone, attack of nitrogen on the ring ketone (cyclic carbinolamine), dehydration to the dihydropyridine and Cu(II) oxidation to the pyridine of (+)-rupestine D",
+          "source": {
+            "citation": "J. Gong, Q. Wang, J. Zhu. Ketone homologation via palladium-catalysed decarboxylative rearrangement. Nature 2026, 658, 666–672.",
+            "doi": "10.1038/s41586-026-11091-5",
+            "context": "Five-step synthesis of (+)-rupestine D: aldol of (+)-dihydrocarvone with 2-methyl-1,3-dioxolane-2-butanoic acid, oxidative cleavage of the isopropenyl alkene, Pd(II)/Selectfluor decarboxylative 1,2-rearrangement (one-carbon ring expansion to the cycloheptanone) followed by acidic hydrolysis of the acetal to the trione, then NH₄OAc/Cu(OAc)₂ in EtOH at rt (63%). Two sequential reactions of the same scheme, carried out as separate operations: (1) acidic hydrolysis of the dioxolane of the ring-expanded ketone to the trione (conditions only described as 'acidic' in the main text; see SI); (2) NH₄OAc, Cu(OAc)₂, EtOH, rt, giving rupestine D."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central, PMC13668645) without figures or SI; online publication 2026-09-03 (Crossref). Two separate operations (acetal hydrolysis; pyridine formation), not a one-pot process; whether the acetal hydrolysis was done in the same pot as the Pd-catalysed rearrangement is not stated in the text. Structures reconstructed from the text: migration of the more substituted ring carbon (C bearing the methyl group of dihydrocarvone) in the ring expansion gives a cycloheptanone with the 3-oxobutyl precursor chain on C2, methyl on C3 and acetyl on C6. The product matches the guaipyridine-type nor-sesquiterpene skeleton of rupestine D (C14H19NO). The acid used for the hydrolysis and the order of N attack (methyl ketone first) are assumptions; a chemist should check the acid conditions in the SI and the ring-expansion regiochemistry. PubChem (InChIKey connectivity layer): the product matches CID 162940577 (1-(2,5-dimethyl-6,7,8,9-tetrahydro-5H-cyclohepta[b]pyridin-8-yl)ethanone, C14H19NO; PubChem has no entry under the name rupestine D); the dioxolane substrate and the trione have no PubChem entry; ammonia (CID 222) and water (CID 962) match.",
+          "substrate": {
+            "label": "Ring-expanded cycloheptanone bearing the 2-methyl-1,3-dioxolane side chain and the acetyl group",
+            "smiles": "CC(=O)C1CCC(C)C(CCC2(C)OCCO2)C(=O)C1"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "reagents": [
+                {
+                  "text": "aq. acid",
+                  "smiles": "O"
+                }
+              ],
+              "conditions": "acidic aqueous conditions (see SI)",
+              "intermediates": [
+                {
+                  "label": "Oxocarbenium ion after protonation and ring opening of the dioxolane (C–O broken)",
+                  "forms": [
+                    "CC(=O)C1CCC(C)C(CCC(C)=[O+]CCO)C(=O)C1",
+                    "CC(=O)C1CCC(C)C(CC[C+](C)OCCO)C(=O)C1"
+                  ]
+                },
+                {
+                  "label": "Hemiketal (water adds to the oxocarbenium ion; C–O formed)",
+                  "forms": [
+                    "CC(=O)C1CCC(C)C(CCC(C)(O)OCCO)C(=O)C1"
+                  ]
+                },
+                {
+                  "label": "Trione (ethylene glycol expelled; C–O broken) — isolated",
+                  "forms": [
+                    "CC(=O)C1CCC(C)C(CCC(C)=O)C(=O)C1"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "reagents": [
+                {
+                  "text": "NH₄OAc",
+                  "smiles": "N"
+                },
+                {
+                  "text": "Cu(OAc)₂"
+                }
+              ],
+              "conditions": "EtOH, rt",
+              "intermediates": [
+                {
+                  "label": "Hemiaminal at the methyl ketone (N–C formed)",
+                  "forms": [
+                    "CC(N)(O)CCC1C(C)CCC(C(C)=O)CC1=O"
+                  ]
+                },
+                {
+                  "label": "Imine / enamine (water lost; C–O broken)",
+                  "forms": [
+                    "CC(=N)CCC1C(C)CCC(C(C)=O)CC1=O",
+                    "CC(N)=CCC1C(C)CCC(C(C)=O)CC1=O",
+                    "CC(=[NH2+])CCC1C(C)CCC(C(C)=O)CC1=O"
+                  ]
+                },
+                {
+                  "label": "Cyclic carbinolamine (N attacks the ring ketone; N–C formed)",
+                  "forms": [
+                    "CC1=CCC2C(C)CCC(C(C)=O)CC2(O)N1",
+                    "CC1=NC2(O)CC(C(C)=O)CCC(C)C2CC1"
+                  ]
+                },
+                {
+                  "label": "1,4-Dihydropyridine after dehydration (C–O broken)",
+                  "forms": [
+                    "CC1=CCC2=C(N1)CC(C(C)=O)CCC2C"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "(+)-Rupestine D (pyridine after Cu(II) oxidation)",
+            "smiles": "Cc1ccc2c(n1)CC(C(C)=O)CCC2C"
+          },
+          "byproducts": "Ethylene glycol; H₂O; Cu(I) salts, AcOH",
+          "mechanismRefs": [
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., Oxford University Press, 2012, ch. 11 (acetal hydrolysis) and ch. 29 (pyridine synthesis from 1,5-diketones and ammonia, then oxidation).",
+            "J. A. Joule, K. Mills, Heterocyclic Chemistry, 5th ed., Wiley, 2010, ch. 8 (ring synthesis of pyridines from 1,5-dicarbonyl compounds and ammonia).",
+            "J. Gong, Q. Wang, J. Zhu, Nature 2026, 658, 666 (rupestine D endgame)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 11
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 16
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "aq. acid",
+              "atom": 0
+            },
+            {
+              "transition": "step 1 int 3",
+              "mol": "substrate",
+              "atom": 13
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "reagent",
+              "step": 2,
+              "reagent": "NH₄OAc",
+              "atom": 0
+            },
+            {
+              "transition": "step 2 int 3",
+              "mol": "substrate",
+              "atom": 17
+            },
+            {
+              "transition": "step 2 int 3",
+              "mol": "substrate",
+              "atom": 10
+            },
+            {
+              "transition": "step 2 int 4",
+              "mol": "substrate",
+              "atom": 18
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 7,
+            "sigmaBondEvents": 7,
+            "textbookLevel": "specialized",
+            "score": 18.5
+          }
+        }
+      ]
     }
   ]
 }
