@@ -695,7 +695,7 @@
                   "smiles": "NN"
                 }
               ],
-              "conditions": "diethylene glycol, heat (Barton modification; see paper)",
+              "conditions": "diethylene glycol, heat",
               "intermediates": [
                 {
                   "label": "Carbinolamine (C–N formed)",
@@ -718,7 +718,7 @@
                   "text": "Na / diethylene glycol (alkoxide base)"
                 }
               ],
-              "conditions": "~200 °C, anhydrous (Barton modification; see paper)",
+              "conditions": "~200 °C, anhydrous",
               "intermediates": []
             }
           ],
@@ -1117,7 +1117,7 @@
                   "smiles": "OC(=O)C1CCCN1"
                 }
               ],
-              "conditions": "see paper/SI (the ylide of the Wittig stage is added to the same pot once the dialdehyde is consumed)",
+              "conditions": "see SI",
               "intermediates": [
                 {
                   "label": "Carbinolamine (C–N formed between proline and one aldehyde)",
@@ -1712,15 +1712,15 @@
               "n": 1,
               "reagents": [
                 {
-                  "text": "MeMgI (excess; first equivalent)",
+                  "text": "MeMgI (excess)",
                   "smiles": "C[Mg]I"
                 },
                 {
-                  "text": "MeMgI (second equivalent)",
+                  "text": "MeMgI (excess)",
                   "smiles": "C[Mg]I"
                 },
                 {
-                  "text": "then aqueous work-up (H₃O⁺)"
+                  "text": "aqueous work-up (H₃O⁺)"
                 }
               ],
               "conditions": "Et₂O, then aqueous work-up",
@@ -1876,7 +1876,7 @@
           "verified": false,
           "verificationNote": "Full text read (PubMed Central); scheme images and SI were not accessible (image server and figure pages blocked), so all structures were reconstructed from the text. Phthalide: 5-methoxysalicylic acid → O-benzyl N,N-dimethylbenzamide → directed ortho-lithiation/DMF (formyl placed at C6, between the amide and OMe; the text says a single regioisomer) → HCl/AcOH lactonisation → PhSH/PTSA, giving 7-benzyloxy-4-methoxy-3-(phenylthio)phthalide as drawn. Acceptor: assumed to be 5-methoxy-5-methylfuran-2(5H)-one (the allocyclinone A-ring). Base, solvent and temperature are not in the text ('see SI'). Intermediates follow the established Hauser mechanism, not a scheme of the paper. A chemist should check: the substitution pattern of the phthalide (OBn next to C=O, OMe next to CH–SPh), the identity of the butenolide, the regiochemistry of the Michael addition (phthalide C3 to the butenolide β-carbon next to the ketal carbon) and the conditions.",
           "substrate": {
-            "label": "7-Benzyloxy-4-methoxy-3-(phenylthio)isobenzofuran-1(3H)-one (Hauser donor)",
+            "label": "7-Benzyloxy-4-methoxy-3-(phenylthio)isobenzofuran-1(3H)-one",
             "smiles": "O=C1OC(Sc2ccccc2)c2c(OC)ccc(OCc3ccccc3)c21"
           },
           "steps": [
@@ -1884,14 +1884,14 @@
               "n": 1,
               "reagents": [
                 {
-                  "text": "5-Methoxy-5-methylfuran-2(5H)-one (butenolide acceptor)",
+                  "text": "5-Methoxy-5-methylfuran-2(5H)-one",
                   "smiles": "COC1(C)OC(=O)C=C1"
                 },
                 {
                   "text": "base (e.g. LiOt-Bu or LDA; see SI)"
                 }
               ],
-              "conditions": "see SI (Hauser annulation conditions; base, THF, low temperature)",
+              "conditions": "base, THF, low temperature (see SI)",
               "intermediates": [
                 {
                   "label": "Michael adduct: the phthalide C3 carbanion (stabilised by SPh and the aryl ring) adds to the butenolide β-carbon (C–C formed); lactone enolate, drawn also as the neutral lactone",
@@ -1955,7 +1955,7 @@
               "transition": "step 1 int 1",
               "mol": "reagent",
               "step": 1,
-              "reagent": "5-Methoxy-5-methylfuran-2(5H)-one (butenolide acceptor)",
+              "reagent": "5-Methoxy-5-methylfuran-2(5H)-one",
               "atom": 8
             },
             {
@@ -1967,7 +1967,7 @@
               "transition": "step 2 int 1",
               "mol": "reagent",
               "step": 1,
-              "reagent": "5-Methoxy-5-methylfuran-2(5H)-one (butenolide acceptor)",
+              "reagent": "5-Methoxy-5-methylfuran-2(5H)-one",
               "atom": 7
             },
             {
@@ -2341,7 +2341,7 @@
           "verified": false,
           "verificationNote": "Full text of the source read (PubMed Central); schemes and SI not seen. The paper only states that 12 was made by an enantioselective Diels–Alder reaction of the Rawal diene with methacrolein followed by acetal formation; the catalyst (Cr(III)–salen, Rawal) and the acid used to convert the cycloadduct into the enone (HF, CH₃CN) were taken from Rawal's general procedure and should be checked against the SI. The diene was taken as 1-(dimethylamino)-3-(tert-butyldimethylsiloxy)-1,3-butadiene (TBS rather than another silyl group should be checked). Regiochemistry (diene C4 to the methacrolein CH₂, amine carbon next to the quaternary carbon) follows the usual 'ortho' rule and gives 4-formyl-4-methylcyclohex-2-enone; a chemist should check the order of desilylation and amine loss in the acid step.",
           "substrate": {
-            "label": "Rawal diene: 1-(dimethylamino)-3-(tert-butyldimethylsiloxy)-1,3-butadiene",
+            "label": "1-(dimethylamino)-3-(tert-butyldimethylsiloxy)-1,3-butadiene",
             "smiles": "CN(C)C=CC(=C)O[Si](C)(C)C(C)(C)C"
           },
           "steps": [
@@ -2356,7 +2356,7 @@
                   "text": "Cr(III)–salen catalyst"
                 }
               ],
-              "conditions": "see SI / Rawal procedure (toluene or CH₂Cl₂, low temperature)",
+              "conditions": "toluene or CH₂Cl₂, low temperature (see SI)",
               "intermediates": [
                 {
                   "label": "Diels–Alder cycloadduct: 4-dimethylamino-1-siloxy-cyclohexene bearing the quaternary C(Me)CHO next to the amine carbon (two C–C bonds formed)",
@@ -3051,11 +3051,11 @@
               "n": 2,
               "reagents": [
                 {
-                  "text": "CO₂ (neutralisation)"
+                  "text": "CO₂"
                 },
                 {
-                  "text": "KI₃ (I₂ + KI; I⁺ source)",
-                  "smiles": "[I+]"
+                  "text": "KI₃ (I₂ + KI)",
+                  "smiles": "II"
                 }
               ],
               "conditions": "H₂O, 0 °C",
@@ -3188,8 +3188,8 @@
                   "text": "K₂CO₃"
                 },
                 {
-                  "text": "MeI (CH₃⁺ source)",
-                  "smiles": "[CH3+]"
+                  "text": "MeI",
+                  "smiles": "CI"
                 }
               ],
               "conditions": "concentrated; DMF, rt, 24 h",
@@ -3218,6 +3218,11 @@
               "atom": 7
             },
             {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 8
+            },
+            {
               "transition": "step 1 int 3",
               "mol": "substrate",
               "atom": 9
@@ -3226,13 +3231,6 @@
               "transition": "step 2 int 2",
               "mol": "substrate",
               "atom": 12
-            },
-            {
-              "transition": "product",
-              "mol": "reagent",
-              "step": 3,
-              "reagent": "MeI (CH₃⁺ source)",
-              "atom": 0
             }
           ],
           "difficulty": {

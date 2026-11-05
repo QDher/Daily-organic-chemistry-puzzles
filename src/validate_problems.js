@@ -15,6 +15,22 @@ const MAX_HINTS = { undergraduate: 3, graduate: 5, advanced: 8 };
 const STEP_RULE_FROM = '2026-11-06';
 const NO_CHANGE = /^\s*(same pot|see si|n\/a|-|—)?\s*\.?\s*$/i;
 
+// Text shown before solving (substrate label, reagent text, conditions) must not indicate the mechanism,
+// fragments lost or reacting atoms. Mechanistic wording belongs in intermediate labels and "reaction".
+const LEAK = /intramolecular|intermolecular|cycli[sz]|annulation|fragment|eliminat|rearrang|sigmatropic|\[\d,\d\]|migrat|loss of|\blost\b|extru|decarboxyl|tautomer|aldol|michael|wittig|ylide|acceptor|\bdonor|\bsource\b|carbamic|isocyanate|intermediate|\bvia\b|attack|nucleophil|electrophil|modification|procedure/i;
+function leakErrors(P) {
+  const out = [], seen = (where, s) => { const m = String(s || '').match(LEAK); if (m) out.push(`${where} "${s}" contains "${m[0]}"`); };
+  seen('substrate label', P.substrate && P.substrate.label);
+  for (const st of P.steps || []) {
+    seen(`step ${st.n} conditions`, st.conditions);
+    for (const r of st.reagents || []) {
+      seen(`step ${st.n} reagent`, r.text);
+      if (r.smiles && /^\[[A-Z][a-z]?H?[0-3]?\+\]$/.test(r.smiles)) out.push(`step ${st.n} reagent "${r.text}" drawn as a bare cation (${r.smiles}); give the real reagent`);
+    }
+  }
+  return out;
+}
+
 init().then(R => {
   const errors = [];
   const err = (where, msg) => errors.push(`${where}: ${msg}`);
@@ -39,6 +55,7 @@ init().then(R => {
       for (const k of ['reaction', 'source', 'substrate', 'steps', 'product', 'mechanismRefs', 'hints', 'difficulty', 'textbookLevel'])
         if (!(k in P)) err(w, `missing field "${k}"`);
       if (!P.source || !/^10\.\d{4,9}\//.test(P.source.doi || '')) err(w, 'source.doi missing or malformed');
+      leakErrors(P).forEach(m => err(w, 'mechanism indicated before solving: ' + m));
       if (day.date >= STEP_RULE_FROM) {
         P.steps.forEach((st, i) => {
           if (i === 0 || st.reagents.length) return;
