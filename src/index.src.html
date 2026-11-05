@@ -112,7 +112,7 @@ button { font: inherit; }
 .hints { font-size: 13px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 .hint-item { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; color: var(--ink); }
 .hint-num { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: #d6c8f3; color: #2b1a52; font-family: var(--font-mono); font-size: 12px; font-weight: 500; margin-right: 6px; }
-.hint-btn { font-size: 13px; padding: 5px 12px; }
+.hint-btn { font-size: 13px; padding: 3px 10px; border-radius: 6px; }
 .about { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-top: 1px solid var(--line); padding-top: 10px; }
 .flag { color: var(--warn); }
 
@@ -638,7 +638,7 @@ function renderHints() {
   $('hints').innerHTML =
     shown.map(h => `<div class="hint-item"><span class="hint-num">${h.n}</span>Atom ${h.n} on ${where(h)}: one of its bonds is made or broken.</div>`).join('') +
     (shown.length < total ? `<button class="btn hint-btn" id="hintBtn" type="button">Show hint ${shown.length + 1} of ${total}</button>` : '') +
-    (shown.length < total && !state.final ? `<span>Hint ${shown.length + 1} adds ${shown.length + 1} to your score (hint 1 adds 1, hint 2 adds 2, …). Opening the answer in the paper before finding the product counts as answer shown.</span>` : '');
+    (total ? `<span>${shown.length < total && !state.final ? `Hint ${shown.length + 1} adds ${shown.length + 1} to your score. ` : ''}Each hint increases the score (hint 1 adds 1, hint 2 adds 2, …). Opening the answer in the paper before finding the product counts as answer shown.</span>` : '');
   const hb = $('hintBtn');
   if (hb) hb.onclick = () => { state.hints = shown.length + 1; save(); renderScheme(); renderReagents(); renderHints(); updateAttempts(); };
 }
