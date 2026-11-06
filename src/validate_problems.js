@@ -17,8 +17,8 @@ const STEP_RULE_FROM = '2000-01-01';
 // From this date on: increasing scores within the set, and an advanced problem with a specialized step or an
 // uncommon reagent and a score >= 8, a graduate score >= 3, under the step-level score (curate.py). Applied to all sets except LEGACY_DATES.
 const DIFF_RULE_FROM = '2000-01-01';
-// Published sets whose advanced problem predates these rules and could not yet be replaced (no readable source
-// found on 2026-11-06). The step and difficulty rules are not applied to these dates; remove a date once replaced.
+// Published sets whose advanced problem predates these rules and does not meet them. They are kept as published
+// (no replacement is searched for); the step and difficulty rules are not applied to these dates.
 const LEGACY_DATES = new Set(['2026-11-01', '2026-11-02', '2026-11-06', '2026-11-07']);
 const STEP_LEVELS = ['undergraduate', 'graduate', 'specialized'];
 const MIN_SCORE = { graduate: 3, advanced: 8 };
