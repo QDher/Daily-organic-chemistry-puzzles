@@ -127,3 +127,7 @@ Send a short summary: date of the new set; for each level, the reaction, the pap
 ## Difficulty questions (proposal only)
 
 After solving, the page asks three optional questions (stored in Supabase `difficulty_answers`, one answer per visitor and problem): where the solver had met this reaction (undergraduate course, graduate course, papers, never), the hardest step (problems with more than one step), and whether each reagent marked `"uncommon"` was known. `difficulty_summary` aggregates them. The scheduled run records "calibration" observations in `data/feedback_log.json` and proposes a change of classification (stepLevel, `uncommon`, score thresholds) when at least 8 answers and at least 70 % disagree. Nothing is changed automatically.
+
+## Archive and date list
+
+`src/build.js` first calls `src/archive.js`: sets dated more than 32 days before today (schedule time zone) are moved from `data/problems.json` into `data/archive.json.gz` (gzip of `{"sets": [...]}`), then the page is built from what remains. The page lists the last 31 days that have a set in a drop-down, with the visitor's progress for each day (stored in the browser). Archived sets are not shown on the page; `validate_problems.js` still reads them for ids, paper + reaction pairs and repeated reactions. Read the archive with `zcat data/archive.json.gz`. Results and ratings of archived problems stay in Supabase.

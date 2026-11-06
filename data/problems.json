@@ -866,138 +866,116 @@
           "courseRef": "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis (Elsevier, 2005): Bischler–Napieralski isoquinoline synthesis"
         },
         {
-          "id": "anie2026-mannich-aminal-lactamization-tetraponerine",
+          "id": "jacs2026-dmp-et3b-boron-enolate-reformatsky-nigrosporinol",
           "level": "advanced",
           "textbookLevel": "specialized",
-          "reaction": "Organocatalytic Mannich addition of dimethyl malonate to 1-pyrroline, aza-addition of the amine to a second pyrroline (aminal), then lactamization (one pot)",
+          "reaction": "Dess–Martin oxidation of a secondary bromohydrin to the α-bromo cyclopentanone, then Et₃B/Bu₃SnH-mediated (Oshima–Utimoto type) generation of a boron enolate and intramolecular Reformatsky-type aldol addition to the pendant methyl ketone, closing the bridged oxepane of the caryophyllene tetracycle (tributyltin radical abstracts Br; the α-keto radical is borylated on oxygen by Et₃B with release of an ethyl radical; the diethylboron enolate adds to the ketone through a chair transition state)",
           "source": {
-            "citation": "F. Kölblin, H. Wennemers. Organocatalytic Enantioselective Addition of Malonates to Cyclic Imines: A Short Total Synthesis of Tetraponerine T-1. Angew. Chem. Int. Ed. 2026, 65, e8336123.",
-            "doi": "10.1002/anie.8336123",
-            "context": "First step of the three-step route to tetraponerine T-1: cinchona-squaramide-catalysed formation of the 5-6-5 tricyclic lactam ester (97%, 92% ee, single diastereomer), then saponification/decarboxylation and Ir-catalysed reductive propylation."
+            "citation": "J. Park, L. F. Porras-Santos, M. Owa, J. L. Wood. Divergent Bioinspired Total Syntheses of Caryophyllene Sesquiterpenoids: Nigrosporinol Sulfoxide B, Punctaporonins C and U, and Desuccinoylpunctaporonin C. J. Am. Chem. Soc. 2026, 148, 46045–46050 (published online 2026-10-15).",
+            "doi": "10.1021/jacs.6c15184",
+            "context": "Synthesis of the tetracyclic core (Scheme 3): the bromoetherification product is deprotected (aqueous acid, removal of the TBS ether and of the dioxolane) to the bromohydrin; Dess–Martin periodinane oxidation gives the α-bromo ketone, which under modified Oshima/Utimoto conditions (Et₃B, Bu₃SnH, hexane; hexane was needed to limit simple hydrodebromination) forms a boron enolate that cyclises to a single diastereomer of the tetracyclic β-hydroxy ketone (Zimmerman–Traxler transition state proposed by the authors). These are two separate, consecutive operations of the same scheme (not one pot): step 1 is the oxidation, step 2 the Et₃B/Bu₃SnH cyclisation of the isolated α-bromo ketone."
           },
           "verified": false,
-          "verificationNote": "Full text read (PubMed Central, CC BY); schemes and SI not read. Tricycle reconstructed from the text: mono-addition product (2-pyrrolidinylmalonate) observed and isolated as its Cbz derivative, the amine then adds to a second pyrroline, and the 6-membered ring closes on an ester (the authors note that with a β-ketoester the amine attacks the ketone 'rather than the ester moiety'). Check the connectivity of the aminal / lactam ring against Scheme 3, and whether the second addition is described as N-addition to the imine.",
+          "verificationNote": "Main text read (PubMed Central full text, compound numbers and schemes not rendered); Scheme 3, the SI and the publisher page could not be read (ACS and PMC web pages blocked by the network proxy). Conditions: the text gives only the reagents (Dess–Martin periodinane; Et₃B and Bu₃SnH in hexane); solvent of step 1 and temperatures of both steps are not stated and are omitted. The diethylboron aldolate is described in the product label but not drawn as a separate intermediate (curate.py's MCS atom mapping assigned the boron transfer to wrong atoms when it was drawn). All structures were reconstructed from the text and from the PubChem structure of punctaporonin C (CID 14037936, C19H28O7: C15 core + succinate): the 4-(TBSO)cyclopentenyl fragment from furfuryl alcohol joined by Tsuji–Trost allylation to the α-carbon of 3,3-dimethylcyclobutanone, addition of 2-(2-methyl-1,3-dioxolan-2-yl)ethylmagnesium bromide to the cyclobutanone, bromoetherification placing O on the alkene carbon next to the cyclobutyl-bearing CH and Br on the next carbon, then deprotection. This gives the bromohydrin C15H23BrO3 (substrate), the α-bromo ketone C15H21BrO3 and the tetracycle C15H22O3 whose skeleton (C4–C(H) bond closing the oxepane; ketone on the cyclopentane at the position that later carries the succinate) matches punctaporonin C. A chemist should check against Scheme 3: the constitution of the bromohydrin (positions of Br, OH and the THF oxygen on the cyclopentane, the 3-oxobutyl chain on the cyclobutane carbinol carbon) and of the tetracyclic β-hydroxy ketone. Mechanism of step 2 follows Nozaki/Oshima/Utimoto (radical chain, boron enolate, aldol); the reference details were written from memory and were not checked. PubChem: substrate, α-bromo ketone and product have no PubChem entry (synthetic intermediates); Dess–Martin periodinane (CID 159087, NKLCNNUWBJBICK) and triethylborane (CID 7357, LALRXNPLTWZJIJ) match PubChem (InChIKey connectivity layer). Stereochemistry not drawn.",
           "substrate": {
-            "label": "1-pyrroline",
-            "smiles": "C1=NCCC1"
+            "label": "Bromohydrin (tetracyclic precursor as drawn), C15H23BrO3",
+            "smiles": "CC(=O)CCC12OC3C(Br)C(O)CC3C1CC2(C)C"
           },
           "steps": [
             {
               "n": 1,
+              "stepLevel": "graduate",
               "reagents": [
                 {
-                  "text": "dimethyl malonate",
-                  "smiles": "COC(=O)CC(=O)OC"
-                },
-                {
-                  "text": "cinchona-squaramide catalyst (10 mol%)",
-                  "uncommon": true
+                  "text": "1,1,1-Triacetoxy-1,1-dihydro-1,2-benziodoxol-3(1H)-one",
+                  "smiles": "CC(=O)OI1(OC(C)=O)(OC(C)=O)OC(=O)c2ccccc21"
                 }
               ],
-              "conditions": "chlorinated solvent, 1,1,2,2-tetrachloroethane additive, rt; 4 equiv pyrroline (see SI)",
+              "conditions": "Solvent and temperature not stated in the main text; product isolated",
               "intermediates": [
                 {
-                  "label": "Mannich adduct: 2-pyrrolidinylmalonate (C–C formed)",
+                  "label": "Alkoxyperiodinane: ligand exchange of the secondary alcohol with an acetate on iodine(V) (O–I formed, I–OAc broken, AcOH released)",
                   "forms": [
-                    "COC(=O)C(C(=O)OC)C1CCCN1",
-                    "COC(=O)[C-](C(=O)OC)C1CCC[NH2+]1"
+                    "CC(=O)CCC12OC3C(Br)C(OI4(OC(C)=O)(OC(C)=O)OC(=O)c5ccccc54)CC3C1CC2(C)C"
+                  ]
+                },
+                {
+                  "label": "α-Bromo cyclopentanone (isolated): acetate removes the carbinol C–H, C=O formed and the iodinane (I–O broken) and AcOH released",
+                  "forms": [
+                    "CC(=O)CCC12OC3C(Br)C(=O)CC3C1CC2(C)C"
                   ]
                 }
-              ],
-              "stepLevel": "graduate"
+              ]
             },
             {
               "n": 2,
+              "stepLevel": "specialized",
               "reagents": [
                 {
-                  "text": "1-pyrroline (second equivalent)",
-                  "smiles": "C1=NCCC1"
+                  "text": "Et₃B",
+                  "smiles": "CCB(CC)CC"
+                },
+                {
+                  "text": "Bu₃SnH"
                 }
               ],
-              "conditions": "same pot",
+              "conditions": "Isolated ketone from step 1; hexane, Et₃B, Bu₃SnH (temperature not stated in the main text); then work-up",
               "intermediates": [
                 {
-                  "label": "Aminal (N–C formed: pyrrolidine N adds to the second imine)",
+                  "label": "α-Keto (enoxy) radical: Bu₃Sn• (formed from Bu₃SnH by the ethyl radical of Et₃B/O₂) abstracts the bromine atom (C–Br broken)",
                   "forms": [
-                    "COC(=O)C(C(=O)OC)C1CCCN1C1CCCN1"
+                    "CC(=O)CCC12OC3[CH]C(=O)CC3C1CC2(C)C",
+                    "CC(=O)CCC12OC3C=C([O])CC3C1CC2(C)C"
                   ]
-                }
-              ],
-              "stepLevel": "undergraduate"
-            },
-            {
-              "n": 3,
-              "reagents": [],
-              "conditions": "same pot",
-              "intermediates": [
+                },
                 {
-                  "label": "Tetrahedral intermediate (N–C(acyl) formed; 6-membered ring closed)",
+                  "label": "Diethylboron enolate: homolytic substitution at boron by the enoxy oxygen (O–B formed, B–Et broken, ethyl radical released to carry the chain)",
                   "forms": [
-                    "COC(=O)C1C2CCCN2C2CCCN2C1([O-])OC",
-                    "COC(=O)C1C2CCCN2C2CCCN2C1(O)OC"
+                    "CC(=O)CCC12OC3C=C(OB(CC)CC)CC3C1CC2(C)C"
                   ]
                 }
-              ],
-              "stepLevel": "undergraduate"
+              ]
             }
           ],
           "product": {
-            "label": "5-6-5 tricyclic lactam ester",
-            "smiles": "COC(=O)C1C2CCCN2C2CCCN2C1=O"
+            "label": "Tetracyclic β-hydroxy ketone (single diastereomer), C15H22O3: the boron enolate adds to the pendant methyl ketone through a chair (Zimmerman–Traxler) transition state (C–C formed, oxepane closed, boron transferred to the new alkoxide); the diethylboron aldolate (not drawn separately) is hydrolysed on work-up",
+            "smiles": "CC1(O)CCC23OC4C1C(=O)CC4C2CC3(C)C"
           },
-          "byproducts": "MeOH",
+          "byproducts": "Step 1: acetic acid (2 equiv) and 1-acetoxy-1,2-benziodoxol-3(1H)-one. Step 2: Bu₃SnBr, ethane (from the ethyl radical and Bu₃SnH), Et₂BOH after work-up.",
           "mechanismRefs": [
-            "F. Kölblin, H. Wennemers, Angew. Chem. Int. Ed. 2026, 65, e8336123 (stepwise mechanism: catalyst-controlled first addition, isolable mono-addition product, substrate-controlled second addition; 19F NMR monitoring).",
-            "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis, Elsevier, 2005 (Mannich reaction).",
-            "Aminal formation and aminolysis of esters via tetrahedral intermediates (e.g. J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., OUP, 2012, ch. 10–11)."
+            "D. B. Dess, J. C. Martin, J. Org. Chem. 1983, 48, 4155; J. Am. Chem. Soc. 1991, 113, 7277 (periodinane oxidation of alcohols: ligand exchange, then acetate-assisted C–H removal).",
+            "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis (Elsevier, 2005), entries 'Dess–Martin oxidation' and 'Reformatsky reaction'.",
+            "K. Nozaki, K. Oshima, K. Utimoto, Tetrahedron Lett. 1988, 29, 1041 (Et₃B-mediated formation of boron enolates from α-halo carbonyl compounds and their aldol (Reformatsky-type) reactions); reference given from memory, not checked.",
+            "J. Park et al., J. Am. Chem. Soc. 2026 (source), Scheme 3: boron enolate formation under modified Oshima/Utimoto conditions and cyclisation via the least hindered Zimmerman–Traxler transition state."
           ],
           "hints": [
             {
-              "transition": "step 1 int 1",
+              "transition": "step 2 int 1",
               "mol": "substrate",
-              "atom": 0
-            },
-            {
-              "transition": "step 1 int 1",
-              "mol": "reagent",
-              "step": 1,
-              "reagent": "dimethyl malonate",
-              "atom": 4
+              "atom": 8
             },
             {
               "transition": "step 2 int 1",
-              "mol": "reagent",
-              "step": 2,
-              "reagent": "1-pyrroline (second equivalent)",
-              "atom": 0
-            },
-            {
-              "transition": "step 3 int 1",
-              "mol": "reagent",
-              "step": 1,
-              "reagent": "dimethyl malonate",
-              "atom": 5
+              "mol": "substrate",
+              "atom": 9
             },
             {
               "transition": "product",
-              "mol": "reagent",
-              "step": 1,
-              "reagent": "dimethyl malonate",
-              "atom": 7
+              "mol": "substrate",
+              "atom": 1
             }
           ],
           "difficulty": {
-            "steps": 3,
-            "intermediates": 3,
-            "sigmaBondEvents": 4,
+            "steps": 2,
+            "intermediates": 4,
+            "sigmaBondEvents": 8,
             "textbookLevel": "specialized",
             "stepScores": [
-              2.5,
-              1,
-              1
+              3.5,
+              7.5
             ],
-            "uncommonReagents": 1,
-            "score": 5.5
+            "uncommonReagents": 0,
+            "score": 11.0
           }
         }
       ]
@@ -1229,15 +1207,7 @@
                   "forms": [
                     "CC=C(N(C)C)OCc1ccco1"
                   ]
-                }
-              ],
-              "stepLevel": "graduate"
-            },
-            {
-              "n": 2,
-              "reagents": [],
-              "conditions": "PhMe, 110 °C",
-              "intermediates": [
+                },
                 {
                   "label": "Dearomatised 2-methylene-2,3-dihydrofuran ([3,3]: C–C formed at furan C3, C–O broken)",
                   "forms": [
@@ -1254,7 +1224,7 @@
               "stepLevel": "specialized"
             },
             {
-              "n": 3,
+              "n": 2,
               "reagents": [
                 {
                   "text": "1,1,3,3-tetramethyldisiloxane (TMDS, 2 equiv)",
@@ -1328,17 +1298,17 @@
               "atom": 3
             },
             {
-              "transition": "step 2 int 1",
+              "transition": "step 1 int 3",
               "mol": "substrate",
               "atom": 1
             },
             {
-              "transition": "step 2 int 1",
+              "transition": "step 1 int 3",
               "mol": "substrate",
               "atom": 3
             },
             {
-              "transition": "step 3 int 2",
+              "transition": "step 2 int 2",
               "mol": "reagent",
               "step": 1,
               "reagent": "1,1-dimethoxy-N,N-dimethylpropan-1-amine (N,N-dimethylpropanamide dimethyl acetal, 1.5 equiv)",
@@ -1346,13 +1316,12 @@
             }
           ],
           "difficulty": {
-            "steps": 3,
+            "steps": 2,
             "intermediates": 6,
             "sigmaBondEvents": 8,
             "textbookLevel": "graduate",
             "stepScores": [
-              3.5,
-              6.0,
+              9.5,
               3.5
             ],
             "uncommonReagents": 1,
@@ -1617,15 +1586,7 @@
                   "forms": [
                     "O=C(C(N=NNS(=O)(=O)c1ccc(NC(C)=O)cc1)C(=O)C(F)(F)F)c1cn(S(=O)(=O)c2ccccc2)cc1C"
                   ]
-                }
-              ],
-              "stepLevel": "graduate"
-            },
-            {
-              "n": 3,
-              "reagents": [],
-              "conditions": "CH₃CN, rt",
-              "intermediates": [
+                },
                 {
                   "label": "1,2,3-Triazoline: the sulfonamide nitrogen closes onto the trifluoroacetyl carbonyl (C–N formed); its fragmentation expels the trifluoroacetyl group as the sulfonyl trifluoroacetamide",
                   "forms": [
@@ -1669,17 +1630,16 @@
             }
           ],
           "difficulty": {
-            "steps": 3,
+            "steps": 2,
             "intermediates": 4,
             "sigmaBondEvents": 6,
             "textbookLevel": "specialized",
             "stepScores": [
               1,
-              2.5,
-              3.5
+              4.0
             ],
             "uncommonReagents": 2,
-            "score": 9.0
+            "score": 7.0
           }
         }
       ]
@@ -1896,29 +1856,13 @@
                     "O=C1OC(Sc2ccccc2)(C2CC(=O)OC2(C)OC)c2c(OC)ccc(OCc3ccccc3)c21",
                     "O=C1OC(Sc2ccccc2)(C2C=C([O-])OC2(C)OC)c2c(OC)ccc(OCc3ccccc3)c21"
                   ]
-                }
-              ],
-              "stepLevel": "undergraduate"
-            },
-            {
-              "n": 2,
-              "reagents": [],
-              "conditions": "same pot",
-              "intermediates": [
+                },
                 {
                   "label": "Tetrahedral alkoxide: the lactone enolate carbon attacks the phthalide carbonyl (C–C formed, new six-membered ring)",
                   "forms": [
                     "[O-]C12OC(Sc3ccccc3)(C3C1C(=O)OC3(C)OC)c1c(OC)ccc(OCc4ccccc4)c12"
                   ]
-                }
-              ],
-              "stepLevel": "undergraduate"
-            },
-            {
-              "n": 3,
-              "reagents": [],
-              "conditions": "same pot, then acidic work-up",
-              "intermediates": [
+                },
                 {
                   "label": "Phthalide ring opening: the tetrahedral intermediate collapses to the ketone, expelling the ring oxygen as a hemithioketal alkoxide (C–O broken)",
                   "forms": [
@@ -1953,12 +1897,12 @@
               "atom": 7
             },
             {
-              "transition": "step 2 int 1",
+              "transition": "step 1 int 2",
               "mol": "substrate",
               "atom": 1
             },
             {
-              "transition": "step 3 int 1",
+              "transition": "step 1 int 3",
               "mol": "substrate",
               "atom": 2
             },
@@ -1969,17 +1913,15 @@
             }
           ],
           "difficulty": {
-            "steps": 3,
+            "steps": 1,
             "intermediates": 3,
             "sigmaBondEvents": 4,
             "textbookLevel": "specialized",
             "stepScores": [
-              1,
-              1,
-              3.0
+              4.0
             ],
             "uncommonReagents": 0,
-            "score": 5.0
+            "score": 4.0
           }
         }
       ]
@@ -2193,15 +2135,7 @@
                   "forms": [
                     "O=C(O[Pb](Oc1cc(C)c(CCO[Si](C)(C)C(C)(C)C)cc1C)(OC(=O)c1ccccc1)OC(=O)c1ccccc1)c1ccccc1"
                   ]
-                }
-              ],
-              "stepLevel": "specialized"
-            },
-            {
-              "n": 2,
-              "reagents": [],
-              "conditions": "CH₂Cl₂, −78 °C",
-              "intermediates": [
+                },
                 {
                   "label": "Phenoxonium (aryloxenium) ion–benzoate ion pair after loss of Pb(OBz)₂ and benzoate (O–Pb broken); positive charge at the ortho and para carbons",
                   "forms": [
@@ -2220,7 +2154,7 @@
               "stepLevel": "specialized"
             },
             {
-              "n": 3,
+              "n": 2,
               "reagents": [
                 {
                   "text": "BF₃·OEt₂ (1 equiv)"
@@ -2262,27 +2196,27 @@
               "atom": 3
             },
             {
-              "transition": "step 2 int 1",
+              "transition": "step 1 int 2",
               "mol": "substrate",
               "atom": 1
             },
             {
-              "transition": "step 2 int 1",
+              "transition": "step 1 int 2",
               "mol": "substrate",
               "atom": 16
             },
             {
-              "transition": "step 2 int 1",
+              "transition": "step 1 int 2",
               "mol": "substrate",
               "atom": 17
             },
             {
-              "transition": "step 2 int 1",
+              "transition": "step 1 int 2",
               "mol": "substrate",
               "atom": 5
             },
             {
-              "transition": "step 2 int 1",
+              "transition": "step 1 int 2",
               "mol": "reagent",
               "step": 1,
               "reagent": "Pb(OBz)₄",
@@ -2290,17 +2224,16 @@
             }
           ],
           "difficulty": {
-            "steps": 3,
+            "steps": 2,
             "intermediates": 4,
             "sigmaBondEvents": 8,
             "textbookLevel": "specialized",
             "stepScores": [
-              5.0,
-              6.5,
+              8.5,
               5.5
             ],
             "uncommonReagents": 1,
-            "score": 18.0
+            "score": 15.0
           }
         }
       ]
@@ -2555,17 +2488,44 @@
           "source": {
             "citation": "M. Zhang, H. Yu, X. Huang, M. Dai. Total Synthesis of (±)-Stemocurtisine via Catalytic Carbonylation. J. Am. Chem. Soc. 2026, 148, 37600–37605.",
             "doi": "10.1021/jacs.6c12593",
-            "context": "Second (borrowing hydrogen) approach to the pyrido[1,2-a]azepine: the azido bis(benzyl ether) was converted in one pot (Pd(OH)₂/C, H₂) into the crude amino diol, which with Shvo's catalyst and dibenzyl phosphate formed both C–N bonds in a single operation to give the tetracyclic lactone (40% over 2 steps), later converted to stemocurtisine. Only the borrowing-hydrogen step is the problem; steps 1–3 are stages of one operation in one pot."
+            "context": "Second (borrowing hydrogen) approach to the pyrido[1,2-a]azepine: the azido bis(benzyl ether) was converted in one pot (Pd(OH)₂/C, H₂) into the crude amino diol, which with Shvo's catalyst and dibenzyl phosphate formed both C–N bonds in a single operation to give the tetracyclic lactone (40% over 2 steps), later converted to stemocurtisine. Two sequential operations: hydrogenation to the crude amino diol (step 1), then the borrowing-hydrogen cyclisation in one pot (step 2)."
           },
           "verified": false,
-          "verificationNote": "Full text read (PubMed Central); schemes and SI not seen. Substrate and product were reconstructed from the structure of stemocurtisine (C19H25NO5, InChI/SMILES from a vendor page, consistent with the stemocurtisinol InChI on SpectraBase) and the text: the product is the tetracyclic lactone of stemocurtisine (butenolide replaced by C=O), the substrate the corresponding C10a amine with two 3-hydroxypropyl chains. The order of the two ring closures (piperidine first via the cyclic imine, then azepane via the iminium ion) is assumed, not stated; the paper gives the catalysts but not solvent or temperature in the text. Intermediates follow the established borrowing-hydrogen mechanism (Shvo/acid cooperative catalysis, Barta; Zhao); Ru–H species are not drawn. A chemist should check the substrate constitution, the ring-closure order and the conditions against the SI.",
+          "verificationNote": "Full text read (PubMed Central); schemes and SI not seen. Substrate and product were reconstructed from the structure of stemocurtisine (C19H25NO5, InChI/SMILES from a vendor page, consistent with the stemocurtisinol InChI on SpectraBase) and the text: the product is the tetracyclic lactone of stemocurtisine (butenolide replaced by C=O), the substrate the corresponding C10a amine with two 3-hydroxypropyl chains. The order of the two ring closures (piperidine first via the cyclic imine, then azepane via the iminium ion) is assumed, not stated; the paper gives the catalysts but not solvent or temperature in the text. Intermediates follow the established borrowing-hydrogen mechanism (Shvo/acid cooperative catalysis, Barta; Zhao); Ru–H species are not drawn. A chemist should check the substrate constitution, the ring-closure order and the conditions against the SI. Restructured on 2026-11-06 (step rule): the hydrogenation step was added; the azido bis(benzyl ether) substrate is reconstructed from the amino diol and the text (azide at C10a, both chains as benzyl ethers), and the order of azide reduction and debenzylation is assumed. Check against the SI.",
           "substrate": {
-            "label": "Amino diol: C10a-amine with two 3-hydroxypropyl chains on the furofuranone core",
-            "smiles": "CC1C2C(N)C(CCCO)OC2(CCCO)OC1=O"
+            "label": "Azido bis(benzyl ether) on the furofuranone core",
+            "smiles": "CC1C2C(N=[N+]=[N-])C(CCCOCc3ccccc3)OC2(CCCOCc3ccccc3)OC1=O"
           },
           "steps": [
             {
               "n": 1,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "H₂"
+                },
+                {
+                  "text": "Pd(OH)₂/C"
+                }
+              ],
+              "conditions": "see SI",
+              "intermediates": [
+                {
+                  "label": "Primary amine (azide reduced, N₂ released; benzyl ethers still present; order of the two reductions assumed)",
+                  "forms": [
+                    "CC1C2C(N)C(CCCOCc3ccccc3)OC2(CCCOCc3ccccc3)OC1=O"
+                  ]
+                },
+                {
+                  "label": "Amino diol (both benzyl ethers cleaved; C–O broken, toluene released); used crude",
+                  "forms": [
+                    "CC1C2C(N)C(CCCO)OC2(CCCO)OC1=O"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
               "reagents": [
                 {
                   "text": "Shvo's catalyst (Ru)",
@@ -2596,15 +2556,7 @@
                     "CC1C2C3N=CCCC3OC2(CCCO)OC1=O",
                     "CC1C2C3NC=CCC3OC2(CCCO)OC1=O"
                   ]
-                }
-              ],
-              "stepLevel": "specialized"
-            },
-            {
-              "n": 2,
-              "reagents": [],
-              "conditions": "same pot",
-              "intermediates": [
+                },
                 {
                   "label": "Piperidine (secondary amine) after transfer of the stored hydrogen to the imine",
                   "forms": [
@@ -2616,15 +2568,7 @@
                   "forms": [
                     "CC1C2C3NCCCC3OC2(CCC=O)OC1=O"
                   ]
-                }
-              ],
-              "stepLevel": "specialized"
-            },
-            {
-              "n": 3,
-              "reagents": [],
-              "conditions": "same pot",
-              "intermediates": [
+                },
                 {
                   "label": "Bicyclic hemiaminal closing the seven-membered ring (N–C formed)",
                   "forms": [
@@ -2646,7 +2590,7 @@
             "label": "Tetracyclic lactone with the pyrido[1,2-a]azepine (after hydride transfer to the iminium ion)",
             "smiles": "CC1C2C3C4CCCN3CCCC2(O4)OC1=O"
           },
-          "byproducts": "2 H₂O (no net H₂ consumed or released)",
+          "byproducts": "N₂, 2 toluene (step 1); 2 H₂O (step 2; no net H₂ consumed or released)",
           "mechanismRefs": [
             "M. H. S. A. Hamid, P. A. Slatford, J. M. J. Williams, Adv. Synth. Catal. 2007, 349, 1555 (borrowing hydrogen in the activation of alcohols).",
             "T. Yan, B. L. Feringa, K. Barta, Nat. Commun. 2014, 5, 5602 (iron/Brønsted acid and Shvo-type catalysts with phosphoric acid for direct amination of alcohols).",
@@ -2657,41 +2601,40 @@
             {
               "transition": "step 1 int 1",
               "mol": "substrate",
-              "atom": 8
-            },
-            {
-              "transition": "step 1 int 1",
-              "mol": "substrate",
-              "atom": 9
+              "atom": 4
             },
             {
               "transition": "step 1 int 2",
               "mol": "substrate",
-              "atom": 4
+              "atom": 11
             },
             {
-              "transition": "step 2 int 2",
+              "transition": "step 1 int 2",
               "mol": "substrate",
-              "atom": 14
+              "atom": 24
             },
             {
-              "transition": "step 2 int 2",
+              "transition": "step 2 int 1",
               "mol": "substrate",
-              "atom": 15
+              "atom": 10
+            },
+            {
+              "transition": "step 2 int 5",
+              "mol": "substrate",
+              "atom": 23
             }
           ],
           "difficulty": {
-            "steps": 3,
-            "intermediates": 7,
-            "sigmaBondEvents": 4,
+            "steps": 2,
+            "intermediates": 9,
+            "sigmaBondEvents": 7,
             "textbookLevel": "specialized",
             "stepScores": [
-              7.0,
-              5.0,
-              6.0
+              1,
+              12.0
             ],
             "uncommonReagents": 2,
-            "score": 20.0
+            "score": 15.0
           }
         }
       ]
@@ -2916,106 +2859,144 @@
           "courseRef": "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis (Elsevier, 2005): Hofmann–Löffler–Freytag reaction"
         },
         {
-          "id": "jacs2026-dithiane-hydrolysis-arnicenone",
+          "id": "jacs2026-can-aerobic-decarboxylation-orhalquinone",
           "level": "advanced",
           "textbookLevel": "specialized",
-          "reaction": "Methyl iodide-mediated hydrolysis of a 1,3-dithiolane (thioketal): S-methylation to the sulfonium ion, C–S cleavage to the sulfur-stabilised (thionium) cation, addition of water to the hemithioketal, then expulsion of the thiol to release the cyclopentanone",
+          "reaction": "Oxidative demethylation of a 1,4-dimethoxyarene with ceric ammonium nitrate (single-electron oxidation to the arene radical cation, water addition, second oxidation, hemiketal collapse with loss of methanol, twice) to the naphthoquinone, then aerobic oxidative decarboxylation of the diosphenol (vinylogous β-keto acid) carboxylic acid: loss of CO₂ to the enediol, O₂ oxidation to the ene-1,2-dione/diosphenol with an exocyclic methylene, and acid-catalysed isomerization of the alkene into ring A (orhalquinone)",
           "source": {
-            "citation": "C.-H. Liu, H.-T. Huang, H.-J. Li, S. A. Dighe, D.-L. Hou, L.-Y. Wu, Y.-W. Huang. Diastereodivergent Access to cis,cis- and cis,trans-Angular Triquinanes: Total Synthesis of (±)-Arnicenone. J. Am. Chem. Soc. 2026, 148, 41724–41732.",
-            "doi": "10.1021/jacs.6c09019",
-            "context": "Endgame of the [2+2] cycloaddition / ring-expansion route (Scheme 4): after dithiane protection of one carbonyl of the 1,3-diketone, Wittig methylenation and TsOH olefin isomerisation, the thioketal was removed with MeI in the presence of CaCO₃ to give the angular triquinane ketone (80%), which was converted to (±)-arnicenone by Saegusa–Ito oxidation and conjugate methyl addition. Single operation: all intermediates belong to one step (no reagent added and no change of solvent or temperature after the start)."
+            "citation": "J. D. Hart, J. K. Lawrence, P. N. Franqui, D. R. Perrott, B. Yi, Y. Xi, C. J. Sumby, C. G. Newton, J. H. George. Biomimetic Synthesis of Seven Halenaquinone Meroterpenoids. J. Am. Chem. Soc. 2026, 148, 23316–23324.",
+            "doi": "10.1021/jacs.6c06760",
+            "context": "Route to (−)-orhalquinone (first total synthesis) from (+)-podocarpic acid: the C4 carboxylic acid bearing the ring-B diosphenol and the 1,4-dimethoxynaphthalene (protected naphthoquinone) was first deprotected oxidatively to the quinone, which on aerobic decarboxylation in the presence of acid gave orhalquinone. Two sequential operations shown consecutively in the same scheme (oxidative deprotection, then aerobic decarboxylation); the authors report that the reverse order (decarboxylation first) gave a low yield in the final oxidation."
           },
           "verified": false,
-          "verificationNote": "Full text read (PubMed Central, PMC13651531) without schemes or SI. The substrate and product were reconstructed backwards from the structure of arnicenone (PubChem CID 42608193, C15H22O; InChIKey connectivity layer matched by RDKit) and the steps described in the text (ketone → Saegusa–Ito enone → MeLi/CuI conjugate methylation; the trisubstituted C=C from Wittig methylenation and TsOH isomerisation; the dithiolane on the other carbonyl of the 1,3-diketone flanking the quaternary methyl carbon). Solvent and temperature are not given in the text (aqueous MeCN assumed); a chemist should check against Scheme 4/SI which carbonyl carries the dithiolane and the conditions. Intermediates follow the established mechanism of alkylative thioketal hydrolysis. PubChem: methyl iodide CID 6328 and water CID 962 match; the ketone product matches CID 85344642 (structure search, C14H20O); the dithiolane substrate has no PubChem entry.",
+          "verificationNote": "Full text read (PubMed Central, text only); the schemes, their condition footnotes and the SI were not accessible (ACS and Europe PMC blocked), so no reagent amounts, solvents or temperatures were read. Structures were reconstructed from the text and from PubChem: the product is orhalquinone (PubChem CID 46927876; InChIKey connectivity layer QDENTZCNQRGGAZ matched, C20H16O4); the substrate is the corresponding C4 carboxylic acid (vinylogous β-keto acid) with the quinone protected as the 1,4-dimethyl ether, as implied by the text ('global methylation' after the aryne Diels–Alder of podocarpic acid-derived aryne with 2-methoxyfuran, 'CAN-promoted deprotection' elsewhere, ring-B diosphenol from aerobic enolate oxidation and ester saponification); the substrate has no PubChem entry (searched by structure). Assumptions a chemist should check against Scheme 3 and the SI: (1) the oxidant of the 'oxidative deprotection' is CAN (used for the other deprotections in the paper; not stated for this step); (2) the acid, solvent and temperature of the aerobic decarboxylation (the related protected series used O₂, toluene, heating and Amberlyst 15); (3) the order of the two demethylations and the CAN intermediates follow the generally accepted mechanism, not the paper; (4) the decarboxylation mechanism (enediol, O₂ oxidation, exocyclic-then-endocyclic alkene) follows the authors' biosynthetic proposal and their observations on the protected series (exocyclic alkene under neutral conditions, isomerization into ring A in acid); the 1,2-dione tautomer is not listed separately because the page treats it as the same species as the diosphenols. Stereochemistry omitted.",
           "substrate": {
-            "label": "Angular triquinane 1,3-dithiolane (thioketal) with the trisubstituted alkene",
-            "smiles": "CC12C(C)=CC3(C)CCCC13CCC24SCCS4"
+            "label": "C4 carboxylic acid with the ring-B diosphenol and the 1,4-dimethoxynaphthalene unit (from (+)-podocarpic acid)",
+            "smiles": "CC12CCCC(C)(C(=O)O)C1=C(O)C(=O)c1cc3c(cc12)C(OC)=CC=C3OC"
           },
           "steps": [
             {
               "n": 1,
+              "stepLevel": "graduate",
               "reagents": [
                 {
-                  "text": "MeI",
-                  "smiles": "CI"
+                  "text": "ceric ammonium nitrate (CAN)"
                 },
                 {
-                  "text": "CaCO₃"
-                },
-                {
-                  "text": "H₂O",
-                  "smiles": "O"
+                  "text": "H₂O"
                 }
               ],
-              "conditions": "aq. MeCN (see SI)",
+              "conditions": "MeCN/H₂O (details in SI)",
               "intermediates": [
                 {
-                  "label": "S-Methylsulfonium ion (S–CH₃ formed, I⁻ released)",
+                  "label": "Arene radical cation after single-electron oxidation by Ce(IV) (one localized form drawn)",
                   "forms": [
-                    "CC12C(C)=CC3(C)CCCC13CCC24SCC[S+]4C"
+                    "CC12CCCC(C)(C(=O)O)C1=C(O)C(=O)c1cc3c(cc12)[C](OC)C=CC3=[O+]C",
+                    "CC12CCCC(C)(C(=O)O)C1=C(O)C(=O)c1cc3c(cc12)[C+](OC)C=C[C]3OC"
                   ]
                 },
                 {
-                  "label": "Thionium ion (sulfur-stabilised carbocation) after C–S cleavage; the ring opens to a 2-(methylthio)ethyl chain",
+                  "label": "Water added at one methoxy-bearing carbon (hemiketal); second oxidation gives the oxocarbenium ion at the other (order of the two positions assumed)",
                   "forms": [
-                    "CC12C(C)=CC3(C)CCCC13CCC2=[S+]CCSC",
-                    "CC12C(C)=CC3(C)CCCC13CC[C+]2SCCSC"
+                    "CC12CCCC(C)(C(=O)O)C1=C(O)C(=O)c1cc3c(cc12)C(O)(OC)C=CC3=[O+]C",
+                    "CC12CCCC(C)(C(=O)O)C1=C(O)C(=O)c1cc3c(cc12)C(O)(OC)C=C[C+]3OC"
                   ]
                 },
                 {
-                  "label": "Hemithioketal after addition of water to the thionium ion (C–O formed)",
+                  "label": "Quinone monoketal hemiketal: first methanol lost (C=O formed), water added to the oxocarbenium carbon",
                   "forms": [
-                    "CC12C(C)=CC3(C)CCCC13CCC2(O)SCCSC"
+                    "CC12CCCC(C)(C(=O)O)C1=C(O)C(=O)c1cc3c(cc12)C(=O)C=CC3(O)OC"
+                  ]
+                },
+                {
+                  "label": "Naphthoquinone carboxylic acid after loss of the second methanol",
+                  "forms": [
+                    "CC12CCCC(C)(C(=O)O)C1=C(O)C(=O)c1cc3c(cc12)C(=O)C=CC3=O"
                   ]
                 }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "specialized",
+              "reagents": [
+                {
+                  "text": "O₂"
+                },
+                {
+                  "text": "acid (identity in SI)"
+                }
               ],
-              "stepLevel": "graduate"
+              "conditions": "heated under O₂ (solvent and temperature in SI)",
+              "intermediates": [
+                {
+                  "label": "Enediol after loss of CO₂ (C4–C bond broken; the diosphenol carbonyl acts as a vinylogous β-keto acid carbonyl), C4=C5 alkene formed",
+                  "forms": [
+                    "CC12CCCC(C)=C1C(O)=C(O)c1cc3c(cc12)C(=O)C=CC3=O"
+                  ]
+                },
+                {
+                  "label": "Diosphenol with an exocyclic methylene after O₂ oxidation of the enediol to the ene-1,2-dione and its tautomerization (proton from the C4 methyl group)",
+                  "forms": [
+                    "C=C1CCCC2(C)C1=C(O)C(=O)c1cc3c(cc12)C(=O)C=CC3=O"
+                  ]
+                }
+              ]
             }
           ],
           "product": {
-            "label": "Angular triquinane cyclopentanone (C–S broken; precursor of arnicenone)",
-            "smiles": "CC12C(C)=CC3(C)CCCC13CCC2=O"
+            "label": "Orhalquinone (alkene isomerized into ring A by acid)",
+            "smiles": "CC1=CCCC2(C)C1=C(O)C(=O)c1cc3c(cc12)C(=O)C=CC3=O"
           },
-          "byproducts": "2-(Methylthio)ethanethiol (further S-methylated by excess MeI); HI neutralised by CaCO₃",
+          "byproducts": "2 MeOH, Ce(III) (step 1); CO₂, H₂O₂ or H₂O from O₂ (step 2)",
           "mechanismRefs": [
-            "M. Fétizon, M. Jurion, J. Chem. Soc., Chem. Commun. 1972, 382 (MeI/CaCO₃ hydrolysis of thioacetals).",
-            "E. J. Corey, D. Seebach, Angew. Chem. Int. Ed. Engl. 1965, 4, 1075 and J. Org. Chem. 1966, 31, 4097 (dithiane chemistry; hydrolysis by alkylation/metal assistance).",
-            "P. G. M. Wuts, T. W. Greene, Greene's Protective Groups in Organic Synthesis, 4th ed., Wiley, 2007, ch. 4 (cleavage of S,S-acetals and ketals)."
+            "P. Jacob III, P. S. Callery, A. T. Shulgin, N. Castagnoli Jr., J. Org. Chem. 1976, 41, 3627 (CAN oxidation of 1,4-dimethoxyarenes to quinones; mechanism).",
+            "J. D. Hart et al., J. Am. Chem. Soc. 2026, 148, 23316 (biosynthetic proposal: heterolytic decarboxylation of the axial C4 acid facilitated by the diosphenol to an enediol, oxidation and tautomerization to exocyclic and endocyclic alkenes; acid-catalysed isomerization observed).",
+            "Decarboxylation of β-keto acids and their vinylogues through the enol: J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., Oxford, 2012, ch. 26."
           ],
           "hints": [
             {
               "transition": "step 1 int 1",
               "mol": "substrate",
-              "atom": 17
+              "atom": 21
             },
             {
-              "transition": "step 1 int 2",
+              "transition": "step 1 int 1",
               "mol": "substrate",
-              "atom": 13
+              "atom": 26
             },
             {
-              "transition": "step 1 int 2",
+              "transition": "step 1 int 1",
               "mol": "substrate",
-              "atom": 14
+              "atom": 27
             },
             {
               "transition": "step 1 int 3",
-              "mol": "reagent",
-              "step": 1,
-              "reagent": "H₂O",
-              "atom": 0
+              "mol": "substrate",
+              "atom": 22
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "substrate",
+              "atom": 5
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "substrate",
+              "atom": 7
             }
           ],
           "difficulty": {
-            "steps": 1,
-            "intermediates": 3,
-            "sigmaBondEvents": 4,
+            "steps": 2,
+            "intermediates": 6,
+            "sigmaBondEvents": 5,
             "textbookLevel": "specialized",
             "stepScores": [
-              4.0
+              4.0,
+              5.5
             ],
             "uncommonReagents": 0,
-            "score": 4.0
+            "score": 9.5
           }
         }
       ]

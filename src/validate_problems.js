@@ -5,17 +5,21 @@ const path = require('path');
 const fs = require('fs');
 const init = require('@rdkit/rdkit');
 const { speciesInfo, matches, substrateFingerprint } = require('./chemkey.js');
+const { readArchive } = require('./archive.js');
 const file = process.argv[2] || path.join(__dirname, '..', 'data', 'problems.json');
 const data = JSON.parse(fs.readFileSync(file, 'utf8'));
 
 const LEVELS = ['undergraduate', 'graduate', 'advanced'];
 const MAX_HINTS = { undergraduate: 3, graduate: 5, advanced: 8 };
 // From this date on: a step starts only when a reagent is added or the solvent/temperature changes,
-// and the advanced problem has at least 2 such steps. Earlier sets were written under the old rule.
-const STEP_RULE_FROM = '2026-11-06';
+// and the advanced problem has at least 2 such steps. Applied to all sets except LEGACY_DATES.
+const STEP_RULE_FROM = '2000-01-01';
 // From this date on: increasing scores within the set, and an advanced problem with a specialized step or an
-// uncommon reagent and a score >= 8, a graduate score >= 3, under the step-level score (curate.py). Earlier sets keep their problems.
-const DIFF_RULE_FROM = '2026-11-08';
+// uncommon reagent and a score >= 8, a graduate score >= 3, under the step-level score (curate.py). Applied to all sets except LEGACY_DATES.
+const DIFF_RULE_FROM = '2000-01-01';
+// Published sets whose advanced problem predates these rules and could not yet be replaced (no readable source
+// found on 2026-11-06). The step and difficulty rules are not applied to these dates; remove a date once replaced.
+const LEGACY_DATES = new Set(['2026-11-01', '2026-11-02', '2026-11-06', '2026-11-07']);
 const STEP_LEVELS = ['undergraduate', 'graduate', 'specialized'];
 const MIN_SCORE = { graduate: 3, advanced: 8 };
 // reagents that are never "uncommon" (taught in undergraduate / graduate courses)
@@ -47,12 +51,16 @@ init().then(R => {
   if ([...dates].sort().join() !== dates.join()) err('sets', 'dates are not in ascending order');
   if (new Set(dates).size !== dates.length) err('sets', 'duplicate date');
   const ids = new Map(), steps = new Map();
+  // archived sets (data/archive.json.gz): their ids and paper + reaction pairs stay used
+  for (const day of readArchive()) for (const P of day.problems) { ids.set(P.id, day.date + ' (archived)'); steps.set((P.source && P.source.doi) + ' | ' + P.reaction, day.date + ' (archived)'); }
+  const archivedDates = new Set(readArchive().map(s => s.date));
+  for (const d of dates) if (archivedDates.has(d)) err(d, 'date also present in data/archive.json.gz');
 
   for (const day of data.sets) {
     const lv = day.problems.map(p => p.level);
     if (lv.join() !== LEVELS.join()) err(day.date, `levels must be ${LEVELS.join(', ')} in that order (found ${lv.join(', ')})`);
     const scores = day.problems.map(p => p.difficulty && p.difficulty.score);
-    if (day.date >= DIFF_RULE_FROM && !(scores[0] < scores[1] && scores[1] < scores[2])) err(day.date, `difficulty scores must increase (found ${scores.join(' / ')}); run curate.py --write`);
+    if (day.date >= DIFF_RULE_FROM && !LEGACY_DATES.has(day.date) && !(scores[0] < scores[1] && scores[1] < scores[2])) err(day.date, `difficulty scores must increase (found ${scores.join(' / ')}); run curate.py --write`);
 
     for (const P of day.problems) {
       const w = `${day.date} ${P.level} ${P.id}`;
@@ -68,15 +76,15 @@ init().then(R => {
       P.steps.forEach(st => st.reagents.forEach(r => { if (r.uncommon && COMMON.test((r.text || '').trim())) err(w, `reagent "${r.text}" is a common reagent; remove "uncommon"`); }));
       if (P.level === 'graduate') {
         if (!P.steps.some(st => st.stepLevel === 'graduate')) err(w, 'graduate problem needs at least one step with stepLevel "graduate"');
-        if (day.date >= DIFF_RULE_FROM && !(P.difficulty && P.difficulty.score >= MIN_SCORE.graduate)) err(w, `graduate problem needs a score of at least ${MIN_SCORE.graduate} (found ${P.difficulty && P.difficulty.score})`);
+        if (day.date >= DIFF_RULE_FROM && !LEGACY_DATES.has(day.date) && !(P.difficulty && P.difficulty.score >= MIN_SCORE.graduate)) err(w, `graduate problem needs a score of at least ${MIN_SCORE.graduate} (found ${P.difficulty && P.difficulty.score})`);
         if (!(P.courseRef || '').trim()) err(w, 'graduate problem needs "courseRef" (book and chapter, or course notes, where the reaction is taught)');
       }
-      if (P.level === 'advanced' && day.date >= DIFF_RULE_FROM) {
+      if (P.level === 'advanced' && day.date >= DIFF_RULE_FROM && !LEGACY_DATES.has(day.date)) {
         if (!P.steps.some(st => st.stepLevel === 'specialized') && !P.steps.some(st => st.reagents.some(r => r.uncommon)))
           err(w, 'advanced problem needs a step with stepLevel "specialized" or an uncommon reagent');
         if (!(P.difficulty && P.difficulty.score >= MIN_SCORE.advanced)) err(w, `advanced problem needs a score of at least ${MIN_SCORE.advanced} (found ${P.difficulty && P.difficulty.score})`);
       }
-      if (day.date >= STEP_RULE_FROM) {
+      if (day.date >= STEP_RULE_FROM && !LEGACY_DATES.has(day.date)) {
         P.steps.forEach((st, i) => {
           if (i === 0 || st.reagents.length) return;
           const c = (st.conditions || '').trim(), prev = (P.steps[i - 1].conditions || '').trim();
