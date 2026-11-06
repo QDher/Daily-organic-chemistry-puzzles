@@ -525,7 +525,10 @@ function fbDrawStars() {
 }
 /* ---- difficulty questions (stored in difficulty_answers; read by the scheduled runs as proposals only) ---- */
 let dfAns = { seen: null, hard: null, reag: {} };
-const dfUncommon = p => [...new Set(p.steps.flatMap(st => st.reagents.filter(r => r.uncommon).map(r => r.text)))].slice(0, 6);
+// distinct uncommon reagents (same SMILES = same reagent, e.g. one added in two portions); the first text is shown
+const dfUncommon = p => { const seen = new Map();
+  p.steps.forEach(st => st.reagents.forEach(r => { if (r.uncommon && !seen.has(r.smiles || r.text)) seen.set(r.smiles || r.text, r.text); }));
+  return [...seen.values()].slice(0, 6); };
 function dfChoice(box, options, current, onPick) {
   box.innerHTML = options.map(([v, label]) => `<button type="button" class="df-opt" role="radio" aria-checked="${v === current}" data-v="${esc(String(v))}">${esc(label)}</button>`).join('');
   box.querySelectorAll('.df-opt').forEach(b => b.onclick = () => onPick(b.dataset.v));
