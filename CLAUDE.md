@@ -32,6 +32,7 @@ Scheduled runs: the scheduled-task prompt is authoritative; this file does not c
 - Hints (`src/curate.py`): atoms with a bond made or broken between substrate (with reagents) and product, never both atoms of a double or triple bond (only the C or the O of a carbonyl, one C of an alkene/alkyne); at least 2 per problem. Atoms changed only in intermediates are used only to reach that minimum.
 - New entries: `"verified": false`; `verificationNote` states what was read and which structures need checking; SMILES checked against PubChem (InChIKey connectivity layer).
 - Each set: undergraduate, graduate, advanced, in that order, with increasing difficulty scores; the advanced problem has at least 2 steps and a score > 10.
+- Difficulty (`curate.py`): score = sum of step scores (`stepLevel` undergraduate 1; graduate 2 + 0.5 × σ bonds of the step; specialized 3 + intermediates of the step + 0.5 × σ bonds) + 1 per distinct `"uncommon": true` reagent (max 2). Graduate problems need a graduate step and `courseRef`; advanced problems need a specialized step or an uncommon reagent. The validator applies the increasing-score and advanced rules from the 2026-11-08 set (earlier sets were written under the old score and are kept as they are).
 
 ## User feedback
 

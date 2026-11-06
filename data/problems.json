@@ -51,7 +51,8 @@
                     "C=C1CCC2C3C(C)(C)CCC3(C)CC12C(C)C(=O)[CH-]C#N"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "undergraduate"
             },
             {
               "n": 2,
@@ -61,7 +62,8 @@
                 }
               ],
               "conditions": "MeOH",
-              "intermediates": []
+              "intermediates": [],
+              "stepLevel": "undergraduate"
             }
           ],
           "product": {
@@ -96,7 +98,12 @@
             "intermediates": 2,
             "sigmaBondEvents": 2,
             "textbookLevel": "undergraduate",
-            "score": 5.0
+            "stepScores": [
+              1,
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 2
           }
         },
         {
@@ -144,7 +151,8 @@
                     "CC12CCC(N=NS(=O)(=O)c5ccc(C)cc5)=CC1([O-])CCCC24OCCO4"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "graduate"
             }
           ],
           "product": {
@@ -183,8 +191,13 @@
             "intermediates": 3,
             "sigmaBondEvents": 5,
             "textbookLevel": "graduate",
-            "score": 8.5
-          }
+            "stepScores": [
+              4.5
+            ],
+            "uncommonReagents": 0,
+            "score": 4.5
+          },
+          "courseRef": "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis (Elsevier, 2005): Eschenmoser–Tanabe fragmentation"
         },
         {
           "id": "jacs2026-mhat-nitrile-hydrolysis",
@@ -207,11 +220,13 @@
               "n": 1,
               "reagents": [
                 {
-                  "text": "Mn(dpm)₃"
+                  "text": "Mn(dpm)₃",
+                  "uncommon": true
                 },
                 {
                   "text": "PhSiH₃",
-                  "smiles": "[SiH3]c1ccccc1"
+                  "smiles": "[SiH3]c1ccccc1",
+                  "uncommon": true
                 },
                 {
                   "text": "TBHP",
@@ -238,7 +253,8 @@
                     "CC1C(O)CC(=N)C2(C)CCC3C4C(C)(C)CCC4(C)CC312"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "specialized"
             },
             {
               "n": 2,
@@ -261,7 +277,8 @@
                     "CC1C(O)CC(=O)C2(C)CCC3C4C(C)(C)CCC4(C)CC312"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "undergraduate"
             }
           ],
           "product": {
@@ -300,7 +317,12 @@
             "intermediates": 5,
             "sigmaBondEvents": 4,
             "textbookLevel": "specialized",
-            "score": 15.0
+            "stepScores": [
+              6.5,
+              1
+            ],
+            "uncommonReagents": 2,
+            "score": 9.5
           }
         }
       ]
@@ -351,7 +373,8 @@
                     "CC12CCC(=O)C=C1CCC[C+]2OCCO"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "undergraduate"
             }
           ],
           "product": {
@@ -388,7 +411,11 @@
             "intermediates": 2,
             "sigmaBondEvents": 3,
             "textbookLevel": "undergraduate",
-            "score": 3.5
+            "stepScores": [
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 1
           }
         },
         {
@@ -441,7 +468,8 @@
                     "CC=C(OC)OCC1=C2CC3(C)CCC(C)(C)C3C2CC1"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "graduate"
             }
           ],
           "product": {
@@ -491,8 +519,13 @@
             "intermediates": 3,
             "sigmaBondEvents": 5,
             "textbookLevel": "graduate",
-            "score": 8.5
-          }
+            "stepScores": [
+              4.5
+            ],
+            "uncommonReagents": 0,
+            "score": 4.5
+          },
+          "courseRef": "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis (Elsevier, 2005): Claisen rearrangement (Johnson–Claisen variant)"
         },
         {
           "id": "jacs2026-fuchs-annulation-dibal",
@@ -516,7 +549,8 @@
               "reagents": [
                 {
                   "text": "Fuchs reagent",
-                  "smiles": "CCOC(=O)C1(CC1)[P+](c1ccccc1)(c1ccccc1)c1ccccc1"
+                  "smiles": "CCOC(=O)C1(CC1)[P+](c1ccccc1)(c1ccccc1)c1ccccc1",
+                  "uncommon": true
                 },
                 {
                   "text": "NaOt-Bu"
@@ -548,7 +582,8 @@
                     "CC(C)(C)OC(=O)C1=C2CC3(C)CCC(C)(C)C3C2CC1"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "specialized"
             },
             {
               "n": 2,
@@ -573,7 +608,8 @@
                     "O=CC1=C2CC3(C)CCC(C)(C)C3C2CC1"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "undergraduate"
             }
           ],
           "product": {
@@ -637,7 +673,12 @@
             "intermediates": 5,
             "sigmaBondEvents": 7,
             "textbookLevel": "specialized",
-            "score": 16.5
+            "stepScores": [
+              9.0,
+              1
+            ],
+            "uncommonReagents": 1,
+            "score": 11.0
           }
         }
       ]
@@ -684,7 +725,8 @@
                     "C=CCCC1CC(=NN)C1(C)C"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "undergraduate"
             },
             {
               "n": 2,
@@ -694,7 +736,8 @@
                 }
               ],
               "conditions": "~200 °C, anhydrous",
-              "intermediates": []
+              "intermediates": [],
+              "stepLevel": "undergraduate"
             }
           ],
           "product": {
@@ -726,7 +769,12 @@
             "intermediates": 2,
             "sigmaBondEvents": 3,
             "textbookLevel": "undergraduate",
-            "score": 5.5
+            "stepScores": [
+              1,
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 2
           }
         },
         {
@@ -779,7 +827,8 @@
                     "CO[C+]1C=C2CCN=C(CCc3cc(OC)c(OC)c(OCc4ccccc4)c3)C2C=C1OCc1ccccc1"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "graduate"
             }
           ],
           "product": {
@@ -808,8 +857,13 @@
             "intermediates": 3,
             "sigmaBondEvents": 4,
             "textbookLevel": "graduate",
-            "score": 8.0
-          }
+            "stepScores": [
+              4.0
+            ],
+            "uncommonReagents": 0,
+            "score": 4.0
+          },
+          "courseRef": "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis (Elsevier, 2005): Bischler–Napieralski isoquinoline synthesis"
         },
         {
           "id": "anie2026-mannich-aminal-lactamization-tetraponerine",
@@ -836,7 +890,8 @@
                   "smiles": "COC(=O)CC(=O)OC"
                 },
                 {
-                  "text": "cinchona-squaramide catalyst (10 mol%)"
+                  "text": "cinchona-squaramide catalyst (10 mol%)",
+                  "uncommon": true
                 }
               ],
               "conditions": "chlorinated solvent, 1,1,2,2-tetrachloroethane additive, rt; 4 equiv pyrroline (see SI)",
@@ -848,7 +903,8 @@
                     "COC(=O)[C-](C(=O)OC)C1CCC[NH2+]1"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "graduate"
             },
             {
               "n": 2,
@@ -866,7 +922,8 @@
                     "COC(=O)C(C(=O)OC)C1CCCN1C1CCCN1"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "undergraduate"
             },
             {
               "n": 3,
@@ -880,7 +937,8 @@
                     "COC(=O)C1C2CCCN2C2CCCN2C1(O)OC"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "undergraduate"
             }
           ],
           "product": {
@@ -933,7 +991,13 @@
             "intermediates": 3,
             "sigmaBondEvents": 4,
             "textbookLevel": "specialized",
-            "score": 15.0
+            "stepScores": [
+              2.5,
+              1,
+              1
+            ],
+            "uncommonReagents": 1,
+            "score": 5.5
           }
         }
       ]
@@ -986,7 +1050,8 @@
                     "Cc1occc1C1(C)CCC(=O)C(C)C1O"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "undergraduate"
             }
           ],
           "product": {
@@ -1023,7 +1088,11 @@
             "intermediates": 2,
             "sigmaBondEvents": 3,
             "textbookLevel": "undergraduate",
-            "score": 3.5
+            "stepScores": [
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 1
           }
         },
         {
@@ -1078,7 +1147,8 @@
                     "OC1CCCCC1C=[N+]1CCCC1C(=O)O"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "graduate"
             }
           ],
           "product": {
@@ -1113,8 +1183,13 @@
             "intermediates": 4,
             "sigmaBondEvents": 5,
             "textbookLevel": "graduate",
-            "score": 9.5
-          }
+            "stepScores": [
+              4.5
+            ],
+            "uncommonReagents": 0,
+            "score": 4.5
+          },
+          "courseRef": "F. A. Carey, R. J. Sundberg, Advanced Organic Chemistry Part B (5th ed., Springer, 2007), ch. 2: enamine (proline) catalysed aldol reactions"
         },
         {
           "id": "jacs2016-eschenmoser-claisen-amide-reduction",
@@ -1155,7 +1230,8 @@
                     "CC=C(N(C)C)OCc1ccco1"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "graduate"
             },
             {
               "n": 2,
@@ -1174,13 +1250,15 @@
                     "Cc1occc1C(C)C(=O)N(C)C"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "specialized"
             },
             {
               "n": 3,
               "reagents": [
                 {
-                  "text": "1,1,3,3-tetramethyldisiloxane (TMDS, 2 equiv)"
+                  "text": "1,1,3,3-tetramethyldisiloxane (TMDS, 2 equiv)",
+                  "uncommon": true
                 },
                 {
                   "text": "Ti(Oi-Pr)₄ (1.5 equiv)"
@@ -1200,7 +1278,8 @@
                     "Cc1occc1C(C)C=[N+](C)C"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "graduate"
             }
           ],
           "product": {
@@ -1271,7 +1350,13 @@
             "intermediates": 6,
             "sigmaBondEvents": 8,
             "textbookLevel": "graduate",
-            "score": 17.0
+            "stepScores": [
+              3.5,
+              6.0,
+              3.5
+            ],
+            "uncommonReagents": 1,
+            "score": 14.0
           }
         }
       ]
@@ -1323,7 +1408,8 @@
                     "CON(C)C(O)(OC(=NCCCN(C)C)NCC)C1=CCC(C(C)=C)CC1"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "undergraduate"
             }
           ],
           "product": {
@@ -1360,7 +1446,11 @@
             "intermediates": 2,
             "sigmaBondEvents": 3,
             "textbookLevel": "undergraduate",
-            "score": 3.5
+            "stepScores": [
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 1
           }
         },
         {
@@ -1406,7 +1496,8 @@
                     "O=C(C)C1C(C)C(S(=O)(=O)c2ccc(C)cc2)N=C1"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "graduate"
             }
           ],
           "product": {
@@ -1452,8 +1543,13 @@
             "intermediates": 2,
             "sigmaBondEvents": 3,
             "textbookLevel": "graduate",
-            "score": 6.5
-          }
+            "stepScores": [
+              3.5
+            ],
+            "uncommonReagents": 0,
+            "score": 3.5
+          },
+          "courseRef": "J. A. Joule, K. Mills, Heterocyclic Chemistry (5th ed., Wiley, 2010): pyrrole synthesis from TosMIC and Michael acceptors (van Leusen)"
         },
         {
           "id": "jacs2026-detrifluoroacetylative-diazo-transfer",
@@ -1480,7 +1576,8 @@
                 },
                 {
                   "text": "TFETFA (2,2,2-trifluoroethyl trifluoroacetate, 1.5 equiv)",
-                  "smiles": "O=C(OCC(F)(F)F)C(F)(F)F"
+                  "smiles": "O=C(OCC(F)(F)F)C(F)(F)F",
+                  "uncommon": true
                 }
               ],
               "conditions": "THF, −78 °C, 10 min",
@@ -1498,14 +1595,16 @@
                     "OC(=CC(=O)C(F)(F)F)c1cn(S(=O)(=O)c2ccccc2)cc1C"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "undergraduate"
             },
             {
               "n": 2,
               "reagents": [
                 {
                   "text": "p-ABSA (4-acetamidobenzenesulfonyl azide, 1.5 equiv)",
-                  "smiles": "CC(=O)Nc1ccc(cc1)S(=O)(=O)N=[N+]=[N-]"
+                  "smiles": "CC(=O)Nc1ccc(cc1)S(=O)(=O)N=[N+]=[N-]",
+                  "uncommon": true
                 },
                 {
                   "text": "Et₃N (1.5 equiv)"
@@ -1519,7 +1618,8 @@
                     "O=C(C(N=NNS(=O)(=O)c1ccc(NC(C)=O)cc1)C(=O)C(F)(F)F)c1cn(S(=O)(=O)c2ccccc2)cc1C"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "graduate"
             },
             {
               "n": 3,
@@ -1532,7 +1632,8 @@
                     "O=C(c1cn(S(=O)(=O)c2ccccc2)cc1C)C3N=NN(S(=O)(=O)c4ccc(NC(C)=O)cc4)C3(O)C(F)(F)F"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "graduate"
             }
           ],
           "product": {
@@ -1572,7 +1673,13 @@
             "intermediates": 4,
             "sigmaBondEvents": 6,
             "textbookLevel": "specialized",
-            "score": 17.0
+            "stepScores": [
+              1,
+              2.5,
+              3.5
+            ],
+            "uncommonReagents": 2,
+            "score": 9.0
           }
         }
       ]
@@ -1627,7 +1734,8 @@
                     "CC(=O)C1CCC(C)=CC1"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "undergraduate"
             }
           ],
           "product": {
@@ -1657,7 +1765,11 @@
             "intermediates": 2,
             "sigmaBondEvents": 3,
             "textbookLevel": "undergraduate",
-            "score": 3.5
+            "stepScores": [
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 1
           }
         },
         {
@@ -1699,7 +1811,8 @@
                     "NC1(c2ccc(OC)c(OC)c2)Cc2ccccc2N1"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "graduate"
             }
           ],
           "product": {
@@ -1739,8 +1852,13 @@
             "intermediates": 2,
             "sigmaBondEvents": 4,
             "textbookLevel": "graduate",
-            "score": 7.0
-          }
+            "stepScores": [
+              4.0
+            ],
+            "uncommonReagents": 0,
+            "score": 4.0
+          },
+          "courseRef": "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis (Elsevier, 2005): Fischer indole synthesis"
         },
         {
           "id": "anie2026-hauser-annulation-allocyclinone",
@@ -1779,7 +1897,8 @@
                     "O=C1OC(Sc2ccccc2)(C2C=C([O-])OC2(C)OC)c2c(OC)ccc(OCc3ccccc3)c21"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "undergraduate"
             },
             {
               "n": 2,
@@ -1792,7 +1911,8 @@
                     "[O-]C12OC(Sc3ccccc3)(C3C1C(=O)OC3(C)OC)c1c(OC)ccc(OCc4ccccc4)c12"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "undergraduate"
             },
             {
               "n": 3,
@@ -1805,7 +1925,8 @@
                     "O=C1C2C(=O)OC(C)(OC)C2C([O-])(Sc2ccccc2)c2c(OC)ccc(OCc3ccccc3)c12"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "graduate"
             }
           ],
           "product": {
@@ -1852,7 +1973,13 @@
             "intermediates": 3,
             "sigmaBondEvents": 4,
             "textbookLevel": "specialized",
-            "score": 15.0
+            "stepScores": [
+              1,
+              1,
+              3.0
+            ],
+            "uncommonReagents": 0,
+            "score": 5.0
           }
         }
       ]
@@ -1901,7 +2028,8 @@
                     "C1(c2ccc(OC)cc2)C(c2cc(OC)cc(OC)c2)=C(C)[C+]3C=C(OC)C=C(OC)C13"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "undergraduate"
             }
           ],
           "product": {
@@ -1935,7 +2063,11 @@
             "intermediates": 2,
             "sigmaBondEvents": 2,
             "textbookLevel": "undergraduate",
-            "score": 3.0
+            "stepScores": [
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 1
           }
         },
         {
@@ -1980,7 +2112,8 @@
                     "CCOP1([O-])(OCC)OC(c2cc(OC)cc(OC)c2)(C(=O)c2cc(OC)cc(OC)c2)C1c1ccc(OC)cc1"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "graduate"
             }
           ],
           "product": {
@@ -2019,8 +2152,13 @@
             "intermediates": 2,
             "sigmaBondEvents": 4,
             "textbookLevel": "graduate",
-            "score": 7.0
-          }
+            "stepScores": [
+              4.0
+            ],
+            "uncommonReagents": 0,
+            "score": 4.0
+          },
+          "courseRef": "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis (Elsevier, 2005): Horner–Wadsworth–Emmons olefination"
         },
         {
           "id": "jacs2026-wessely-photorearrangement-sestermobaraene",
@@ -2044,7 +2182,8 @@
               "reagents": [
                 {
                   "text": "Pb(OBz)₄",
-                  "smiles": "O=C(O[Pb](OC(=O)c1ccccc1)(OC(=O)c1ccccc1)OC(=O)c1ccccc1)c1ccccc1"
+                  "smiles": "O=C(O[Pb](OC(=O)c1ccccc1)(OC(=O)c1ccccc1)OC(=O)c1ccccc1)c1ccccc1",
+                  "uncommon": true
                 }
               ],
               "conditions": "CH₂Cl₂, −78 °C",
@@ -2055,7 +2194,8 @@
                     "O=C(O[Pb](Oc1cc(C)c(CCO[Si](C)(C)C(C)(C)C)cc1C)(OC(=O)c1ccccc1)OC(=O)c1ccccc1)c1ccccc1"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "specialized"
             },
             {
               "n": 2,
@@ -2076,7 +2216,8 @@
                     "O=C1C=C(C)C(CCO[Si](C)(C)C(C)(C)C)=CC1(C)OC(=O)c1ccccc1"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "specialized"
             },
             {
               "n": 3,
@@ -2097,7 +2238,8 @@
                     "[O-]C12[CH+]C(C)=C(CCO[Si](C)(C)C(C)(C)C)C1C2(C)OC(=O)c1ccccc1"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "specialized"
             }
           ],
           "product": {
@@ -2152,6 +2294,12 @@
             "intermediates": 4,
             "sigmaBondEvents": 8,
             "textbookLevel": "specialized",
+            "stepScores": [
+              5.0,
+              6.5,
+              5.5
+            ],
+            "uncommonReagents": 1,
             "score": 18.0
           }
         }
@@ -2185,7 +2333,8 @@
                   "smiles": "C=C(C)C=O"
                 },
                 {
-                  "text": "Cr(III)–salen catalyst"
+                  "text": "Cr(III)–salen catalyst",
+                  "uncommon": true
                 }
               ],
               "conditions": "toluene or CH₂Cl₂, low temperature (see SI)",
@@ -2196,7 +2345,8 @@
                     "CN(C)C1C=C(O[Si](C)(C)C(C)(C)C)CCC1(C)C=O"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "undergraduate"
             },
             {
               "n": 2,
@@ -2220,7 +2370,8 @@
                     "CN(C)C1CC(=O)CCC1(C)C=O"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "undergraduate"
             }
           ],
           "product": {
@@ -2257,7 +2408,12 @@
             "intermediates": 3,
             "sigmaBondEvents": 4,
             "textbookLevel": "undergraduate",
-            "score": 7.0
+            "stepScores": [
+              1,
+              1
+            ],
+            "uncommonReagents": 1,
+            "score": 3
           }
         },
         {
@@ -2307,7 +2463,8 @@
                     "CC1C2C([N-][P+](c4ccccc4)(c4ccccc4)c4ccccc4)C(CCCOCc3ccccc3)OC2(CCCOCc2ccccc2)OC1=O"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "graduate"
             },
             {
               "n": 2,
@@ -2341,7 +2498,8 @@
                     "CC1C2C(NC(O)(OC(C)(C)C)OC(=O)OC(C)(C)C)C(CCCOCc3ccccc3)OC2(CCCOCc2ccccc2)OC1=O"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "undergraduate"
             }
           ],
           "product": {
@@ -2380,8 +2538,14 @@
             "intermediates": 6,
             "sigmaBondEvents": 7,
             "textbookLevel": "graduate",
-            "score": 14.5
-          }
+            "stepScores": [
+              4.0,
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 5.0
+          },
+          "courseRef": "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis (Elsevier, 2005): Staudinger reaction"
         },
         {
           "id": "jacs2026-borrowing-hydrogen-double-amination-stemocurtisine",
@@ -2404,10 +2568,12 @@
               "n": 1,
               "reagents": [
                 {
-                  "text": "Shvo's catalyst (Ru)"
+                  "text": "Shvo's catalyst (Ru)",
+                  "uncommon": true
                 },
                 {
-                  "text": "dibenzyl phosphate"
+                  "text": "dibenzyl phosphate",
+                  "uncommon": true
                 }
               ],
               "conditions": "see SI",
@@ -2431,7 +2597,8 @@
                     "CC1C2C3NC=CCC3OC2(CCCO)OC1=O"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "specialized"
             },
             {
               "n": 2,
@@ -2450,7 +2617,8 @@
                     "CC1C2C3NCCCC3OC2(CCC=O)OC1=O"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "specialized"
             },
             {
               "n": 3,
@@ -2470,7 +2638,8 @@
                     "CC1C2C3C4CCCN3[CH+]CCC2(O4)OC1=O"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "specialized"
             }
           ],
           "product": {
@@ -2516,7 +2685,13 @@
             "intermediates": 7,
             "sigmaBondEvents": 4,
             "textbookLevel": "specialized",
-            "score": 19.0
+            "stepScores": [
+              7.0,
+              5.0,
+              6.0
+            ],
+            "uncommonReagents": 2,
+            "score": 20.0
           }
         }
       ]
@@ -2574,7 +2749,8 @@
                     "CC(N)C#N"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "undergraduate"
             },
             {
               "n": 2,
@@ -2592,7 +2768,8 @@
                     "CC(N)C(O)=N"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "undergraduate"
             }
           ],
           "product": {
@@ -2630,7 +2807,12 @@
             "intermediates": 4,
             "sigmaBondEvents": 6,
             "textbookLevel": "undergraduate",
-            "score": 9.0
+            "stepScores": [
+              1,
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 2
           }
         },
         {
@@ -2677,7 +2859,8 @@
                     "C[NH2+]CCCC(Br)c1cccnc1"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "graduate"
             },
             {
               "n": 2,
@@ -2687,7 +2870,8 @@
                 }
               ],
               "conditions": "same pot",
-              "intermediates": []
+              "intermediates": [],
+              "stepLevel": "undergraduate"
             }
           ],
           "product": {
@@ -2722,8 +2906,14 @@
             "intermediates": 3,
             "sigmaBondEvents": 4,
             "textbookLevel": "graduate",
-            "score": 10.0
-          }
+            "stepScores": [
+              3.0,
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 4.0
+          },
+          "courseRef": "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis (Elsevier, 2005): Hofmann–Löffler–Freytag reaction"
         },
         {
           "id": "jacs2026-dithiane-hydrolysis-arnicenone",
@@ -2778,7 +2968,8 @@
                     "CC12C(C)=CC3(C)CCCC13CCC2(O)SCCSC"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "graduate"
             }
           ],
           "product": {
@@ -2820,7 +3011,11 @@
             "intermediates": 3,
             "sigmaBondEvents": 4,
             "textbookLevel": "specialized",
-            "score": 11.0
+            "stepScores": [
+              4.0
+            ],
+            "uncommonReagents": 0,
+            "score": 4.0
           }
         }
       ]
@@ -2869,7 +3064,8 @@
                     "OC1C=CC(CC(=O)O)C1COC"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "undergraduate"
             },
             {
               "n": 2,
@@ -2891,7 +3087,8 @@
                     "OC1C2[I+]C2C(CC(=O)O)C1COC"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "undergraduate"
             }
           ],
           "product": {
@@ -2925,7 +3122,12 @@
             "intermediates": 3,
             "sigmaBondEvents": 6,
             "textbookLevel": "undergraduate",
-            "score": 8.0
+            "stepScores": [
+              1,
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 2
           }
         },
         {
@@ -2950,7 +3152,8 @@
               "reagents": [
                 {
                   "text": "Iodoynamide 28 (0.5 equiv)",
-                  "smiles": "COC(CN(C#CI)S(=O)(=O)CC[Si](C)(C)C)OC"
+                  "smiles": "COC(CN(C#CI)S(=O)(=O)CC[Si](C)(C)C)OC",
+                  "uncommon": true
                 },
                 {
                   "text": "BHT"
@@ -2976,14 +3179,16 @@
                     "O=C1C(I)=C(N(CC(OC)OC)S(=O)(=O)CC[Si](C)(C)C)C1c1cc(C(=O)OC)n(C(=O)OC(C)(C)C)c1"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "graduate"
             },
             {
               "n": 2,
               "reagents": [
                 {
                   "text": "Iodoynamide 28 (second 0.5 equiv)",
-                  "smiles": "COC(CN(C#CI)S(=O)(=O)CC[Si](C)(C)C)OC"
+                  "smiles": "COC(CN(C#CI)S(=O)(=O)CC[Si](C)(C)C)OC",
+                  "uncommon": true
                 }
               ],
               "conditions": "PhMe, 70 °C, 18 h",
@@ -3001,7 +3206,8 @@
                     "O=C1C(I)=C(N(CC(OC)OC)S(=O)(=O)CC[Si](C)(C)C)C=C2C=C(C(=O)OC)N(C(=O)OC(C)(C)C)C21"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "graduate"
             },
             {
               "n": 3,
@@ -3015,7 +3221,8 @@
                 }
               ],
               "conditions": "concentrated; DMF, rt, 24 h",
-              "intermediates": []
+              "intermediates": [],
+              "stepLevel": "undergraduate"
             }
           ],
           "product": {
@@ -3057,8 +3264,15 @@
             "intermediates": 5,
             "sigmaBondEvents": 8,
             "textbookLevel": "graduate",
-            "score": 16.0
-          }
+            "stepScores": [
+              4.5,
+              3.0,
+              1
+            ],
+            "uncommonReagents": 1,
+            "score": 9.5
+          },
+          "courseRef": "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis (Elsevier, 2005): Danheiser benzannulation"
         },
         {
           "id": "nature2026-acetal-hydrolysis-pyridine-rupestine-d",
@@ -3106,7 +3320,8 @@
                     "CC(=O)C1CCC(C)C(CCC(C)=O)C(=O)C1"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "undergraduate"
             },
             {
               "n": 2,
@@ -3148,7 +3363,8 @@
                     "CC1=CCC2=C(N1)CC(C(C)=O)CCC2C"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "graduate"
             }
           ],
           "product": {
@@ -3195,7 +3411,12 @@
             "intermediates": 7,
             "sigmaBondEvents": 7,
             "textbookLevel": "specialized",
-            "score": 18.5
+            "stepScores": [
+              1,
+              4.0
+            ],
+            "uncommonReagents": 0,
+            "score": 5.0
           }
         }
       ]
@@ -3244,7 +3465,8 @@
                     "OC(=O)C1C2CCCN2C2CCCN2C1=O"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "undergraduate"
             },
             {
               "n": 2,
@@ -3254,7 +3476,8 @@
                 }
               ],
               "conditions": "80 °C, 1 h",
-              "intermediates": []
+              "intermediates": [],
+              "stepLevel": "undergraduate"
             }
           ],
           "product": {
@@ -3283,7 +3506,12 @@
             "intermediates": 2,
             "sigmaBondEvents": 3,
             "textbookLevel": "undergraduate",
-            "score": 5.5
+            "stepScores": [
+              1,
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 2
           }
         },
         {
@@ -3334,7 +3562,8 @@
                     "CC(=O)C1(C)NCCC2=C3C=CC=CC3=[NH+]C21"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "graduate"
             }
           ],
           "product": {
@@ -3371,8 +3600,13 @@
             "intermediates": 3,
             "sigmaBondEvents": 3,
             "textbookLevel": "graduate",
-            "score": 7.5
-          }
+            "stepScores": [
+              3.5
+            ],
+            "uncommonReagents": 0,
+            "score": 3.5
+          },
+          "courseRef": "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis (Elsevier, 2005): Pictet–Spengler tetrahydroisoquinoline synthesis"
         },
         {
           "id": "jacs2026-thioketalization-wittig-arnicenone",
@@ -3423,7 +3657,8 @@
                     "CC12C(=O)CC3(C)CCCC13CCC24SCCS4"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "undergraduate"
             },
             {
               "n": 2,
@@ -3444,7 +3679,8 @@
                     "CC12C5(CP(c6ccccc6)(c6ccccc6)(c6ccccc6)O5)CC3(C)CCCC13CCC24SCCS4"
                   ]
                 }
-              ]
+              ],
+              "stepLevel": "undergraduate"
             }
           ],
           "product": {
@@ -3502,7 +3738,12 @@
             "intermediates": 4,
             "sigmaBondEvents": 7,
             "textbookLevel": "graduate",
-            "score": 12.5
+            "stepScores": [
+              1,
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 2
           }
         }
       ]

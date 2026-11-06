@@ -21,8 +21,14 @@ first; an evenly spread subset when there are more. Two atoms joined by a double
 never both hinted (only the C or the O of a carbonyl, one C of an alkene or alkyne). Only when
 fewer than the minimum (2) exist are atoms changed in single mechanistic steps added.
 
-Difficulty score = 2 x (steps - 1) + intermediates + 0.5 x sigma bond events
-                   + 0 / 3 / 6 for undergraduate / graduate / specialized textbook level.
+Difficulty score = sum over steps of the step score + 1 per uncommon reagent (at most 2).
+Each step has "stepLevel" (set by the author of the entry):
+  undergraduate  1 point, whatever the number of intermediates or bonds described
+  graduate       2 + 0.5 x sigma bond events of the step
+  specialized    3 + intermediates of the step + 0.5 x sigma bond events of the step
+The transitions of a step are those leading to its intermediates (the transition to the product
+belongs to the last step). Uncommon reagents are reagents with "uncommon": true, counted once per
+distinct reagent (SMILES, or text when there is no SMILES).
 
 Usage: python3 curate.py [problems.json] [--write]
 """
@@ -33,7 +39,8 @@ from rdkit.Chem import rdFMCS
 
 RDLogger.DisableLog("rdApp.*")
 
-TEXTBOOK_WEIGHT = {"undergraduate": 0, "graduate": 3, "specialized": 6}
+STEP_LEVELS = ("undergraduate", "graduate", "specialized")
+MAX_UNCOMMON_POINTS = 2
 
 
 def mol(smi):
@@ -311,7 +318,22 @@ def curate(problem):
     sigma_events = sum(len(tr["made"]) + len(tr["broken"]) for tr in trans)
     n_int = sum(len(s["intermediates"]) for s in problem["steps"])
     level = problem.get("textbookLevel", "specialized")
-    score = 2 * (len(problem["steps"]) - 1) + n_int + 0.5 * sigma_events + TEXTBOOK_WEIGHT[level]
+    step_of = [path[t][2] for t in range(1, len(path))]   # step number of each transition
+    step_scores = []
+    for st in problem["steps"]:
+        lv = st.get("stepLevel")
+        if lv not in STEP_LEVELS:
+            raise ValueError(f"{problem['id']}: step {st['n']} needs \"stepLevel\" (one of {', '.join(STEP_LEVELS)})")
+        sig = sum(len(tr["made"]) + len(tr["broken"]) for tr, n in zip(trans, step_of) if n == st["n"])
+        if lv == "undergraduate":
+            sc = 1
+        elif lv == "graduate":
+            sc = 2 + 0.5 * sig
+        else:
+            sc = 3 + len(st["intermediates"]) + 0.5 * sig
+        step_scores.append(sc)
+    uncommon = sorted({r.get("smiles") or r["text"] for st in problem["steps"] for r in st["reagents"] if r.get("uncommon")})
+    score = sum(step_scores) + min(MAX_UNCOMMON_POINTS, len(uncommon))
     hint_json = []
     for t, l in hints:
         h = {"transition": trans[t]["name"]}
@@ -327,7 +349,8 @@ def curate(problem):
                         for tr in trans],
         "hints": [f"{trans[t]['name']} -> {describe(l, sub, reagents)}" for t, l in hints],
         "difficulty": {"steps": len(problem["steps"]), "intermediates": n_int,
-                       "sigmaBondEvents": sigma_events, "textbookLevel": level, "score": score},
+                       "sigmaBondEvents": sigma_events, "textbookLevel": level,
+                       "stepScores": step_scores, "uncommonReagents": len(uncommon), "score": score},
     }
     return hint_json, report
 

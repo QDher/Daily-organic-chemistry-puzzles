@@ -55,7 +55,7 @@ Per level:
 
 Where to look: PubMed (`search_articles` with journal and date filters; `get_full_text_article` for PMC full text, which includes many recent open-access JACS, Angewandte and Nature-family papers), then web search and publisher pages. Read the scheme and the SI for structures and conditions whenever accessible.
 
-The difficulty score (from `curate.py`) must increase within the set: undergraduate < graduate < advanced. If it does not, choose another problem rather than editing the score.
+Difficulty (`curate.py`): every step has `stepLevel` ("undergraduate" | "graduate" | "specialized", judged on the chemistry of the step, not on how much detail the paper gives) and reagents not taught in undergraduate or graduate courses have `"uncommon": true`. Step score: undergraduate 1; graduate 2 + 0.5 × σ bonds of the step; specialized 3 + intermediates of the step + 0.5 × σ bonds of the step; + 1 per distinct uncommon reagent (max 2). The graduate problem has a graduate step and a `courseRef`; the advanced problem has a specialized step or an uncommon reagent and a score > 10. The score must increase within the set: undergraduate < graduate < advanced. If it does not, choose another problem rather than editing the score.
 
 ## 4. Writing an entry
 
