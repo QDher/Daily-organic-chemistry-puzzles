@@ -14,9 +14,10 @@ const MAX_HINTS = { undergraduate: 3, graduate: 5, advanced: 8 };
 // and the advanced problem has at least 2 such steps. Earlier sets were written under the old rule.
 const STEP_RULE_FROM = '2026-11-06';
 // From this date on: increasing scores within the set, and an advanced problem with a specialized step or an
-// uncommon reagent and a score > 10, under the step-level score (curate.py). Earlier sets keep their problems.
+// uncommon reagent and a score >= 8, a graduate score >= 3, under the step-level score (curate.py). Earlier sets keep their problems.
 const DIFF_RULE_FROM = '2026-11-08';
 const STEP_LEVELS = ['undergraduate', 'graduate', 'specialized'];
+const MIN_SCORE = { graduate: 3, advanced: 8 };
 // reagents that are never "uncommon" (taught in undergraduate / graduate courses)
 const COMMON = /^(NaBH₄|NaBH4|LiAlH₄|LiAlH4|LDA|LiHMDS|n-BuLi|t-BuOK|KOt-Bu|NaOt-Bu|PPh₃|PPh3|POCl₃|POCl3|NaOH|KOH|LiOH|HCl|HBr|H₂SO₄|H2SO4|H₃O⁺|NaH|Et₃N|Et3N|DIBAL|MeI|CH₃I|BF₃|BF3|p-TsOH|TsOH|K₂CO₃|K2CO3|Cs₂CO₃|NaOMe|NaOEt|TFA|AcOH|Ac₂O|Ac2O|H₂O|H2O|MeOH|EtOH|pyridine|DMAP|DCC|EDCI|mCPBA|m-CPBA|OsO₄|OsO4|Pd\/C|SOCl₂|SOCl2|Br₂|Br2|I₂|I2|NBS|TBAF|Boc₂O|Boc2O|ethylene glycol|N₂H₄|N2H4|NH₃|NH3|HCN|NaCN|KCN|MeMgI|MeMgBr|PCC|DMP|Dess|Swern|O₃|O3|CH₃PPh₃Br|Ph₃P=CH₂)\b/i;
 const NO_CHANGE = /^\s*(same pot|see si|n\/a|-|—)?\s*\.?\s*$/i;
@@ -67,12 +68,13 @@ init().then(R => {
       P.steps.forEach(st => st.reagents.forEach(r => { if (r.uncommon && COMMON.test((r.text || '').trim())) err(w, `reagent "${r.text}" is a common reagent; remove "uncommon"`); }));
       if (P.level === 'graduate') {
         if (!P.steps.some(st => st.stepLevel === 'graduate')) err(w, 'graduate problem needs at least one step with stepLevel "graduate"');
+        if (day.date >= DIFF_RULE_FROM && !(P.difficulty && P.difficulty.score >= MIN_SCORE.graduate)) err(w, `graduate problem needs a score of at least ${MIN_SCORE.graduate} (found ${P.difficulty && P.difficulty.score})`);
         if (!(P.courseRef || '').trim()) err(w, 'graduate problem needs "courseRef" (book and chapter, or course notes, where the reaction is taught)');
       }
       if (P.level === 'advanced' && day.date >= DIFF_RULE_FROM) {
         if (!P.steps.some(st => st.stepLevel === 'specialized') && !P.steps.some(st => st.reagents.some(r => r.uncommon)))
           err(w, 'advanced problem needs a step with stepLevel "specialized" or an uncommon reagent');
-        if (!(P.difficulty && P.difficulty.score > 10)) err(w, `advanced problem needs a score > 10 (found ${P.difficulty && P.difficulty.score})`);
+        if (!(P.difficulty && P.difficulty.score >= MIN_SCORE.advanced)) err(w, `advanced problem needs a score of at least ${MIN_SCORE.advanced} (found ${P.difficulty && P.difficulty.score})`);
       }
       if (day.date >= STEP_RULE_FROM) {
         P.steps.forEach((st, i) => {

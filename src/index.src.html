@@ -202,6 +202,19 @@ body { padding-block: 14px 40px; }
 .arrow { min-width: 150px; font-size: 12.5px; }
 .reagent { padding: 4px 8px; font-size: 11px; }
 @media (max-width: 600px) { .unknown { width: 120px; height: 90px; } }
+
+/* Difficulty questions */
+.fb .df { grid-column: 1 / -1; }
+.df-form { display: grid; gap: 12px; }
+.df-q { display: grid; gap: 6px; }
+.df-label { font-size: 14px; }
+.df-opts { display: flex; flex-wrap: wrap; gap: 6px; }
+.df-opt { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 4px 12px; font-size: 13px; cursor: pointer; }
+.df-opt:hover { border-color: var(--accent); }
+.df-opt[aria-checked="true"] { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); }
+.df-reag { display: grid; gap: 6px; }
+.df-reag .row { gap: 8px; }
+.df-reag .name { font-family: var(--font-mono); font-size: 13px; min-width: 0; }
 </style>
 
 <div class="wrap">
@@ -305,6 +318,29 @@ body { padding-block: 14px 40px; }
       <div class="fb-msg" id="fbRated" hidden></div>
       <div class="hint">Ratings and remarks are anonymous and are used to improve how problems are chosen. Remarks are not private: do not include personal information.</div>
     </section>
+    <section class="card df" aria-labelledby="dfTitle" id="dfCard">
+      <h3 id="dfTitle">How hard was it? Three quick questions</h3>
+      <form id="dfForm" class="df-form" autocomplete="off">
+        <div class="df-q">
+          <span class="df-label">Where had you seen this kind of reaction before?</span>
+          <div class="df-opts" id="dfSeen" role="radiogroup" aria-label="Where had you seen this reaction before"></div>
+        </div>
+        <div class="df-q" id="dfHardQ">
+          <span class="df-label">Which step was the hardest?</span>
+          <div class="df-opts" id="dfHard" role="radiogroup" aria-label="Hardest step"></div>
+        </div>
+        <div class="df-q" id="dfReagQ">
+          <span class="df-label">Did you know these reagents before?</span>
+          <div id="dfReag" class="df-reag"></div>
+        </div>
+        <div class="row">
+          <button class="btn primary" id="dfSend" type="submit" disabled>Send answers</button>
+          <span class="fb-msg" id="dfMsg"></span>
+        </div>
+      </form>
+      <div class="fb-msg" id="dfDone" hidden></div>
+      <div class="hint">Anonymous. The answers are used to check how problems are classified (undergraduate, graduate, advanced).</div>
+    </section>
   </div>
 </div>
 
@@ -403,6 +439,7 @@ function fbRender() {
   $('fbScoreSub').textContent = !f ? 'This problem was solved before scoring was added.'
     : `${f.checks} structure check${f.checks === 1 ? '' : 's'} + hint penalty ${hintPenalty(f.hints)} (${f.hints} hint${f.hints === 1 ? '' : 's'})` + (f.revealed ? ', then the answer was shown.' : '.');
   fbRenderRating(p);
+  dfRender(p);
   if (!fbOn) { $('fbChart').innerHTML = ''; $('fbSummary').textContent = 'Shared statistics are not available on this copy of the page.'; return; }
   $('fbSummary').textContent = 'Loading results of other users…';
   (async () => {
@@ -483,6 +520,49 @@ function fbDrawStars() {
     `<button type="button" class="star${n <= fbStars ? ' on' : ''}" role="radio" aria-checked="${n === fbStars}" aria-label="${n} of 5" data-n="${n}">★</button>`).join('');
   $('fbStars').querySelectorAll('.star').forEach(b => b.onclick = () => { fbStars = +b.dataset.n; fbDrawStars(); });
   $('fbSend').disabled = !fbStars;
+}
+/* ---- difficulty questions (stored in difficulty_answers; read by the scheduled runs as proposals only) ---- */
+let dfAns = { seen: null, hard: null, reag: {} };
+const dfUncommon = p => [...new Set(p.steps.flatMap(st => st.reagents.filter(r => r.uncommon).map(r => r.text)))].slice(0, 6);
+function dfChoice(box, options, current, onPick) {
+  box.innerHTML = options.map(([v, label]) => `<button type="button" class="df-opt" role="radio" aria-checked="${v === current}" data-v="${esc(String(v))}">${esc(label)}</button>`).join('');
+  box.querySelectorAll('.df-opt').forEach(b => b.onclick = () => onPick(b.dataset.v));
+}
+function dfRender(p) {
+  const k = `fbdiff:${FB_SITE}:${p.id}`, done = store.get(k);
+  $('dfCard').hidden = !fbOn;
+  if (!fbOn) return;
+  $('dfForm').hidden = !!done; $('dfDone').hidden = !done;
+  if (done) { $('dfDone').textContent = 'Thank you, your answers were recorded.'; return; }
+  if (dfAns.pid !== p.id) dfAns = { pid: p.id, seen: null, hard: null, reag: {} };
+  const reag = dfUncommon(p), multi = p.steps.length > 1;
+  dfChoice($('dfSeen'), [['undergraduate', 'In an undergraduate course'], ['graduate', 'In a graduate course'], ['papers', 'Only in research papers'], ['never', 'Never']],
+    dfAns.seen, v => { dfAns.seen = v; dfRender(p); });
+  $('dfHardQ').hidden = !multi;
+  if (multi) dfChoice($('dfHard'), p.steps.map(st => [String(st.n), 'Step ' + st.n]), dfAns.hard, v => { dfAns.hard = v; dfRender(p); });
+  $('dfReagQ').hidden = !reag.length;
+  $('dfReag').innerHTML = reag.map((t, i) => `<div class="row"><span class="name">${esc(t)}</span><span class="df-opts" data-i="${i}"></span></div>`).join('');
+  $('dfReag').querySelectorAll('.df-opts').forEach(box => { const t = reag[+box.dataset.i];
+    dfChoice(box, [['yes', 'Yes'], ['no', 'No']], dfAns.reag[t] || null, v => { dfAns.reag[t] = v; dfRender(p); }); });
+  $('dfSend').disabled = !(dfAns.seen && (!multi || dfAns.hard) && reag.every(t => dfAns.reag[t]));
+}
+async function dfSubmit(ev) {
+  ev.preventDefault();
+  const p = P, k = `fbdiff:${FB_SITE}:${p.id}`;
+  if (store.get(k) || !dfAns.seen) return;
+  const reag = dfUncommon(p);
+  $('dfSend').disabled = true; $('dfMsg').className = 'fb-msg'; $('dfMsg').textContent = 'Sending…';
+  try {
+    await fbPost('difficulty_answers', { site: FB_SITE, problem_id: p.id, client_id: fbClient(), seen: dfAns.seen,
+      hardest_step: p.steps.length > 1 ? +dfAns.hard : null,
+      known_reagents: reag.filter(t => dfAns.reag[t] === 'yes').map(t => t.slice(0, 100)),
+      unknown_reagents: reag.filter(t => dfAns.reag[t] === 'no').map(t => t.slice(0, 100)) }, true);
+    store.set(k, true); $('dfMsg').textContent = '';
+    if (p === P) dfRender(p);
+  } catch (e) {
+    $('dfMsg').className = 'fb-msg bad'; $('dfMsg').textContent = 'Could not send the answers. Try again later.';
+    $('dfSend').disabled = false; console.warn(e);
+  }
 }
 async function fbSubmitRating(ev) {
   ev.preventDefault();
@@ -738,6 +818,7 @@ async function main() {
     get state() { return state; }, get problem() { return P; }, selectProblem: i => selectProblem(i), loadDay: i => loadDay(i) };
   $('checkBtn').onclick = check;
   $('fbForm').onsubmit = fbSubmitRating;
+  $('dfForm').onsubmit = dfSubmit;
   $('clearBtn').onclick = () => editor.clearAll();
   $('loadSubBtn').onclick = () => editor.setSmiles(P.substrate.smiles);
   $('answerLink').onclick = () => { if (!state.solved && !state.final) { state.revealed = true; finishProblem(true); save(); renderAll(); updateAttempts(); } };

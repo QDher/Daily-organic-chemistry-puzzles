@@ -48,14 +48,14 @@ Per level:
 - `graduate`: a named reaction covered at graduate level (Kürti–Czakó, Carey–Sundberg B, Clayden advanced chapters). Any publication year. `textbookLevel: "graduate"`.
 - `advanced`: a total synthesis in a top-tier journal: J. Am. Chem. Soc., Nature, Science, Nature Chemistry, Nature Synthesis, Angew. Chem. Int. Ed., Chem.
   - Publication window: first papers published online within the 31 days before the run date; if none qualifies, widen the window progressively up to 6 months (183 days). Check the online publication date (Crossref `published-online`).
-  - Shape: at least 2 steps in the sense above (each starting with an added reagent or a change of solvent/temperature), each with at least one intermediate that is distinct after the key; difficulty score > 10.
+  - Shape: at least 2 steps in the sense above (each starting with an added reagent or a change of solvent/temperature), each with at least one intermediate that is distinct after the key; difficulty score at least 8.
   - A one-pot sequence is preferred. If no qualifying one-pot process is found in the window, two sequential reactions shown in the same scheme of the paper (consecutive steps of the route, both fully described) may be used instead; each reaction is then at least one step. Say in `source.context` and `verificationNote` that these are separate operations, and give conditions for each.
   - `textbookLevel: "specialized"`, or `"graduate"` if the steps are textbook named reactions.
   - If no paper from the 6-month window can be read in enough detail to write correct structures with this shape, do not add a set; report this instead.
 
 Where to look: PubMed (`search_articles` with journal and date filters; `get_full_text_article` for PMC full text, which includes many recent open-access JACS, Angewandte and Nature-family papers), then web search and publisher pages. Read the scheme and the SI for structures and conditions whenever accessible.
 
-Difficulty (`curate.py`): every step has `stepLevel` ("undergraduate" | "graduate" | "specialized", judged on the chemistry of the step, not on how much detail the paper gives) and reagents not taught in undergraduate or graduate courses have `"uncommon": true`. Step score: undergraduate 1; graduate 2 + 0.5 × σ bonds of the step; specialized 3 + intermediates of the step + 0.5 × σ bonds of the step; + 1 per distinct uncommon reagent (max 2). The graduate problem has a graduate step and a `courseRef`; the advanced problem has a specialized step or an uncommon reagent and a score > 10. The score must increase within the set: undergraduate < graduate < advanced. If it does not, choose another problem rather than editing the score.
+Difficulty (`curate.py`): every step has `stepLevel` ("undergraduate" | "graduate" | "specialized", judged on the chemistry of the step, not on how much detail the paper gives) and reagents not taught in undergraduate or graduate courses have `"uncommon": true`. Step score: undergraduate 1; graduate 2 + 0.5 × σ bonds of the step; specialized 3 + intermediates of the step + 0.5 × σ bonds of the step; + 1 per distinct uncommon reagent (max 2). The graduate problem has a graduate step, a `courseRef` and a score of at least 3; the advanced problem has a specialized step or an uncommon reagent and a score of at least 8. The score must increase within the set: undergraduate < graduate < advanced. If it does not, choose another problem rather than editing the score.
 
 ## 4. Writing an entry
 
@@ -123,3 +123,7 @@ Publish to the same artifact URL with the Artifact tool: `file_path` = `index.ht
 ## 6. Report
 
 Send a short summary: date of the new set; for each level, the reaction, the paper (with DOI link), the number of steps, intermediates and hints, the difficulty score; and the structures that need checking against the paper.
+
+## Difficulty questions (proposal only)
+
+After solving, the page asks three optional questions (stored in Supabase `difficulty_answers`, one answer per visitor and problem): where the solver had met this reaction (undergraduate course, graduate course, papers, never), the hardest step (problems with more than one step), and whether each reagent marked `"uncommon"` was known. `difficulty_summary` aggregates them. The scheduled run records "calibration" observations in `data/feedback_log.json` and proposes a change of classification (stepLevel, `uncommon`, score thresholds) when at least 8 answers and at least 70 % disagree. Nothing is changed automatically.
