@@ -3397,6 +3397,340 @@
           }
         }
       ]
+    },
+    {
+      "date": "2026-11-07",
+      "problems": [
+        {
+          "id": "anie2026-saponification-decarboxylation-tetraponerine",
+          "level": "undergraduate",
+          "textbookLevel": "undergraduate",
+          "reaction": "Saponification of a methyl ester (hydroxide addition: tetrahedral intermediate, loss of methoxide to the carboxylate), then acidification and heating: decarboxylation of the β-amido carboxylic acid through a cyclic six-membered transition state to the enol of the lactam, which tautomerises to the lactam",
+          "source": {
+            "citation": "F. Kölblin, H. Wennemers. Organocatalytic Enantioselective Addition of Malonates to Cyclic Imines: A Short Total Synthesis of Tetraponerine T-1. Angew. Chem. Int. Ed. 2026, 65, e8336123.",
+            "doi": "10.1002/anie.8336123",
+            "context": "Second step of the three-step route to tetraponerine T-1 (Scheme 7a): the 5-6-5 tricyclic lactam ester obtained from 1-pyrroline and dimethyl malonate was treated with 1 M aq. NaOH in THF (1 h, rt), then 1 M aq. HCl was added and the mixture heated at 80 °C for 1 h, giving the decarboxylated tricyclic lactam (70% over the two operations in one pot); Ir-catalysed reductive propylation then gave tetraponerine T-1."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central, PMC13573027) without schemes or SI; conditions taken from the legend of Scheme 7. The substrate is the tricyclic lactam ester already used for the 2026-10-30 problem from this paper; the product is that ester without the CO2Me group. Intermediates follow the textbook mechanisms of ester hydrolysis (BAc2) and β-carbonyl acid decarboxylation; the enol of the lactam is not listed because it has the same comparison key as the product. A chemist should check that the acid step decarboxylates at 80 °C as written and that the aminal survives. PubChem (InChIKey connectivity layer, RDKit vs PubChem structure search): the product matches CID 72805286 (1,6-diazatricyclo[7.3.0.0²,⁶]dodecan-7-one, C10H16N2O); the ester substrate has no PubChem entry; hydroxide drawn as [OH-] (NaOH CID 14798).",
+          "substrate": {
+            "label": "5-6-5 Tricyclic lactam methyl ester",
+            "smiles": "COC(=O)C1C2CCCN2C2CCCN2C1=O"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "reagents": [
+                {
+                  "text": "NaOH (1 M, aq.)",
+                  "smiles": "[OH-]"
+                }
+              ],
+              "conditions": "THF, rt, 1 h",
+              "intermediates": [
+                {
+                  "label": "Tetrahedral intermediate (HO⁻ adds to the ester C=O; C–O formed)",
+                  "forms": [
+                    "COC([O-])(O)C1C2CCCN2C2CCCN2C1=O",
+                    "COC(O)(O)C1C2CCCN2C2CCCN2C1=O"
+                  ]
+                },
+                {
+                  "label": "Carboxylate after loss of methoxide (C–OMe broken)",
+                  "forms": [
+                    "[O-]C(=O)C1C2CCCN2C2CCCN2C1=O",
+                    "OC(=O)C1C2CCCN2C2CCCN2C1=O"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "reagents": [
+                {
+                  "text": "HCl (1 M, aq.)"
+                }
+              ],
+              "conditions": "80 °C, 1 h",
+              "intermediates": []
+            }
+          ],
+          "product": {
+            "label": "5-6-5 Tricyclic lactam",
+            "smiles": "O=C1CC2CCCN2C2CCCN12"
+          },
+          "byproducts": "MeOH; CO₂; NaCl",
+          "mechanismRefs": [
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., Oxford University Press, 2012, ch. 10 (ester hydrolysis) and ch. 25 (decarboxylation of β-keto acids and malonic acid derivatives).",
+            "F. Kölblin, H. Wennemers, Angew. Chem. Int. Ed. 2026, 65, e8336123 (Scheme 7)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 2
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 1
+            },
+            {
+              "transition": "product",
+              "mol": "substrate",
+              "atom": 4
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 2,
+            "sigmaBondEvents": 3,
+            "textbookLevel": "undergraduate",
+            "score": 5.5
+          }
+        },
+        {
+          "id": "jacs2019-pictet-spengler-diketone-arborisidine",
+          "level": "graduate",
+          "textbookLevel": "graduate",
+          "reaction": "Pictet–Spengler reaction of tryptamine with 2,3-butanedione: hemiaminal, ketiminium ion, attack of indole C2 on the iminium carbon (cationic σ-complex), loss of H⁺ to rearomatise — 1-acetyl-1-methyl-tetrahydro-β-carboline with a quaternary C1",
+          "source": {
+            "citation": "Z. Zhou, A. X. Gao, S. A. Snyder. Total Synthesis of (+)-Arborisidine. J. Am. Chem. Soc. 2019, 141, 7715–7720.",
+            "doi": "10.1021/jacs.9b03248",
+            "context": "First step of the racemic route to arborisidine: tryptamine and 2,3-butanedione stirred in acidic MeOH at 60 °C gave the 1,1-disubstituted tetrahydro-β-carboline aminoketone (50%, gram scale), which was then advanced by propyne addition, dehydration, Au/Ag-catalysed 6-endo-dig cyclisation and later steps."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central, PMC7104416) without schemes or SI. The acid used is not named in the text (\"acidic MeOH\"); a chemist should check it in the SI. The product structure (1-acetyl-1-methyl-2,3,4,9-tetrahydro-1H-pyrido[3,4-b]indole) follows from the text (aminoketone with an α-quaternary C1 from a Pictet–Spengler reaction with the diketone). Intermediates follow the established mechanism (direct attack of C2; the alternative spiroindolenine pathway via C3 attack and 1,2-migration is not listed). PubChem (InChIKey connectivity layer): tryptamine CID 1150, 2,3-butanedione CID 650 and the product CID 72642209 (1-(1-methyl-2,3,4,9-tetrahydropyrido[3,4-b]indol-1-yl)ethanone, C14H16N2O) match.",
+          "substrate": {
+            "label": "Tryptamine",
+            "smiles": "NCCc1c[nH]c2ccccc12"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "reagents": [
+                {
+                  "text": "2,3-butanedione",
+                  "smiles": "CC(=O)C(C)=O"
+                }
+              ],
+              "conditions": "MeOH with acid (see SI), 60 °C",
+              "intermediates": [
+                {
+                  "label": "Hemiaminal (amine adds to one C=O of the diketone; N–C formed)",
+                  "forms": [
+                    "CC(=O)C(C)(O)NCCc1c[nH]c2ccccc12",
+                    "CC(=O)C(C)([O-])[NH2+]CCc1c[nH]c2ccccc12"
+                  ]
+                },
+                {
+                  "label": "Ketiminium ion after loss of water (C–O broken)",
+                  "forms": [
+                    "CC(=O)C(C)=[NH+]CCc1c[nH]c2ccccc12",
+                    "CC(=O)C(C)=NCCc1c[nH]c2ccccc12"
+                  ]
+                },
+                {
+                  "label": "Cationic σ-complex after attack of indole C2 on the iminium carbon (C–C formed; six-membered ring closed)",
+                  "forms": [
+                    "CC(=O)C1(C)NCC[C+]2c3ccccc3NC21",
+                    "CC(=O)C1(C)NCCC2=C3C=CC=CC3=[NH+]C21"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "1-Acetyl-1-methyl-tetrahydro-β-carboline (aminoketone)",
+            "smiles": "CC(=O)C1(C)NCCc2c1[nH]c1ccccc21"
+          },
+          "byproducts": "H₂O",
+          "mechanismRefs": [
+            "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis, Elsevier, 2005, Pictet–Spengler tetrahydroisoquinoline synthesis.",
+            "E. D. Cox, J. M. Cook, Chem. Rev. 1995, 95, 1797–1842 (the Pictet–Spengler condensation: mechanism and applications).",
+            "Z. Zhou, A. X. Gao, S. A. Snyder, J. Am. Chem. Soc. 2019, 141, 7715."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 0
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "2,3-butanedione",
+              "atom": 3
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "2,3-butanedione",
+              "atom": 5
+            },
+            {
+              "transition": "step 1 int 3",
+              "mol": "substrate",
+              "atom": 4
+            },
+            {
+              "transition": "step 1 int 3",
+              "mol": "substrate",
+              "atom": 3
+            }
+          ],
+          "difficulty": {
+            "steps": 1,
+            "intermediates": 3,
+            "sigmaBondEvents": 3,
+            "textbookLevel": "graduate",
+            "score": 7.5
+          }
+        },
+        {
+          "id": "jacs2026-thioketalization-wittig-arnicenone",
+          "level": "advanced",
+          "textbookLevel": "graduate",
+          "reaction": "Regioselective thioketalization of one carbonyl of the angular triquinane 1,3-diketone with 1,2-ethanedithiol/BF₃·OEt₂ (hemithioketal, thionium ion, ring closure to the 1,3-dithiolane), then Wittig methylenation of the remaining ketone (oxaphosphetane from the methylene ylide, cycloreversion to the exocyclic alkene and Ph₃PO)",
+          "source": {
+            "citation": "C.-H. Liu, H.-T. Huang, H.-J. Li, S. A. Dighe, D.-L. Hou, L.-Y. Wu, Y.-W. Huang. Diastereodivergent Access to cis,cis- and cis,trans-Angular Triquinanes: Total Synthesis of (±)-Arnicenone. J. Am. Chem. Soc. 2026, 148, 41724–41732.",
+            "doi": "10.1021/jacs.6c09019",
+            "context": "Scheme 4 ([2+2] cycloaddition / ring-expansion route to arnicenone): IBX oxidation gave the 1,3-diketone (98%); regioselective conversion of one carbonyl into the dithiolane with 1,2-ethanedithiol and BF₃·OEt₂ (86%, structure confirmed by X-ray), then Wittig olefination with CH₃PPh₃Br/t-BuOK installed the exocyclic alkene, which was isomerised with TsOH (65% over two steps) before MeI/CaCO₃ removal of the thioketal. Two sequential reactions of the same scheme, carried out as separate operations: (1) 1,2-ethanedithiol, BF₃·OEt₂; (2) CH₃PPh₃Br, t-BuOK (solvents and temperatures in the SI)."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central, PMC13651531) without schemes or SI; online publication 2026-09-22 (Crossref), so the window had to be extended beyond 31 days (the papers found within 31 days were either already used or could not be read with structures). Two separate operations (thioketalization; Wittig olefination), not a one-pot process. Structures reconstructed, not read from the scheme: consistent with the 2026-11-05 problem from this paper (whose substrate is the TsOH-isomerised product of this sequence) and with the structure of arnicenone. A chemist should check against Scheme 4/SI which carbonyl of the 1,3-diketone is thioketalized (assumed: the ketone in the ring without the methyl-bearing alkene of arnicenone), the solvents and temperatures. Intermediates follow textbook mechanisms (Lewis acid activation, hemithioketal, thionium ion; Wittig via the oxaphosphetane, no betaine). PubChem: 1,2-ethanedithiol CID 10902 and methyltriphenylphosphonium bromide CID 74505 match; the 1,3-diketone substrate, the dithiolane ketone and the exocyclic alkene product have no PubChem entry.",
+          "substrate": {
+            "label": "Angular triquinane 1,3-diketone",
+            "smiles": "CC12C(=O)CC3(C)CCCC13CCC2=O"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "reagents": [
+                {
+                  "text": "1,2-ethanedithiol",
+                  "smiles": "SCCS"
+                },
+                {
+                  "text": "BF₃·OEt₂"
+                }
+              ],
+              "conditions": "see SI",
+              "intermediates": [
+                {
+                  "label": "Hemithioketal (thiol adds to the activated C=O; C–S formed)",
+                  "forms": [
+                    "CC12C(=O)CC3(C)CCCC13CCC2(O)SCCS"
+                  ]
+                },
+                {
+                  "label": "Thionium ion after loss of water (C–O broken)",
+                  "forms": [
+                    "CC12C(=O)CC3(C)CCCC13CCC2=[S+]CCS",
+                    "CC12C(=O)CC3(C)CCCC13CC[C+]2SCCS"
+                  ]
+                },
+                {
+                  "label": "1,3-Dithiolane after attack of the second SH (C–S formed) — isolated",
+                  "forms": [
+                    "CC12C(=O)CC3(C)CCCC13CCC24SCCS4"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "reagents": [
+                {
+                  "text": "CH₃PPh₃Br",
+                  "smiles": "C[P+](c1ccccc1)(c1ccccc1)c1ccccc1.[Br-]"
+                },
+                {
+                  "text": "KOt-Bu"
+                }
+              ],
+              "conditions": "THF (see SI)",
+              "intermediates": [
+                {
+                  "label": "Oxaphosphetane ([2+2] of the methylene ylide with the C=O; C–C and P–O formed)",
+                  "forms": [
+                    "CC12C5(CP(c6ccccc6)(c6ccccc6)(c6ccccc6)O5)CC3(C)CCCC13CCC24SCCS4"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Exocyclic alkene (dithiolane intact)",
+            "smiles": "CC12C(=C)CC3(C)CCCC13CCC24SCCS4"
+          },
+          "byproducts": "H₂O; Ph₃PO; KBr; t-BuOH",
+          "mechanismRefs": [
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., Oxford University Press, 2012, ch. 11 (thioacetals) and ch. 11/27 (Wittig reaction).",
+            "E. Vedejs, M. J. Peterson, Top. Stereochem. 1994, 21, 1 (Wittig mechanism: oxaphosphetane intermediates).",
+            "C.-H. Liu et al., J. Am. Chem. Soc. 2026, 148, 41724 (Scheme 4)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 13
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "1,2-ethanedithiol",
+              "atom": 0
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 14
+            },
+            {
+              "transition": "step 1 int 3",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "1,2-ethanedithiol",
+              "atom": 3
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "substrate",
+              "atom": 2
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "reagent",
+              "step": 2,
+              "reagent": "CH₃PPh₃Br",
+              "atom": 0
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "reagent",
+              "step": 2,
+              "reagent": "CH₃PPh₃Br",
+              "atom": 1
+            },
+            {
+              "transition": "product",
+              "mol": "substrate",
+              "atom": 3
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 4,
+            "sigmaBondEvents": 7,
+            "textbookLevel": "graduate",
+            "score": 12.5
+          }
+        }
+      ]
     }
   ]
 }

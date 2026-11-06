@@ -1,5 +1,17 @@
 {
   "version": 1,
   "observations": [],
-  "runs": []
+  "runs": [
+    {
+      "date": "2026-11-05",
+      "targetDate": "2026-11-07",
+      "supabase": "unreachable",
+      "results": 0,
+      "ratings": 0,
+      "remarks": 0,
+      "newObservations": [],
+      "updated": [],
+      "newProposals": []
+    }
+  ]
 }
