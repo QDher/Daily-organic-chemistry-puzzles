@@ -1874,7 +1874,7 @@
             "context": "Construction of the B-ring of the angucyclinone skeleton: the anion of the 3-(phenylthio)phthalide prepared from 5-methoxysalicylic acid adds to 5-methoxy-5-methylfuran-2(5H)-one (from singlet-oxygen oxidation of 5-methylfurfural) under Hauser annulation conditions to give the naphthohydroquinone fused to the A-ring lactone, which was immediately protected (TMSE, Mitsunobu). Single operation; the three mechanistic stages are given as separate steps."
           },
           "verified": false,
-          "verificationNote": "Full text read (PubMed Central); scheme images and SI were not accessible (image server and figure pages blocked), so all structures were reconstructed from the text. Phthalide: 5-methoxysalicylic acid → O-benzyl N,N-dimethylbenzamide → directed ortho-lithiation/DMF (formyl placed at C6, between the amide and OMe; the text says a single regioisomer) → HCl/AcOH lactonisation → PhSH/PTSA, giving 7-benzyloxy-4-methoxy-3-(phenylthio)phthalide as drawn. Acceptor: assumed to be 5-methoxy-5-methylfuran-2(5H)-one (the allocyclinone A-ring). Base, solvent and temperature are not in the text ('see SI'). Intermediates follow the established Hauser mechanism, not a scheme of the paper. A chemist should check: the substitution pattern of the phthalide (OBn next to C=O, OMe next to CH–SPh), the identity of the butenolide, the regiochemistry of the Michael addition (phthalide C3 to the butenolide β-carbon next to the ketal carbon) and the conditions.",
+          "verificationNote": "Full text read (PubMed Central); scheme images and SI were not accessible (image server and figure pages blocked), so all structures were reconstructed from the text. Phthalide: 5-methoxysalicylic acid → O-benzyl N,N-dimethylbenzamide → directed ortho-lithiation/DMF (formyl placed at C6, between the amide and OMe; the text says a single regioisomer) → HCl/AcOH lactonisation → PhSH/PTSA, giving 7-benzyloxy-4-methoxy-3-(phenylthio)phthalide as drawn. Acceptor: assumed to be 5-methoxy-5-methylfuran-2(5H)-one (the allocyclinone A-ring). Base, solvent and temperature are not in the text ('see SI'). Intermediates follow the established Hauser mechanism, not a scheme of the paper. A chemist should check: the substitution pattern of the phthalide (OBn next to C=O, OMe next to CH–SPh), the identity of the butenolide, the regiochemistry of the Michael addition (phthalide C3 to the butenolide β-carbon next to the ketal carbon) and the conditions. The 1,4-diketone after loss of thiophenolate is not listed as an intermediate: it is a keto tautomer of the hydroquinone product (protons moved from C to O), so it is treated as the product.",
           "substrate": {
             "label": "7-Benzyloxy-4-methoxy-3-(phenylthio)isobenzofuran-1(3H)-one",
             "smiles": "O=C1OC(Sc2ccccc2)c2c(OC)ccc(OCc3ccccc3)c21"
@@ -1924,12 +1924,6 @@
                   "label": "Phthalide ring opening: the tetrahedral intermediate collapses to the ketone, expelling the ring oxygen as a hemithioketal alkoxide (C–O broken)",
                   "forms": [
                     "O=C1C2C(=O)OC(C)(OC)C2C([O-])(Sc2ccccc2)c2c(OC)ccc(OCc3ccccc3)c12"
-                  ]
-                },
-                {
-                  "label": "1,4-Diketone after expulsion of thiophenolate (C–S broken); tautomerises to the aromatic hydroquinone",
-                  "forms": [
-                    "O=C1C2C(=O)OC(C)(OC)C2C(=O)c2c(OC)ccc(OCc3ccccc3)c12"
                   ]
                 }
               ]
@@ -1981,7 +1975,7 @@
               "atom": 2
             },
             {
-              "transition": "step 3 int 2",
+              "transition": "product",
               "mol": "substrate",
               "atom": 4
             },
@@ -1993,10 +1987,10 @@
           ],
           "difficulty": {
             "steps": 3,
-            "intermediates": 4,
+            "intermediates": 3,
             "sigmaBondEvents": 4,
             "textbookLevel": "specialized",
-            "score": 16.0
+            "score": 15.0
           }
         }
       ]

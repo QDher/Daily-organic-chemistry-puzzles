@@ -17,7 +17,7 @@ Backup of the Claude Code scheduled task that adds a daily set to the claude.ai 
 
 The earlier Cowork task "One-Pot Puzzles daily set" is disabled and kept as a fallback; it cannot push to GitHub.
 
-Backed up on 2026-11-05 (no mechanism indications in text shown before solving; feedback log).
+Backed up on 2026-11-06 (tautomers: only proton moves to or from N, O or S are equivalent).
 
 ## Prompt
 
@@ -68,7 +68,7 @@ Common rules:
 - Case 1: one step with several bonds made/broken; or case 2: several steps in one pot (each step listed separately, intermediates tagged with their step).
 - What counts as a step: a step starts only when a reagent is added or the solvent or temperature is changed. Successive mechanistic events under unchanged conditions (no added reagent, same solvent and temperature) are successive intermediates of the same step; never split them into separate steps.
 - The mechanism is described in the paper/SI, or is the established mechanism of a named reaction; give references.
-- At least 2 distinct intermediates once the comparison key is applied. The key ignores stereochemistry, E/Z, tautomers, protonation state and counterions, so intermediates differing only by H+ or tautomer count as one; carbocations and oxocarbenium ions stay distinct.
+- At least 2 distinct intermediates once the comparison key is applied. The key ignores stereochemistry, E/Z, protonation state, counterions and tautomers in which each moved proton forms or breaks a bond to N, O or S (keto/enol, imine/enamine, amide/imidic acid); a proton moved from one carbon to another (alkene isomer, e.g. beta,gamma- vs alpha,beta-unsaturated ketone) gives a different species, even via an enol. Intermediates differing only by H+ or by such a tautomer count as one (an intermediate that is such a tautomer of the substrate, the product or another intermediate must be removed or merged); carbocations and oxocarbenium ions stay distinct.
 - The product can be deduced from substrate + reagents without the paper.
 - Do not reuse an id, or the same paper + reaction already in data/problems.json. Prefer three different papers in one set and avoid a reaction type used in the previous 7 sets.
 - The number of hints a mechanism allows (curate.py gives up to 3 / 5 / 8 hints for undergraduate / graduate / advanced) must NOT influence which problem is chosen.

@@ -7,7 +7,7 @@ The published artifact is the source of truth. It contains the page and everythi
 | `index.html` | the page (built; problems and key function embedded) |
 | `data/problems.json` | schedule and all daily sets |
 | `src/index.src.html` | page template |
-| `src/chemkey.js` | comparison key (stereo, E/Z, tautomers, protonation, counterions ignored) |
+| `src/chemkey.js` | structure comparison (stereo, E/Z, protonation, counterions ignored; tautomers only when protons move to or from N, O or S) |
 | `src/curate.py` | atom hints and difficulty score from the mechanism |
 | `src/validate_problems.js` | checks before publishing |
 | `src/build.js` | builds `index.html` |
@@ -38,7 +38,7 @@ Common rules:
 - Case 1: one step with several bonds made/broken; or case 2: several steps in one pot (each step listed separately).
 - What counts as a step: a step starts only when a reagent is added or the solvent or temperature is changed. Successive mechanistic events under unchanged conditions (no added reagent, same solvent and temperature) are intermediates of the same step; never split them into separate steps.
 - The mechanism is described in the paper/SI, or is the established mechanism of a named reaction (give a reference).
-- At least 2 distinct intermediates after the key is applied (intermediates that differ only by a proton, a tautomer or a counterion count as one; carbocations and oxocarbenium ions stay distinct).
+- At least 2 distinct intermediates after the key is applied (intermediates that differ only by a proton, a counterion or a tautomer in which protons move to or from N, O or S count as one; a proton moved from one carbon to another gives a different species; carbocations and oxocarbenium ions stay distinct).
 - The product can be deduced from substrate + reagents without the paper.
 - Never reuse an `id`, nor the same paper + reaction. Prefer three different papers in one set, and avoid repeating a reaction type used in the previous 7 days.
 - The number of hints a mechanism allows must not influence the choice of problem.
