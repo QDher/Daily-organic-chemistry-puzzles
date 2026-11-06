@@ -163,21 +163,14 @@
               "atom": 4
             },
             {
-              "transition": "step 1 int 1",
-              "mol": "reagent",
-              "step": 1,
-              "reagent": "TsNHNH₂",
-              "atom": 11
-            },
-            {
-              "transition": "step 1 int 2",
+              "transition": "step 1 int 3",
               "mol": "substrate",
-              "atom": 5
+              "atom": 6
             },
             {
               "transition": "step 1 int 3",
               "mol": "substrate",
-              "atom": 6
+              "atom": 7
             },
             {
               "transition": "product",
@@ -284,22 +277,12 @@
             {
               "transition": "step 1 int 1",
               "mol": "substrate",
-              "atom": 0
+              "atom": 1
             },
             {
               "transition": "step 1 int 2",
               "mol": "substrate",
               "atom": 20
-            },
-            {
-              "transition": "step 1 int 2",
-              "mol": "substrate",
-              "atom": 1
-            },
-            {
-              "transition": "step 2 int 2",
-              "mol": "substrate",
-              "atom": 21
             },
             {
               "transition": "product",
@@ -310,11 +293,6 @@
               "transition": "product",
               "mol": "substrate",
               "atom": 18
-            },
-            {
-              "transition": "product",
-              "mol": "substrate",
-              "atom": 19
             }
           ],
           "difficulty": {
@@ -391,9 +369,11 @@
               "atom": 11
             },
             {
-              "transition": "step 1 int 2",
-              "mol": "substrate",
-              "atom": 12
+              "transition": "step 1 int 1",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "ethylene glycol",
+              "atom": 0
             },
             {
               "transition": "product",
@@ -491,19 +471,19 @@
               "mol": "reagent",
               "step": 1,
               "reagent": "EtC(OMe)₃",
-              "atom": 2
+              "atom": 5
             },
             {
-              "transition": "step 1 int 2",
+              "transition": "step 1 int 3",
               "mol": "reagent",
               "step": 1,
               "reagent": "EtC(OMe)₃",
-              "atom": 5
+              "atom": 1
             },
             {
               "transition": "product",
               "mol": "substrate",
-              "atom": 1
+              "atom": 3
             }
           ],
           "difficulty": {
@@ -616,14 +596,14 @@
               "mol": "reagent",
               "step": 1,
               "reagent": "Fuchs reagent",
-              "atom": 6
+              "atom": 5
             },
             {
               "transition": "step 1 int 1",
               "mol": "reagent",
               "step": 1,
               "reagent": "Fuchs reagent",
-              "atom": 5
+              "atom": 6
             },
             {
               "transition": "step 1 int 2",
@@ -638,12 +618,7 @@
               "atom": 8
             },
             {
-              "transition": "step 1 int 3",
-              "mol": "substrate",
-              "atom": 1
-            },
-            {
-              "transition": "step 2 int 2",
+              "transition": "step 2 int 1",
               "mol": "reagent",
               "step": 1,
               "reagent": "Fuchs reagent",
@@ -739,12 +714,7 @@
               "atom": 6
             },
             {
-              "transition": "step 1 int 2",
-              "mol": "substrate",
-              "atom": 7
-            },
-            {
-              "transition": "product",
+              "transition": "step 1 int 1",
               "mol": "reagent",
               "step": 1,
               "reagent": "N₂H₄ (anhydrous)",
@@ -824,25 +794,6 @@
           "hints": [
             {
               "transition": "step 1 int 1",
-              "mol": "substrate",
-              "atom": 9
-            },
-            {
-              "transition": "step 1 int 1",
-              "mol": "reagent",
-              "step": 1,
-              "reagent": "POCl₃ (excess)",
-              "atom": 1
-            },
-            {
-              "transition": "step 1 int 1",
-              "mol": "reagent",
-              "step": 1,
-              "reagent": "POCl₃ (excess)",
-              "atom": 4
-            },
-            {
-              "transition": "step 1 int 2",
               "mol": "substrate",
               "atom": 8
             },
@@ -957,11 +908,6 @@
             },
             {
               "transition": "step 2 int 1",
-              "mol": "substrate",
-              "atom": 1
-            },
-            {
-              "transition": "step 2 int 1",
               "mol": "reagent",
               "step": 2,
               "reagent": "1-pyrroline (second equivalent)",
@@ -973,20 +919,6 @@
               "step": 1,
               "reagent": "dimethyl malonate",
               "atom": 5
-            },
-            {
-              "transition": "step 3 int 1",
-              "mol": "reagent",
-              "step": 2,
-              "reagent": "1-pyrroline (second equivalent)",
-              "atom": 1
-            },
-            {
-              "transition": "step 3 int 1",
-              "mol": "reagent",
-              "step": 1,
-              "reagent": "dimethyl malonate",
-              "atom": 6
             },
             {
               "transition": "product",
@@ -1079,9 +1011,11 @@
               "atom": 8
             },
             {
-              "transition": "product",
-              "mol": "substrate",
-              "atom": 9
+              "transition": "step 1 int 2",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "ethyl vinyl ketone (pent-1-en-3-one, 1.5 equiv)",
+              "atom": 4
             }
           ],
           "difficulty": {
@@ -1161,28 +1095,16 @@
             {
               "transition": "step 1 int 1",
               "mol": "substrate",
-              "atom": 1
-            },
-            {
-              "transition": "step 1 int 2",
-              "mol": "substrate",
               "atom": 0
             },
             {
-              "transition": "step 1 int 4",
+              "transition": "step 1 int 3",
               "mol": "substrate",
               "atom": 2
             },
             {
               "transition": "step 1 int 4",
               "mol": "substrate",
-              "atom": 7
-            },
-            {
-              "transition": "product",
-              "mol": "reagent",
-              "step": 1,
-              "reagent": "(S)-proline (10 mol %)",
               "atom": 7
             }
           ],
@@ -1303,6 +1225,13 @@
               "mol": "reagent",
               "step": 1,
               "reagent": "1,1-dimethoxy-N,N-dimethylpropan-1-amine (N,N-dimethylpropanamide dimethyl acetal, 1.5 equiv)",
+              "atom": 2
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "1,1-dimethoxy-N,N-dimethylpropan-1-amine (N,N-dimethylpropanamide dimethyl acetal, 1.5 equiv)",
               "atom": 5
             },
             {
@@ -1310,7 +1239,7 @@
               "mol": "reagent",
               "step": 1,
               "reagent": "1,1-dimethoxy-N,N-dimethylpropan-1-amine (N,N-dimethylpropanamide dimethyl acetal, 1.5 equiv)",
-              "atom": 2
+              "atom": 1
             },
             {
               "transition": "step 1 int 2",
@@ -1322,22 +1251,15 @@
             {
               "transition": "step 2 int 1",
               "mol": "substrate",
-              "atom": 3
+              "atom": 1
             },
             {
               "transition": "step 2 int 1",
               "mol": "substrate",
-              "atom": 1
+              "atom": 3
             },
             {
-              "transition": "step 2 int 1",
-              "mol": "reagent",
-              "step": 1,
-              "reagent": "1,1-dimethoxy-N,N-dimethylpropan-1-amine (N,N-dimethylpropanamide dimethyl acetal, 1.5 equiv)",
-              "atom": 1
-            },
-            {
-              "transition": "product",
+              "transition": "step 3 int 2",
               "mol": "reagent",
               "step": 1,
               "reagent": "1,1-dimethoxy-N,N-dimethylpropan-1-amine (N,N-dimethylpropanamide dimethyl acetal, 1.5 equiv)",
@@ -1421,15 +1343,15 @@
               "atom": 0
             },
             {
-              "transition": "step 1 int 1",
-              "mol": "reagent",
-              "step": 1,
-              "reagent": "EDCI (1-ethyl-3-(3-dimethylaminopropyl)carbodiimide)",
-              "atom": 3
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 1
             },
             {
               "transition": "step 1 int 2",
-              "mol": "substrate",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "N,O-dimethylhydroxylamine (N-methoxymethylamine)",
               "atom": 1
             }
           ],
@@ -1504,9 +1426,11 @@
               "atom": 1
             },
             {
-              "transition": "step 1 int 2",
-              "mol": "substrate",
-              "atom": 2
+              "transition": "step 1 int 1",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "TosMIC (p-toluenesulfonylmethyl isocyanide, 1.5 equiv)",
+              "atom": 10
             },
             {
               "transition": "step 1 int 2",
@@ -1514,13 +1438,6 @@
               "step": 1,
               "reagent": "TosMIC (p-toluenesulfonylmethyl isocyanide, 1.5 equiv)",
               "atom": 12
-            },
-            {
-              "transition": "product",
-              "mol": "reagent",
-              "step": 1,
-              "reagent": "TosMIC (p-toluenesulfonylmethyl isocyanide, 1.5 equiv)",
-              "atom": 10
             },
             {
               "transition": "product",
@@ -1636,25 +1553,11 @@
               "atom": 0
             },
             {
-              "transition": "step 1 int 1",
+              "transition": "step 2 int 1",
               "mol": "reagent",
-              "step": 1,
-              "reagent": "TFETFA (2,2,2-trifluoroethyl trifluoroacetate, 1.5 equiv)",
-              "atom": 0
-            },
-            {
-              "transition": "step 1 int 2",
-              "mol": "reagent",
-              "step": 1,
-              "reagent": "TFETFA (2,2,2-trifluoroethyl trifluoroacetate, 1.5 equiv)",
-              "atom": 1
-            },
-            {
-              "transition": "step 1 int 2",
-              "mol": "reagent",
-              "step": 1,
-              "reagent": "TFETFA (2,2,2-trifluoroethyl trifluoroacetate, 1.5 equiv)",
-              "atom": 2
+              "step": 2,
+              "reagent": "p-ABSA (4-acetamidobenzenesulfonyl azide, 1.5 equiv)",
+              "atom": 13
             },
             {
               "transition": "step 2 int 1",
@@ -1662,20 +1565,6 @@
               "step": 2,
               "reagent": "p-ABSA (4-acetamidobenzenesulfonyl azide, 1.5 equiv)",
               "atom": 15
-            },
-            {
-              "transition": "step 3 int 1",
-              "mol": "reagent",
-              "step": 2,
-              "reagent": "p-ABSA (4-acetamidobenzenesulfonyl azide, 1.5 equiv)",
-              "atom": 13
-            },
-            {
-              "transition": "product",
-              "mol": "reagent",
-              "step": 2,
-              "reagent": "p-ABSA (4-acetamidobenzenesulfonyl azide, 1.5 equiv)",
-              "atom": 14
             }
           ],
           "difficulty": {
@@ -1758,11 +1647,6 @@
               "atom": 3
             },
             {
-              "transition": "step 1 int 1",
-              "mol": "substrate",
-              "atom": 4
-            },
-            {
               "transition": "step 1 int 2",
               "mol": "substrate",
               "atom": 2
@@ -1832,7 +1716,12 @@
             {
               "transition": "step 1 int 1",
               "mol": "substrate",
-              "atom": 9
+              "atom": 0
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 2
             },
             {
               "transition": "step 1 int 1",
@@ -1842,17 +1731,7 @@
             {
               "transition": "step 1 int 1",
               "mol": "substrate",
-              "atom": 0
-            },
-            {
-              "transition": "step 1 int 2",
-              "mol": "substrate",
-              "atom": 1
-            },
-            {
-              "transition": "product",
-              "mol": "substrate",
-              "atom": 2
+              "atom": 9
             }
           ],
           "difficulty": {
@@ -1950,24 +1829,12 @@
               "mol": "reagent",
               "step": 1,
               "reagent": "5-Methoxy-5-methylfuran-2(5H)-one",
-              "atom": 8
-            },
-            {
-              "transition": "step 2 int 1",
-              "mol": "substrate",
-              "atom": 1
-            },
-            {
-              "transition": "step 2 int 1",
-              "mol": "reagent",
-              "step": 1,
-              "reagent": "5-Methoxy-5-methylfuran-2(5H)-one",
               "atom": 7
             },
             {
               "transition": "step 2 int 1",
               "mol": "substrate",
-              "atom": 0
+              "atom": 1
             },
             {
               "transition": "step 3 int 1",
@@ -1978,11 +1845,6 @@
               "transition": "product",
               "mol": "substrate",
               "atom": 4
-            },
-            {
-              "transition": "product",
-              "mol": "substrate",
-              "atom": 11
             }
           ],
           "difficulty": {
@@ -2058,9 +1920,9 @@
               "atom": 20
             },
             {
-              "transition": "step 1 int 1",
+              "transition": "step 1 int 2",
               "mol": "substrate",
-              "atom": 22
+              "atom": 11
             },
             {
               "transition": "step 1 int 2",
@@ -2138,9 +2000,11 @@
               "atom": 10
             },
             {
-              "transition": "step 1 int 2",
-              "mol": "substrate",
-              "atom": 11
+              "transition": "step 1 int 1",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "diethyl 4-methoxybenzylphosphonate",
+              "atom": 5
             },
             {
               "transition": "step 1 int 2",
@@ -2148,20 +2012,6 @@
               "step": 1,
               "reagent": "diethyl 4-methoxybenzylphosphonate",
               "atom": 3
-            },
-            {
-              "transition": "step 1 int 2",
-              "mol": "reagent",
-              "step": 1,
-              "reagent": "diethyl 4-methoxybenzylphosphonate",
-              "atom": 4
-            },
-            {
-              "transition": "product",
-              "mol": "reagent",
-              "step": 1,
-              "reagent": "diethyl 4-methoxybenzylphosphonate",
-              "atom": 5
             }
           ],
           "difficulty": {
@@ -2264,18 +2114,6 @@
           "hints": [
             {
               "transition": "step 1 int 1",
-              "mol": "substrate",
-              "atom": 0
-            },
-            {
-              "transition": "step 1 int 1",
-              "mol": "reagent",
-              "step": 1,
-              "reagent": "Pb(OBz)₄",
-              "atom": 22
-            },
-            {
-              "transition": "step 2 int 1",
               "mol": "reagent",
               "step": 1,
               "reagent": "Pb(OBz)₄",
@@ -2283,30 +2121,30 @@
             },
             {
               "transition": "step 2 int 1",
-              "mol": "reagent",
-              "step": 1,
-              "reagent": "Pb(OBz)₄",
-              "atom": 2
-            },
-            {
-              "transition": "step 2 int 2",
-              "mol": "substrate",
-              "atom": 17
-            },
-            {
-              "transition": "step 3 int 1",
               "mol": "substrate",
               "atom": 1
             },
             {
-              "transition": "step 3 int 1",
+              "transition": "step 2 int 1",
               "mol": "substrate",
               "atom": 16
             },
             {
-              "transition": "product",
+              "transition": "step 2 int 1",
+              "mol": "substrate",
+              "atom": 17
+            },
+            {
+              "transition": "step 2 int 1",
               "mol": "substrate",
               "atom": 5
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "Pb(OBz)₄",
+              "atom": 2
             }
           ],
           "difficulty": {
@@ -2402,9 +2240,11 @@
               "atom": 3
             },
             {
-              "transition": "step 2 int 2",
-              "mol": "substrate",
-              "atom": 7
+              "transition": "step 1 int 1",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "methacrolein",
+              "atom": 0
             },
             {
               "transition": "product",
@@ -2517,16 +2357,6 @@
           "hints": [
             {
               "transition": "step 1 int 1",
-              "mol": "substrate",
-              "atom": 6
-            },
-            {
-              "transition": "step 1 int 2",
-              "mol": "substrate",
-              "atom": 4
-            },
-            {
-              "transition": "step 1 int 3",
               "mol": "substrate",
               "atom": 5
             },
@@ -2656,9 +2486,14 @@
           ],
           "hints": [
             {
-              "transition": "step 1 int 2",
+              "transition": "step 1 int 1",
               "mol": "substrate",
               "atom": 8
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 9
             },
             {
               "transition": "step 1 int 2",
@@ -2666,17 +2501,12 @@
               "atom": 4
             },
             {
-              "transition": "step 1 int 3",
-              "mol": "substrate",
-              "atom": 9
-            },
-            {
-              "transition": "step 3 int 1",
+              "transition": "step 2 int 2",
               "mol": "substrate",
               "atom": 14
             },
             {
-              "transition": "step 3 int 2",
+              "transition": "step 2 int 2",
               "mol": "substrate",
               "atom": 15
             }
@@ -2781,18 +2611,18 @@
               "atom": 1
             },
             {
+              "transition": "step 1 int 1",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "NH₃ (as aldehyde-ammonia)",
+              "atom": 0
+            },
+            {
               "transition": "step 1 int 3",
               "mol": "reagent",
               "step": 1,
               "reagent": "HCN (aq.)",
               "atom": 0
-            },
-            {
-              "transition": "product",
-              "mol": "reagent",
-              "step": 1,
-              "reagent": "HCN (aq.)",
-              "atom": 1
             }
           ],
           "difficulty": {
@@ -2973,16 +2803,16 @@
               "atom": 13
             },
             {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 14
+            },
+            {
               "transition": "step 1 int 3",
               "mol": "reagent",
               "step": 1,
               "reagent": "H₂O",
               "atom": 0
-            },
-            {
-              "transition": "product",
-              "mol": "substrate",
-              "atom": 14
             }
           ],
           "difficulty": {
@@ -3080,16 +2910,14 @@
               "atom": 1
             },
             {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 7
+            },
+            {
               "transition": "step 2 int 1",
               "mol": "substrate",
               "atom": 4
-            },
-            {
-              "transition": "product",
-              "mol": "reagent",
-              "step": 1,
-              "reagent": "NaOH (aq.)",
-              "atom": 0
             }
           ],
           "difficulty": {
@@ -3212,14 +3040,11 @@
               "atom": 7
             },
             {
-              "transition": "step 1 int 2",
-              "mol": "substrate",
-              "atom": 8
-            },
-            {
               "transition": "step 1 int 3",
-              "mol": "substrate",
-              "atom": 9
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "Iodoynamide 28 (0.5 equiv)",
+              "atom": 5
             },
             {
               "transition": "step 2 int 2",
@@ -3345,19 +3170,12 @@
             {
               "transition": "step 1 int 1",
               "mol": "substrate",
-              "atom": 16
-            },
-            {
-              "transition": "step 1 int 2",
-              "mol": "reagent",
-              "step": 1,
-              "reagent": "aq. acid",
-              "atom": 0
-            },
-            {
-              "transition": "step 1 int 3",
-              "mol": "substrate",
               "atom": 13
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 16
             },
             {
               "transition": "step 2 int 1",
@@ -3370,16 +3188,6 @@
               "transition": "step 2 int 3",
               "mol": "substrate",
               "atom": 17
-            },
-            {
-              "transition": "step 2 int 3",
-              "mol": "substrate",
-              "atom": 10
-            },
-            {
-              "transition": "step 2 int 4",
-              "mol": "substrate",
-              "atom": 18
             }
           ],
           "difficulty": {
@@ -3465,11 +3273,6 @@
               "atom": 2
             },
             {
-              "transition": "step 1 int 2",
-              "mol": "substrate",
-              "atom": 1
-            },
-            {
               "transition": "product",
               "mol": "substrate",
               "atom": 4
@@ -3551,28 +3354,16 @@
               "atom": 0
             },
             {
-              "transition": "step 1 int 2",
+              "transition": "step 1 int 1",
               "mol": "reagent",
               "step": 1,
               "reagent": "2,3-butanedione",
               "atom": 3
-            },
-            {
-              "transition": "step 1 int 2",
-              "mol": "reagent",
-              "step": 1,
-              "reagent": "2,3-butanedione",
-              "atom": 5
             },
             {
               "transition": "step 1 int 3",
               "mol": "substrate",
               "atom": 4
-            },
-            {
-              "transition": "step 1 int 3",
-              "mol": "substrate",
-              "atom": 3
             }
           ],
           "difficulty": {
@@ -3680,11 +3471,6 @@
               "atom": 0
             },
             {
-              "transition": "step 1 int 2",
-              "mol": "substrate",
-              "atom": 14
-            },
-            {
               "transition": "step 1 int 3",
               "mol": "reagent",
               "step": 1,
@@ -3709,11 +3495,6 @@
               "step": 2,
               "reagent": "CH₃PPh₃Br",
               "atom": 1
-            },
-            {
-              "transition": "product",
-              "mol": "substrate",
-              "atom": 3
             }
           ],
           "difficulty": {

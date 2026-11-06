@@ -86,7 +86,7 @@ init().then(R => {
       if (distinct < 2) err(w, `only ${distinct} distinct intermediate(s); at least 2 are required`);
 
       const nh = (P.hints || []).length;
-      if (nh < Math.min(3, MAX_HINTS[P.level]) || nh > MAX_HINTS[P.level]) err(w, `${nh} hints (expected up to ${MAX_HINTS[P.level]}); run curate.py --write`);
+      if (nh < 2 || nh > MAX_HINTS[P.level]) err(w, `${nh} hints (expected 2 to ${MAX_HINTS[P.level]}); run curate.py --write`);
       for (const h of P.hints || []) {
         let smi = P.substrate.smiles;
         if (h.mol === 'reagent') {
