@@ -3728,6 +3728,348 @@
           }
         }
       ]
+    },
+    {
+      "date": "2026-11-08",
+      "problems": [
+        {
+          "id": "jcs1917-robinson-tropinone-double-mannich",
+          "level": "undergraduate",
+          "textbookLevel": "undergraduate",
+          "reaction": "Robinson tropinone synthesis: methylamine condenses with both aldehydes of succinaldehyde (hemiaminal, cyclic 2,5-dihydroxypyrrolidine, N-methyliminium ion); intermolecular Mannich addition of the enol of acetonedicarboxylic acid, second iminium ion and intramolecular Mannich ring closure to tropinone-2,4-dicarboxylic acid; on heating with acid, two decarboxylations of the β-keto acid (via the enol) give tropinone",
+          "source": {
+            "citation": "R. Robinson. LXIII.—A synthesis of tropinone. J. Chem. Soc., Trans. 1917, 111, 762–768.",
+            "doi": "10.1039/CT9171100762",
+            "context": "Biomimetic one-pot synthesis of the tropane alkaloid tropinone: succinaldehyde, methylamine and acetonedicarboxylic acid (used as its calcium salt) in water at room temperature give tropinone-2,4-dicarboxylic acid, which loses two molecules of CO2 when the solution is acidified and heated."
+          },
+          "verified": false,
+          "verificationNote": "Original 1917 paper not read (only its Crossref record); reagents, conditions and mechanism taken from the standard textbook account of the Robinson tropinone synthesis (Clayden). Exact concentrations, pH, time and the temperature of the acid step were not checked against the paper. A chemist should check the order of events in step 1 (both aldehydes condensed with methylamine before the first Mannich addition, as drawn) and the conditions of the decarboxylation step. PubChem (InChIKey connectivity layer, RDKit vs PubChem): succinaldehyde CID 12524, tropinone CID 446337 (by name; CID 79038 by structure), methylamine CID 6329 and acetonedicarboxylic acid CID 68328 match.",
+          "substrate": {
+            "label": "Succinaldehyde (butanedial)",
+            "smiles": "O=CCCC=O"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "MeNH₂ (aq.)",
+                  "smiles": "CN"
+                },
+                {
+                  "text": "Acetone-1,3-dicarboxylic acid (calcium salt)",
+                  "smiles": "OC(=O)CC(=O)CC(=O)O"
+                }
+              ],
+              "conditions": "H₂O, rt",
+              "intermediates": [
+                {
+                  "label": "Hemiaminal (MeNH₂ adds to one CHO; C–N formed)",
+                  "forms": [
+                    "CNC(O)CCC=O"
+                  ]
+                },
+                {
+                  "label": "1-Methylpyrrolidine-2,5-diol (N adds to the second CHO; ring closed)",
+                  "forms": [
+                    "CN1C(O)CCC1O"
+                  ]
+                },
+                {
+                  "label": "N-Methyl-1-pyrrolinium ion (loss of water; C–O broken)",
+                  "forms": [
+                    "C[N+]1=CCCC1O"
+                  ]
+                },
+                {
+                  "label": "Mannich adduct (enol of acetonedicarboxylic acid adds to the iminium C; C–C formed)",
+                  "forms": [
+                    "CN1C(O)CCC1C(C(=O)O)C(=O)CC(=O)O"
+                  ]
+                },
+                {
+                  "label": "Second iminium ion (loss of water at C5)",
+                  "forms": [
+                    "C[N+]1=CCCC1C(C(=O)O)C(=O)CC(=O)O"
+                  ]
+                },
+                {
+                  "label": "Tropinone-2,4-dicarboxylic acid (intramolecular Mannich addition; second C–C bond, bicycle closed)",
+                  "forms": [
+                    "CN1C2CCC1C(C(=O)O)C(=O)C2C(=O)O"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "HCl (aq.)"
+                }
+              ],
+              "conditions": "heated",
+              "intermediates": [
+                {
+                  "label": "Tropinone-2-carboxylic acid after the first decarboxylation (formed as its enol; C–C broken, CO₂ lost)",
+                  "forms": [
+                    "CN1C2CCC1CC(=O)C2C(=O)O",
+                    "CN1C2CCC1C(C(=O)O)C(O)=C2"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Tropinone",
+            "smiles": "CN1C2CCC1CC(=O)C2"
+          },
+          "byproducts": "H₂O (2 equiv); CO₂ (2 equiv)",
+          "mechanismRefs": [
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., Oxford University Press, 2012: Mannich reaction and Robinson's tropinone synthesis; decarboxylation of β-keto acids.",
+            "R. Robinson, J. Chem. Soc., Trans. 1917, 111, 762–768."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 0
+            },
+            {
+              "transition": "step 1 int 4",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "Acetone-1,3-dicarboxylic acid (calcium salt)",
+              "atom": 1
+            },
+            {
+              "transition": "product",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "Acetone-1,3-dicarboxylic acid (calcium salt)",
+              "atom": 7
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 7,
+            "sigmaBondEvents": 8,
+            "textbookLevel": "undergraduate",
+            "stepScores": [
+              1,
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 2
+          }
+        },
+        {
+          "id": "tl1992-paal-knorr-atorvastatin",
+          "level": "graduate",
+          "textbookLevel": "graduate",
+          "courseRef": "Kürti & Czakó, Strategic Applications of Named Reactions in Organic Synthesis (2005), entry 'Paal–Knorr furan synthesis' (the pyrrole variant with primary amines is discussed there); Clayden, Organic Chemistry 2nd ed., chapter 'Aromatic heterocycles 2: synthesis' (pyrroles from 1,4-dicarbonyl compounds)",
+          "reaction": "Paal–Knorr pyrrole synthesis: the primary amine adds to one ketone of the 1,4-diketone (hemiaminal), the nitrogen then adds to the second ketone (2,5-dihydroxypyrrolidine, Amarnath mechanism), and two acid-catalysed dehydrations give the pentasubstituted pyrrole of atorvastatin",
+          "source": {
+            "citation": "K. L. Baumann, D. E. Butler, C. F. Deering, K. E. Mennen, A. Millar, T. N. Nanninga, C. W. Palmer, B. D. Roth. The convergent synthesis of CI-981, an optically active, highly potent, tissue selective inhibitor of HMG-CoA reductase. Tetrahedron Lett. 1992, 33, 2283–2284.",
+            "doi": "10.1016/S0040-4039(00)74190-6",
+            "context": "Convergent synthesis of atorvastatin (CI-981): the fully substituted 1,4-diketone is condensed with the chiral side-chain amine (tert-butyl ester, acetonide-protected 3,5-diol) under pivalic acid catalysis with azeotropic removal of water to give the protected atorvastatin pyrrole, deprotected afterwards to the calcium salt."
+          },
+          "verified": false,
+          "verificationNote": "Original paper not read (Crossref record only). Structures of the diketone, the amine and the protected pyrrole are the well-known atorvastatin intermediates; conditions taken from secondary descriptions of this paper (patents and supporting information citing it), which differ in the solvent ratio (heptane/toluene/THF). A chemist should check the conditions against the paper and the order of the two additions (here the amine adds first to the isobutyryl ketone; the alternative order gives the same product). PubChem (InChIKey connectivity layer, structure search): diketone CID 9909872, side-chain amine CID 9921632 and protected atorvastatin (acetonide tert-butyl ester) CID 4080467 match.",
+          "substrate": {
+            "label": "1,4-Diketone: 2-[2-(4-fluorophenyl)-2-oxo-1-phenylethyl]-4-methyl-3-oxo-N-phenylpentanamide",
+            "smiles": "CC(C)C(=O)C(C(=O)Nc1ccccc1)C(c1ccccc1)C(=O)c1ccc(F)cc1"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "tert-Butyl 2-[(4R,6R)-6-(2-aminoethyl)-2,2-dimethyl-1,3-dioxan-4-yl]acetate",
+                  "smiles": "NCCC1CC(CC(=O)OC(C)(C)C)OC(C)(C)O1"
+                },
+                {
+                  "text": "Pivalic acid (cat.)"
+                }
+              ],
+              "conditions": "heptane–toluene–THF, reflux, water removed azeotropically",
+              "intermediates": [
+                {
+                  "label": "Hemiaminal (amine adds to the isobutyryl ketone; C–N formed)",
+                  "forms": [
+                    "CC(C)C(O)(NCCC1CC(CC(=O)OC(C)(C)C)OC(C)(C)O1)C(C(=O)Nc1ccccc1)C(c1ccccc1)C(=O)c1ccc(F)cc1"
+                  ]
+                },
+                {
+                  "label": "2,5-Dihydroxypyrrolidine (N adds to the aryl ketone; second C–N bond, ring closed)",
+                  "forms": [
+                    "CC(C)C1(O)N(CCC2CC(CC(=O)OC(C)(C)C)OC(C)(C)O2)C(O)(c2ccc(F)cc2)C(c2ccccc2)C1C(=O)Nc1ccccc1"
+                  ]
+                },
+                {
+                  "label": "2-Hydroxy-2,3-dihydropyrrole after the first dehydration (C–O broken)",
+                  "forms": [
+                    "CC(C)C1=C(C(=O)Nc2ccccc2)C(c2ccccc2)C(O)(c2ccc(F)cc2)N1CCC1CC(CC(=O)OC(C)(C)C)OC(C)(C)O1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Atorvastatin acetonide tert-butyl ester",
+            "smiles": "CC(C)c1c(C(=O)Nc2ccccc2)c(-c2ccccc2)c(-c2ccc(F)cc2)n1CCC1CC(CC(=O)OC(C)(C)C)OC(C)(C)O1"
+          },
+          "byproducts": "H₂O (2 equiv)",
+          "mechanismRefs": [
+            "V. Amarnath, D. C. Anthony, K. Amarnath, W. M. Valentine, L. A. Wetterau, D. G. Graham, J. Org. Chem. 1991, 56, 6924–6931 (doi:10.1021/jo00024a040): intermediates in the Paal–Knorr synthesis of pyrroles.",
+            "J. J. Li, Name Reactions, Springer: Paal–Knorr pyrrole synthesis."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 3
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "tert-Butyl 2-[(4R,6R)-6-(2-aminoethyl)-2,2-dimethyl-1,3-dioxan-4-yl]acetate",
+              "atom": 0
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 22
+            }
+          ],
+          "difficulty": {
+            "steps": 1,
+            "intermediates": 3,
+            "sigmaBondEvents": 4,
+            "textbookLevel": "graduate",
+            "stepScores": [
+              4.0
+            ],
+            "uncommonReagents": 0,
+            "score": 4.0
+          }
+        },
+        {
+          "id": "anie2026-iridium-hydrosilylation-grignard-tetraponerine",
+          "level": "advanced",
+          "textbookLevel": "specialized",
+          "reaction": "Iridium-catalysed (Vaska's complex) reductive alkylation of a tertiary lactam: hydrosilylation of the amide C=O by TMDS (silylium transfer to the amide O giving an O-silyl iminium ion, then hydride delivery) to the O-silyl hemiaminal; at −78 °C the Grignard reagent promotes loss of the siloxide to the cyclic iminium ion, to which the propyl group adds, giving tetraponerine T-1",
+          "source": {
+            "citation": "F. Kölblin, H. Wennemers. Organocatalytic Enantioselective Addition of Malonates to Cyclic Imines: A Short Total Synthesis of Tetraponerine T-1. Angew. Chem. Int. Ed. 2026, 65, e8336123.",
+            "doi": "10.1002/anie.8336123",
+            "context": "Last step of the three-step route to tetraponerine T-1 (Scheme 7b): the 5-6-5 tricyclic lactam was treated with Vaska's catalyst (IrCl(CO)(PPh3)2, 1 mol%) and TMDS in CH2Cl2 (20 min, rt); the mixture was cooled to −78 °C and n-PrMgBr was added (4 h, −78 °C to rt), giving tetraponerine T-1 (52%, 15:1 d.r.). One pot, two steps."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central, PMC13573027) without schemes or SI; conditions taken from the legend of Scheme 7. The substrate is the tricyclic lactam that is the product of the 2026-11-07 undergraduate problem from the same paper; the product is that lactam with the C=O replaced by CH(n-Pr). The O-silyl iminium ion of step 1 follows the ionic hydrosilylation pathway proposed for Ir(I)/silane amide reductions (Dixon); the paper itself does not draw the mechanism, and iridium-bound species are not drawn. A chemist should check the step-1 intermediates and that the propyl group is on the carbon next to the pyrrolidine N that was the lactam N. PubChem (InChIKey connectivity layer, structure search): lactam CID 72805286 (C10H16N2O), tetraponerine T-1 skeleton CID 86185317 (C13H24N2) and TMDS CID 18659 match (the name search for TMDS returns a radical record, CID 6327482, not used); n-PrMgBr is CID 101916 but its InChIKey differs from RDKit's because of the treatment of the C–Mg bond in InChI (same record by structure).",
+          "substrate": {
+            "label": "5-6-5 Tricyclic lactam",
+            "smiles": "O=C1CC2CCCN2C2CCCN12"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "specialized",
+              "reagents": [
+                {
+                  "text": "IrCl(CO)(PPh₃)₂ (1 mol%)",
+                  "uncommon": true
+                },
+                {
+                  "text": "1,1,3,3-Tetramethyldisiloxane (TMDS)",
+                  "smiles": "C[SiH](C)O[SiH](C)C",
+                  "uncommon": true
+                }
+              ],
+              "conditions": "CH₂Cl₂, rt, 20 min",
+              "intermediates": [
+                {
+                  "label": "O-Silyl iminium ion (silylium transferred to the lactam O; O–Si formed)",
+                  "forms": [
+                    "C[SiH](C)O[Si](C)(C)OC1=[N+]2CCCC2N2CCCC2C1"
+                  ]
+                },
+                {
+                  "label": "O-Silyl hemiaminal (hydride delivered to the iminium C)",
+                  "forms": [
+                    "C[SiH](C)O[Si](C)(C)OC1CC2CCCN2C2CCCN12"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "n-PrMgBr",
+                  "smiles": "CCC[Mg]Br"
+                }
+              ],
+              "conditions": "−78 °C → rt, 4 h",
+              "intermediates": [
+                {
+                  "label": "Cyclic iminium ion (loss of the siloxide; C–O broken)",
+                  "forms": [
+                    "C1=[N+]2CCCC2N2CCCC2C1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Tetraponerine T-1",
+            "smiles": "CCCC1CC2CCCN2C2CCCN12"
+          },
+          "byproducts": "Siloxane (Mg siloxide after work-up)",
+          "mechanismRefs": [
+            "D. Matheau-Raven, P. Gabriel, J. A. Leitch, Y. A. Almehmadi, K. Yamazaki, D. J. Dixon, ACS Catal. 2020, 10, 8880–8897 (doi:10.1021/acscatal.0c02377): reductive functionalization of tertiary amides with Vaska's complex and TMDS, and addition of nucleophiles to the resulting iminium ions.",
+            "P. W. Tan, J. Seayad, D. J. Dixon, Angew. Chem. Int. Ed. 2016, 55, 13436–13440 (doi:10.1002/anie.201605503).",
+            "F. Kölblin, H. Wennemers, Angew. Chem. Int. Ed. 2026, 65, e8336123 (Scheme 7)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 0
+            },
+            {
+              "transition": "product",
+              "mol": "reagent",
+              "step": 2,
+              "reagent": "n-PrMgBr",
+              "atom": 2
+            },
+            {
+              "transition": "product",
+              "mol": "reagent",
+              "step": 2,
+              "reagent": "n-PrMgBr",
+              "atom": 3
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 3,
+            "sigmaBondEvents": 4,
+            "textbookLevel": "specialized",
+            "stepScores": [
+              5.5,
+              1
+            ],
+            "uncommonReagents": 2,
+            "score": 8.5
+          }
+        }
+      ]
     }
   ]
 }

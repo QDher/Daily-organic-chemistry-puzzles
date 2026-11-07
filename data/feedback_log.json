@@ -1,6 +1,70 @@
 {
   "version": 1,
-  "observations": [],
+  "observations": [
+    {
+      "id": "undergraduate-problems-include-extra-steps",
+      "topic": "Undergraduate problems are judged too long or confusing when the sequence includes steps beyond the core textbook transformation (a preliminary step before it or a follow-up step after it).",
+      "kind": "remark",
+      "problemIds": [
+        "jlac1850-strecker-alanine",
+        "jacs1969-corey-saponification-iodolactonization"
+      ],
+      "evidence": {
+        "ratings": 3,
+        "distinctProblems": 2,
+        "meanStars": 3.0,
+        "results": 6,
+        "medianScore": 2
+      },
+      "firstSeen": "2026-11-06",
+      "lastSeen": "2026-11-06",
+      "status": "proposed",
+      "proposal": "Add a rule for the undergraduate level: the problem covers one textbook transformation; a preliminary or follow-up operation (e.g. a saponification before the key step, or hydrolysis of the product of the key step) is left out unless it is part of the same named textbook reaction.",
+      "proposedOn": "2026-11-06"
+    },
+    {
+      "id": "advanced-problems-built-on-deprotection-too-easy",
+      "topic": "Advanced problems whose sequence consists mainly of protecting-group removal or hydrolysis are judged too easy or better suited to a lower level.",
+      "kind": "remark",
+      "problemIds": [
+        "jacs2026-dithiane-hydrolysis-arnicenone",
+        "nature2026-acetal-hydrolysis-pyridine-rupestine-d"
+      ],
+      "evidence": {
+        "ratings": 3,
+        "distinctProblems": 2,
+        "meanStars": 1.33,
+        "results": 4,
+        "medianScore": {
+          "jacs2026-dithiane-hydrolysis-arnicenone": 2.5,
+          "nature2026-acetal-hydrolysis-pyridine-rupestine-d": 10
+        }
+      },
+      "firstSeen": "2026-11-06",
+      "lastSeen": "2026-11-06",
+      "status": "proposed",
+      "proposal": "Add a rule for the advanced level: at least half of the difficulty score must come from specialized steps and uncommon reagents, and a problem whose specialized character rests on a deprotection or hydrolysis step is not used at that level.",
+      "proposedOn": "2026-11-06"
+    },
+    {
+      "id": "graduate-danheiser-judged-too-hard",
+      "topic": "A graduate problem with a multi-step rearrangement sequence and an uncommon reagent was judged too hard for the graduate level.",
+      "kind": "remark",
+      "problemIds": [
+        "jacs2026-danheiser-benzannulation-pde-i"
+      ],
+      "evidence": {
+        "ratings": 2,
+        "distinctProblems": 1,
+        "meanStars": 2.0,
+        "results": 2,
+        "medianScore": 16
+      },
+      "firstSeen": "2026-11-06",
+      "lastSeen": "2026-11-06",
+      "status": "observing"
+    }
+  ],
   "runs": [
     {
       "date": "2026-11-05",
@@ -12,6 +76,24 @@
       "newObservations": [],
       "updated": [],
       "newProposals": []
+    },
+    {
+      "date": "2026-11-06",
+      "targetDate": "2026-11-08",
+      "supabase": "ok",
+      "results": 14,
+      "ratings": 8,
+      "remarks": 8,
+      "newObservations": [
+        "undergraduate-problems-include-extra-steps",
+        "advanced-problems-built-on-deprotection-too-easy",
+        "graduate-danheiser-judged-too-hard"
+      ],
+      "updated": [],
+      "newProposals": [
+        "undergraduate-problems-include-extra-steps",
+        "advanced-problems-built-on-deprotection-too-easy"
+      ]
     }
   ]
 }
