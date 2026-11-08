@@ -17,7 +17,7 @@
         "medianScore": 2
       },
       "firstSeen": "2026-11-06",
-      "lastSeen": "2026-11-06",
+      "lastSeen": "2026-11-07",
       "status": "proposed",
       "proposal": "Add a rule for the undergraduate level: the problem covers one textbook transformation; a preliminary or follow-up operation (e.g. a saponification before the key step, or hydrolysis of the product of the key step) is left out unless it is part of the same named textbook reaction.",
       "proposedOn": "2026-11-06"
@@ -41,7 +41,7 @@
         }
       },
       "firstSeen": "2026-11-06",
-      "lastSeen": "2026-11-06",
+      "lastSeen": "2026-11-07",
       "status": "proposed",
       "proposal": "Add a rule for the advanced level: at least half of the difficulty score must come from specialized steps and uncommon reagents, and a problem whose specialized character rests on a deprotection or hydrolysis step is not used at that level.",
       "proposedOn": "2026-11-06"
@@ -61,7 +61,7 @@
         "medianScore": 16
       },
       "firstSeen": "2026-11-06",
-      "lastSeen": "2026-11-06",
+      "lastSeen": "2026-11-07",
       "status": "observing"
     }
   ],
@@ -94,6 +94,22 @@
         "undergraduate-problems-include-extra-steps",
         "advanced-problems-built-on-deprotection-too-easy"
       ]
+    },
+    {
+      "date": "2026-11-07",
+      "targetDate": "2026-11-09",
+      "supabase": "ok",
+      "results": 14,
+      "ratings": 8,
+      "remarks": 8,
+      "newObservations": [],
+      "updated": [
+        "undergraduate-problems-include-extra-steps",
+        "advanced-problems-built-on-deprotection-too-easy",
+        "graduate-danheiser-judged-too-hard"
+      ],
+      "newProposals": [],
+      "note": "Same data as the 2026-11-06 run; evidence recounted, unchanged. difficulty_summary not available (function not found, HTTP 404), so no calibration check."
     }
   ]
 }

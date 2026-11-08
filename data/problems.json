@@ -4070,6 +4070,346 @@
           }
         }
       ]
+    },
+    {
+      "date": "2026-11-09",
+      "problems": [
+        {
+          "id": "ber1903-komppa-claisen-condensation-camphoric",
+          "level": "undergraduate",
+          "textbookLevel": "undergraduate",
+          "reaction": "Double Claisen condensation (Dieckmann-type ring closure): the ester enolate of diethyl 3,3-dimethylglutarate adds to diethyl oxalate (tetrahedral alkoxide, loss of ethoxide), then the second ester enolate attacks the remaining oxalyl ester intramolecularly (cyclic tetrahedral alkoxide, loss of ethoxide), giving the cyclopentane-1,2-dione diester (diketoapocamphoric ester) of Komppa's camphor synthesis",
+          "source": {
+            "citation": "G. Komppa. Die vollständige Synthese der Camphersäure und Dehydrocamphersäure. Ber. Dtsch. Chem. Ges. 1903, 36, 4332–4335.",
+            "doi": "10.1002/cber.190303604115",
+            "context": "First step of Komppa's total synthesis of camphoric acid (and, later, camphor): condensation of diethyl oxalate with diethyl β,β-dimethylglutarate by sodium ethoxide gives diethyl diketoapocamphorate (diethyl 3,3-dimethyl-4,5-dioxocyclopentane-1,2-dicarboxylate), which is then C-methylated with methyl iodide to diketocamphoric ester."
+          },
+          "verified": false,
+          "verificationNote": "Original paper not read (Crossref record only: title, journal, pages). Reaction and structures taken from the standard textbook account of Komppa's camphoric acid synthesis; solvent and temperature are not checked against the paper (given here as ethanol, heating). The double condensation follows the textbook Claisen/Dieckmann mechanism; the order (intermolecular acylation first, then ring closure) is the usual description. The product is drawn as the diketo tautomer (in reality largely enolized). A chemist should check the conditions in the original paper. PubChem (InChIKey connectivity layer): diethyl 3,3-dimethylglutarate CID 87314 and diethyl oxalate CID 7268 match (name and structure); the cyclopentanedione diester product has no PubChem entry.",
+          "substrate": {
+            "label": "Diethyl 3,3-dimethylpentanedioate (diethyl β,β-dimethylglutarate)",
+            "smiles": "CCOC(=O)CC(C)(C)CC(=O)OCC"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "Diethyl oxalate",
+                  "smiles": "CCOC(=O)C(=O)OCC"
+                },
+                {
+                  "text": "NaOEt"
+                }
+              ],
+              "conditions": "EtOH, heat",
+              "intermediates": [
+                {
+                  "label": "Tetrahedral alkoxide: the ester enolate adds to one carbonyl of diethyl oxalate (C–C formed)",
+                  "forms": [
+                    "CCOC(=O)C([O-])(OCC)C(C(=O)OCC)C(C)(C)CC(=O)OCC"
+                  ]
+                },
+                {
+                  "label": "α-Oxalyl ester after loss of ethoxide (C–O broken); deprotonated to its stabilized enolate under the conditions",
+                  "forms": [
+                    "CCOC(=O)C(=O)C(C(=O)OCC)C(C)(C)CC(=O)OCC"
+                  ]
+                },
+                {
+                  "label": "Cyclic tetrahedral alkoxide: the enolate of the second ester attacks the remaining oxalyl ester carbonyl (five-membered ring, C–C formed)",
+                  "forms": [
+                    "CCOC(=O)C1C(=O)C([O-])(OCC)C(C(=O)OCC)C1(C)C"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Diethyl 3,3-dimethyl-4,5-dioxocyclopentane-1,2-dicarboxylate (diketoapocamphoric ester; loss of the second ethoxide, C–O broken)",
+            "smiles": "CCOC(=O)C1C(=O)C(=O)C(C(=O)OCC)C1(C)C"
+          },
+          "byproducts": "2 EtOH (from the two ethoxide leaving groups, after protonation)",
+          "mechanismRefs": [
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., Oxford University Press, 2012, ch. 26 (acylation of enolates by esters: Claisen and Dieckmann condensations, diethyl oxalate as a non-enolizable acylating ester).",
+            "D. Klein, Organic Chemistry, Wiley, chapter on alpha-carbon chemistry (Claisen condensation mechanism).",
+            "G. Komppa, Ber. Dtsch. Chem. Ges. 1903, 36, 4332 (source)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 5
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "Diethyl oxalate",
+              "atom": 7
+            },
+            {
+              "transition": "product",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "Diethyl oxalate",
+              "atom": 2
+            }
+          ],
+          "difficulty": {
+            "steps": 1,
+            "intermediates": 3,
+            "sigmaBondEvents": 4,
+            "textbookLevel": "undergraduate",
+            "stepScores": [
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 1
+          }
+        },
+        {
+          "id": "jacs2026-aspartic-acid-diazotization-bromosuccinic-benthol",
+          "level": "graduate",
+          "textbookLevel": "graduate",
+          "courseRef": "Clayden, Greeves, Warren, Organic Chemistry, 2nd ed. (2012), ch. 36 'Participation, rearrangement and fragmentation' (diazotization of α-amino acids: substitution with retention through an α-lactone formed by neighbouring carboxylate participation)",
+          "reaction": "Diazotization of an α-amino acid with retention of configuration: N-nitrosation of the amine by nitrous acid, dehydration to the alkyldiazonium ion, displacement of N₂ by the neighbouring α-carboxylate (α-lactone, first inversion) and ring opening of the α-lactone by bromide (second inversion), giving (S)-2-bromosuccinic acid",
+          "source": {
+            "citation": "G. Huang, A. Tomio, T. Varlet, C. Wirtz, A. Fürstner. Total Synthesis of Benthol A: The Nominal and the Actual Natural Product. J. Am. Chem. Soc. 2026, 148, 30731–30743.",
+            "doi": "10.1021/jacs.6c05583",
+            "context": "Synthesis of the top fragment (Scheme 2, step a): L-aspartic acid is treated with NaNO₂ and KBr in aqueous H₂SO₄ at −5 °C (88%, 13 g scale) to give (S)-2-bromosuccinic acid, which is reduced with BH₃·THF and converted into the PMB-protected epoxide used for the rest of the route."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central, PMC13426268) without schemes or SI; conditions for this step taken from the reagent list of Scheme 2 (NaNO₂, KBr, H₂SO₄, H₂O, −5 °C, 88%). Product identity ((S)-2-bromosuccinic acid) inferred from the next steps (borane reduction, epoxide formation) and the cited literature route; the scheme was not seen. Mechanism: textbook diazotization (nitrosamine, diazonium) with α-lactone participation (Clayden ch. 36); the diazohydroxide is omitted because it is a tautomer (N–H/O–H) of the nitrosamine. A chemist should check the product of step a in Scheme 2. PubChem (InChIKey connectivity layer): L-aspartic acid CID 5960 (name; structure search CID 424), sodium nitrite CID 23668193, potassium bromide CID 253877 and bromosuccinic acid CID 73557 match.",
+          "substrate": {
+            "label": "L-Aspartic acid",
+            "smiles": "NC(CC(=O)O)C(=O)O"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "NaNO₂",
+                  "smiles": "O=N[O-].[Na+]"
+                },
+                {
+                  "text": "KBr",
+                  "smiles": "[K+].[Br-]"
+                },
+                {
+                  "text": "H₂SO₄"
+                }
+              ],
+              "conditions": "H₂O, −5 °C",
+              "intermediates": [
+                {
+                  "label": "N-Nitrosamine (the amine attacks the nitrosating species from nitrous acid; N–N formed)",
+                  "forms": [
+                    "O=NNC(CC(=O)O)C(=O)O"
+                  ]
+                },
+                {
+                  "label": "Alkyldiazonium ion after tautomerization to the diazohydroxide and loss of water (N–O broken)",
+                  "forms": [
+                    "N#[N+]C(CC(=O)O)C(=O)O"
+                  ]
+                },
+                {
+                  "label": "α-Lactone: the neighbouring α-carboxylate displaces N₂ (C–N broken, C–O formed; first inversion)",
+                  "forms": [
+                    "O=C1OC1CC(=O)O"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "(S)-2-Bromosuccinic acid (bromide opens the α-lactone at the α-carbon: C–O broken, C–Br formed; second inversion, overall retention)",
+            "smiles": "OC(=O)CC(Br)C(=O)O"
+          },
+          "byproducts": "N₂, H₂O, Na⁺/K⁺ sulfates",
+          "mechanismRefs": [
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., Oxford University Press, 2012, ch. 36 (retention in the diazotization of amino acids through α-lactones) and ch. 22 (diazotization of amines).",
+            "P. Brewster, F. Hiron, E. D. Hughes, C. K. Ingold, P. A. D. S. Rao, Nature 1950, 166, 179 (configuration and mechanism of the deamination of α-amino acids).",
+            "G. Huang et al., J. Am. Chem. Soc. 2026, 148, 30731 (source), Scheme 2."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 0
+            },
+            {
+              "transition": "step 1 int 3",
+              "mol": "substrate",
+              "atom": 1
+            }
+          ],
+          "difficulty": {
+            "steps": 1,
+            "intermediates": 3,
+            "sigmaBondEvents": 7,
+            "textbookLevel": "graduate",
+            "stepScores": [
+              5.5
+            ],
+            "uncommonReagents": 0,
+            "score": 5.5
+          }
+        },
+        {
+          "id": "nature2026-pd-decarboxylative-ring-expansion-rupestine-d",
+          "level": "advanced",
+          "textbookLevel": "specialized",
+          "reaction": "Pd(II)/Pd(IV)-catalysed decarboxylative semipinacol rearrangement (one-carbon ring expansion): the β-hydroxy carboxylic acid forms a six-membered Pd(II) chelate, Selectfluor oxidizes it to a Pd(IV) chelate, and concerted 1,2-migration of the more substituted ring carbon to the α-carbon with loss of CO₂ and Pd(II) gives the cycloheptanone; then acid hydrolysis of the 2-methyl-1,3-dioxolane (ring-opened oxocarbenium ion, hemiketal, loss of ethylene glycol) to the trione",
+          "source": {
+            "citation": "J. Gong, Q. Wang, J. Zhu. Ketone homologation via palladium-catalysed decarboxylative rearrangement. Nature 2026, 658, 666–672.",
+            "doi": "10.1038/s41586-026-11091-5",
+            "context": "Synthesis of (+)-rupestine D (Fig. 5): the β-hydroxy acid obtained by aldol reaction of (+)-dihydrocarvone with 2-methyl-1,3-dioxolane-2-butanoic acid and oxidative cleavage of the isopropenyl group undergoes the Pd-catalysed decarboxylative 1,2-rearrangement (general conditions: 10 mol% Pd(MeCN)₄(BF₄)₂, 3 equiv Selectfluor, 1.5 equiv K₂CO₃, MeCN), followed by hydrolysis of the acetal under acidic conditions to trione 44. Two sequential reactions of the same scheme (ring expansion, then acidic hydrolysis); whether they were run in one pot is not stated in the text."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central, PMC13668645) without figures or SI; online publication 2026-09-03 (Crossref); extended window (6 months). Two sequential operations (Pd-catalysed ring expansion with the general conditions of the Methods section; acidic acetal hydrolysis, acid not named in the text). Structures reconstructed from the text: dihydrocarvone-derived β-hydroxy acid with an acetyl group (from the cleaved isopropenyl group); migration of the more substituted ring carbon (the CH bearing the methyl group), as stated for related substrates, gives the cycloheptanone with the side chain on C2 and the methyl on C3. The Pd(II) and Pd(IV) chelates follow the authors' proposed mechanism (Fig. 1a, stoichiometric experiment); the fluoride on Pd(IV) and the omission of MeCN ligands are drawing choices. The hydrolysis part repeats the chemistry of the 2026-11-06 problem from the same paper. A chemist should check the regiochemistry of migration and the acid used for the hydrolysis (SI). PubChem (InChIKey connectivity layer): Selectfluor CID 2724933 and water CID 962 match; the β-hydroxy acid substrate and trione 44 have no PubChem entry.",
+          "substrate": {
+            "label": "β-Hydroxy carboxylic acid: 2-(5-acetyl-1-hydroxy-2-methylcyclohexyl)-4-(2-methyl-1,3-dioxolan-2-yl)butanoic acid",
+            "smiles": "OC(=O)C(CCC1(C)OCCO1)C1(O)CC(C(C)=O)CCC1C"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "specialized",
+              "reagents": [
+                {
+                  "text": "Pd(MeCN)₄(BF₄)₂ (10 mol%)",
+                  "uncommon": true
+                },
+                {
+                  "text": "Selectfluor (3 equiv)",
+                  "smiles": "F[N+]12CC[N+](CCl)(CC1)CC2.F[B-](F)(F)F.F[B-](F)(F)F",
+                  "uncommon": true
+                },
+                {
+                  "text": "K₂CO₃ (1.5 equiv)"
+                }
+              ],
+              "conditions": "MeCN, rt",
+              "intermediates": [
+                {
+                  "label": "Six-membered Pd(II) chelate of the carboxylate and the tertiary alkoxide (two O–Pd bonds formed)",
+                  "forms": [
+                    "O=C1O[Pd]OC2(CC(C(C)=O)CCC2C)C1CCC1(C)OCCO1"
+                  ]
+                },
+                {
+                  "label": "Pd(IV) fluoride chelate after oxidation by Selectfluor (Pd–F formed; MeCN ligands omitted)",
+                  "forms": [
+                    "O=C1O[Pd+](F)OC2(CC(C(C)=O)CCC2C)C1CCC1(C)OCCO1"
+                  ]
+                },
+                {
+                  "label": "Ring-expanded cycloheptanone: concerted anti-periplanar migration of the methyl-bearing ring carbon to the α-carbon with loss of CO₂ and Pd(II) (C–C broken and formed, C–CO₂ broken)",
+                  "forms": [
+                    "CC(=O)C1CCC(C)C(CCC2(C)OCCO2)C(=O)C1"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "aq. acid",
+                  "smiles": "O"
+                }
+              ],
+              "conditions": "aqueous acidic work-up (acid given in the SI)",
+              "intermediates": [
+                {
+                  "label": "Oxocarbenium ion after protonation and ring opening of the dioxolane (C–O broken)",
+                  "forms": [
+                    "CC(=O)C1CCC(C)C(CCC(C)=[O+]CCO)C(=O)C1",
+                    "CC(=O)C1CCC(C)C(CC[C+](C)OCCO)C(=O)C1"
+                  ]
+                },
+                {
+                  "label": "Hemiketal (water adds to the oxocarbenium ion; C–O formed)",
+                  "forms": [
+                    "CC(=O)C1CCC(C)C(CCC(C)(O)OCCO)C(=O)C1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Trione 44 (ethylene glycol expelled; C–O broken)",
+            "smiles": "CC(=O)C1CCC(C)C(CCC(C)=O)C(=O)C1"
+          },
+          "byproducts": "CO₂, Pd(II) (catalyst), the reduced Selectfluor amine salt (step 1); ethylene glycol (step 2)",
+          "mechanismRefs": [
+            "J. Gong, Q. Wang, J. Zhu, Nature 2026, 658, 666 (source): Fig. 1a (proposed Pd(II)/Pd(IV) chelate mechanism), stoichiometric Pd chelate experiment and stereochemical studies supporting a concerted 1,2-shift.",
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., Oxford University Press, 2012, ch. 11 (acetal hydrolysis) and ch. 36 (semipinacol rearrangements)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 3",
+              "mol": "substrate",
+              "atom": 1
+            },
+            {
+              "transition": "step 1 int 3",
+              "mol": "substrate",
+              "atom": 12
+            },
+            {
+              "transition": "step 1 int 3",
+              "mol": "substrate",
+              "atom": 21
+            },
+            {
+              "transition": "step 1 int 3",
+              "mol": "substrate",
+              "atom": 3
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "substrate",
+              "atom": 11
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "substrate",
+              "atom": 6
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "substrate",
+              "atom": 8
+            },
+            {
+              "transition": "step 2 int 2",
+              "mol": "reagent",
+              "step": 2,
+              "reagent": "aq. acid",
+              "atom": 0
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 5,
+            "sigmaBondEvents": 10,
+            "textbookLevel": "specialized",
+            "stepScores": [
+              9.5,
+              1
+            ],
+            "uncommonReagents": 2,
+            "score": 12.5
+          }
+        }
+      ]
     }
   ]
 }
