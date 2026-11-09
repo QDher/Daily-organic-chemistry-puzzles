@@ -4410,6 +4410,359 @@
           }
         }
       ]
+    },
+    {
+      "date": "2026-11-10",
+      "problems": [
+        {
+          "id": "oprd1999-haloform-veratric-acid",
+          "level": "undergraduate",
+          "textbookLevel": "undergraduate",
+          "reaction": "Haloform reaction: base-mediated α-chlorination of the methyl ketone repeated three times (enolate + hypochlorite: chloromethyl, dichloromethyl, trichloromethyl ketone), addition of hydroxide to the carbonyl of the trichloromethyl ketone (tetrahedral intermediate), expulsion of the trichloromethyl anion (C–C broken; chloroform formed) and acidification of the carboxylate to veratric acid",
+          "source": {
+            "citation": "H.-R. Bjørsvik, K. Norman. Fine Chemicals from Lignosulfonates. 2. Synthesis of Veratric Acid from Acetovanillon. Org. Process Res. Dev. 1999, 3, 341–346.",
+            "doi": "10.1021/op9900030",
+            "context": "Two-step synthesis of the natural product veratric acid (3,4-dimethoxybenzoic acid) from lignin-derived acetovanillon: O-methylation gives 3',4'-dimethoxyacetophenone (acetoveratrone), whose methyl ketone is converted into the carboxylic acid by a haloform reaction with aqueous sodium hypochlorite; ring chlorination of the electron-rich arene is a minor side reaction controlled through temperature and hypochlorite concentration (as summarized in the review by Hughes and co-workers, Chem. Eur. J. 2024, doi 10.1002/chem.202403045, section 3.6)."
+          },
+          "verified": false,
+          "verificationNote": "The original paper was not read (publisher page refused; Crossref gives no abstract). The step and the reagent (aqueous sodium hypochlorite, then acidification) are taken from the open-access review '200 Years of the Haloform Reaction' (PMC11653256, section 3.6 and Figure 46), which summarizes this synthesis; temperature, amounts and the acid used for the work-up are not known and a chemist should check them in the paper. Mechanism: textbook haloform reaction (the enolates are omitted because each is a tautomer, O–H/C–H, of the ketone before it; the carboxylate is omitted because it is the deprotonated product). PubChem (InChIKey connectivity layer): 3',4'-dimethoxyacetophenone CID 14328, veratric acid CID 7121 and sodium hypochlorite CID 23665760 match.",
+          "substrate": {
+            "label": "3',4'-Dimethoxyacetophenone (acetoveratrone)",
+            "smiles": "CC(=O)c1ccc(OC)c(OC)c1"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "NaOCl (aqueous)",
+                  "smiles": "[O-]Cl.[Na+]"
+                }
+              ],
+              "conditions": "H₂O",
+              "intermediates": [
+                {
+                  "label": "α-Chloro ketone (enolate attacks Cl of hypochlorite; C–Cl formed)",
+                  "forms": [
+                    "COc1ccc(C(=O)CCl)cc1OC"
+                  ]
+                },
+                {
+                  "label": "α,α-Dichloro ketone (second enolization and chlorination; the first Cl makes the remaining α-H more acidic)",
+                  "forms": [
+                    "COc1ccc(C(=O)C(Cl)Cl)cc1OC"
+                  ]
+                },
+                {
+                  "label": "Trichloromethyl ketone (third chlorination)",
+                  "forms": [
+                    "COc1ccc(C(=O)C(Cl)(Cl)Cl)cc1OC"
+                  ]
+                },
+                {
+                  "label": "Tetrahedral intermediate: hydroxide adds to the carbonyl (C–O formed)",
+                  "forms": [
+                    "COc1ccc(C([O-])(O)C(Cl)(Cl)Cl)cc1OC",
+                    "COc1ccc(C(O)(O)C(Cl)(Cl)Cl)cc1OC"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "aq. HCl (work-up)"
+                }
+              ],
+              "conditions": "acidification of the aqueous solution",
+              "intermediates": []
+            }
+          ],
+          "product": {
+            "label": "Veratric acid (3,4-dimethoxybenzoic acid): the tetrahedral intermediate expels ⁻CCl₃ (C–C broken), proton transfer gives the carboxylate and CHCl₃, and acidification gives the acid",
+            "smiles": "COc1ccc(C(=O)O)cc1OC"
+          },
+          "byproducts": "CHCl₃, NaCl, H₂O",
+          "mechanismRefs": [
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., Oxford University Press, 2012, ch. 20 (halogenation of enols and enolates; the haloform reaction).",
+            "D. Klein, Organic Chemistry, 4th ed., Wiley, 2021, ch. 21 (haloform reaction).",
+            "C. Hughes et al., Chem. Eur. J. 2024, e202403045 (review; mechanism section 1.2 and veratric acid example, section 3.6).",
+            "H.-R. Bjørsvik, K. Norman, Org. Process Res. Dev. 1999, 3, 341 (source)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 0
+            },
+            {
+              "transition": "step 1 int 4",
+              "mol": "substrate",
+              "atom": 1
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 4,
+            "sigmaBondEvents": 5,
+            "textbookLevel": "undergraduate",
+            "stepScores": [
+              1,
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 2
+          }
+        },
+        {
+          "id": "jacs2026-seyferth-gilbert-ribose-alkyne-benthol",
+          "level": "graduate",
+          "textbookLevel": "graduate",
+          "courseRef": "Kürti, Czakó, Strategic Applications of Named Reactions in Organic Synthesis (Elsevier, 2005), entry 'Seyferth–Gilbert homologation' (including the Ohira–Bestmann modification with dimethyl (1-diazo-2-oxopropyl)phosphonate and K₂CO₃/MeOH)",
+          "reaction": "Seyferth–Gilbert homologation (Ohira–Bestmann conditions) of a sugar hemiacetal: the furanose opens to the hydroxy aldehyde (and the α-stereocentre epimerizes under the basic protic conditions, invisible here), methoxide removes the acetyl group of the reagent to give the dimethyl diazomethylphosphonate anion, which adds to the aldehyde; the alkoxide closes an oxaphosphetane, cycloreversion releases dimethyl phosphate and the vinyl diazo compound, loss of N₂ gives the vinylidene carbene and a 1,2-hydride shift gives the terminal alkyne",
+          "source": {
+            "citation": "G. Huang, A. Tomio, T. Varlet, C. Wirtz, A. Fürstner. Total Synthesis of Benthol A: Evidence for a Structure Revision. J. Am. Chem. Soc. 2026, 148, 30717–30730.",
+            "doi": "10.1021/jacs.6c05580",
+            "context": "Spiroacetal fragment (Scheme 5, steps a, b): D-ribose is converted into 2,3-O-isopropylidene-D-ribofuranose (acetone, H₂SO₄ cat.), which reacts with the diazophosphonate reagent and K₂CO₃ in refluxing MeOH (47%); quantitative epimerization α to the masked aldehyde precedes alkyne formation, giving the alkyne diol whose configuration was confirmed by X-ray. On scale the authors used a trityl-protected analogue (step d, 83%) because the diol is highly water-soluble."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central, PMC13426270) without schemes or SI; conditions from the reagent list of Scheme 5, step b (reagent, K₂CO₃, MeOH, reflux, 47%); amounts not given in the text. Substrate and product reconstructed from the text (2,3-O-isopropylidene-D-ribofuranose; alkyne diol with the ethynyl group on the former C2); a chemist should check both against Scheme 5. The epimerization at C2 is not drawn (stereochemistry is ignored). Mechanism: established Seyferth–Gilbert/Ohira–Bestmann mechanism (Kürti–Czakó); the reagent deacylation by methoxide is not drawn because it does not involve the substrate. PubChem (InChIKey connectivity layer): 2,3-O-isopropylidene-D-ribofuranose CID 11008712, dimethyl (1-diazo-2-oxopropyl)phosphonate CID 53397103 and the product 1-(5-ethynyl-2,2-dimethyl-1,3-dioxolan-4-yl)ethane-1,2-diol CID 46833618 (structure search) match.",
+          "substrate": {
+            "label": "D-Ribose 2,3-acetonide (2,3-O-protected D-ribofuranose, hemiacetal)",
+            "smiles": "OCC1OC(O)C2OC(C)(C)OC12"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "dimethyl (1-diazo-2-oxopropyl)phosphonate",
+                  "smiles": "CC(=O)C(=[N+]=[N-])P(=O)(OC)OC"
+                },
+                {
+                  "text": "K₂CO₃"
+                }
+              ],
+              "conditions": "MeOH, reflux",
+              "intermediates": [
+                {
+                  "label": "Open-chain hydroxy aldehyde (ring–chain equilibrium of the hemiacetal: C–O broken); epimerization α to the aldehyde occurs at this stage",
+                  "forms": [
+                    "O=CC1OC(C)(C)OC1C(O)CO"
+                  ]
+                },
+                {
+                  "label": "Alkoxide adduct: the dimethyl diazomethylphosphonate anion (formed by methanolysis of the acetyl group) adds to the aldehyde (C–C formed)",
+                  "forms": [
+                    "[O-]C(C1OC(C)(C)OC1C(O)CO)C(=[N+]=[N-])P(=O)(OC)OC"
+                  ]
+                },
+                {
+                  "label": "Oxaphosphetane (alkoxide attacks phosphorus: O–P formed)",
+                  "forms": [
+                    "[O-]P1(OC)(OC)OC(C2OC(C)(C)OC2C(O)CO)C1=[N+]=[N-]"
+                  ]
+                },
+                {
+                  "label": "Vinyl diazo compound after cycloreversion (C–O and C–P broken; dimethyl phosphate released)",
+                  "forms": [
+                    "[N-]=[N+]=C=CC1OC(C)(C)OC1C(O)CO"
+                  ]
+                },
+                {
+                  "label": "Vinylidene carbene after loss of N₂ (C–N broken)",
+                  "forms": [
+                    "[C]=CC1OC(C)(C)OC1C(O)CO"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Alkyne diol: 1-(5-ethynyl-2,2-dimethyl-1,3-dioxolan-4-yl)ethane-1,2-diol (1,2-hydride shift of the vinylidene)",
+            "smiles": "C#CC1OC(C)(C)OC1C(O)CO"
+          },
+          "byproducts": "N₂, dimethyl phosphate (potassium salt), methyl acetate",
+          "mechanismRefs": [
+            "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis, Elsevier, 2005: Seyferth–Gilbert homologation.",
+            "D. Seyferth, R. S. Marmor, P. Hilbert, J. Org. Chem. 1971, 36, 1379; J. C. Gilbert, U. Weerasooriya, J. Org. Chem. 1979, 44, 4997.",
+            "S. Ohira, Synth. Commun. 1989, 19, 561; S. Müller, B. Liepold, G. J. Roth, H. J. Bestmann, Synlett 1996, 521.",
+            "G. Huang et al., J. Am. Chem. Soc. 2026, 148, 30717 (source), Scheme 5."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 3
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 4
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 5
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "dimethyl (1-diazo-2-oxopropyl)phosphonate",
+              "atom": 3
+            },
+            {
+              "transition": "step 1 int 3",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "dimethyl (1-diazo-2-oxopropyl)phosphonate",
+              "atom": 6
+            }
+          ],
+          "difficulty": {
+            "steps": 1,
+            "intermediates": 5,
+            "sigmaBondEvents": 7,
+            "textbookLevel": "graduate",
+            "stepScores": [
+              5.5
+            ],
+            "uncommonReagents": 0,
+            "score": 5.5
+          }
+        },
+        {
+          "id": "jacs2026-rh-hydrosilylation-protonation-narbomycin",
+          "level": "advanced",
+          "textbookLevel": "specialized",
+          "reaction": "Rhodium-catalysed (Wilkinson's catalyst) 1,4-hydrosilylation of the exocyclic C8=C19 enone with Et₃SiH (Si–H oxidative addition, migratory insertion, Si–O reductive elimination) to the triethylsilyl dienol ether, stereoselective C-protonation at C8 by a chiral Brønsted acid with TFA (silyloxocarbenium ion, loss of the silyl group) to 2′-O-benzoylnarbomycin, then methanolysis of the desosamine 2′-benzoate in warm methanol (tetrahedral intermediate, assisted by the neighbouring 3′-dimethylamino group) to narbomycin",
+          "source": {
+            "citation": "Q. Edmondson, C. Panfil, J. K. Keyes, A. K. Ecker, N. S. Settineri, I. B. Seiple. Convergent Synthesis of the Minimal Macrolide Antibiotic Narbomycin. J. Am. Chem. Soc. 2026, 148, 38582–38587.",
+            "doi": "10.1021/jacs.6c12688",
+            "context": "End-game of the 10-step synthesis: the macrolactone obtained by thermal macrocyclization of the β-keto imide (C8 exo-methylene, 2′-O-benzoyl desosamine) is reduced at C8 by Rh-catalysed conjugate hydrosilylation (Wilkinson's catalyst, triethylsilane), the silyl enol ether is protonated with a chiral Brønsted acid (compound 23 of the paper) and TFA, and the benzoyl group is removed in warm methanol: narbomycin, 40% over two steps. Sequential operations of the same scheme; how they are grouped into the two reported steps and the exact conditions are in the SI, which was not read."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central, PMC13557744) without schemes; the SI (DOCX) and the author manuscript PDF could not be downloaded (blocked), so catalyst loading, equivalents, solvents, temperatures and the structure of chiral acid 23 are not known; the conditions shown are only those named in the text. Online publication 2026-08-26 (Crossref); extended window (the only paper from the 31-day window with suitable two-step chemistry, sestermobaraene F, could not be encoded correctly by the atom mapping of curate.py). Two sequential operations (40% over two steps), not necessarily one pot. Structures: narbomycin from PubChem (CID 5282036; connectivity layer of the InChIKey matches); the substrate (C8=C19 exo-methylene, 2′-O-benzoyl) and the 2′-O-benzoyl intermediate are reconstructed from the text; the regiochemistry of the hydrosilylation (1,4-addition to the C19=C8–C9=O enone, not to C10=C11) follows from the stated C8 reduction. Mechanism of the hydrosilylation (Ojima) and the role of the 3′-NMe₂ group in the methanolysis are textbook proposals, not shown in the paper; Rh-bound species are not drawn. A chemist should check the substrate against the scheme and the identity of acid 23 in the SI. PubChem: narbomycin CID 5282036, triethylsilane CID 12052, methanol CID 887 match; the substrate and 2′-O-benzoylnarbomycin have no PubChem entry.",
+          "substrate": {
+            "label": "2′-O-Benzoyl-8,19-didehydronarbomycin (macrolactone with a C8 exo-methylene)",
+            "smiles": "CCC1OC(=O)C(C)C(=O)C(C)C(OC2OC(C)CC(N(C)C)C2OC(=O)c2ccccc2)C(C)CC(=C)C(=O)C=CC1C"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "specialized",
+              "reagents": [
+                {
+                  "text": "RhCl(PPh₃)₃ (cat.)"
+                },
+                {
+                  "text": "Et₃SiH",
+                  "smiles": "CC[SiH](CC)CC"
+                }
+              ],
+              "conditions": "conditions of the SI (not read)",
+              "intermediates": [
+                {
+                  "label": "Triethylsilyl dienol ether: 1,4-hydrosilylation of the C19=C8–C9=O enone (H delivered to C19, Si–O formed; via Rh(III) silyl hydride and an O-bound Rh enolate)",
+                  "forms": [
+                    "CCC1OC(=O)C(C)C(=O)C(C)C(OC2OC(C)CC(N(C)C)C2OC(=O)c2ccccc2)C(C)CC(C)=C(O[Si](CC)(CC)CC)C=CC1C"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "chiral Brønsted acid 23 (structure in the SI)",
+                  "uncommon": true
+                },
+                {
+                  "text": "CF₃CO₂H"
+                }
+              ],
+              "conditions": "conditions of the SI (not read)",
+              "intermediates": [
+                {
+                  "label": "Silyloxocarbenium ion after stereoselective C-protonation at C8",
+                  "forms": [
+                    "CCC1OC(=O)C(C)C(=O)C(C)C(OC2OC(C)CC(N(C)C)C2OC(=O)c2ccccc2)C(C)CC(C)C(=[O+][Si](CC)(CC)CC)C=CC1C",
+                    "CCC1OC(=O)C(C)C(=O)C(C)C(OC2OC(C)CC(N(C)C)C2OC(=O)c2ccccc2)C(C)CC(C)[C+](O[Si](CC)(CC)CC)C=CC1C"
+                  ]
+                },
+                {
+                  "label": "2′-O-Benzoylnarbomycin after loss of the triethylsilyl group (Si–O broken)",
+                  "forms": [
+                    "CCC1OC(=O)C(C)C(=O)C(C)C(OC2OC(C)CC(N(C)C)C2OC(=O)c2ccccc2)C(C)CC(C)C(=O)C=CC1C"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 3,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "MeOH",
+                  "smiles": "CO"
+                }
+              ],
+              "conditions": "MeOH, warm",
+              "intermediates": [
+                {
+                  "label": "Tetrahedral intermediate: methanol adds to the benzoate carbonyl (C–O formed; general-base assistance by the 3′-NMe₂ group)",
+                  "forms": [
+                    "CCC1OC(=O)C(C)C(=O)C(C)C(OC2OC(C)CC(N(C)C)C2OC([O-])(OC)c2ccccc2)C(C)CC(C)C(=O)C=CC1C",
+                    "CCC1OC(=O)C(C)C(=O)C(C)C(OC2OC(C)CC(N(C)C)C2OC(O)(OC)c2ccccc2)C(C)CC(C)C(=O)C=CC1C"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Narbomycin (methyl benzoate expelled: C–O to the 2′-oxygen broken)",
+            "smiles": "CCC1OC(=O)C(C)C(=O)C(C)C(OC2OC(C)CC(N(C)C)C2O)C(C)CC(C)C(=O)C=CC1C"
+          },
+          "byproducts": "Et₃Si–X (silyl trifluoroacetate or silanol), methyl benzoate",
+          "mechanismRefs": [
+            "I. Ojima, T. Kogure, Organometallics 1982, 1, 1390 (rhodium-catalysed 1,4-hydrosilylation of α,β-unsaturated carbonyl compounds; Chalk–Harrod-type mechanism).",
+            "J. F. Hartwig, Organotransition Metal Chemistry, University Science Books, 2010, ch. 16 (hydrosilylation).",
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., Oxford University Press, 2012, ch. 20 and 10 (protonation of enol ethers; transesterification via tetrahedral intermediates).",
+            "Q. Edmondson et al., J. Am. Chem. Soc. 2026, 148, 38582 (source)."
+          ],
+          "hints": [
+            {
+              "transition": "step 3 int 1",
+              "mol": "substrate",
+              "atom": 25
+            },
+            {
+              "transition": "product",
+              "mol": "substrate",
+              "atom": 24
+            }
+          ],
+          "difficulty": {
+            "steps": 3,
+            "intermediates": 4,
+            "sigmaBondEvents": 4,
+            "textbookLevel": "specialized",
+            "stepScores": [
+              4.5,
+              2.5,
+              1
+            ],
+            "uncommonReagents": 1,
+            "score": 9.0
+          }
+        }
+      ]
     }
   ]
 }
