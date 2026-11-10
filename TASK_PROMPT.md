@@ -14,7 +14,7 @@ Backup of the Claude Code scheduled task that adds a daily set to this repositor
 | Notifications | Push on |
 | GitHub Pages site | https://qdher.github.io/Daily-organic-chemistry-puzzles/ |
 
-The earlier Cowork task "One-Pot Puzzles daily set" (disabled) read and published the claude.ai page, which was deleted on 2026-11-10; it no longer works and must not be re-enabled.
+The earlier Cowork task "One-Pot Puzzles daily set" was deleted on 2026-11-10 (it used the claude.ai page, also deleted).
 
 Backed up on 2026-11-10 (the GitHub repository is the only copy of the site and its data; the claude.ai page was deleted; sets older than 32 days are archived in data/archive.json.gz).
 
