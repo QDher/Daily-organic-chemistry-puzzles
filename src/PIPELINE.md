@@ -111,7 +111,7 @@ Send a short summary: date of the new set; for each level, the reaction, the pap
 
 ## Difficulty questions (proposal only)
 
-After solving, the page asks three optional questions (stored in Supabase `difficulty_answers`, one answer per visitor and problem): where the solver had met this reaction (undergraduate course, graduate course, papers, never), the hardest step (problems with more than one step), and whether each reagent marked `"uncommon"` was known. `difficulty_summary` aggregates them. The scheduled run records "calibration" observations in `data/feedback_log.json` and proposes a change of classification (stepLevel, `uncommon`, score thresholds) when at least 8 answers and at least 70 % disagree. Nothing is changed automatically.
+After solving, the page asks for a one-click vote for the problem's level (too easy, about right, too hard; D1 table `difficulty_votes`) and three optional questions (D1 table `difficulty_answers`, one answer per visitor and problem): where the solver had met this reaction (undergraduate course, graduate course, papers, never), the hardest step (problems with more than one step), and whether each reagent marked `"uncommon"` was known. `difficulty_summary` aggregates them. The scheduled run records "calibration" observations in `data/feedback_log.json` and proposes a change of classification (stepLevel, `uncommon`, score thresholds) when at least 8 answers or votes and at least 70 % disagree. Nothing is changed automatically.
 
 ## Archive and date list
 
