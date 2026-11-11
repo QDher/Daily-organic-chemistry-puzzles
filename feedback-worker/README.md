@@ -21,12 +21,14 @@ Base URL: `https://puzzle-feedback.<account subdomain>.workers.dev`
 
 | Request | Result |
 |---|---|
-| `POST /results`, `/ratings`, `/difficulty_answers` with a JSON row | `201 {}`; `409 {"error": "duplicate"}` if this visitor already answered this problem; `400 {"error": ...}` if invalid |
+| `POST /results`, `/ratings`, `/difficulty_answers`, `/difficulty_votes` with a JSON row | `201 {}`; `409 {"error": "duplicate"}` if this visitor already answered this problem; `400 {"error": ...}` if invalid |
 | `POST /rpc/<fn>` with `{"p_site": ..., ...}` or `GET /rpc/<fn>?p_site=...` | `200` JSON |
 
 Read functions: `problem_stats` (`p_problem`), `problem_summary`, `feedback_export` (`p_since`, default 120 days ago),
 `difficulty_summary`. Browsers can call the Worker only from `ALLOWED_ORIGINS` (`wrangler.toml`); requests without
 an `Origin` header (curl in the scheduled tasks) are accepted. Anyone can read `feedback_export`: remarks are not private.
+
+Optional fields (pages from 2026-11-11): `user_level` (`undergraduate`, `graduate`, `postgraduate`) on every row, `score_rule` on results (1 = every distinct structure counted, the default for older rows; 2 = correct intermediates not counted). `difficulty_votes` rows have `vote` (`too_easy`, `about_right`, `too_hard`). The read functions never return `user_level` or `score_rule`; `difficulty_summary` adds `votes` ({n, too_easy, about_right, too_hard}) per problem. Schema change: `migrations/0002_levels_votes_score_rule.sql` (applied by the workflow before the deploy).
 
 ## One-time setup (account owner)
 

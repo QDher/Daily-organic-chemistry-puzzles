@@ -2,7 +2,7 @@
 // Name Reaction Daily (site "namerxn"): Cloudflare Worker with a D1 database (binding DB).
 // Replaces the Supabase project; the read functions return the same JSON as supabase/schema.sql.
 //
-//   POST /results | /ratings | /difficulty_answers   JSON body: insert one row
+//   POST /results | /ratings | /difficulty_answers | /difficulty_votes   JSON body: insert one row
 //        201 {} | 409 {"error": "duplicate"} (this visitor already answered this problem) | 400 {"error": ...}
 //   POST /rpc/<fn> with a JSON body {"p_site": ..., ...}, or GET /rpc/<fn>?p_site=...   200 JSON
 //        problem_stats (p_problem), problem_summary, feedback_export (p_since, default 120 days ago),
@@ -10,6 +10,7 @@
 //
 // Browsers may call it only from ALLOWED_ORIGINS (wrangler.toml); requests without an Origin header
 // (curl in the scheduled tasks) are accepted. Anyone can call feedback_export: remarks are not private.
+// The visitor's declared level (user_level) and the scoring rule are stored but not returned by the read functions.
 
 import { SITES, TABLES, Invalid, validRow, isoTime } from './rows.js';
 import { round2, median } from './stats.js';
@@ -132,7 +133,8 @@ async function rpc(db, fn, a) {
     case 'difficulty_summary': {
       const rows = await all(db, `SELECT problem_id, seen, hardest_step, known_reagents, unknown_reagents
         FROM difficulty_answers WHERE site = ?`, site);
-      return sortedIds(rows).map(id => {
+      const votes = await all(db, 'SELECT problem_id, vote FROM difficulty_votes WHERE site = ?', site);
+      return sortedIds([...rows, ...votes]).map(id => {
         const d = rows.filter(r => r.problem_id === id);
         const reagents = {};
         const add = (t, k) => { (reagents[t] ??= { known: 0, unknown: 0 })[k]++; };
@@ -141,8 +143,11 @@ async function rpc(db, fn, a) {
           JSON.parse(r.unknown_reagents).forEach(t => add(t, 'unknown'));
         }
         const seen = s => d.filter(r => r.seen === s).length;
+        const v = votes.filter(r => r.problem_id === id);
+        const vote = s => v.filter(r => r.vote === s).length;
         return { problem_id: id, answers: d.length, seen_undergraduate: seen('undergraduate'), seen_graduate: seen('graduate'),
-          seen_papers: seen('papers'), seen_never: seen('never'), hardest_step: countBy(d, r => r.hardest_step), reagents };
+          seen_papers: seen('papers'), seen_never: seen('never'), hardest_step: countBy(d, r => r.hardest_step), reagents,
+          votes: { n: v.length, too_easy: vote('too_easy'), about_right: vote('about_right'), too_hard: vote('too_hard') } };
       });
     }
     default:

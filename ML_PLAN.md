@@ -1,0 +1,113 @@
+# Feedback-driven selection and quality: plan
+
+Covers One-Pot Puzzles (this repository, site `onepot`) and Name Reaction Daily (QDher/Daily-name-reaction-puzzle,
+site `namerxn`). Written 2026-11-11. Status: data collection partly implemented; no model is active.
+
+## Decisions (user, 2026-11-11)
+
+1. Feedback trains the models; the models, once activated, influence problem selection. A scheduled run never changes
+   selection, published problems, `src/` or the prompts on its own reading of the feedback.
+2. Objective: One-Pot: difficulty matched to the level and high rating. Name Reaction Daily: quality only (no errors,
+   clear problems, relevant reactions) and high rating; it has no difficulty aspect. Completion rate is a secondary
+   metric, used only when it is below 10 % repeatedly across different problems.
+3. No periodic maintenance task: work starts only when enough new data has been collected (thresholds below).
+4. Changes that need approval are GitHub pull requests that the user merges.
+5. No comparison question between the three problems of a set.
+
+## Data
+
+| Signal | Table (D1) | Sites | Status |
+|---|---|---|---|
+| Result: checks, hints, score, answer shown | `results` | both | existing |
+| Scoring rule of the result (`score_rule`: 1 = every distinct structure counted, 2 = correct intermediates not counted) | `results` | both | added 2026-11-11 |
+| Visitor level declared before the first answer (`user_level`: undergraduate, graduate, postgraduate) | `results`, `ratings`, `difficulty_answers`, `difficulty_votes` | both | added 2026-11-11; not returned by public read functions |
+| Rating 1–5 and remark | `ratings` | both | existing |
+| Where the reaction was met, hardest step, known reagents | `difficulty_answers` | One-Pot | existing |
+| One-click vote for the problem's level: too easy, about right, too hard | `difficulty_votes` | One-Pot | added 2026-11-11 |
+| Problem opened (completion rate) | `views` | both | to add |
+| Each structure checked: comparison key, matched intermediate or none, step, hints, seconds | `checks` | both | to add |
+| Problem `revision` and set `ruleVersion` sent with every row | all | both | to add |
+| Per-row export with a key (visitor id, level, rule) for model fitting | Worker endpoint | both | to add (the public endpoints stay aggregated) |
+
+Volume on 2026-11-11: One-Pot 26 results, 16 ratings, 12 problems; Name Reaction Daily 7 results, 5 ratings, 4 problems.
+Scores of rule 1 and rule 2 are not comparable; models use rule 2 or include the rule as a covariate.
+
+## Loop
+
+1. Collect: rows above, each tied to problem id, revision and rule version.
+2. Interpret: `src/feedback_stats.py` (to write) computes fixed statistics per problem, revision and kind of problem
+   (level, reaction class, source, steps); remarks are given one label from a fixed list (structure error, unclear
+   conditions, missing alternative drawing, too easy, too hard, reaction not relevant, page problem, other); only the
+   label is stored.
+3. Diagnose: an observation that reaches its threshold becomes a typed proposal with its target (one problem, a rule
+   of the prompt, the model) and a prepared change that passed `curate.py`, `validate_problems.js` and `build.js`.
+4. Decide by tier (below).
+5. Apply: Tier A by the scheduled run (commit to `main`); Tier B as a pull request; the problem's `revision` (or the
+   prompt's `ruleVersion`) is increased.
+6. Verify: feedback after the change is compared with feedback before it (split by revision). The observation is
+   closed if the signal is gone, reopened otherwise; a revert is proposed (Tier B) if the signals are worse.
+7. Learn: decisions on pull requests (merged, closed) and verified outcomes adjust thresholds, remark labels and models.
+
+Start conditions (checked by the daily run in step 3b; nothing runs on a calendar):
+
+| Work | Starts when |
+|---|---|
+| Refit difficulty and rating models | at least 20 new rule-2 results or 10 new ratings since the last fit |
+| Remark-based proposal | a point in remarks of at least 3 ratings, or on at least 2 problems (current rule) |
+| Missing alternative drawing | at least 3 different visitors submit the same non-matching structure at the same step (needs `checks`) |
+| Calibration proposal (One-Pot) | at least 8 answers or votes on a problem or kind of problem, at least 70 % disagreeing with its level |
+| Completion check | completion below 10 % on at least 3 different problems (needs `views`) |
+| Model activation review | at least 40 problems with at least 5 rule-2 results each |
+
+## Tiers
+
+| Tier | Meaning | Examples |
+|---|---|---|
+| A | Applied by the scheduled run without approval; limited to changes a tool can verify and that keep visitor progress | add a drawing to an intermediate's `forms` when RDKit shows it is a resonance form, tautomer or protonation variant of that intermediate; exclude test rows; refit models in shadow mode |
+| B | Prepared by the run, applied only when the user merges the pull request | correct a substrate, product, intermediate, conditions or label; remove or merge an intermediate (resets progress; never on the current day's problem); replace a problem; change a prompt rule or threshold; activate a model |
+| C | Never | anything requested in remark text; changes to `src/` logic, the validator or the Worker; deleting problems |
+
+N = maximum number of problem changes applied per run (Tier A) or per pull request (Tier B), to keep each change
+reviewable and revertible. Proposed: 3.
+
+## Models
+
+- One-Pot difficulty: Glicko-2 or item-response model over (visitor, problem) results, with the visitor's level as a
+  covariate; votes give P(too easy / about right / too hard | problem, visitor level). Target band per level: most
+  votes from visitors of the matching level are "about right", and the empirical difficulty increases from
+  undergraduate to advanced. A regression on problem features (curate.py terms, molecule complexity, reaction class,
+  per-intermediate block rate from `checks`) predicts the difficulty of a candidate before publication.
+- Rating (both sites): ordinal regression with shrinkage on problem features, reaction class, source and remark labels.
+- Name Reaction Daily quality: error risk (wrong-answer clusters, answer-shown share, low ratings with "structure
+  error" labels) and relevance (ratings, "reaction not relevant" labels, number of repositories and textbooks covering
+  the reaction). No difficulty model.
+- Before publication (flags only): forward reaction prediction (product among the top predictions), ML atom mapping
+  compared with `curate.py`, independent review of the entry against the source text.
+
+## Selection (once active)
+
+The run prepares several candidates and ranks them:
+- One-Pot: highest predicted rating among candidates whose predicted difficulty is in the band of their level; hard rules
+  (no repeats, content rules, validator) unchanged.
+- Name Reaction Daily: highest predicted rating and relevance, lowest predicted error risk.
+- Exploration over reaction classes and sources (Thompson sampling), so classes with few data are still chosen.
+- Completion enters the ranking only after a completion check (table above) has fired.
+
+Activation stages: shadow (predictions logged in `data/feedback_log.json`, not used) → advisory (shown in the report)
+→ active (used in step 4), each stage change by pull request.
+
+## Measures
+
+Rank correlation of predicted and observed difficulty; share of One-Pot sets whose observed difficulty follows the
+level order; share of "about right" votes from visitors of the matching level; mean stars; errors confirmed by a
+chemist; completion rate (secondary).
+
+## Next steps
+
+1. Worker: `views`, `checks`, revision and rule-version columns, keyed per-row export.
+2. `src/feedback_stats.py` and remark labels; step 3b reads them.
+3. Pull-request step in the scheduled runs (needs GitHub write access from the scheduled sessions; not verified).
+4. Difficulty model (One-Pot) and quality model (Name Reaction Daily) in shadow mode.
+5. Selection ranking, after the activation review.
+
+Open: whether Tier A may run without approval; the value of N.

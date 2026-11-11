@@ -83,6 +83,12 @@ try {
       ['/difficulty_answers', { ...d, hardest_step: 21 }, 'invalid hardest_step'],
       ['/difficulty_answers', { ...d, known_reagents: ['a', 'b', 'c', 'd', 'e', 'f', 'g'] }, 'invalid known_reagents'],
       ['/difficulty_answers', { ...d, unknown_reagents: ['x'.repeat(601)] }, 'invalid unknown_reagents'],
+      ['/results', { ...r, user_level: 'professor' }, 'invalid user_level'],
+      ['/ratings', { ...r, stars: 3, user_level: 1 }, 'invalid user_level'],
+      ['/results', { ...r, score_rule: 3 }, 'invalid score_rule'],
+      ['/results', { ...r, score_rule: '2' }, 'invalid score_rule'],
+      ['/difficulty_votes', { ...d, vote: 'easy' }, 'invalid vote'],
+      ['/difficulty_votes', { ...d, vote: 'too_hard', user_level: 'phd' }, 'invalid user_level'],
       ['/results', '[1]', 'body must be a JSON object'],
       ['/results', 'not json', 'body must be a JSON object'],
       ['/results', JSON.stringify({ ...r, pad: 'x'.repeat(5000) }), 'body too large'],
@@ -165,11 +171,41 @@ try {
   await t('difficulty_summary', async () => {
     assert.deepEqual(await rpc('difficulty_summary', { p_site: 'onepot' }), [{
       problem_id: 'p2', answers: 3, seen_undergraduate: 0, seen_graduate: 2, seen_papers: 0, seen_never: 1,
-      hardest_step: { 2: 2 }, reagents: { LiAlH4: { known: 1, unknown: 0 }, '9-BBN, then H2O2': { known: 1, unknown: 1 } } }]);
+      hardest_step: { 2: 2 }, reagents: { LiAlH4: { known: 1, unknown: 0 }, '9-BBN, then H2O2': { known: 1, unknown: 1 } },
+      votes: { n: 0, too_easy: 0, about_right: 0, too_hard: 0 } }]);
     assert.equal((await post('/difficulty_answers', { site: 'onepot', problem_id: 'p4', client_id: U(8), seen: 'papers',
       hardest_step: null, known_reagents: ['TMSCl'], unknown_reagents: [] })).status, 201);
     const d = (await rpc('difficulty_summary', { p_site: 'onepot' })).find(r => r.problem_id === 'p4');
     assert.deepEqual([d.answers, d.seen_papers, d.hardest_step, d.reagents], [1, 1, {}, { TMSCl: { known: 1, unknown: 0 } }]);
+  });
+
+  await t('user level and scoring rule stored, not returned; old rows default to rule 1 and no level', async () => {
+    const r = { site: 'onepot', problem_id: 'p5', client_id: U(30), checks: 1, hints: 0, score: 1, revealed: false };
+    assert.equal((await post('/results', { ...r, user_level: 'graduate', score_rule: 2 })).status, 201);
+    assert.equal((await post('/results', { ...r, client_id: U(31) })).status, 201);
+    assert.equal((await post('/ratings', { site: 'onepot', problem_id: 'p5', client_id: U(30), stars: 4, user_level: 'graduate' })).status, 201);
+    assert.equal((await post('/difficulty_answers', { site: 'onepot', problem_id: 'p5', client_id: U(30), seen: 'graduate', user_level: 'postgraduate' })).status, 201);
+    const rows = (await db.prepare("SELECT client_id, user_level, score_rule FROM results WHERE problem_id = 'p5' ORDER BY id").all()).results;
+    assert.deepEqual(rows.map(x => [x.user_level, x.score_rule]), [['graduate', 2], [null, 1]]);
+    assert.equal((await db.prepare("SELECT user_level FROM ratings WHERE problem_id = 'p5'").first()).user_level, 'graduate');
+    assert.equal((await db.prepare("SELECT user_level FROM difficulty_answers WHERE problem_id = 'p5'").first()).user_level, 'postgraduate');
+    const out = JSON.stringify([await rpc('problem_stats', { p_site: 'onepot', p_problem: 'p5' }), await rpc('problem_summary', { p_site: 'onepot' }),
+      await rpc('feedback_export', { p_site: 'onepot' }), await rpc('difficulty_summary', { p_site: 'onepot' })]);
+    assert.ok(!/user_level|postgraduate|score_rule/.test(out));
+  });
+
+  await t('difficulty votes: one per visitor and problem, counted in difficulty_summary', async () => {
+    const v = { site: 'onepot', problem_id: 'p6', client_id: U(40), vote: 'too_hard', user_level: 'undergraduate' };
+    assert.equal((await post('/difficulty_votes', v)).status, 201);
+    assert.equal((await post('/difficulty_votes', { ...v, vote: 'too_easy' })).status, 409);
+    assert.equal((await post('/difficulty_votes', { ...v, client_id: U(41), vote: 'about_right', user_level: undefined })).status, 201);
+    assert.equal((await post('/difficulty_votes', { ...v, client_id: U(42) })).status, 201);
+    assert.equal((await call('GET', '/difficulty_votes')).status, 405);
+    const d = (await rpc('difficulty_summary', { p_site: 'onepot' })).find(r => r.problem_id === 'p6');
+    assert.deepEqual(d, { problem_id: 'p6', answers: 0, seen_undergraduate: 0, seen_graduate: 0, seen_papers: 0, seen_never: 0,
+      hardest_step: {}, reagents: {}, votes: { n: 3, too_easy: 0, about_right: 1, too_hard: 2 } });
+    assert.deepEqual((await rpc('difficulty_summary', { p_site: 'onepot' })).find(r => r.problem_id === 'p2').votes,
+      { n: 0, too_easy: 0, about_right: 0, too_hard: 0 });
   });
 
   await t('import from the Supabase REST API (typed values, paging), secret key sent, nothing else', async () => {
