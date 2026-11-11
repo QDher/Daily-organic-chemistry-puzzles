@@ -208,6 +208,8 @@ body { padding-block: 14px 40px; }
 /* Difficulty questions */
 .fb .df { grid-column: 1 / -1; }
 .df-form { display: grid; gap: 12px; }
+.fb .dv { margin-bottom: 14px; }
+.df-opt:disabled { cursor: default; }
 .df-q { display: grid; gap: 6px; }
 .df-label { font-size: 14px; }
 .df-opts { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -217,6 +219,15 @@ body { padding-block: 14px 40px; }
 .df-reag { display: grid; gap: 6px; }
 .df-reag .row { gap: 8px; }
 .df-reag .name { font-family: var(--font-mono); font-size: 13px; min-width: 0; }
+
+/* Level question (asked once, before the first check) */
+.lvl { display: grid; gap: 6px; border: 1px solid var(--accent); background: var(--accent-soft); border-radius: 8px; padding: 8px 10px; }
+.lvl[hidden], .lvl-note[hidden] { display: none; }
+.lvl-q { font-size: 14px; }
+.lvl-opts { display: flex; flex-wrap: wrap; gap: 6px; }
+.lvl-opt { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 4px 12px; font-size: 13px; cursor: pointer; }
+.lvl-opt:hover, .lvl-opt[aria-checked="true"] { border-color: var(--accent); color: var(--accent); }
+.linkbtn { border: 0; background: none; padding: 0; color: var(--accent); text-decoration: underline; cursor: pointer; font-size: inherit; }
 </style>
 
 <div class="wrap">
@@ -265,6 +276,11 @@ body { padding-block: 14px 40px; }
         <button class="btn primary" id="checkBtn" type="button">Check structure</button>
         <span class="hint mono" id="attempts"></span>
       </div>
+      <div class="lvl" id="lvlBox" role="group" aria-labelledby="lvlQ" hidden>
+        <span class="lvl-q" id="lvlQ">Before your first answer: what is your level?</span>
+        <div class="lvl-opts" id="lvlOpts" role="radiogroup" aria-labelledby="lvlQ"></div>
+        <span class="hint">Asked once. Undergraduate: bachelor's student; graduate: master's or PhD student; postgraduate: PhD obtained (postdoc, faculty, industry). Stored anonymously with your results to analyse difficulty; never shown, and it does not change your score.</span>
+      </div>
       <div class="verdict info" id="verdict" aria-live="polite">
         <span class="pill">Ready</span>
         <span id="verdictText">Draw the product or any intermediate, then check it.</span>
@@ -278,6 +294,7 @@ body { padding-block: 14px 40px; }
         </ul>
         Draw metal alkoxides and enolates as O⁻. Charges: the <b>A⁺</b> / <b>A⁻</b> tools in the left toolbar, then click the atom. Radicals: double-click the atom to open Atom Properties and set Radical. Structure editor: <a href="https://lifescience.opensource.epam.com/ketcher/" target="_blank" rel="noopener">Ketcher</a> (EPAM, Apache 2.0).
       </div>
+      <div class="hint lvl-note" id="lvlNote" hidden><span id="lvlNoteText"></span><button class="linkbtn" id="lvlChange" type="button">Change</button></div>
     </section>
 
     <section class="card" aria-labelledby="mechTitle">
@@ -303,7 +320,7 @@ body { padding-block: 14px 40px; }
       </div>
       <div class="fb-chart" id="fbChart"></div>
       <div class="fb-sub" id="fbSummary"></div>
-      <div class="hint">Score = different structures checked until the product is found + hint penalty (hint 1 adds 1, hint 2 adds 2, hint 3 adds 3, …). Lower is better. Users who revealed the answer are shown as a separate bar.</div>
+      <div class="hint">Score = different structures checked until the product is found (correct intermediates are not counted) + hint penalty (hint 1 adds 1, hint 2 adds 2, hint 3 adds 3, …). Lower is better. Users who revealed the answer are shown as a separate bar.</div>
     </section>
     <section class="card" aria-labelledby="fbRateTitle">
       <h3 id="fbRateTitle">Rate this problem</h3>
@@ -322,8 +339,14 @@ body { padding-block: 14px 40px; }
       <div class="hint">Ratings and remarks are anonymous and are used to improve how problems are chosen. Remarks are not private: do not include personal information.</div>
     </section>
     <section class="card df" aria-labelledby="dfTitle" id="dfCard">
-      <h3 id="dfTitle">How hard was it? Three quick questions</h3>
+      <h3 id="dfTitle">How hard was it?</h3>
+      <div class="df-q dv">
+        <span class="df-label" id="dvLabel">For its level, this problem was:</span>
+        <div class="df-opts" id="dvOpts" role="radiogroup" aria-labelledby="dvLabel"></div>
+        <span class="fb-msg" id="dvMsg"></span>
+      </div>
       <form id="dfForm" class="df-form" autocomplete="off">
+        <span class="eyebrow">Three more questions (optional)</span>
         <div class="df-q">
           <span class="df-label">Where had you seen this kind of reaction before?</span>
           <div class="df-opts" id="dfSeen" role="radiogroup" aria-label="Where had you seen this reaction before"></div>
@@ -342,7 +365,7 @@ body { padding-block: 14px 40px; }
         </div>
       </form>
       <div class="fb-msg" id="dfDone" hidden></div>
-      <div class="hint">Anonymous. The answers are used to check how problems are classified (undergraduate, graduate, advanced).</div>
+      <div class="hint">Anonymous. The answers are used to check how problems are classified (undergraduate, graduate, advanced) and to choose future problems.</div>
     </section>
   </div>
 </div>
@@ -613,18 +636,57 @@ async function fbPost(path, body) {
   if (!r.ok) throw new Error('HTTP ' + r.status);
   return r.json();
 }
+/* ---- level declared by the visitor: asked once before the first answer (shared by both sites, same origin);
+   sent with results, ratings and answers, never shown, not used in the score ---- */
+const USER_LEVELS = [['undergraduate', 'Undergraduate'], ['graduate', 'Graduate'], ['postgraduate', 'Postgraduate']];
+const userLevel = () => { const v = store.get('puzzles:level'); return USER_LEVELS.some(l => l[0] === v) ? v : null; };
+let lvlWait = null;
+function askLevel() {            // resolves true once a level is stored; the pending answer is then checked
+  if (!fbOn || userLevel()) return Promise.resolve(true);
+  if (lvlWait) return Promise.resolve(false);
+  renderLevel(true);
+  $('lvlBox').scrollIntoView({ block: 'nearest' });
+  return new Promise(res => { lvlWait = res; });
+}
+function renderLevel(open) {
+  const lv = userLevel();
+  $('lvlBox').hidden = !open;
+  $('lvlOpts').innerHTML = USER_LEVELS.map(([v, t]) => `<button type="button" class="lvl-opt" role="radio" aria-checked="${v === lv}" data-v="${v}">${t}</button>`).join('');
+  $('lvlOpts').querySelectorAll('.lvl-opt').forEach(b => b.onclick = () => {
+    store.set('puzzles:level', b.dataset.v); renderLevel(false);
+    if (lvlWait) { const r = lvlWait; lvlWait = null; r(true); }
+  });
+  $('lvlNote').hidden = !fbOn || !lv || open;
+  if (lv) $('lvlNoteText').textContent = `Level you declared: ${USER_LEVELS.find(l => l[0] === lv)[1]} (anonymous, not used in the score). `;
+}
 /* Called by the page when the problem is finished: product found (revealed = false) or answer shown first (revealed = true). */
 function finishProblem(revealed) {
   if (state.final) return;
   const hints = state.hints || 0;
-  state.final = { checks: state.attempts, hints, score: state.attempts + hintPenalty(hints), revealed };
+  state.final = { checks: state.attempts, hints, score: state.attempts + hintPenalty(hints), revealed, rule: state.rule || 1 };
+}
+/* structures checked (table checks): one row per distinct structure and visitor, for wrong-answer clusters
+   (Tier A additions of alternative drawings, ML_PLAN.md) and per-intermediate statistics */
+function fbLogCheck(p, molfile, key, verdict, hit) {
+  if (!fbOn || !key) return;
+  state.logged = state.logged || [];
+  if (state.logged.includes(key)) return;
+  let smiles = '';
+  try { const m = R.get_mol(molfile); if (m) { if (m.is_valid()) smiles = m.get_smiles(); m.delete(); } } catch (e) { /* not logged */ }
+  if (!smiles || smiles.length > 1000 || key.length > 2000) return;
+  state.logged.push(key); save();
+  const st = hit ? p.steps[hit.si] : null;
+  fbPost('checks', { site: FB_SITE, problem_id: p.id, client_id: fbClient(), key, smiles, verdict,
+    step: st ? st.n : undefined, intermediate: hit ? hit.k + 1 : undefined, hints: state.hints || 0,
+    seconds: state.t0 ? Math.min(864000, Math.max(0, Math.round((Date.now() - state.t0) / 1000))) : undefined,
+    user_level: userLevel() || undefined }).catch(e => console.warn('check not logged', e));
 }
 async function fbSendResult(p, f) {
   const k = `fbsent:${FB_SITE}:${p.id}`;
   if (!fbOn || !f || store.get(k)) return;
   try {
     await fbPost('results', { site: FB_SITE, problem_id: p.id, client_id: fbClient(),
-      checks: f.checks, hints: f.hints, score: f.score, revealed: f.revealed });
+      checks: f.checks, hints: f.hints, score: f.score, revealed: f.revealed, score_rule: f.rule || 1, user_level: userLevel() || undefined });
     store.set(k, true);
     fbStatsCache.delete(p.id);
   } catch (e) { console.warn('result not sent', e); }
@@ -648,7 +710,7 @@ function fbRender() {
   if (!done) return;
   $('fbScore').textContent = !f ? 'Score not recorded' : f.revealed ? 'Answer shown' : `Your score: ${f.score}`;
   $('fbScoreSub').textContent = !f ? 'This problem was solved before scoring was added.'
-    : `${f.checks} structure check${f.checks === 1 ? '' : 's'} + hint penalty ${hintPenalty(f.hints)} (${f.hints} hint${f.hints === 1 ? '' : 's'})` + (f.revealed ? ', then the answer was shown.' : '.');
+    : `${f.checks} structure check${f.checks === 1 ? '' : 's'}${f.rule === 2 ? ' (correct intermediates not counted)' : ''} + hint penalty ${hintPenalty(f.hints)} (${f.hints} hint${f.hints === 1 ? '' : 's'})` + (f.revealed ? ', then the answer was shown.' : '.');
   fbRenderRating(p);
   dfRender(p);
   if (!fbOn) { $('fbChart').innerHTML = ''; $('fbSummary').textContent = 'Shared statistics are not available on this copy of the page.'; return; }
@@ -746,6 +808,7 @@ function dfRender(p) {
   const k = `fbdiff:${FB_SITE}:${p.id}`, done = store.get(k);
   $('dfCard').hidden = !fbOn;
   if (!fbOn) return;
+  dvRender(p);
   $('dfForm').hidden = !!done; $('dfDone').hidden = !done;
   if (done) { $('dfDone').textContent = 'Thank you, your answers were recorded.'; return; }
   if (dfAns.pid !== p.id) dfAns = { pid: p.id, seen: null, hard: null, reag: {} };
@@ -760,6 +823,31 @@ function dfRender(p) {
     dfChoice(box, [['yes', 'Yes'], ['no', 'No']], dfAns.reag[t] || null, v => { dfAns.reag[t] = v; dfRender(p); }); });
   $('dfSend').disabled = !(dfAns.seen && (!multi || dfAns.hard) && reag.every(t => dfAns.reag[t]));
 }
+/* one-click vote "too easy / about right / too hard" for the problem's level (table difficulty_votes) */
+const DV = [['too_easy', 'Too easy'], ['about_right', 'About right'], ['too_hard', 'Too hard']];
+const LEVEL_PHRASE = { undergraduate: 'an undergraduate', graduate: 'a graduate', advanced: 'an advanced' };
+function dvRender(p) {
+  const mine = store.get(`fbvote:${FB_SITE}:${p.id}`);
+  $('dvLabel').textContent = `For ${LEVEL_PHRASE[p.level] || 'a'} problem, this one was:`;
+  dfChoice($('dvOpts'), DV, mine ? mine.vote : null, v => dvSend(p, v));
+  if (mine) $('dvOpts').querySelectorAll('.df-opt').forEach(b => { b.disabled = true; });
+  $('dvMsg').className = 'fb-msg';
+  $('dvMsg').textContent = mine ? 'Recorded. Thank you.' : '';
+}
+async function dvSend(p, vote) {
+  const k = `fbvote:${FB_SITE}:${p.id}`;
+  if (store.get(k)) return;
+  $('dvOpts').querySelectorAll('.df-opt').forEach(b => { b.disabled = true; });
+  $('dvMsg').className = 'fb-msg'; $('dvMsg').textContent = 'Sending…';
+  try {
+    await fbPost('difficulty_votes', { site: FB_SITE, problem_id: p.id, client_id: fbClient(), vote, user_level: userLevel() || undefined });
+    store.set(k, { vote });
+    if (p === P) dvRender(p);
+  } catch (e) {
+    if (p === P) { dvRender(p); $('dvMsg').className = 'fb-msg bad'; $('dvMsg').textContent = 'Could not send. Try again later.'; }
+    console.warn(e);
+  }
+}
 async function dfSubmit(ev) {
   ev.preventDefault();
   const p = P, k = `fbdiff:${FB_SITE}:${p.id}`;
@@ -770,7 +858,7 @@ async function dfSubmit(ev) {
     await fbPost('difficulty_answers', { site: FB_SITE, problem_id: p.id, client_id: fbClient(), seen: dfAns.seen,
       hardest_step: p.steps.length > 1 ? +dfAns.hard : null,
       known_reagents: reag.filter(t => dfAns.reag[t] === 'yes').map(t => t.slice(0, 100)),
-      unknown_reagents: reag.filter(t => dfAns.reag[t] === 'no').map(t => t.slice(0, 100)) });
+      unknown_reagents: reag.filter(t => dfAns.reag[t] === 'no').map(t => t.slice(0, 100)), user_level: userLevel() || undefined });
     store.set(k, true); $('dfMsg').textContent = '';
     if (p === P) dfRender(p);
   } catch (e) {
@@ -785,7 +873,7 @@ async function fbSubmitRating(ev) {
   const remark = $('fbRemark').value.trim().slice(0, 200) || null;
   $('fbSend').disabled = true; $('fbFormMsg').className = 'fb-msg'; $('fbFormMsg').textContent = 'Sending…';
   try {
-    await fbPost('ratings', { site: FB_SITE, problem_id: p.id, client_id: fbClient(), stars: fbStars, remark });
+    await fbPost('ratings', { site: FB_SITE, problem_id: p.id, client_id: fbClient(), stars: fbStars, remark, user_level: userLevel() || undefined });
     store.set(k, { stars: fbStars });
     fbStatsCache.delete(p.id);
     if (p === P) fbRender();
@@ -855,7 +943,15 @@ function buildContext(p) {
   const total = p.steps.reduce((a, s) => a + s.intermediates.length, 0);
   return { fp, species, total, sub: speciesInfo(R, p.substrate.smiles, fp), prod: speciesInfo(R, p.product.smiles, fp) };
 }
-const stateOf = p => store.get('onepot:' + p.id) || { found: [], solved: false, attempts: 0, hints: 0 };
+// rule 2: correct intermediates are not counted; problems started before 2026-11-11 keep rule 1 (every distinct structure counted)
+const SCORE_RULE = 2;
+const stateOf = p => {
+  const s = store.get('onepot:' + p.id);
+  if (!s) return { found: [], solved: false, attempts: 0, hints: 0, rule: SCORE_RULE, t0: Date.now() };
+  if (!s.t0) s.t0 = Date.now();   // time origin for the seconds logged with each check
+  if (!s.rule) s.rule = s.attempts || s.found.length || s.hints || s.solved || s.revealed || s.final ? 1 : SCORE_RULE;
+  return s;
+};
 const stepsText = p => p.steps.length === 1 ? 'one pot · one step' : `one pot · ${p.steps.length} steps`;
 
 
@@ -1016,23 +1112,29 @@ function save() { store.set('onepot:' + P.id, state); renderTabs(); renderDayLis
 
 async function check() {
   if (editor.isEmpty()) { setVerdict('info', 'Empty', 'Draw a structure first.'); return; }
+  if (!await askLevel()) return;
   let molfile;
   try { molfile = await editor.getMolfile(); } catch (e) { setVerdict('bad', 'Unreadable', 'The structure could not be read. Check valences and charges.'); return; }
   const drawn = speciesInfo(R, molfile, ctx.fp);
   if (!drawn.key) { setVerdict('bad', 'Unreadable', 'The structure could not be read. Check valences and charges.'); return; }
-  // the same structure checked again is not counted again (score = distinct structures checked + hint penalty)
+  // score = distinct structures checked + hint penalty: the same structure checked again is not counted again, and
+  // (scoring rule 2, problems started from 2026-11-11) a correct intermediate is not counted
+  const isProduct = matches(drawn, ctx.prod);
+  const hit = isProduct ? null : (ctx.species.find(x => matches(drawn, x.info)) || {}).hit;
+  const free = !!hit && state.rule === 2;
+  const isSub = !isProduct && !hit && matches(drawn, ctx.sub);
+  fbLogCheck(P, molfile, drawn.key, isProduct ? 'product' : hit ? 'intermediate' : isSub ? 'substrate' : 'none', hit);
   state.checked = state.checked || [];
-  const repeat = state.checked.includes(drawn.key);
-  if (!repeat) { state.checked.push(drawn.key); state.attempts++; save(); }
+  const repeat = !free && state.checked.includes(drawn.key);
+  if (!repeat && !free) { state.checked.push(drawn.key); state.attempts++; save(); }
   updateAttempts();
-  const say = (kind, pill, text) => setVerdict(kind, pill, text + (repeat ? ' Already checked: not counted again.' : ''));
-  if (matches(drawn, ctx.prod)) {
+  const say = (kind, pill, text) => setVerdict(kind, pill, text + (repeat ? ' Already checked: not counted again.' : free ? ' Not counted in the score.' : ''));
+  if (isProduct) {
     const first = !state.solved; state.solved = true; if (first) finishProblem(false); save(); updateAttempts();
     say('ok', 'Product', first ? 'Correct. This is the product reported in the paper.' : 'Correct. Product already found.');
     renderAll();
     return;
   }
-  const hit = (ctx.species.find(x => matches(drawn, x.info)) || {}).hit;
   if (hit) {
     const st = P.steps[hit.si], it = st.intermediates[hit.k], id = hit.si + '.' + hit.k;
     const where = `step ${st.n}${st.reagents.length ? ' (' + reagentTexts(st).join(', ') + ')' : ''}, intermediate ${hit.k + 1} of ${st.intermediates.length}`;
@@ -1041,7 +1143,7 @@ async function check() {
     say('warn', 'Intermediate · step ' + st.n, `Correct intermediate: ${where}. ${it.label}.`);
     return;
   }
-  if (matches(drawn, ctx.sub)) { say('info', 'Starting material', 'This is the substrate (or a tautomer / protonation state of it).'); return; }
+  if (isSub) { say('info', 'Starting material', 'This is the substrate (or a tautomer / protonation state of it).'); return; }
   save();
   say('bad', 'Not on the path', 'Not the product or a known intermediate of the published mechanism.');
 }
@@ -1060,6 +1162,8 @@ async function main() {
   window.__puzzle = { editor, R, check: () => check(), dayIndex, changeInstant, wall,
     get state() { return state; }, get problem() { return P; }, selectProblem: i => selectProblem(i), loadDay: i => loadDay(i) };
   $('checkBtn').onclick = check;
+  $('lvlChange').onclick = () => renderLevel(true);
+  renderLevel(false);
   $('fbForm').onsubmit = fbSubmitRating;
   $('dfForm').onsubmit = dfSubmit;
   $('clearBtn').onclick = () => editor.clearAll();
