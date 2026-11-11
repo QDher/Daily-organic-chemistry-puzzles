@@ -90,7 +90,7 @@ reviewable and revertible: 3 (decided 2026-11-11).
 
 | Tool | Use when | Not by default because |
 |---|---|---|
-| RXNMapper (ML atom mapping) | the mapping of `curate.py` is doubtful (symmetric rings, look-alike atoms, cases where step 6 of the prompts asks to reorder SMILES); mapping atoms for curly arrows (below) | PyTorch install in every run; less tested on charged intermediates |
+| RXNMapper (ML atom mapping) | the mapping of `curate.py` is doubtful (symmetric rings, look-alike atoms, cases where step 6 of the prompts asks to reorder SMILES); mapping atoms for curly arrows (Future development, below) | PyTorch install in every run; less tested on charged intermediates |
 | Forward reaction prediction (Molecular Transformer, Chemformer) | checking that the product can be deduced from substrate and reagents (undergraduate and graduate problems, Name Reaction Daily); flag only | lower accuracy on total-synthesis substrates; install size |
 | DeepChem (pretrained molecular embeddings) | difficulty model once a few hundred problems have results; compared with RDKit fingerprints first | data volume too low now |
 
@@ -112,26 +112,69 @@ Rank correlation of predicted and observed difficulty; share of One-Pot sets who
 level order; share of "about right" votes from visitors of the matching level; mean stars; errors confirmed by a
 chemist; completion rate (secondary).
 
-## Future evolution: curly-arrow mechanisms drawn by solvers (idea, 2026-11-11)
+## Future development: curly-arrow mechanisms (plan, 2026-11-11)
 
-After finding the product, the visitor is offered to draw the curly arrows of each transition (substrate → intermediate
-1 → … → product) on the structures already shown.
-- Representation: one arrow = electron source (lone pair of atom i, or bond i–j) → sink (atom k, or bond k–l), per
-  transition; atoms numbered by the mapping between consecutive species that `curate.py` already computes (RXNMapper
-  when that mapping is doubtful).
-- Automatic check: applying the arrows to species n must give species n + 1 (bond orders, charges, lone pairs). Each
-  submission is marked valid or not without a chemist; the visitor gets feedback; invalid sets show where solvers
-  go wrong. Several arrow sets can be valid for one transition: any set that gives species n + 1 is accepted.
-- Storage: D1 table `arrows` (site, problem, transition, arrows as JSON, valid, visitor level); anonymous.
-- Uses: (1) teaching feature on the page; (2) a dataset of checked arrow-pushing steps; (3) validated examples and a
-  test set for the mechanisms Claude writes in the scheduled runs (intermediates, labels, `reaction` text); (4) later,
-  training an open arrow-pushing model (public datasets of the same kind exist, e.g. PMechDB, mech-USPTO-31K; not
-  reviewed here). Claude is not retrained by these data: they act on Claude through prompts and evaluation.
-- Requirements and limits: an arrow layer bound to atoms and bonds (Ketcher's arrows are drawing objects; whether they
-  can be bound to atoms was not checked); low participation expected at the current volume (about 30 results); the
-  arrows follow the problem's intermediates (concerted or stepwise as published).
-- Order: after the Phase 0 data and the pull-request step; prototype on Name Reaction Daily (simpler mechanisms, with
-  the repository mechanism images as reference).
+Tracked on GitHub: https://github.com/QDher/Daily-organic-chemistry-puzzles/issues/4. Not scheduled.
+
+### A. Goals
+
+1. A user draws curly arrows on a structure; Claude interprets them correctly and gives the resulting structure
+   (intermediate or product).
+2. Claude draws a mechanism from and to a molecule as curly arrows (forward from a substrate, backward from a target).
+
+### B. Plan
+
+1. Drawing to structure, without a Ketcher-type sketcher: the user draws the structure freehand (mouse or stylus) and
+   Claude converts the drawing into a readable structure (SMILES with atom positions). The recognized structure is
+   redrawn cleanly for the user to confirm or correct before any arrow is drawn.
+   - The Claude API accepts images and can return a fixed JSON shape (structured outputs). Calls go through the
+     feedback Worker, which keeps the API key as a Worker secret; the page never holds it. Each call has a cost, so the
+     Worker needs a limit per visitor and per day.
+   - Open recognition models for drawn structures (e.g. DECIMER, MolScribe) are an alternative or a cross-check; their
+     accuracy on hand drawings, like Claude's, is to be measured on a test set before use.
+2. Arrows drawn by the user: on the confirmed structure, the user draws one or more arrows from bonds and atoms with
+   the pointer (mouse, touch or stylus), confirms the entry, and then Claude applies the arrows.
+   - Arrows are drawn over the clean rendering, whose atom and bond positions are known: each arrow end is snapped to
+     the nearest atom, bond or lone-pair position, so an arrow is stored as data (source, sink), not as pixels. The
+     direction of the stroke gives source → sink.
+3. Conventions (common organic chemistry practice):
+   - Hydrogens on carbon are implicit, and an arrow is never interpreted as involving an implicit hydrogen; to move a
+     C–H proton or hydride, the user draws that hydrogen.
+   - Lone pairs are implicit: an arrow starting in empty space next to an atom that has a lone pair (O, N, S, halogen,
+     anion, carbanion) uses one of that atom's lone pairs (e.g. next to an oxygen).
+   - Arrow from a bond to one of its own atoms: heterolysis toward that atom. Arrow from a lone pair or a bond to
+     another atom, or to the space between two atoms: a new bond (σ or π) to that atom. Each rule is written down and
+     covered by tests before use; half-headed (radical) arrows come later.
+4. Validation: the resulting structure is shown and the user accepts it or not. If not, Claude proposes another
+   structure from the same arrows (another reading of an ambiguous arrow end), until the user accepts or stops.
+   Accepted and rejected readings are both recorded.
+
+Applying arrows to a structure is deterministic (bond orders, charges, lone pairs) and can run with RDKit in the page
+or the Worker; every result is checked for valences, charge and electron count. Claude is needed for reading the
+drawing (B1), for alternative readings (B4) and for goal A2.
+
+### C. Crowd data and model
+
+- Each confirmed (structure, arrows, result) entry, and each rejection, is stored anonymously in D1 with the visitor
+  level.
+- With enough checked data, a model is trained or fine-tuned to use curly arrows for mechanisms, reactivity,
+  synthesis and retrosynthesis (arrows run backward from a target). Public datasets of elementary steps (e.g. PMechDB,
+  mech-USPTO-31K; not reviewed here) can serve for pre-training and evaluation.
+- Only entries that pass the deterministic checks and are confirmed by several users train the model; a held-out set
+  measures it (share of steps whose predicted arrows give the correct next species).
+- Claude is not retrained by these data: the model is a separate tool Claude can call, and the data also serve as
+  examples and as a test set for the mechanisms Claude writes (goal A2 and the scheduled runs).
+
+### Order and prerequisites
+
+1. Arrow interpreter (deterministic, tested) and arrow data format; no ML.
+2. Arrows drawn on the puzzle pages after the product is found, on the problem's own species (atom mapping from
+   `curate.py`, RXNMapper when doubtful): first data, with known answers.
+3. Freehand structure drawing read by Claude (B1) and alternative readings by Claude (B4): Claude API key as a Worker
+   secret, cost limit.
+4. Model training (C), once enough confirmed steps exist.
+
+Open: who pays the API calls and the daily limit; whether the collected data are published, and under which licence.
 
 ## Next steps
 
