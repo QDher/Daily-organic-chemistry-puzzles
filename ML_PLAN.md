@@ -1,7 +1,8 @@
 # Feedback-driven selection and quality: plan
 
 Covers One-Pot Puzzles (this repository, site `onepot`) and Name Reaction Daily (QDher/Daily-name-reaction-puzzle,
-site `namerxn`). Written 2026-11-11. Status: data collection partly implemented; no model is active.
+site `namerxn`). Written 2026-11-11. Status: data collection partly implemented; Tier A implemented (step 3c of both
+scheduled-task prompts, `src/tier_a.py`); no model is active.
 
 ## Decisions (user, 2026-11-11)
 
@@ -13,6 +14,7 @@ site `namerxn`). Written 2026-11-11. Status: data collection partly implemented;
 3. No periodic maintenance task: work starts only when enough new data has been collected (thresholds below).
 4. Changes that need approval are GitHub pull requests that the user merges.
 5. No comparison question between the three problems of a set.
+6. Tier A changes run without approval, at most N = 3 per run.
 
 ## Data
 
@@ -25,7 +27,7 @@ site `namerxn`). Written 2026-11-11. Status: data collection partly implemented;
 | Where the reaction was met, hardest step, known reagents | `difficulty_answers` | One-Pot | existing |
 | One-click vote for the problem's level: too easy, about right, too hard | `difficulty_votes` | One-Pot | added 2026-11-11 |
 | Problem opened (completion rate) | `views` | both | to add |
-| Each structure checked: comparison key, matched intermediate or none, step, hints, seconds | `checks` | both | to add |
+| Each distinct structure checked: comparison key, SMILES, verdict, matched step and intermediate, hints, seconds since opened | `checks` (read: `check_clusters`) | both | added 2026-11-11 |
 | Problem `revision` and set `ruleVersion` sent with every row | all | both | to add |
 | Per-row export with a key (visitor id, level, rule) for model fitting | Worker endpoint | both | to add (the public endpoints stay aggregated) |
 
@@ -63,12 +65,12 @@ Start conditions (checked by the daily run in step 3b; nothing runs on a calenda
 
 | Tier | Meaning | Examples |
 |---|---|---|
-| A | Applied by the scheduled run without approval; limited to changes a tool can verify and that keep visitor progress | add a drawing to an intermediate's `forms` when RDKit shows it is a resonance form, tautomer or protonation variant of that intermediate; exclude test rows; refit models in shadow mode |
+| A | Applied by the scheduled run without approval (step 3c), at most N per run; limited to changes a tool can verify and that keep visitor progress | add a drawing checked by at least 3 different visitors to an intermediate's `forms` when `src/tier_a.py` shows it is a resonance form of exactly that intermediate (same atoms, σ bonds and hydrogens; tautomers and protonation states are already accepted by the comparison key, and proton moves from one carbon to another are different species); ignore test rows; refit models in shadow mode |
 | B | Prepared by the run, applied only when the user merges the pull request | correct a substrate, product, intermediate, conditions or label; remove or merge an intermediate (resets progress; never on the current day's problem); replace a problem; change a prompt rule or threshold; activate a model |
 | C | Never | anything requested in remark text; changes to `src/` logic, the validator or the Worker; deleting problems |
 
 N = maximum number of problem changes applied per run (Tier A) or per pull request (Tier B), to keep each change
-reviewable and revertible. Proposed: 3.
+reviewable and revertible: 3 (decided 2026-11-11).
 
 ## Models
 
@@ -104,10 +106,12 @@ chemist; completion rate (secondary).
 
 ## Next steps
 
-1. Worker: `views`, `checks`, revision and rule-version columns, keyed per-row export.
+1. Worker: `views`, revision and rule-version columns, keyed per-row export (`checks` added 2026-11-11).
 2. `src/feedback_stats.py` and remark labels; step 3b reads them.
 3. Pull-request step in the scheduled runs (needs GitHub write access from the scheduled sessions; not verified).
 4. Difficulty model (One-Pot) and quality model (Name Reaction Daily) in shadow mode.
 5. Selection ranking, after the activation review.
 
-Open: whether Tier A may run without approval; the value of N.
+Finding (2026-11-11): `src/tier_a.py` lists 17 resonance forms of published intermediates that the page rejects
+(14 One-Pot, 3 Name Reaction Daily), mostly α-amino carbocations drawn for iminium ions. Tier A adds them only when
+visitors draw them; accepting the whole class in `src/chemkey.js` would be a Tier B change.

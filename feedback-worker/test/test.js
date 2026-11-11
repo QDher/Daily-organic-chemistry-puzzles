@@ -208,6 +208,24 @@ try {
       { n: 0, too_easy: 0, about_right: 0, too_hard: 0 });
   });
 
+  await t('checks: one row per visitor and structure, validated, limited; check_clusters', async () => {
+    const c = (i, key, smiles, extra = {}) => ({ site: 'onepot', problem_id: 'p7', client_id: U(i), key, smiles, verdict: 'none', hints: 0, seconds: 30, ...extra });
+    const K1 = 'InChI=1S/C3H5/c1-3-2/h3H,1-2H2/q+1', K2 = 'InChI=1S/C2H6O/c1-2-3/h3H,2H2,1H3';
+    for (const i of [50, 51, 52]) assert.equal((await post('/checks', c(i, K1, i === 50 ? 'C=C[CH2+]' : '[CH2+]C=C'))).status, 201);
+    assert.equal((await post('/checks', c(50, K1, 'C=C[CH2+]'))).status, 409);
+    for (const i of [50, 51]) assert.equal((await post('/checks', c(i, K2, 'CCO'))).status, 201);
+    assert.equal((await post('/checks', c(53, K2, 'CCO', { verdict: 'intermediate', step: 1, intermediate: 2, user_level: 'graduate' }))).status, 201);
+    const bad = [[c(60, 'CCO', 'CCO'), 'invalid key'], [c(60, K2, ''), 'invalid smiles'], [c(60, K2, 'CCO', { verdict: 'wrong' }), 'invalid verdict'],
+      [c(60, K2, 'CCO', { verdict: 'intermediate' }), 'invalid step'], [c(60, K2, 'CCO', { step: 1, intermediate: 1 }), 'invalid step'],
+      [c(60, K2, 'CCO', { hints: -1 }), 'invalid hints'], [c(60, K2, 'CCO', { seconds: 1.5 }), 'invalid seconds']];
+    for (const [b, msg] of bad) assert.deepEqual((await post('/checks', b)).data, { error: msg }, msg);
+    assert.deepEqual(await rpc('check_clusters', { p_site: 'onepot' }), [{ problem_id: 'p7', smiles: 'C=C[CH2+]', visitors: 3 }]);
+    assert.deepEqual((await rpc('check_clusters', { p_site: 'onepot', p_min: 2 })).map(r => [r.smiles, r.visitors]), [['C=C[CH2+]', 3], ['CCO', 2]]);
+    assert.equal((await post('/rpc/check_clusters', { p_site: 'onepot', p_min: 1 })).status, 400);
+    for (let k = 0; k < 200; k++) await db.prepare("INSERT INTO checks (site, problem_id, client_id, key, smiles, verdict, hints) VALUES ('onepot', 'p8', ?, ?, 'C', 'none', 0)").bind(U(70), 'InChI=1S/x' + k).run();
+    assert.deepEqual((await post('/checks', { ...c(70, 'InChI=1S/y', 'C'), problem_id: 'p8' })).data, { error: 'too many checks' });
+  });
+
   await t('import from the Supabase REST API (typed values, paging), secret key sent, nothing else', async () => {
     const recent = new Date(Date.now() - 3 * 86400000).toISOString().replace('Z', '+00:00');
     const data = {

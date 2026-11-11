@@ -5,7 +5,8 @@ export const SITES = ['onepot', 'namerxn'];
 export const SEEN = ['undergraduate', 'graduate', 'papers', 'never'];
 export const LEVELS = ['undergraduate', 'graduate', 'postgraduate'];
 export const VOTES = ['too_easy', 'about_right', 'too_hard'];
-export const TABLES = ['results', 'ratings', 'difficulty_answers', 'difficulty_votes'];
+export const VERDICTS = ['product', 'intermediate', 'substrate', 'none'];
+export const TABLES = ['results', 'ratings', 'difficulty_answers', 'difficulty_votes', 'checks'];
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 export class Invalid extends Error {}
@@ -62,6 +63,17 @@ export function validRow(table, b) {
     case 'difficulty_votes':
       if (!VOTES.includes(b.vote)) throw new Invalid('invalid vote');
       return { ...row, vote: b.vote };
+    case 'checks': {
+      if (typeof b.key !== 'string' || !b.key.startsWith('InChI=') || chars(b.key) > 2000) throw new Invalid('invalid key');
+      if (typeof b.smiles !== 'string' || chars(b.smiles) < 1 || chars(b.smiles) > 1000) throw new Invalid('invalid smiles');
+      if (!VERDICTS.includes(b.verdict)) throw new Invalid('invalid verdict');
+      const opt = (v, lo, hi, f) => { const x = v === undefined ? null : v; if (x !== null && !isInt(x, lo, hi)) throw new Invalid('invalid ' + f); return x; };
+      const step = opt(b.step, 1, 20, 'step'), inter = opt(b.intermediate, 1, 50, 'intermediate');
+      if ((b.verdict === 'intermediate') !== (step !== null && inter !== null)) throw new Invalid('invalid step');
+      if (!isInt(b.hints, 0, 30)) throw new Invalid('invalid hints');
+      return { ...row, key: b.key, smiles: b.smiles, verdict: b.verdict, step, intermediate: inter, hints: b.hints,
+        seconds: opt(b.seconds, 0, 864000, 'seconds') };
+    }
     default:
       throw new Invalid('unknown table');
   }

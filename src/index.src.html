@@ -455,6 +455,22 @@ function finishProblem(revealed) {
   const hints = state.hints || 0;
   state.final = { checks: state.attempts, hints, score: state.attempts + hintPenalty(hints), revealed, rule: state.rule || 1 };
 }
+/* structures checked (table checks): one row per distinct structure and visitor, for wrong-answer clusters
+   (Tier A additions of alternative drawings, ML_PLAN.md) and per-intermediate statistics */
+function fbLogCheck(p, molfile, key, verdict, hit) {
+  if (!fbOn || !key) return;
+  state.logged = state.logged || [];
+  if (state.logged.includes(key)) return;
+  let smiles = '';
+  try { const m = R.get_mol(molfile); if (m) { if (m.is_valid()) smiles = m.get_smiles(); m.delete(); } } catch (e) { /* not logged */ }
+  if (!smiles || smiles.length > 1000 || key.length > 2000) return;
+  state.logged.push(key); save();
+  const st = hit ? p.steps[hit.si] : null;
+  fbPost('checks', { site: FB_SITE, problem_id: p.id, client_id: fbClient(), key, smiles, verdict,
+    step: st ? st.n : undefined, intermediate: hit ? hit.k + 1 : undefined, hints: state.hints || 0,
+    seconds: state.t0 ? Math.min(864000, Math.max(0, Math.round((Date.now() - state.t0) / 1000))) : undefined,
+    user_level: userLevel() || undefined }).catch(e => console.warn('check not logged', e));
+}
 async function fbSendResult(p, f) {
   const k = `fbsent:${FB_SITE}:${p.id}`;
   if (!fbOn || !f || store.get(k)) return;
@@ -721,7 +737,8 @@ function buildContext(p) {
 const SCORE_RULE = 2;
 const stateOf = p => {
   const s = store.get('onepot:' + p.id);
-  if (!s) return { found: [], solved: false, attempts: 0, hints: 0, rule: SCORE_RULE };
+  if (!s) return { found: [], solved: false, attempts: 0, hints: 0, rule: SCORE_RULE, t0: Date.now() };
+  if (!s.t0) s.t0 = Date.now();   // time origin for the seconds logged with each check
   if (!s.rule) s.rule = s.attempts || s.found.length || s.hints || s.solved || s.revealed || s.final ? 1 : SCORE_RULE;
   return s;
 };
@@ -895,6 +912,8 @@ async function check() {
   const isProduct = matches(drawn, ctx.prod);
   const hit = isProduct ? null : (ctx.species.find(x => matches(drawn, x.info)) || {}).hit;
   const free = !!hit && state.rule === 2;
+  const isSub = !isProduct && !hit && matches(drawn, ctx.sub);
+  fbLogCheck(P, molfile, drawn.key, isProduct ? 'product' : hit ? 'intermediate' : isSub ? 'substrate' : 'none', hit);
   state.checked = state.checked || [];
   const repeat = !free && state.checked.includes(drawn.key);
   if (!repeat && !free) { state.checked.push(drawn.key); state.attempts++; save(); }
@@ -914,7 +933,7 @@ async function check() {
     say('warn', 'Intermediate · step ' + st.n, `Correct intermediate: ${where}. ${it.label}.`);
     return;
   }
-  if (matches(drawn, ctx.sub)) { say('info', 'Starting material', 'This is the substrate (or a tautomer / protonation state of it).'); return; }
+  if (isSub) { say('info', 'Starting material', 'This is the substrate (or a tautomer / protonation state of it).'); return; }
   save();
   say('bad', 'Not on the path', 'Not the product or a known intermediate of the published mechanism.');
 }
