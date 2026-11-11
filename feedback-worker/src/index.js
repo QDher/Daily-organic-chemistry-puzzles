@@ -2,20 +2,23 @@
 // Name Reaction Daily (site "namerxn"): Cloudflare Worker with a D1 database (binding DB).
 // Replaces the Supabase project; the read functions return the same JSON as supabase/schema.sql.
 //
-//   POST /results | /ratings | /difficulty_answers   JSON body: insert one row
+//   POST /results | /ratings | /difficulty_answers | /difficulty_votes | /checks   JSON body: insert one row
+//        (checks: one row per distinct structure, at most MAX_CHECKS per visitor and problem: 429 beyond)
 //        201 {} | 409 {"error": "duplicate"} (this visitor already answered this problem) | 400 {"error": ...}
 //   POST /rpc/<fn> with a JSON body {"p_site": ..., ...}, or GET /rpc/<fn>?p_site=...   200 JSON
 //        problem_stats (p_problem), problem_summary, feedback_export (p_since, default 120 days ago),
-//        difficulty_summary
+//        difficulty_summary, check_clusters (p_min, default 3: wrong structures drawn by at least p_min visitors)
 //
 // Browsers may call it only from ALLOWED_ORIGINS (wrangler.toml); requests without an Origin header
 // (curl in the scheduled tasks) are accepted. Anyone can call feedback_export: remarks are not private.
+// The visitor's declared level (user_level) and the scoring rule are stored but not returned by the read functions.
 
 import { SITES, TABLES, Invalid, validRow, isoTime } from './rows.js';
 import { round2, median } from './stats.js';
 
 const MAX_BODY = 4096;
 const DAY_MS = 86400000;
+const MAX_CHECKS = 200;
 
 export default {
   async fetch(request, env) {
@@ -74,9 +77,15 @@ async function readBody(request) {
 
 async function insert(db, table, body) {
   const row = validRow(table, body);
+  if (table === 'checks') {
+    const c = await db.prepare('SELECT count(*) AS n FROM checks WHERE site = ? AND problem_id = ? AND client_id = ?')
+      .bind(row.site, row.problem_id, row.client_id).first();
+    if (c.n >= MAX_CHECKS) return { status: 429, data: { error: 'too many checks' } };
+  }
+  const conflict = table === 'checks' ? 'site, problem_id, client_id, key' : 'site, problem_id, client_id';
   const cols = Object.keys(row);
   const sql = `INSERT INTO ${table} (${cols.join(', ')}) VALUES (${cols.map(() => '?').join(', ')})
-               ON CONFLICT (site, problem_id, client_id) DO NOTHING`;
+               ON CONFLICT (${conflict}) DO NOTHING`;
   const r = await db.prepare(sql).bind(...cols.map(c => row[c])).run();
   if (!r.meta.changes) return { status: 409, data: { error: 'duplicate' } };
   return { status: 201, data: {} };
@@ -132,7 +141,8 @@ async function rpc(db, fn, a) {
     case 'difficulty_summary': {
       const rows = await all(db, `SELECT problem_id, seen, hardest_step, known_reagents, unknown_reagents
         FROM difficulty_answers WHERE site = ?`, site);
-      return sortedIds(rows).map(id => {
+      const votes = await all(db, 'SELECT problem_id, vote FROM difficulty_votes WHERE site = ?', site);
+      return sortedIds([...rows, ...votes]).map(id => {
         const d = rows.filter(r => r.problem_id === id);
         const reagents = {};
         const add = (t, k) => { (reagents[t] ??= { known: 0, unknown: 0 })[k]++; };
@@ -141,9 +151,20 @@ async function rpc(db, fn, a) {
           JSON.parse(r.unknown_reagents).forEach(t => add(t, 'unknown'));
         }
         const seen = s => d.filter(r => r.seen === s).length;
+        const v = votes.filter(r => r.problem_id === id);
+        const vote = s => v.filter(r => r.vote === s).length;
         return { problem_id: id, answers: d.length, seen_undergraduate: seen('undergraduate'), seen_graduate: seen('graduate'),
-          seen_papers: seen('papers'), seen_never: seen('never'), hardest_step: countBy(d, r => r.hardest_step), reagents };
+          seen_papers: seen('papers'), seen_never: seen('never'), hardest_step: countBy(d, r => r.hardest_step), reagents,
+          votes: { n: v.length, too_easy: vote('too_easy'), about_right: vote('about_right'), too_hard: vote('too_hard') } };
       });
+    }
+    case 'check_clusters': {
+      // structures the page answered "not on the path" for, drawn by at least p_min different visitors
+      const min = a.p_min === undefined ? 3 : Number(a.p_min);
+      if (!Number.isInteger(min) || min < 2 || min > 1000) throw new Invalid('invalid p_min');
+      return all(db, `SELECT problem_id, min(smiles) AS smiles, count(DISTINCT client_id) AS visitors FROM checks
+        WHERE site = ? AND verdict = 'none' GROUP BY problem_id, key HAVING count(DISTINCT client_id) >= ?
+        ORDER BY problem_id, visitors DESC, smiles`, site, min);
     }
     default:
       throw new Invalid('unknown function');

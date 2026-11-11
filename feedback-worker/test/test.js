@@ -83,6 +83,12 @@ try {
       ['/difficulty_answers', { ...d, hardest_step: 21 }, 'invalid hardest_step'],
       ['/difficulty_answers', { ...d, known_reagents: ['a', 'b', 'c', 'd', 'e', 'f', 'g'] }, 'invalid known_reagents'],
       ['/difficulty_answers', { ...d, unknown_reagents: ['x'.repeat(601)] }, 'invalid unknown_reagents'],
+      ['/results', { ...r, user_level: 'professor' }, 'invalid user_level'],
+      ['/ratings', { ...r, stars: 3, user_level: 1 }, 'invalid user_level'],
+      ['/results', { ...r, score_rule: 3 }, 'invalid score_rule'],
+      ['/results', { ...r, score_rule: '2' }, 'invalid score_rule'],
+      ['/difficulty_votes', { ...d, vote: 'easy' }, 'invalid vote'],
+      ['/difficulty_votes', { ...d, vote: 'too_hard', user_level: 'phd' }, 'invalid user_level'],
       ['/results', '[1]', 'body must be a JSON object'],
       ['/results', 'not json', 'body must be a JSON object'],
       ['/results', JSON.stringify({ ...r, pad: 'x'.repeat(5000) }), 'body too large'],
@@ -165,11 +171,59 @@ try {
   await t('difficulty_summary', async () => {
     assert.deepEqual(await rpc('difficulty_summary', { p_site: 'onepot' }), [{
       problem_id: 'p2', answers: 3, seen_undergraduate: 0, seen_graduate: 2, seen_papers: 0, seen_never: 1,
-      hardest_step: { 2: 2 }, reagents: { LiAlH4: { known: 1, unknown: 0 }, '9-BBN, then H2O2': { known: 1, unknown: 1 } } }]);
+      hardest_step: { 2: 2 }, reagents: { LiAlH4: { known: 1, unknown: 0 }, '9-BBN, then H2O2': { known: 1, unknown: 1 } },
+      votes: { n: 0, too_easy: 0, about_right: 0, too_hard: 0 } }]);
     assert.equal((await post('/difficulty_answers', { site: 'onepot', problem_id: 'p4', client_id: U(8), seen: 'papers',
       hardest_step: null, known_reagents: ['TMSCl'], unknown_reagents: [] })).status, 201);
     const d = (await rpc('difficulty_summary', { p_site: 'onepot' })).find(r => r.problem_id === 'p4');
     assert.deepEqual([d.answers, d.seen_papers, d.hardest_step, d.reagents], [1, 1, {}, { TMSCl: { known: 1, unknown: 0 } }]);
+  });
+
+  await t('user level and scoring rule stored, not returned; old rows default to rule 1 and no level', async () => {
+    const r = { site: 'onepot', problem_id: 'p5', client_id: U(30), checks: 1, hints: 0, score: 1, revealed: false };
+    assert.equal((await post('/results', { ...r, user_level: 'graduate', score_rule: 2 })).status, 201);
+    assert.equal((await post('/results', { ...r, client_id: U(31) })).status, 201);
+    assert.equal((await post('/ratings', { site: 'onepot', problem_id: 'p5', client_id: U(30), stars: 4, user_level: 'graduate' })).status, 201);
+    assert.equal((await post('/difficulty_answers', { site: 'onepot', problem_id: 'p5', client_id: U(30), seen: 'graduate', user_level: 'postgraduate' })).status, 201);
+    const rows = (await db.prepare("SELECT client_id, user_level, score_rule FROM results WHERE problem_id = 'p5' ORDER BY id").all()).results;
+    assert.deepEqual(rows.map(x => [x.user_level, x.score_rule]), [['graduate', 2], [null, 1]]);
+    assert.equal((await db.prepare("SELECT user_level FROM ratings WHERE problem_id = 'p5'").first()).user_level, 'graduate');
+    assert.equal((await db.prepare("SELECT user_level FROM difficulty_answers WHERE problem_id = 'p5'").first()).user_level, 'postgraduate');
+    const out = JSON.stringify([await rpc('problem_stats', { p_site: 'onepot', p_problem: 'p5' }), await rpc('problem_summary', { p_site: 'onepot' }),
+      await rpc('feedback_export', { p_site: 'onepot' }), await rpc('difficulty_summary', { p_site: 'onepot' })]);
+    assert.ok(!/user_level|postgraduate|score_rule/.test(out));
+  });
+
+  await t('difficulty votes: one per visitor and problem, counted in difficulty_summary', async () => {
+    const v = { site: 'onepot', problem_id: 'p6', client_id: U(40), vote: 'too_hard', user_level: 'undergraduate' };
+    assert.equal((await post('/difficulty_votes', v)).status, 201);
+    assert.equal((await post('/difficulty_votes', { ...v, vote: 'too_easy' })).status, 409);
+    assert.equal((await post('/difficulty_votes', { ...v, client_id: U(41), vote: 'about_right', user_level: undefined })).status, 201);
+    assert.equal((await post('/difficulty_votes', { ...v, client_id: U(42) })).status, 201);
+    assert.equal((await call('GET', '/difficulty_votes')).status, 405);
+    const d = (await rpc('difficulty_summary', { p_site: 'onepot' })).find(r => r.problem_id === 'p6');
+    assert.deepEqual(d, { problem_id: 'p6', answers: 0, seen_undergraduate: 0, seen_graduate: 0, seen_papers: 0, seen_never: 0,
+      hardest_step: {}, reagents: {}, votes: { n: 3, too_easy: 0, about_right: 1, too_hard: 2 } });
+    assert.deepEqual((await rpc('difficulty_summary', { p_site: 'onepot' })).find(r => r.problem_id === 'p2').votes,
+      { n: 0, too_easy: 0, about_right: 0, too_hard: 0 });
+  });
+
+  await t('checks: one row per visitor and structure, validated, limited; check_clusters', async () => {
+    const c = (i, key, smiles, extra = {}) => ({ site: 'onepot', problem_id: 'p7', client_id: U(i), key, smiles, verdict: 'none', hints: 0, seconds: 30, ...extra });
+    const K1 = 'InChI=1S/C3H5/c1-3-2/h3H,1-2H2/q+1', K2 = 'InChI=1S/C2H6O/c1-2-3/h3H,2H2,1H3';
+    for (const i of [50, 51, 52]) assert.equal((await post('/checks', c(i, K1, i === 50 ? 'C=C[CH2+]' : '[CH2+]C=C'))).status, 201);
+    assert.equal((await post('/checks', c(50, K1, 'C=C[CH2+]'))).status, 409);
+    for (const i of [50, 51]) assert.equal((await post('/checks', c(i, K2, 'CCO'))).status, 201);
+    assert.equal((await post('/checks', c(53, K2, 'CCO', { verdict: 'intermediate', step: 1, intermediate: 2, user_level: 'graduate' }))).status, 201);
+    const bad = [[c(60, 'CCO', 'CCO'), 'invalid key'], [c(60, K2, ''), 'invalid smiles'], [c(60, K2, 'CCO', { verdict: 'wrong' }), 'invalid verdict'],
+      [c(60, K2, 'CCO', { verdict: 'intermediate' }), 'invalid step'], [c(60, K2, 'CCO', { step: 1, intermediate: 1 }), 'invalid step'],
+      [c(60, K2, 'CCO', { hints: -1 }), 'invalid hints'], [c(60, K2, 'CCO', { seconds: 1.5 }), 'invalid seconds']];
+    for (const [b, msg] of bad) assert.deepEqual((await post('/checks', b)).data, { error: msg }, msg);
+    assert.deepEqual(await rpc('check_clusters', { p_site: 'onepot' }), [{ problem_id: 'p7', smiles: 'C=C[CH2+]', visitors: 3 }]);
+    assert.deepEqual((await rpc('check_clusters', { p_site: 'onepot', p_min: 2 })).map(r => [r.smiles, r.visitors]), [['C=C[CH2+]', 3], ['CCO', 2]]);
+    assert.equal((await post('/rpc/check_clusters', { p_site: 'onepot', p_min: 1 })).status, 400);
+    for (let k = 0; k < 200; k++) await db.prepare("INSERT INTO checks (site, problem_id, client_id, key, smiles, verdict, hints) VALUES ('onepot', 'p8', ?, ?, 'C', 'none', 0)").bind(U(70), 'InChI=1S/x' + k).run();
+    assert.deepEqual((await post('/checks', { ...c(70, 'InChI=1S/y', 'C'), problem_id: 'p8' })).data, { error: 'too many checks' });
   });
 
   await t('import from the Supabase REST API (typed values, paging), secret key sent, nothing else', async () => {

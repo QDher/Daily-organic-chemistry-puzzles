@@ -3,7 +3,10 @@
 
 export const SITES = ['onepot', 'namerxn'];
 export const SEEN = ['undergraduate', 'graduate', 'papers', 'never'];
-export const TABLES = ['results', 'ratings', 'difficulty_answers'];
+export const LEVELS = ['undergraduate', 'graduate', 'postgraduate'];
+export const VOTES = ['too_easy', 'about_right', 'too_hard'];
+export const VERDICTS = ['product', 'intermediate', 'substrate', 'none'];
+export const TABLES = ['results', 'ratings', 'difficulty_answers', 'difficulty_votes', 'checks'];
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 export class Invalid extends Error {}
@@ -16,7 +19,10 @@ function base(b) {
   if (!SITES.includes(b.site)) throw new Invalid('invalid site');
   if (typeof b.problem_id !== 'string' || chars(b.problem_id) < 1 || chars(b.problem_id) > 120) throw new Invalid('invalid problem_id');
   if (typeof b.client_id !== 'string' || !UUID_RE.test(b.client_id)) throw new Invalid('invalid client_id');
-  return { site: b.site, problem_id: b.problem_id, client_id: b.client_id.toLowerCase() };
+  // level declared by the visitor (optional; absent in rows sent before 2026-11-11 and in imported rows)
+  const lv = b.user_level === undefined ? null : b.user_level;
+  if (lv !== null && !LEVELS.includes(lv)) throw new Invalid('invalid user_level');
+  return { site: b.site, problem_id: b.problem_id, client_id: b.client_id.toLowerCase(), user_level: lv };
 }
 
 function reagents(v, field) {
@@ -36,7 +42,10 @@ export function validRow(table, b) {
       if (!isInt(b.hints, 0, 30)) throw new Invalid('invalid hints');
       if (!isInt(b.score, 0, 2000)) throw new Invalid('invalid score');
       if (typeof b.revealed !== 'boolean') throw new Invalid('invalid revealed');
-      return { ...row, checks: b.checks, hints: b.hints, score: b.score, revealed: b.revealed ? 1 : 0 };
+      // 1 = every distinct structure counted; 2 = correct intermediates not counted (pages from 2026-11-11)
+      const rule = b.score_rule === undefined ? 1 : b.score_rule;
+      if (rule !== 1 && rule !== 2) throw new Invalid('invalid score_rule');
+      return { ...row, checks: b.checks, hints: b.hints, score: b.score, revealed: b.revealed ? 1 : 0, score_rule: rule };
     case 'ratings': {
       if (!isInt(b.stars, 1, 5)) throw new Invalid('invalid stars');
       const remark = b.remark === undefined ? null : b.remark;
@@ -50,6 +59,20 @@ export function validRow(table, b) {
       return { ...row, seen: b.seen, hardest_step: hs,
         known_reagents: reagents(b.known_reagents, 'known_reagents'),
         unknown_reagents: reagents(b.unknown_reagents, 'unknown_reagents') };
+    }
+    case 'difficulty_votes':
+      if (!VOTES.includes(b.vote)) throw new Invalid('invalid vote');
+      return { ...row, vote: b.vote };
+    case 'checks': {
+      if (typeof b.key !== 'string' || !b.key.startsWith('InChI=') || chars(b.key) > 2000) throw new Invalid('invalid key');
+      if (typeof b.smiles !== 'string' || chars(b.smiles) < 1 || chars(b.smiles) > 1000) throw new Invalid('invalid smiles');
+      if (!VERDICTS.includes(b.verdict)) throw new Invalid('invalid verdict');
+      const opt = (v, lo, hi, f) => { const x = v === undefined ? null : v; if (x !== null && !isInt(x, lo, hi)) throw new Invalid('invalid ' + f); return x; };
+      const step = opt(b.step, 1, 20, 'step'), inter = opt(b.intermediate, 1, 50, 'intermediate');
+      if ((b.verdict === 'intermediate') !== (step !== null && inter !== null)) throw new Invalid('invalid step');
+      if (!isInt(b.hints, 0, 30)) throw new Invalid('invalid hints');
+      return { ...row, key: b.key, smiles: b.smiles, verdict: b.verdict, step, intermediate: inter, hints: b.hints,
+        seconds: opt(b.seconds, 0, 864000, 'seconds') };
     }
     default:
       throw new Invalid('unknown table');
