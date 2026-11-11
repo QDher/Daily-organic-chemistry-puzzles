@@ -1,5 +1,4 @@
-// Validation of one visitor row, shared by the Worker (src/index.js) and the import tool
-// (tools/import_supabase.js). Same rules as supabase/schema.sql.
+// Validation of one visitor row for the Worker (src/index.js). Same rules as supabase/schema.sql (the former store).
 
 export const SITES = ['onepot', 'namerxn'];
 export const SEEN = ['undergraduate', 'graduate', 'papers', 'never'];
@@ -19,7 +18,7 @@ function base(b) {
   if (!SITES.includes(b.site)) throw new Invalid('invalid site');
   if (typeof b.problem_id !== 'string' || chars(b.problem_id) < 1 || chars(b.problem_id) > 120) throw new Invalid('invalid problem_id');
   if (typeof b.client_id !== 'string' || !UUID_RE.test(b.client_id)) throw new Invalid('invalid client_id');
-  // level declared by the visitor (optional; absent in rows sent before 2026-11-11 and in imported rows)
+  // level declared by the visitor (optional; absent in rows sent before 2026-11-11)
   const lv = b.user_level === undefined ? null : b.user_level;
   if (lv !== null && !LEVELS.includes(lv)) throw new Invalid('invalid user_level');
   return { site: b.site, problem_id: b.problem_id, client_id: b.client_id.toLowerCase(), user_level: lv };
@@ -80,7 +79,7 @@ export function validRow(table, b) {
 }
 
 // UTC time as stored in D1 (ISO 8601 with milliseconds). Accepts ISO dates and the Postgres text
-// format of a Supabase export ("2026-11-05 20:03:17.92047+00"). Returns null if not a date.
+// format ("2026-11-05 20:03:17.92047+00"). Returns null if not a date.
 export function isoTime(v) {
   let s = String(v ?? '').trim();
   if (!s) return null;

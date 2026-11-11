@@ -1,18 +1,12 @@
 name: Feedback Worker (Cloudflare)
 # Tests the Worker in feedback-worker/ and deploys it with its D1 database (created on the first run).
 # Needs the repository secrets CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID; without them only the tests run.
-# Run it manually with "Copy the rows from Supabase" ticked to copy the Supabase rows into D1
-# (needs the secret SUPABASE_SECRET_KEY; rows already in D1 are kept, so it can be repeated).
+# It can also be run manually (Actions → Feedback Worker (Cloudflare) → Run workflow).
 on:
   push:
     branches: [main]
     paths: ['feedback-worker/**', '.github/workflows/feedback-worker.yml']
   workflow_dispatch:
-    inputs:
-      import_supabase:
-        description: Copy the rows from Supabase into D1 (rows already in D1 are kept)
-        type: boolean
-        default: false
 permissions:
   contents: read
 concurrency:
@@ -64,17 +58,3 @@ jobs:
       - name: Deploy
         if: env.HAS_CLOUDFLARE == 'true'
         run: npx wrangler deploy --message "${GITHUB_SHA::7}"
-      - name: Copy the rows from Supabase
-        if: env.HAS_CLOUDFLARE == 'true' && inputs.import_supabase
-        env:
-          SUPABASE_URL: https://gevbctklqelyumhynfnq.supabase.co
-          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
-        run: |
-          # import.sql holds visitor remarks: keep it out of the log and the repository.
-          node tools/import_supabase.js --from-supabase > "$RUNNER_TEMP/import.sql"
-          npx wrangler d1 execute puzzle-feedback --remote --yes --file "$RUNNER_TEMP/import.sql" > /dev/null
-          rm -f "$RUNNER_TEMP/import.sql"
-          echo "Rows in D1 after the copy:"
-          npx wrangler d1 execute puzzle-feedback --remote --json --command \
-            "SELECT 'results' t, site, count(*) n FROM results GROUP BY site UNION ALL SELECT 'ratings', site, count(*) FROM ratings GROUP BY site UNION ALL SELECT 'difficulty_answers', site, count(*) FROM difficulty_answers GROUP BY site" \
-            | node -e 'const t = require("fs").readFileSync(0, "utf8"); for (const r of JSON.parse(t.slice(t.indexOf("[")))[0].results) console.log(`${r.t} ${r.site}: ${r.n}`);'

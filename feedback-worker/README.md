@@ -2,16 +2,16 @@
 
 Shared store for visitors' results, ratings and difficulty answers of both sites:
 One-Pot Puzzles (site `onepot`, this repository) and Name Reaction Daily (site `namerxn`,
-QDher/Daily-name-reaction-puzzle). It replaces the Supabase project `gevbctklqelyumhynfnq`; the tables,
-rules and read functions are those of `supabase/schema.sql`, and the read functions return the same JSON.
+QDher/Daily-name-reaction-puzzle). It replaced the Supabase project `gevbctklqelyumhynfnq` on 2026-11-11 (all its rows
+were copied to D1 and checked); the tables, rules and read functions are those of `supabase/schema.sql`, and the
+read functions return the same JSON.
 
 | File | Content |
 |---|---|
 | `src/index.js` | Worker: routes, CORS, inserts, read functions |
-| `src/rows.js` | Validation of one row (also used by the import tool) |
+| `src/rows.js` | Validation of one row |
 | `src/stats.js` | Rounding and median as in Postgres |
 | `migrations/` | D1 schema |
-| `tools/import_supabase.js` | Copies the Supabase rows into D1 (from the Supabase API or from CSV exports) |
 | `test/test.js` | Tests against a local D1 database (`npm test`) |
 | `../.github/workflows/feedback-worker.yml` | Tests, then creates the database if needed, applies migrations and deploys |
 
@@ -41,10 +41,7 @@ Optional fields (pages from 2026-11-11): `user_level` (`undergraduate`, `graduat
 4. In this GitHub repository: **Settings → Secrets and variables → Actions → New repository secret**:
    - `CLOUDFLARE_API_TOKEN`: the token
    - `CLOUDFLARE_ACCOUNT_ID`: the account ID
-   - `SUPABASE_SECRET_KEY`: Supabase dashboard → Project Settings → API Keys → secret key (only for the copy of
-     the existing rows; delete it after the switch)
-5. **Actions → Feedback Worker (Cloudflare) → Run workflow**, with *Copy the rows from Supabase* ticked.
-   The log of the *Deploy* step shows the Worker URL; the last step shows the row counts.
+5. **Actions → Feedback Worker (Cloudflare) → Run workflow**. The log of the *Deploy* step shows the Worker URL.
 
 Later changes under `feedback-worker/` are deployed by the workflow on each push to `main`.
 

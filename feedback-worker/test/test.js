@@ -4,7 +4,6 @@ import path from 'node:path';
 import assert from 'node:assert/strict';
 import { fileURLToPath } from 'node:url';
 import { Miniflare, convertV4MiniflareOptions } from 'miniflare';
-import { toSql, parseList, fromSupabase } from '../tools/import_supabase.js';
 import { round2, median } from '../src/stats.js';
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -107,33 +106,26 @@ try {
     assert.equal((await post('/ratings', { ...r, stars: 3, remark: 'é'.repeat(200) })).status, 201);
   });
 
-  await t('import of Supabase CSV exports (Postgres text formats), repeated import changes nothing', async () => {
-    const recent = new Date(Date.now() - 5 * 86400000).toISOString().slice(0, 19).replace('T', ' ');
-    const old = new Date(Date.now() - 200 * 86400000).toISOString().slice(0, 19).replace('T', ' ');
-    const results = ['id,site,problem_id,client_id,checks,hints,score,revealed,created_at',
-      `10,onepot,p2,${U(2)},3,0,3,false,${recent}.123456+00`,
-      `11,onepot,p2,${U(3)},8,0,8,f,${recent}.2+00`,
-      `12,onepot,p2,${U(4)},2,1,3,true,${recent}.3+00`,
-      `13,onepot,p2,${U(5)},4,0,4,FALSE,${recent}.4+00`,
-      `14,onepot,p2,${U(6)},4,0,4,maybe,${recent}+00`,
-      `15,onepot,p1,${U(1)},9,0,9,false,${recent}+00`].join('\r\n') + '\r\n';
-    const ratings = ['id,site,problem_id,client_id,stars,remark,created_at',
-      `20,onepot,p2,${U(2)},5,,${recent}.5+00`,
-      `21,onepot,p2,${U(3)},3,"it's ""hard"", with a comma\nand a new line",${old}+00`,
-      `22,onepot,p2,${U(7)},4,'; DROP TABLE ratings; --,${recent}.6+00`,
-      ...Array.from({ length: 40 }, (_, i) => `${100 + i},onepot,p3,${U(100 + i)},${i < 27 ? 3 : i < 37 ? 2 : 1},,${recent}+00`)].join('\n');
-    const difficulty = ['id,site,problem_id,client_id,seen,hardest_step,known_reagents,unknown_reagents,created_at',
-      `1,onepot,p2,${U(2)},graduate,2,"{LiAlH4,""9-BBN, then H2O2""}",{},${recent}+00`,
-      `2,onepot,p2,${U(3)},never,,[],"[""9-BBN, then H2O2""]",${recent}+00`,
-      `3,onepot,p2,${U(4)},graduate,2,,,${recent}+00`].join('\n');
-    const { sql, counts, errors } = toSql([results, ratings, difficulty]);
-    assert.deepEqual(counts, { results: { rows: 5, skipped: 1 }, ratings: { rows: 43, skipped: 0 }, difficulty_answers: { rows: 3, skipped: 0 } });
-    assert.deepEqual(errors, [{ table: 'results', line: 6, reason: 'invalid revealed' }]);
-    for (let k = 0; k < 2; k++) for (const s of statements(sql)) await db.prepare(s).run();
+  await t('rows with past dates, written directly to the database', async () => {
+    const day = n => new Date(Date.now() - n * 86400000).toISOString().slice(0, 10);
+    const recent = ms => `${day(5)}T12:00:00.${ms}Z`, old = `${day(200)}T12:00:00.000Z`;
+    const run = (sql, ...args) => db.prepare(sql).bind(...args).run();
+    for (const [i, checks, hints, score, revealed] of [[2, 3, 0, 3, 0], [3, 8, 0, 8, 0], [4, 2, 1, 3, 1], [5, 4, 0, 4, 0]]) {
+      await run(`INSERT INTO results (site, problem_id, client_id, checks, hints, score, revealed, created_at)
+        VALUES ('onepot', 'p2', ?, ?, ?, ?, ?, ?)`, U(i), checks, hints, score, revealed, recent('100'));
+    }
+    const rating = (pid, i, stars, remark, at) => run(`INSERT INTO ratings (site, problem_id, client_id, stars, remark, created_at)
+      VALUES ('onepot', ?, ?, ?, ?, ?)`, pid, U(i), stars, remark, at);
+    await rating('p2', 2, 5, null, recent('500'));
+    await rating('p2', 3, 3, 'it\'s "hard", with a comma\nand a new line', old);
+    await rating('p2', 7, 4, "'; DROP TABLE ratings; --", recent('600'));
+    for (let i = 0; i < 40; i++) await rating('p3', 100 + i, i < 27 ? 3 : i < 37 ? 2 : 1, null, recent('700'));
+    for (const [i, seen, hs, known, unknown] of [[2, 'graduate', 2, ['LiAlH4', '9-BBN, then H2O2'], []],
+      [3, 'never', null, [], ['9-BBN, then H2O2']], [4, 'graduate', 2, [], []]]) {
+      await run(`INSERT INTO difficulty_answers (site, problem_id, client_id, seen, hardest_step, known_reagents, unknown_reagents, created_at)
+        VALUES ('onepot', 'p2', ?, ?, ?, ?, ?, ?)`, U(i), seen, hs, JSON.stringify(known), JSON.stringify(unknown), recent('800'));
+    }
     assert.equal((await db.prepare('SELECT count(*) n FROM ratings').first()).n, 44);
-    // the existing row of visitor 1 on p1 is kept
-    assert.equal((await db.prepare("SELECT score FROM results WHERE site = 'onepot' AND problem_id = 'p1'").first()).score, 2);
-    assert.deepEqual(parseList('{a,"b \\"c\\"",NULL,"NULL"}'), ['a', 'b "c"', 'NULL']);
   });
 
   await t('problem_stats', async () => {
@@ -160,9 +152,7 @@ try {
     const p2 = fe.filter(r => r.problem_id === 'p2');
     assert.deepEqual(p2.map(r => [r.stars, r.remark, r.score, r.revealed]), [[5, null, 3, false], [4, "'; DROP TABLE ratings; --", null, null]]);
     assert.deepEqual(Object.keys(p2[0]), ['problem_id', 'stars', 'remark', 'created_at', 'score', 'revealed']);
-    assert.match(p2[0].created_at, /T\d\d:\d\d:\d\d\.500Z$/); // ".5+00"
-    const imported = await db.prepare("SELECT created_at FROM results WHERE problem_id = 'p2' AND client_id = ?").bind(U(2)).first();
-    assert.match(imported.created_at, /\.123Z$/); // ".123456+00"
+    assert.match(p2[0].created_at, /T12:00:00\.500Z$/);
     const allRows = await rpc('feedback_export', { p_site: 'onepot', p_since: '2000-01-01' });
     assert.equal(allRows.find(r => r.stars === 3 && r.problem_id === 'p2').remark, 'it\'s "hard", with a comma\nand a new line');
     for (let i = 1; i < allRows.length; i++) assert.ok(allRows[i - 1].created_at <= allRows[i].created_at);
@@ -224,36 +214,6 @@ try {
     assert.equal((await post('/rpc/check_clusters', { p_site: 'onepot', p_min: 1 })).status, 400);
     for (let k = 0; k < 200; k++) await db.prepare("INSERT INTO checks (site, problem_id, client_id, key, smiles, verdict, hints) VALUES ('onepot', 'p8', ?, ?, 'C', 'none', 0)").bind(U(70), 'InChI=1S/x' + k).run();
     assert.deepEqual((await post('/checks', { ...c(70, 'InChI=1S/y', 'C'), problem_id: 'p8' })).data, { error: 'too many checks' });
-  });
-
-  await t('import from the Supabase REST API (typed values, paging), secret key sent, nothing else', async () => {
-    const recent = new Date(Date.now() - 3 * 86400000).toISOString().replace('Z', '+00:00');
-    const data = {
-      results: Array.from({ length: 1001 }, (_, i) => ({ id: i + 1, site: 'namerxn', problem_id: 'q' + (i % 3), client_id: U(5000 + i),
-        checks: 1, hints: 0, score: 1 + (i % 3), revealed: i === 0, created_at: recent })),
-      ratings: [{ id: 1, site: 'namerxn', problem_id: 'q1', client_id: U(5001), stars: 2, remark: null, created_at: recent }],
-      difficulty_answers: [{ id: 1, site: 'namerxn', problem_id: 'q1', client_id: U(5001), seen: 'papers', hardest_step: null,
-        known_reagents: [], unknown_reagents: ['DMP'], created_at: recent }],
-    };
-    const realFetch = globalThis.fetch, calls = [];
-    globalThis.fetch = async (url, opts) => {
-      calls.push([url, opts.headers]);
-      const u = new URL(url), table = u.pathname.split('/').pop(), off = +u.searchParams.get('offset'), lim = +u.searchParams.get('limit');
-      return new Response(JSON.stringify(data[table].slice(off, off + lim)), { status: 200 });
-    };
-    let res;
-    try { res = await fromSupabase('https://example.supabase.co/', 'sb_secret_test'); } finally { globalThis.fetch = realFetch; }
-    assert.deepEqual(res.counts, { results: { rows: 1001, skipped: 0 }, ratings: { rows: 1, skipped: 0 }, difficulty_answers: { rows: 1, skipped: 0 } });
-    assert.equal(calls.length, 4); // results in two pages
-    assert.ok(calls.every(([u, h]) => u.startsWith('https://example.supabase.co/rest/v1/') && h.apikey === 'sb_secret_test' && !h.Authorization));
-    for (const st of statements(res.sql)) await db.prepare(st).run();
-    const s = await rpc('problem_summary', { p_site: 'namerxn' });
-    assert.deepEqual(s.find(r => r.problem_id === 'q1'), { problem_id: 'q1', n_results: 334, n_revealed: 0, median_score: 2, n_ratings: 1, mean_stars: 2 });
-    assert.equal(s.find(r => r.problem_id === 'q0').n_revealed, 1);
-    const fe = await rpc('feedback_export', { p_site: 'namerxn' });
-    assert.deepEqual(fe.map(r => [r.problem_id, r.stars, r.remark, r.score, r.revealed]), [['q1', 2, null, 2, false]]);
-    const d = await rpc('difficulty_summary', { p_site: 'namerxn' });
-    assert.deepEqual(d[0].reagents, { DMP: { known: 0, unknown: 1 } });
   });
 
   console.log(`ALL OK (${n} tests)`);

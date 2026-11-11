@@ -1,6 +1,6 @@
 // Shared results, ratings and difficulty answers for One-Pot Puzzles (site "onepot") and
 // Name Reaction Daily (site "namerxn"): Cloudflare Worker with a D1 database (binding DB).
-// Replaces the Supabase project; the read functions return the same JSON as supabase/schema.sql.
+// It replaced the former Supabase store on 2026-11-11; the read functions return the same JSON as supabase/schema.sql.
 //
 //   POST /results | /ratings | /difficulty_answers | /difficulty_votes | /checks   JSON body: insert one row
 //        (checks: one row per distinct structure, at most MAX_CHECKS per visitor and problem: 429 beyond)
