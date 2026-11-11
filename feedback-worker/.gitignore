@@ -1,7 +1,8 @@
 node_modules/
 .wrangler/
-# Supabase exports and the generated import file contain visitor remarks: never commit them.
+# Data exports contain visitor remarks: never commit them.
 *.csv
-import.sql
+*.sql
+!migrations/*.sql
 !package.json
 !package-lock.json
