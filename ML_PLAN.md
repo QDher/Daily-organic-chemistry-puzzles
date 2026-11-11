@@ -83,8 +83,16 @@ reviewable and revertible: 3 (decided 2026-11-11).
 - Name Reaction Daily quality: error risk (wrong-answer clusters, answer-shown share, low ratings with "structure
   error" labels) and relevance (ratings, "reaction not relevant" labels, number of repositories and textbooks covering
   the reaction). No difficulty model.
-- Before publication (flags only): forward reaction prediction (product among the top predictions), ML atom mapping
-  compared with `curate.py`, independent review of the entry against the source text.
+- Before publication (flags only): independent review of the entry against the source text; the optional tools below
+  when relevant.
+
+## Optional tools (used when relevant, not by default)
+
+| Tool | Use when | Not by default because |
+|---|---|---|
+| RXNMapper (ML atom mapping) | the mapping of `curate.py` is doubtful (symmetric rings, look-alike atoms, cases where step 6 of the prompts asks to reorder SMILES); mapping atoms for curly arrows (below) | PyTorch install in every run; less tested on charged intermediates |
+| Forward reaction prediction (Molecular Transformer, Chemformer) | checking that the product can be deduced from substrate and reagents (undergraduate and graduate problems, Name Reaction Daily); flag only | lower accuracy on total-synthesis substrates; install size |
+| DeepChem (pretrained molecular embeddings) | difficulty model once a few hundred problems have results; compared with RDKit fingerprints first | data volume too low now |
 
 ## Selection (once active)
 
@@ -103,6 +111,27 @@ Activation stages: shadow (predictions logged in `data/feedback_log.json`, not u
 Rank correlation of predicted and observed difficulty; share of One-Pot sets whose observed difficulty follows the
 level order; share of "about right" votes from visitors of the matching level; mean stars; errors confirmed by a
 chemist; completion rate (secondary).
+
+## Future evolution: curly-arrow mechanisms drawn by solvers (idea, 2026-11-11)
+
+After finding the product, the visitor is offered to draw the curly arrows of each transition (substrate → intermediate
+1 → … → product) on the structures already shown.
+- Representation: one arrow = electron source (lone pair of atom i, or bond i–j) → sink (atom k, or bond k–l), per
+  transition; atoms numbered by the mapping between consecutive species that `curate.py` already computes (RXNMapper
+  when that mapping is doubtful).
+- Automatic check: applying the arrows to species n must give species n + 1 (bond orders, charges, lone pairs). Each
+  submission is marked valid or not without a chemist; the visitor gets feedback; invalid sets show where solvers
+  go wrong. Several arrow sets can be valid for one transition: any set that gives species n + 1 is accepted.
+- Storage: D1 table `arrows` (site, problem, transition, arrows as JSON, valid, visitor level); anonymous.
+- Uses: (1) teaching feature on the page; (2) a dataset of checked arrow-pushing steps; (3) validated examples and a
+  test set for the mechanisms Claude writes in the scheduled runs (intermediates, labels, `reaction` text); (4) later,
+  training an open arrow-pushing model (public datasets of the same kind exist, e.g. PMechDB, mech-USPTO-31K; not
+  reviewed here). Claude is not retrained by these data: they act on Claude through prompts and evaluation.
+- Requirements and limits: an arrow layer bound to atoms and bonds (Ketcher's arrows are drawing objects; whether they
+  can be bound to atoms was not checked); low participation expected at the current volume (about 30 results); the
+  arrows follow the problem's intermediates (concerted or stepwise as published).
+- Order: after the Phase 0 data and the pull-request step; prototype on Name Reaction Daily (simpler mechanisms, with
+  the repository mechanism images as reference).
 
 ## Next steps
 
