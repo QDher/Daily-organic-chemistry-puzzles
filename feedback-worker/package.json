@@ -1,0 +1,14 @@
+{
+  "name": "puzzle-feedback",
+  "private": true,
+  "type": "module",
+  "description": "Shared results, ratings and difficulty answers for One-Pot Puzzles and Name Reaction Daily (Cloudflare Worker + D1).",
+  "scripts": {
+    "test": "node test/test.js",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "miniflare": "5.20261023.1-beta",
+    "wrangler": "4.154.0"
+  }
+}

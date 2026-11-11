@@ -1,0 +1,16 @@
+# Cloudflare Worker for the shared results, ratings and difficulty answers (see README.md).
+name = "puzzle-feedback"
+main = "src/index.js"
+compatibility_date = "2026-10-23"
+workers_dev = true
+
+[vars]
+# Pages allowed to call the Worker from a browser (comma-separated). Both sites are on this origin.
+ALLOWED_ORIGINS = "https://qdher.github.io"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "puzzle-feedback"
+# Printed by `npx wrangler d1 create puzzle-feedback`.
+database_id = "00000000-0000-0000-0000-000000000000"
+migrations_dir = "migrations"
