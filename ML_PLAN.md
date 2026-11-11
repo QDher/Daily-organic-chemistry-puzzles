@@ -140,11 +140,19 @@ Tracked on GitHub: https://github.com/QDher/Daily-organic-chemistry-puzzles/issu
 3. Conventions (common organic chemistry practice):
    - Hydrogens on carbon are implicit, and an arrow is never interpreted as involving an implicit hydrogen; to move a
      C–H proton or hydride, the user draws that hydrogen.
-   - Lone pairs are implicit: an arrow starting in empty space next to an atom that has a lone pair (O, N, S, halogen,
-     anion, carbanion) uses one of that atom's lone pairs (e.g. next to an oxygen).
+   - Lone pairs and vacant orbitals are implicit. An arrow end placed in empty space next to an atom is attached to
+     that atom only if the atom can play that role:
+     - start (electron source): the atom has an available valence lone pair (e.g. the oxygen of an ether, the
+       nitrogen of an amine, a halide, an anion, a carbanion); one of its lone pairs is used;
+     - end (electron sink): the atom has a vacant valence orbital (e.g. the boron of triethylborane, a carbocation)
+       and receives the new bond. An atom with a full octet (e.g. an sp3 carbon) accepts an arrow end only if another
+       arrow of the same entry breaks one of its bonds (e.g. SN2, addition to C=O).
+     Otherwise the arrow is not accepted, and the user is asked to start or end it on a bond or on another atom.
    - Arrow from a bond to one of its own atoms: heterolysis toward that atom. Arrow from a lone pair or a bond to
      another atom, or to the space between two atoms: a new bond (σ or π) to that atom. Each rule is written down and
      covered by tests before use; half-headed (radical) arrows come later.
+   - Transition metals (variable electron count, d orbitals, oxidative addition, reductive elimination, migratory
+     insertion, ligand exchange) need their own rules; they are outside the first version.
 4. Validation: the resulting structure is shown and the user accepts it or not. If not, Claude proposes another
    structure from the same arrows (another reading of an ambiguous arrow end), until the user accepts or stops.
    Accepted and rejected readings are both recorded.
