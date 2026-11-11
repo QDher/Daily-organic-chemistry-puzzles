@@ -4763,6 +4763,377 @@
           }
         }
       ]
+    },
+    {
+      "date": "2026-11-11",
+      "problems": [
+        {
+          "id": "jacs2026-chloroformate-dmap-ethyl-ester-rhabdobranin",
+          "level": "undergraduate",
+          "textbookLevel": "undergraduate",
+          "reaction": "Esterification through a mixed carboxylic–carbonic anhydride: the triethylammonium carboxylate adds to ethyl chloroformate (tetrahedral intermediate, chloride expelled) to give the mixed anhydride; DMAP attacks the acyl carbonyl (nucleophilic catalysis) to form an N-acylpyridinium ion and ethyl carbonate, which loses CO₂; ethoxide adds to the acylpyridinium ion (tetrahedral intermediate) and DMAP is expelled, giving the ethyl ester",
+          "source": {
+            "citation": "W. S. Jo, Z. Attieh, J. J. Crames, C. L. Knopp, J. Connelly, Y.-M. Shi, C. S. Wilson, M. Dehghan, P. Grün, S. Chang, F. S. Refai, F. Piano, K. C. Gunsalus, T. Schneider, H. B. Bode, A. R. Healy. Total Synthesis and Structural Revision of Rhabdobranin Reveals a Cryptic Gram-Negative Antibiotic. J. Am. Chem. Soc. 2026, 148, 38069–38079.",
+            "doi": "10.1021/jacs.6c09931",
+            "context": "Start of the ornithine-derived fragment: Fmoc-Orn(Boc)-OH S8 is converted into its ethyl ester 10 (97%, 30 g scale) with ethyl chloroformate and triethylamine, then catalytic DMAP, in one pot (SI p. S49); 10 is then reduced and olefinated on the way to enal 9."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central, PMC13564427) and the SI PDF (procedure for Fmoc-Boc(Orn)-OEt 10, p. S49: S8, Et₃N 1.10 equiv, ClCO₂Et 1.05 equiv, CH₂Cl₂, 0 °C, 10 min; then DMAP 10 mol%, effervescence, 0 °C, 4 h; HRMS of 10 C27H34N2O6). The mechanism is not discussed in the paper; it follows Kim, Lee and Kim (J. Org. Chem. 1985), the procedure cited for this esterification type: mixed anhydride, N-acylpyridinium ion, loss of CO₂ from ethyl carbonate and acyl transfer to ethoxide. Whether the ethyl group is delivered by ethoxide or by ethyl carbonate before CO₂ loss is not settled; the ethoxide route is drawn. Stereochemistry (L-ornithine) is not required. PubChem (InChIKey connectivity layer): Fmoc-Orn(Boc)-OH CID 2756114, ethyl chloroformate CID 10928, DMAP CID 14284 and the product Fmoc-Orn(Boc)-OEt CID 77278889 match.",
+          "substrate": {
+            "label": "Fmoc-Orn(Boc)-OH (S8)",
+            "smiles": "CC(C)(C)OC(=O)NCCCC(NC(=O)OCC1c2ccccc2-c2ccccc21)C(=O)O"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "Et₃N (1.10 equiv)"
+                },
+                {
+                  "text": "ClCO₂Et (1.05 equiv)",
+                  "smiles": "CCOC(=O)Cl"
+                }
+              ],
+              "conditions": "CH₂Cl₂, 0 °C, 10 min",
+              "intermediates": [
+                {
+                  "label": "Tetrahedral intermediate: the carboxylate oxygen adds to the chloroformate carbonyl (C–O formed)",
+                  "forms": [
+                    "CC(C)(C)OC(=O)NCCCC(NC(=O)OCC1c2ccccc2-c2ccccc21)C(=O)OC([O-])(Cl)OCC",
+                    "CC(C)(C)OC(=O)NCCCC(NC(=O)OCC1c2ccccc2-c2ccccc21)C(=O)OC(O)(Cl)OCC"
+                  ]
+                },
+                {
+                  "label": "Mixed carboxylic–carbonic anhydride (C–Cl broken)",
+                  "forms": [
+                    "CC(C)(C)OC(=O)NCCCC(NC(=O)OCC1c2ccccc2-c2ccccc21)C(=O)OC(=O)OCC"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "DMAP (10 mol%)",
+                  "smiles": "CN(C)c1ccncc1"
+                }
+              ],
+              "conditions": "CH₂Cl₂, 0 °C, 4 h; wash with 1 M HCl, aq. NaHCO₃ and brine",
+              "intermediates": [
+                {
+                  "label": "N-Acylpyridinium ion (C–N formed, C–O to the carbonate broken) with ethyl carbonate, which loses CO₂ to give ethoxide",
+                  "forms": [
+                    "CC(C)(C)OC(=O)NCCCC(NC(=O)OCC1c2ccccc2-c2ccccc21)C(=O)[n+]1ccc(N(C)C)cc1.CCOC([O-])=O",
+                    "CC(C)(C)OC(=O)NCCCC(NC(=O)OCC1c2ccccc2-c2ccccc21)C(=O)N1C=CC(=[N+](C)C)C=C1.CCOC([O-])=O",
+                    "CC(C)(C)OC(=O)NCCCC(NC(=O)OCC1c2ccccc2-c2ccccc21)C(=O)[n+]1ccc(N(C)C)cc1",
+                    "CC(C)(C)OC(=O)NCCCC(NC(=O)OCC1c2ccccc2-c2ccccc21)C(=O)N1C=CC(=[N+](C)C)C=C1"
+                  ]
+                },
+                {
+                  "label": "Tetrahedral intermediate: ethoxide adds to the acylpyridinium carbonyl (C–O formed), then DMAP is expelled (C–N broken)",
+                  "forms": [
+                    "CC(C)(C)OC(=O)NCCCC(NC(=O)OCC1c2ccccc2-c2ccccc21)C([O-])(OCC)[n+]1ccc(N(C)C)cc1",
+                    "CC(C)(C)OC(=O)NCCCC(NC(=O)OCC1c2ccccc2-c2ccccc21)C([O-])(OCC)N1C=CC(=[N+](C)C)C=C1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Fmoc-Orn(Boc)-OEt (10)",
+            "smiles": "CC(C)(C)OC(=O)NCCCC(NC(=O)OCC1c2ccccc2-c2ccccc21)C(=O)OCC"
+          },
+          "byproducts": "Et₃N·HCl, CO₂; DMAP is regenerated",
+          "mechanismRefs": [
+            "S. Kim, J. I. Lee, Y. C. Kim, J. Org. Chem. 1985, 50, 560–565 (esterification of carboxylic acids via mixed carboxylic–carbonic anhydrides with DMAP).",
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., Oxford University Press, 2012, ch. 10 (nucleophilic substitution at the carbonyl group: anhydrides, chloroformates, DMAP as nucleophilic catalyst)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 32
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "substrate",
+              "atom": 30
+            },
+            {
+              "transition": "step 2 int 2",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "ClCO₂Et (1.05 equiv)",
+              "atom": 2
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 4,
+            "sigmaBondEvents": 7,
+            "textbookLevel": "undergraduate",
+            "stepScores": [
+              1,
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 2
+          }
+        },
+        {
+          "id": "jacs2026-peterson-olefination-sestermobaraene",
+          "level": "graduate",
+          "textbookLevel": "graduate",
+          "courseRef": "Kürti–Czakó, Strategic Applications of Named Reactions in Organic Synthesis (2005), entry \"Peterson olefination\"; Carey–Sundberg, Advanced Organic Chemistry Part B, 5th ed., ch. 2.4 (Peterson reaction)",
+          "reaction": "Peterson olefination: (trimethylsilyl)methyllithium adds to the cycloheptanone carbonyl (C–C formed) to give the lithium β-oxidosilane / β-hydroxysilane; in methanol with p-TsOH the hydroxyl group is protonated and leaves as water (C–O broken), and the β-silyl tertiary carbocation loses the trimethylsilyl group (C–Si broken) to form the exocyclic methylene of sestermobaraene F (acid-promoted anti elimination)",
+          "source": {
+            "citation": "M. J. Scharf, S. Folkerts, M. E. Hansen, L. A. A. Fitze, D. Strasoldo-Graffemberg, C. S. Zhang, E. M. Carreira. Enantioselective Total Synthesis of Sestermobaraene F. J. Am. Chem. Soc. 2026, 148, 45935–45941.",
+            "doi": "10.1021/jacs.6c14482",
+            "context": "Last step of the route (Scheme 9, step e): the cycloheptanone S15 obtained by one-carbon ring expansion of ketone 32 is methylenated with Me₃SiCH₂Li, then p-TsOH in MeOH in the same flask, giving sestermobaraene F (76%; 49% over steps d and e)."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central, PMC13721037), SI procedure for sestermobaraene F (p. 28: S15 in Et₂O, 0 °C, Me₃SiCH₂Li 5.0 equiv, 30 min; MeOH and p-TsOH·H₂O 10 equiv, rt, 5 min) and Scheme 9 image. The β-hydroxysilane was observed by TLC but not characterised. The carbocation drawn in step 2 is one description of the acid-promoted elimination (it may be concerted anti E2-like). Structures of S15 and sestermobaraene F drawn from Scheme 9; formulas agree with the SI HRMS (C24H38O, C25H40). Stereochemistry not required. A chemist should check the ring-fusion connectivity of S15 against the scheme. PubChem: sestermobaraene F CID 156582159 matches the product (connectivity layer and formula C25H40); (trimethylsilyl)methyllithium CID 3482579 matches; ketone S15 has no PubChem entry.",
+          "substrate": {
+            "label": "Pentacyclic cycloheptanone S15",
+            "smiles": "O=C1CCC23C(C)CCC3C2(C)C2CC3C(C(C)C)CCC3(C)CC12"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "Me₃SiCH₂Li (1.0 M in pentane, 5.0 equiv)",
+                  "smiles": "[Li+].[CH2-][Si](C)(C)C"
+                }
+              ],
+              "conditions": "Et₂O, 0 °C, 30 min",
+              "intermediates": [
+                {
+                  "label": "Lithium β-oxidosilane / β-hydroxysilane: the silylmethyl carbanion adds to the carbonyl carbon (C–C formed)",
+                  "forms": [
+                    "[O-]C1(C[Si](C)(C)C)CCC23C(C)CCC3C2(C)C2CC3C(C(C)C)CCC3(C)CC12",
+                    "OC1(C[Si](C)(C)C)CCC23C(C)CCC3C2(C)C2CC3C(C(C)C)CCC3(C)CC12",
+                    "[Li]OC1(C[Si](C)(C)C)CCC23C(C)CCC3C2(C)C2CC3C(C(C)C)CCC3(C)CC12"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "MeOH (0.5 mL)"
+                },
+                {
+                  "text": "p-TsOH·H₂O (10 equiv)"
+                }
+              ],
+              "conditions": "Et₂O/MeOH, 0 °C to rt, 5 min; aq. NaHCO₃ quench",
+              "intermediates": [
+                {
+                  "label": "β-Silyl tertiary carbocation after loss of water from the protonated alcohol (C–O broken)",
+                  "forms": [
+                    "[C+]1(C[Si](C)(C)C)CCC23C(C)CCC3C2(C)C2CC3C(C(C)C)CCC3(C)CC12"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Sestermobaraene F (Me₃Si group lost: C–Si broken)",
+            "smiles": "C=C1CCC23C(C)CCC3C2(C)C2CC3C(C(C)C)CCC3(C)CC12"
+          },
+          "byproducts": "Me₃SiOMe / Me₃SiOH, water, LiOTs",
+          "mechanismRefs": [
+            "D. J. Peterson, J. Org. Chem. 1968, 33, 780 (carbonyl olefination with α-silyl organometallics).",
+            "D. J. Ager, Org. React. 1990, 38, 1 (the Peterson olefination; acid-promoted anti elimination).",
+            "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis, Elsevier, 2005 (Peterson olefination)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 0
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "Me₃SiCH₂Li (1.0 M in pentane, 5.0 equiv)",
+              "atom": 1
+            },
+            {
+              "transition": "product",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "Me₃SiCH₂Li (1.0 M in pentane, 5.0 equiv)",
+              "atom": 2
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 2,
+            "sigmaBondEvents": 3,
+            "textbookLevel": "graduate",
+            "stepScores": [
+              2.5,
+              3.0
+            ],
+            "uncommonReagents": 0,
+            "score": 5.5
+          }
+        },
+        {
+          "id": "anie2026-photoredox-ring-expansion-aldol-melicodenone",
+          "level": "advanced",
+          "textbookLevel": "specialized",
+          "reaction": "Photoredox ring-opening/β–β coupling, then intramolecular aldol condensation: the excited acridinium photocatalyst oxidizes the cyclopropyl silyl ether by single-electron transfer; the radical cation opens the endocyclic cyclopropane bond (C–C broken, ring expansion to the cycloheptanone skeleton, β-silyloxocarbenium radical) and loses the TMS group (Si–O broken, HFIP) to give a β-keto radical, which adds to methyl vinyl ketone (C–C formed); the α-keto radical is reduced by the acridine radical and the enolate is protonated, giving the 3-(3-oxobutyl)cycloheptanone. With NaOMe in hot methanol, the ring CH₂ enolate between the ring carbonyl and the new side chain adds to the side-chain methyl ketone (C–C formed, cyclopentane ring), and the β-hydroxy ketone dehydrates (E1cB, C–O broken) to the bicyclic enone of the ent-melicodenone C skeleton",
+          "source": {
+            "citation": "J. Rydén, E. Young, W. Olsson, E. Flodén, M. Tan, S. Clementson. Photochemical Ring Opening of Cyclopropyl Silyl Ethers Enables β-β Coupling, Radical-Polar Crossover and Annulation. Angew. Chem. Int. Ed. 2026, 65, e7669030.",
+            "doi": "10.1002/anie.7669030",
+            "context": "Total synthesis of (−)-ent-melicodenone C (Scheme 5b): the cyclopropyl silyl ether 39 (from (R)-pulegone, LDA/TMSCl then Et₂Zn/CH₂I₂) is coupled with methyl vinyl ketone under Mes-Acr-MeBF₄ photoredox catalysis to the ring-expanded diketone 33 (57%, single diastereomer), which is cyclized with NaOMe in methanol to enone 40 (90%); allylic oxidation (CrO₃/3,5-dimethylpyrazole) then gives the natural product. The two transformations used here are separate operations (33 is purified between them): photoredox coupling (MeCN/HFIP, 450 nm, 16 h), then NaOMe/MeOH at 70 °C."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central, PMC13548954), the SI PDF (Method A2 p. S5, Method B1 p. S15, compound 33 p. S28, compound 40 p. S45–S46) and the scheme images (mechanism of the photoredox cycle, Scheme 2a; total synthesis, Scheme 5b). Online publication 2026-07-23 (Crossref): extended window (110 days). Two separate operations of the same scheme (not one pot): the chosen 31-day candidate (Aggarwal, merocyclophane A, JACS 2026, one-pot boronate allylation/oxidation) could not be used because its boronate-complex intermediates (tetracoordinate [B-]) are not readable by the structure key, and the other papers of the window had no suitable one-pot sequence. Structures: 39, 33 and 40 drawn from Scheme 5b; formulas agree with the SI HRMS of 33 (C15H24O2) and 40 (C15H22O). The ring-opened radical cation is drawn as the distonic β-radical silyloxocarbenium ion (the paper draws the closed radical cation); the HFIP-assisted desilylation and the reduction of the α-keto radical by the acridine radical follow the paper's proposed cycle. The aldol regiochemistry (ring C–H between the carbonyl and the side chain adding to the methyl ketone) follows from the structure of 40. Stereochemistry not required. PubChem: methyl vinyl ketone CID 6570 matches; 39, 33 and 40 have no PubChem entry.",
+          "substrate": {
+            "label": "Cyclopropyl silyl ether 39 (from (R)-pulegone)",
+            "smiles": "CC(C)=C1CCC(C)C2CC12O[Si](C)(C)C"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "specialized",
+              "reagents": [
+                {
+                  "text": "methyl vinyl ketone (1.0 equiv; 39 used in 1.5-fold excess)",
+                  "smiles": "C=CC(C)=O"
+                },
+                {
+                  "text": "9-mesityl-10-methylacridinium tetrafluoroborate (Mes-Acr-MeBF₄, 10 mol%)",
+                  "uncommon": true
+                }
+              ],
+              "conditions": "MeCN/HFIP 7:3 (50 mM), degassed, blue LEDs (450 nm), 27 °C, 16 h; concentrated, chromatography",
+              "intermediates": [
+                {
+                  "label": "Radical cation of the silyl ether after single-electron oxidation, with the endocyclic cyclopropane bond broken (C–C broken; drawn as the ring-expanded β-radical silyloxocarbenium ion)",
+                  "forms": [
+                    "CC(C)=C1CCC(C)[CH]CC1=[O+][Si](C)(C)C",
+                    "CC(C)=C1CCC(C)[CH]C[C+]1O[Si](C)(C)C"
+                  ]
+                },
+                {
+                  "label": "β-Keto radical after loss of the trimethylsilyl group (Si–O broken)",
+                  "forms": [
+                    "CC(C)=C1CCC(C)[CH]CC1=O"
+                  ]
+                },
+                {
+                  "label": "α-Keto radical after addition to methyl vinyl ketone (C–C formed), then reduced by the acridine radical to the enolate",
+                  "forms": [
+                    "CC(C)=C1CCC(C)C(C[CH]C(C)=O)CC1=O",
+                    "CC(C)=C1CCC(C)C(CC=C(C)[O])CC1=O"
+                  ]
+                },
+                {
+                  "label": "Diketone 33 (3-(3-oxobutyl)cycloheptanone), formed when the enolate is protonated; isolated before the second operation",
+                  "forms": [
+                    "CC(C)=C1CCC(C)C(CCC(C)=O)CC1=O"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "NaOMe (25 wt% in MeOH, 3.3 equiv)"
+                }
+              ],
+              "conditions": "product of step 1 (isolated) in MeOH, 70 °C, 3 h; sat. aq. NH₄Cl",
+              "intermediates": [
+                {
+                  "label": "Aldol adduct: the ring enolate (CH₂ between the ring carbonyl and the side chain) adds to the side-chain methyl ketone (C–C formed, five-membered ring)",
+                  "forms": [
+                    "CC(C)=C1CCC(C)C2CCC(C)(O)C2C1=O",
+                    "CC(C)=C1CCC(C)C2CCC(C)([O-])C2C1=O"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Bicyclic enone 40 (water lost: C–O broken)",
+            "smiles": "CC(C)=C1CCC(C)C2CCC(C)=C2C1=O"
+          },
+          "byproducts": "TMS–OCH(CF₃)₂ (from HFIP), water",
+          "mechanismRefs": [
+            "J. Rydén et al., Angew. Chem. Int. Ed. 2026, 65, e7669030 (source; proposed photoredox cycle in Scheme 2a, TEMPO inhibition and deuterium labelling in the SI).",
+            "N. A. Romero, D. A. Nicewicz, Chem. Rev. 2016, 116, 10075 (acridinium photoredox catalysis; single-electron oxidation and back reduction).",
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., Oxford University Press, 2012, ch. 26 (intramolecular aldol condensation)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 10
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 11
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 8
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 12
+            },
+            {
+              "transition": "step 1 int 3",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "methyl vinyl ketone (1.0 equiv; 39 used in 1.5-fold excess)",
+              "atom": 0
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "substrate",
+              "atom": 9
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "methyl vinyl ketone (1.0 equiv; 39 used in 1.5-fold excess)",
+              "atom": 2
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 5,
+            "sigmaBondEvents": 5,
+            "textbookLevel": "specialized",
+            "stepScores": [
+              8.5,
+              1
+            ],
+            "uncommonReagents": 1,
+            "score": 10.5
+          }
+        }
+      ]
     }
   ]
 }

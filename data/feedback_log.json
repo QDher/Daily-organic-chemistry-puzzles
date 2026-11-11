@@ -7,17 +7,22 @@
       "kind": "remark",
       "problemIds": [
         "jlac1850-strecker-alanine",
-        "jacs1969-corey-saponification-iodolactonization"
+        "jacs1969-corey-saponification-iodolactonization",
+        "oprd1999-haloform-veratric-acid"
       ],
       "evidence": {
-        "ratings": 3,
-        "distinctProblems": 2,
-        "meanStars": 3.0,
-        "results": 6,
-        "medianScore": 2
+        "ratings": 4,
+        "distinctProblems": 3,
+        "meanStars": 3.25,
+        "results": 9,
+        "medianScore": {
+          "jlac1850-strecker-alanine": 2,
+          "jacs1969-corey-saponification-iodolactonization": 2,
+          "oprd1999-haloform-veratric-acid": 3
+        }
       },
       "firstSeen": "2026-11-06",
-      "lastSeen": "2026-11-08",
+      "lastSeen": "2026-11-10",
       "status": "proposed",
       "proposal": "Add a rule for the undergraduate level: the problem covers one textbook transformation; a preliminary or follow-up operation (e.g. a saponification before the key step, or hydrolysis of the product of the key step) is left out unless it is part of the same named textbook reaction.",
       "proposedOn": "2026-11-06"
@@ -28,20 +33,22 @@
       "kind": "remark",
       "problemIds": [
         "jacs2026-dithiane-hydrolysis-arnicenone",
-        "nature2026-acetal-hydrolysis-pyridine-rupestine-d"
+        "nature2026-acetal-hydrolysis-pyridine-rupestine-d",
+        "nature2026-pd-decarboxylative-ring-expansion-rupestine-d"
       ],
       "evidence": {
-        "ratings": 3,
-        "distinctProblems": 2,
-        "meanStars": 1.33,
-        "results": 4,
+        "ratings": 4,
+        "distinctProblems": 3,
+        "meanStars": 2.0,
+        "results": 5,
         "medianScore": {
           "jacs2026-dithiane-hydrolysis-arnicenone": 2.5,
-          "nature2026-acetal-hydrolysis-pyridine-rupestine-d": 10
+          "nature2026-acetal-hydrolysis-pyridine-rupestine-d": 10,
+          "nature2026-pd-decarboxylative-ring-expansion-rupestine-d": 17
         }
       },
       "firstSeen": "2026-11-06",
-      "lastSeen": "2026-11-08",
+      "lastSeen": "2026-11-10",
       "status": "proposed",
       "proposal": "Add a rule for the advanced level: at least half of the difficulty score must come from specialized steps and uncommon reagents, and a problem whose specialized character rests on a deprotection or hydrolysis step is not used at that level.",
       "proposedOn": "2026-11-06"
@@ -61,8 +68,99 @@
         "medianScore": 16
       },
       "firstSeen": "2026-11-06",
-      "lastSeen": "2026-11-08",
+      "lastSeen": "2026-11-10",
       "status": "observing"
+    },
+    {
+      "id": "advanced-problems-small-structural-change-too-easy",
+      "topic": "Advanced problems whose product differs little from the substrate (small structural change, common reagents) are judged too easy.",
+      "kind": "remark",
+      "problemIds": [
+        "jacs2026-dithiane-hydrolysis-arnicenone",
+        "jacs2026-rh-hydrosilylation-protonation-narbomycin"
+      ],
+      "evidence": {
+        "ratings": 2,
+        "distinctProblems": 2,
+        "meanStars": 1.0,
+        "results": 3,
+        "medianScore": {
+          "jacs2026-dithiane-hydrolysis-arnicenone": 2.5,
+          "jacs2026-rh-hydrosilylation-protonation-narbomycin": 2
+        }
+      },
+      "firstSeen": "2026-11-10",
+      "lastSeen": "2026-11-10",
+      "status": "proposed",
+      "proposal": "Add a rule for the advanced level: the product must differ from the substrate by at least two skeletal bonds (C–C or ring C–heteroatom bonds made or broken, protecting-group atoms not counted), so that a one-site reduction or deprotection cannot carry an advanced problem.",
+      "proposedOn": "2026-11-10"
+    },
+    {
+      "id": "undergraduate-steps-should-not-require-intermediates",
+      "topic": "In graduate and advanced problems, undergraduate-level steps (deprotection, acetal hydrolysis) are felt to add work without difficulty; solvers suggest not asking for their intermediates or not counting them in the difficulty.",
+      "kind": "remark",
+      "problemIds": [
+        "nature2026-acetal-hydrolysis-pyridine-rupestine-d",
+        "nature2026-pd-decarboxylative-ring-expansion-rupestine-d"
+      ],
+      "evidence": {
+        "ratings": 2,
+        "distinctProblems": 2,
+        "meanStars": 3.0,
+        "results": 3,
+        "medianScore": {
+          "nature2026-acetal-hydrolysis-pyridine-rupestine-d": 10,
+          "nature2026-pd-decarboxylative-ring-expansion-rupestine-d": 17
+        }
+      },
+      "firstSeen": "2026-11-10",
+      "lastSeen": "2026-11-10",
+      "status": "proposed",
+      "proposal": "Change the advanced-level shape rule: an undergraduate-level step (deprotection, hydrolysis, work-up) may be part of the sequence but does not count toward the minimum of 2 steps, and its intermediates are optional (shown after solving rather than required).",
+      "proposedOn": "2026-11-10"
+    },
+    {
+      "id": "advanced-level-low-ratings",
+      "topic": "Ratings of advanced problems are low overall.",
+      "kind": "rating",
+      "problemIds": [
+        "jacs2026-dithiane-hydrolysis-arnicenone",
+        "nature2026-acetal-hydrolysis-pyridine-rupestine-d",
+        "nature2026-pd-decarboxylative-ring-expansion-rupestine-d",
+        "jacs2026-rh-hydrosilylation-protonation-narbomycin"
+      ],
+      "evidence": {
+        "ratings": 5,
+        "distinctProblems": 4,
+        "meanStars": 1.8,
+        "results": 6
+      },
+      "firstSeen": "2026-11-10",
+      "lastSeen": "2026-11-10",
+      "status": "proposed",
+      "proposal": "For the advanced level, require that specialized steps and uncommon reagents provide at least two thirds of the difficulty score (undergraduate steps contributing at most one third), so that advanced problems rest on the specialized chemistry that was rated well (4 stars for the Pd-catalysed ring expansion).",
+      "proposedOn": "2026-11-10"
+    },
+    {
+      "id": "graduate-level-low-ratings",
+      "topic": "Ratings of graduate problems average below 3, pulled down by one long multi-step graduate problem with an uncommon reagent.",
+      "kind": "rating",
+      "problemIds": [
+        "jacs2026-danheiser-benzannulation-pde-i",
+        "jacs2026-aspartic-acid-diazotization-bromosuccinic-benthol",
+        "jacs2026-seyferth-gilbert-ribose-alkyne-benthol"
+      ],
+      "evidence": {
+        "ratings": 5,
+        "distinctProblems": 3,
+        "meanStars": 2.8,
+        "results": 6
+      },
+      "firstSeen": "2026-11-10",
+      "lastSeen": "2026-11-10",
+      "status": "proposed",
+      "proposal": "Set an upper limit for the graduate difficulty score (for example 7) and no uncommon reagent at the graduate level, so that graduate problems stay below the advanced level in complexity.",
+      "proposedOn": "2026-11-10"
     }
   ],
   "runs": [
@@ -126,6 +224,32 @@
       ],
       "newProposals": [],
       "note": "Same data as the 2026-11-06 and 2026-11-07 runs; evidence recounted, unchanged. difficulty_summary now responds but holds only one test answer (problem id outside the problem set), so no calibration check."
+    },
+    {
+      "date": "2026-11-10",
+      "targetDate": "2026-11-11",
+      "supabase": "ok",
+      "results": 26,
+      "ratings": 16,
+      "remarks": 15,
+      "newObservations": [
+        "advanced-problems-small-structural-change-too-easy",
+        "undergraduate-steps-should-not-require-intermediates",
+        "advanced-level-low-ratings",
+        "graduate-level-low-ratings"
+      ],
+      "updated": [
+        "undergraduate-problems-include-extra-steps",
+        "advanced-problems-built-on-deprotection-too-easy",
+        "graduate-danheiser-judged-too-hard"
+      ],
+      "newProposals": [
+        "advanced-problems-small-structural-change-too-easy",
+        "undergraduate-steps-should-not-require-intermediates",
+        "advanced-level-low-ratings",
+        "graduate-level-low-ratings"
+      ],
+      "note": "New data since the last run: ratings of the 2026-11-09 and 2026-11-10 sets. difficulty_summary: at most 1 answer per problem (plus one test entry outside the problem set), so no calibration check."
     }
   ]
 }
