@@ -184,6 +184,43 @@ drawing (B1), for alternative readings (B4) and for goal A2.
 
 Open: who pays the API calls and the daily limit; whether the collected data are published, and under which licence.
 
+## Compute: HPC cluster (Nibi, Digital Research Alliance of Canada) (note, 2026-11-11)
+
+Not needed now; useful later for training and batch jobs only.
+
+| Task | HPC useful? |
+|---|---|
+| Feedback statistics, difficulty and rating models, Thompson sampling, Tier A | No: seconds of CPU; queue wait and data transfer exceed the computation |
+| RXNMapper or forward prediction on the daily candidates | No: a few reactions per day, CPU inference is enough |
+| The same models over a large candidate pool (results stored as flags in the repository) | Yes, as an occasional batch job (GPU) |
+| Drawing recognition (DECIMER, MolScribe): evaluation and fine-tuning on hand drawings | Yes, training and evaluation only |
+| Curly-arrow model (section C above): pre-training on public datasets, then on crowd data | Yes: the main case (GPU hours to days) |
+
+Claude Code on Nibi (in tmux on a login node):
+- It keeps one authenticated session (multi-factor authentication once), so Claude can export the data, write and submit
+  Slurm jobs, follow them, evaluate the results against the current model and open a pull request with the model file.
+- The plan's start conditions ("train when enough new data exists") can be checked there, on request or with a loop,
+  and GPU jobs submitted only when they hold. Libraries (RDKit, PyTorch, RXNMapper, Chemformer) are installed once.
+
+Unchanged:
+- The daily scheduled runs stay in the cloud (managed schedule, notifications, PubMed / ChEMBL / SciSpace connectors,
+  clean container), so that publishing does not depend on a login node.
+- A cluster does not serve live answers: models trained on Nibi are exported and run in the Worker, the page or the
+  scheduled run. The link between Nibi and the sites is the GitHub repository (model files arrive as pull requests,
+  merged by the user, as the activation stages require).
+
+To check before use:
+- Alliance rules on long-running processes in tmux on Nibi login nodes, and the effect of reboots and maintenance;
+  heavy work goes through `sbatch` only.
+- Outbound internet from compute nodes; if there is none, the session on the login node stages data before each job.
+- Credentials on a shared system: the Claude login and a GitHub token limited to the two repositories (pull requests,
+  no push to `main`), files readable by the owner only.
+- Per-row training data needs the keyed Worker export (planned, Phase 0); the public endpoints return aggregates only.
+- Whether this use fits the terms of the Alliance allocation (default allocation for occasional jobs; a competition
+  allocation for a large curly-arrow model).
+- Not verified: Nibi's current hardware and queue policies; whether a cloud session can reach a Nibi folder through
+  Remote Control (would let scheduled runs hand jobs to Nibi directly).
+
 ## Next steps
 
 1. Worker: `views`, revision and rule-version columns, keyed per-row export (`checks` added 2026-11-11).
