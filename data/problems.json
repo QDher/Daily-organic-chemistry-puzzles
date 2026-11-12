@@ -5134,6 +5134,355 @@
           }
         }
       ]
+    },
+    {
+      "date": "2026-11-12",
+      "problems": [
+        {
+          "id": "hca1950-lialh4-sclareolide-ambradiol",
+          "level": "undergraduate",
+          "textbookLevel": "undergraduate",
+          "reaction": "Reduction of a lactone with lithium aluminium hydride: hydride adds to the lactone carbonyl (tetrahedral alkoxide), the tetrahedral intermediate collapses with C–O cleavage of the ring (hydroxy aldehyde as its alkoxide), and a second hydride reduces the aldehyde; aqueous work-up gives the 1,4-diol (ambradiol), the precursor of the ambergris odorant Ambrox",
+          "source": {
+            "citation": "M. Hinder, M. Stoll. Odeur et constitution IV. Sur les époxydes hydroaromatiques à odeur ambrée. Helv. Chim. Acta 1950, 33, 1308–1312.",
+            "doi": "10.1002/hlca.19500330527",
+            "context": "First synthesis of Ambrox (ambrox oxide) from sclareol-derived sclareolide: the lactone sclareolide is reduced with LiAlH4 to the diol (ambradiol), which is then cyclised with acid to the tetrahydrofuran Ambrox. This problem is the reduction step."
+          },
+          "verified": false,
+          "verificationNote": "Original paper not read in this run (Wiley page not accessed); the step is identified from secondary sources (patent literature citing Helv. Chim. Acta 1950, 33, 1310 for the LiAlH4 reduction of sclareolide to the diol; Crossref record of the paper checked for authors, title, pages and DOI). Solvent and work-up are not taken from the paper: diethyl ether and aqueous work-up are assumed (standard for LiAlH4 in 1950) and a chemist should check them. Intermediates follow the textbook mechanism of ester/lactone reduction by LiAlH4 (Clayden ch. 10; Klein ch. 20). PubChem (InChIKey connectivity layer, RDKit vs PubChem): sclareolide matches CID 929262; ambradiol (8α,12-dihydroxy-13,14,15,16-tetranorlabdane) matches CID 91915 (structure search); LiAlH4 matches CID 28112. Stereochemistry not drawn.",
+          "substrate": {
+            "label": "Sclareolide",
+            "smiles": "CC1(C)CCCC2(C)C1CCC1(C)OC(=O)CC21"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "LiAlH₄",
+                  "smiles": "[Li+].[AlH4-]"
+                }
+              ],
+              "conditions": "Et₂O; aqueous work-up",
+              "intermediates": [
+                {
+                  "label": "Tetrahedral alkoxide: hydride added to the lactone carbonyl carbon (C–H formed)",
+                  "forms": [
+                    "CC1(C)CCCC2(C)C1CCC1(C)OC([O-])CC21",
+                    "CC1(C)CCCC2(C)C1CCC1(C)OC(O)CC21"
+                  ]
+                },
+                {
+                  "label": "Hydroxy aldehyde (as the tertiary alkoxide) after collapse of the tetrahedral intermediate: ring C–O bond broken, C=O re-formed",
+                  "forms": [
+                    "CC1(C)CCCC2(C)C1CCC(C)([O-])C2CC=O",
+                    "CC1(C)CCCC2(C)C1CCC(C)(O)C2CC=O"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Ambradiol (second hydride adds to the aldehyde; diol after aqueous work-up)",
+            "smiles": "CC1(C)CCCC2(C)C1CCC(C)(O)C2CCO"
+          },
+          "byproducts": "Lithium and aluminium salts (after work-up)",
+          "mechanismRefs": [
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., Oxford University Press, 2012, ch. 10 (reduction of esters by LiAlH4: tetrahedral intermediate, aldehyde, alkoxide).",
+            "D. R. Klein, Organic Chemistry, 4th ed., Wiley, 2021, ch. 20 (reduction of esters with LiAlH4)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 14
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 13
+            }
+          ],
+          "difficulty": {
+            "steps": 1,
+            "intermediates": 2,
+            "sigmaBondEvents": 1,
+            "textbookLevel": "undergraduate",
+            "stepScores": [
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 1
+          }
+        },
+        {
+          "id": "jacs1969-hwe-enone-corey-prostaglandin",
+          "level": "graduate",
+          "textbookLevel": "graduate",
+          "courseRef": "Kürti–Czakó, Strategic Applications of Named Reactions in Organic Synthesis (2005), entry \"Horner–Wadsworth–Emmons olefination\"; Carey–Sundberg, Advanced Organic Chemistry Part B, 5th ed., ch. 2.4 (reactions of phosphonate carbanions with carbonyl compounds)",
+          "reaction": "Horner–Wadsworth–Emmons olefination: the sodium salt of dimethyl (2-oxoheptyl)phosphonate adds to the aldehyde of the Corey lactone (C–C formed, β-alkoxy phosphonate), the alkoxide attacks phosphorus (P–O formed, oxaphosphetane), and cycloreversion breaks the C–P and C–O bonds to give the (E)-enone and sodium dimethyl phosphate",
+          "source": {
+            "citation": "E. J. Corey, N. M. Weinshenker, T. K. Schaaf, W. Huber. Stereo-controlled synthesis of prostaglandins F2α and E2 (dl). J. Am. Chem. Soc. 1969, 91, 5675–5677.",
+            "doi": "10.1021/ja01048a062",
+            "context": "Corey's prostaglandin route: after iodolactonization, acetylation, deiodination, demethylation and Collins oxidation, the acetoxy lactone aldehyde (Corey aldehyde) is condensed with the sodium derivative of dimethyl 2-oxoheptylphosphonate in 1,2-dimethoxyethane to give the trans-enone that carries the lower (ω) side chain."
+          },
+          "verified": false,
+          "verificationNote": "Original communication not read in this run (no access); the step, reagent and solvent follow the well-known account of Corey's 1969 synthesis (sodio dimethyl 2-oxoheptylphosphonate, DME). Temperature and reaction time were not read and are omitted; a chemist should check them and that the 1969 route used the acetate (later routes used the p-phenylbenzoate). Intermediates follow the textbook HWE mechanism (adduct alkoxide, oxaphosphetane). PubChem (InChIKey connectivity layer): Corey aldehyde acetate matches CID 22093409; the enone product matches CID 73686967; dimethyl (2-oxoheptyl)phosphonate (neutral form) matches CID 580181. Stereochemistry (E-alkene, ring stereocentres) not required.",
+          "substrate": {
+            "label": "Corey aldehyde (acetate)",
+            "smiles": "CC(=O)OC1CC2OC(=O)CC2C1C=O"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "dimethyl (2-oxoheptyl)phosphonate, sodium salt",
+                  "smiles": "[Na+].CCCCCC(=O)[CH-]P(=O)(OC)OC"
+                }
+              ],
+              "conditions": "1,2-dimethoxyethane (DME)",
+              "intermediates": [
+                {
+                  "label": "β-Alkoxy phosphonate: the phosphonate carbanion adds to the aldehyde carbon (C–C formed)",
+                  "forms": [
+                    "CCCCCC(=O)C(C([O-])C1C(OC(C)=O)CC2OC(=O)CC12)P(=O)(OC)OC",
+                    "CCCCCC(=O)C(C(O)C1C(OC(C)=O)CC2OC(=O)CC12)P(=O)(OC)OC"
+                  ]
+                },
+                {
+                  "label": "Oxaphosphetane: the alkoxide oxygen bonds to phosphorus (P–O formed)",
+                  "forms": [
+                    "CCCCCC(=O)C1C(C2C(OC(C)=O)CC3OC(=O)CC23)OP1([O-])(OC)OC"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "(E)-Enone (C–P and C–O bonds broken in the cycloreversion)",
+            "smiles": "CCCCCC(=O)C=CC1C(OC(C)=O)CC2OC(=O)CC12"
+          },
+          "byproducts": "Sodium dimethyl phosphate",
+          "mechanismRefs": [
+            "W. S. Wadsworth Jr., W. D. Emmons, J. Am. Chem. Soc. 1961, 83, 1733 (olefination with phosphonate carbanions).",
+            "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis, Elsevier, 2005 (Horner–Wadsworth–Emmons olefination).",
+            "E. J. Corey, X.-M. Cheng, The Logic of Chemical Synthesis, Wiley, 1989 (prostaglandin syntheses)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 13
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "dimethyl (2-oxoheptyl)phosphonate, sodium salt",
+              "atom": 8
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "dimethyl (2-oxoheptyl)phosphonate, sodium salt",
+              "atom": 9
+            }
+          ],
+          "difficulty": {
+            "steps": 1,
+            "intermediates": 2,
+            "sigmaBondEvents": 4,
+            "textbookLevel": "graduate",
+            "stepScores": [
+              4.0
+            ],
+            "uncommonReagents": 0,
+            "score": 4.0
+          }
+        },
+        {
+          "id": "jacs2026-aryne-methoxyfuran-annulation-halenaquinone",
+          "level": "advanced",
+          "textbookLevel": "graduate",
+          "reaction": "Aryne annulation: n-BuLi deprotonates the carboxylic acid and exchanges iodine for lithium; the ortho-lithio aryl triflate loses LiOTf to give the aryne, which is trapped in a Diels–Alder reaction by 2-methoxyfuran (two C–C bonds, oxa-bridged 1-methoxy-1,4-dihydro-1,4-epoxynaphthalene). Aqueous HCl opens the oxa bridge at the methoxy-substituted bridgehead (methyl oxocarbenium ion) and loss of the bridgehead proton aromatizes the new ring to a 4-methoxy-1-naphthol. Aqueous NaOH and dimethyl sulfate then methylate the naphthol and the carboxylic acid (global methylation) to the 1,4-dimethoxynaphthalene methyl ester",
+          "source": {
+            "citation": "J. D. Hart, J. K. Lawrence, P. N. Franqui, D. R. Perrott, B. Yi, Y. Xi, C. J. Sumby, C. G. Newton, J. H. George. Biomimetic Synthesis of Seven Halenaquinone Meroterpenoids. J. Am. Chem. Soc. 2026, 148, 23316–23324.",
+            "doi": "10.1021/jacs.6c06760",
+            "context": "Scheme 3, second step of the route from (+)-podocarpic acid: iodo triflate 14 is treated with n-BuLi in THF at −78 °C in the presence of 2-methoxyfuran, then aqueous HCl, aqueous NaOH and Me₂SO₄ in the same flask, giving the tetracyclic dimethoxy ester 15 (89%), which carries the complete ABCD framework of the halenaquinone family. One pot."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central, PMC13266709), Scheme 3 image and the SI experimental procedure for 15 (Europe PMC supplementary files; the SI text uses an encoded font and was decoded by letter substitution: 14 in THF at −78 °C, 2-methoxyfuran 1.5 equiv, n-BuLi 2.7 equiv in hexane over 30 min, cooling bath removed for 5 min, 2 M HCl 5.0 equiv, then 20% aq. NaOH to pH 12 and Me₂SO₄ 20 equiv, 16 h; 89%). Structures of 14 and 15 drawn from Scheme 3 (15: X-ray). The intermediates are not shown in the paper: the regiochemistry of the cycloaddition (which bridgehead carries OMe) is not determined, so both orientations are accepted; the acid step is drawn as cleavage of the C–O bond at the methoxy-substituted bridgehead to the 4-methoxy-1-naphthol (a pathway through the 1,4-naphthalenediol after loss of methanol would lead to the same product after methylation; a chemist should check which is more plausible); the order of O-methylations (naphthol before or after the ester) is assumed. PubChem (InChIKey connectivity layer, RDKit vs PubChem): podocarpic acid (precursor of 14) CID 220357; 2-methoxyfuran CID 117476; n-butyllithium CID 61028 (drawn as [Li+].CCC[CH2-] as in PubChem); dimethyl sulfate CID 6497; 14 and 15 have no PubChem entry (searched by structure). Stereochemistry not drawn.",
+          "substrate": {
+            "label": "Iodo aryl triflate 14 (from (+)-podocarpic acid)",
+            "smiles": "CC12CCCC(C)(C1CCc1cc(I)c(OS(=O)(=O)C(F)(F)F)cc12)C(=O)O"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "2-methoxyfuran (1.5 equiv)",
+                  "smiles": "COc1ccco1",
+                  "uncommon": true
+                },
+                {
+                  "text": "n-BuLi (2.7 equiv, in hexane, added over 30 min)",
+                  "smiles": "[Li+].CCC[CH2-]"
+                }
+              ],
+              "conditions": "THF, −78 °C; cooling bath then removed, 5 min",
+              "intermediates": [
+                {
+                  "label": "Aryllithium after iodine–lithium exchange (C–I broken, C–Li formed; the carboxylic acid is deprotonated first)",
+                  "forms": [
+                    "CC12CCCC(C)(C1CCc1cc([Li])c(OS(=O)(=O)C(F)(F)F)cc12)C(=O)O",
+                    "CC12CCCC(C)(C1CCC1=C[C-]=C(OS(=O)(=O)C(F)(F)F)C=C12)C(=O)O"
+                  ]
+                },
+                {
+                  "label": "Aryne after loss of LiOTf (C–O bond to the triflate broken)",
+                  "forms": [
+                    "CC12CCCC(C)(C1CCC1=CC#CC=C12)C(=O)O"
+                  ]
+                },
+                {
+                  "label": "Diels–Alder adduct with 2-methoxyfuran: oxa-bridged 1-methoxy-1,4-dihydronaphthalene (two C–C bonds formed; either orientation)",
+                  "forms": [
+                    "CC12CCCC(C)(C1CCc1cc3c(cc12)C4(OC)C=CC3O4)C(=O)O",
+                    "CC12CCCC(C)(C1CCc1cc3c(cc12)C4C=CC3(OC)O4)C(=O)O"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "2 M aq. HCl (5.0 equiv)"
+                }
+              ],
+              "conditions": "added to the reaction mixture after the cooling bath was removed",
+              "intermediates": [
+                {
+                  "label": "Methyl oxocarbenium ion after cleavage of the bridging C–O bond at the methoxy-substituted bridgehead",
+                  "forms": [
+                    "CC12CCCC(C)(C1CCc1cc3c(cc12)C(=[O+]C)C=CC3O)C(=O)O",
+                    "CC12CCCC(C)(C1CCc1cc3c(cc12)C(O)C=CC3=[O+]C)C(=O)O",
+                    "CC12CCCC(C)(C1CCc1cc3c(cc12)[C+](OC)C=CC3O)C(=O)O",
+                    "CC12CCCC(C)(C1CCc1cc3c(cc12)C(O)C=C[C+]3OC)C(=O)O"
+                  ]
+                },
+                {
+                  "label": "4-Methoxy-1-naphthol after loss of the bridgehead proton (aromatization)",
+                  "forms": [
+                    "CC12CCCC(C)(C1CCc1cc3c(cc12)c(OC)ccc3O)C(=O)O",
+                    "CC12CCCC(C)(C1CCc1cc3c(cc12)c(O)ccc3OC)C(=O)O"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 3,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "20% aq. NaOH (to pH 12)"
+                },
+                {
+                  "text": "Me₂SO₄ (20 equiv)",
+                  "smiles": "COS(=O)(=O)OC"
+                }
+              ],
+              "conditions": "THF/H₂O, rt, 16 h (stoppered flask)",
+              "intermediates": [
+                {
+                  "label": "1,4-Dimethoxynaphthalene carboxylic acid: the naphthoxide is O-methylated by dimethyl sulfate (O–C formed)",
+                  "forms": [
+                    "CC12CCCC(C)(C1CCc1cc3c(cc12)c(OC)ccc3OC)C(=O)O"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Tetracyclic dimethoxy methyl ester 15 (carboxylate O-methylated: O–C formed)",
+            "smiles": "CC12CCCC(C)(C1CCc1cc3c(cc12)c(OC)ccc3OC)C(=O)OC"
+          },
+          "byproducts": "n-BuI, LiOTf, MeOSO₃Na / Na₂SO₄, NaCl",
+          "mechanismRefs": [
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., Oxford University Press, 2012, ch. 22 (benzyne: formation and trapping by furan in a Diels–Alder reaction).",
+            "F. A. Carey, R. J. Sundberg, Advanced Organic Chemistry Part B, 5th ed., Springer, 2007, ch. 11 (aryne generation from ortho-dihaloarenes/aryl triflates with organolithium reagents; Diels–Alder trapping with furans).",
+            "J. D. Hart et al., J. Am. Chem. Soc. 2026, 148, 23316 (aryne generation with 2-methoxyfuran present, acid-mediated cleavage of the oxa bridge, global methylation)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 12
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 13
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 14
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 15
+            },
+            {
+              "transition": "step 1 int 3",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "2-methoxyfuran (1.5 equiv)",
+              "atom": 2
+            },
+            {
+              "transition": "step 1 int 3",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "2-methoxyfuran (1.5 equiv)",
+              "atom": 5
+            },
+            {
+              "transition": "step 1 int 3",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "2-methoxyfuran (1.5 equiv)",
+              "atom": 6
+            },
+            {
+              "transition": "product",
+              "mol": "substrate",
+              "atom": 27
+            }
+          ],
+          "difficulty": {
+            "steps": 3,
+            "intermediates": 6,
+            "sigmaBondEvents": 9,
+            "textbookLevel": "graduate",
+            "stepScores": [
+              5.0,
+              1,
+              1
+            ],
+            "uncommonReagents": 1,
+            "score": 8.0
+          }
+        }
+      ]
     }
   ]
 }

@@ -3,26 +3,28 @@
   "observations": [
     {
       "id": "undergraduate-problems-include-extra-steps",
-      "topic": "Undergraduate problems are judged too long or confusing when the sequence includes steps beyond the core textbook transformation (a preliminary step before it or a follow-up step after it).",
+      "topic": "Undergraduate problems are judged too long or confusing when the sequence includes events beyond the core textbook transformation (a preliminary or follow-up step, or a further reaction of a reagent-derived fragment).",
       "kind": "remark",
       "problemIds": [
         "jlac1850-strecker-alanine",
         "jacs1969-corey-saponification-iodolactonization",
-        "oprd1999-haloform-veratric-acid"
+        "oprd1999-haloform-veratric-acid",
+        "jacs2026-chloroformate-dmap-ethyl-ester-rhabdobranin"
       ],
       "evidence": {
-        "ratings": 4,
-        "distinctProblems": 3,
-        "meanStars": 3.25,
-        "results": 9,
+        "ratings": 5,
+        "distinctProblems": 4,
+        "meanStars": 3.2,
+        "results": 12,
         "medianScore": {
           "jlac1850-strecker-alanine": 2,
           "jacs1969-corey-saponification-iodolactonization": 2,
-          "oprd1999-haloform-veratric-acid": 3
+          "oprd1999-haloform-veratric-acid": 4,
+          "jacs2026-chloroformate-dmap-ethyl-ester-rhabdobranin": 1.5
         }
       },
       "firstSeen": "2026-11-06",
-      "lastSeen": "2026-11-10",
+      "lastSeen": "2026-11-11",
       "status": "proposed",
       "proposal": "Add a rule for the undergraduate level: the problem covers one textbook transformation; a preliminary or follow-up operation (e.g. a saponification before the key step, or hydrolysis of the product of the key step) is left out unless it is part of the same named textbook reaction.",
       "proposedOn": "2026-11-06"
@@ -32,23 +34,21 @@
       "topic": "Advanced problems whose sequence consists mainly of protecting-group removal or hydrolysis are judged too easy or better suited to a lower level.",
       "kind": "remark",
       "problemIds": [
-        "jacs2026-dithiane-hydrolysis-arnicenone",
         "nature2026-acetal-hydrolysis-pyridine-rupestine-d",
         "nature2026-pd-decarboxylative-ring-expansion-rupestine-d"
       ],
       "evidence": {
-        "ratings": 4,
-        "distinctProblems": 3,
-        "meanStars": 2.0,
-        "results": 5,
+        "ratings": 2,
+        "distinctProblems": 2,
+        "meanStars": 3.0,
+        "results": 3,
         "medianScore": {
-          "jacs2026-dithiane-hydrolysis-arnicenone": 2.5,
           "nature2026-acetal-hydrolysis-pyridine-rupestine-d": 10,
           "nature2026-pd-decarboxylative-ring-expansion-rupestine-d": 17
         }
       },
       "firstSeen": "2026-11-06",
-      "lastSeen": "2026-11-10",
+      "lastSeen": "2026-11-11",
       "status": "proposed",
       "proposal": "Add a rule for the advanced level: at least half of the difficulty score must come from specialized steps and uncommon reagents, and a problem whose specialized character rests on a deprotection or hydrolysis step is not used at that level.",
       "proposedOn": "2026-11-06"
@@ -76,21 +76,17 @@
       "topic": "Advanced problems whose product differs little from the substrate (small structural change, common reagents) are judged too easy.",
       "kind": "remark",
       "problemIds": [
-        "jacs2026-dithiane-hydrolysis-arnicenone",
         "jacs2026-rh-hydrosilylation-protonation-narbomycin"
       ],
       "evidence": {
-        "ratings": 2,
-        "distinctProblems": 2,
+        "ratings": 1,
+        "distinctProblems": 1,
         "meanStars": 1.0,
-        "results": 3,
-        "medianScore": {
-          "jacs2026-dithiane-hydrolysis-arnicenone": 2.5,
-          "jacs2026-rh-hydrosilylation-protonation-narbomycin": 2
-        }
+        "results": 1,
+        "medianScore": 2
       },
       "firstSeen": "2026-11-10",
-      "lastSeen": "2026-11-10",
+      "lastSeen": "2026-11-11",
       "status": "proposed",
       "proposal": "Add a rule for the advanced level: the product must differ from the substrate by at least two skeletal bonds (C–C or ring C–heteroatom bonds made or broken, protecting-group atoms not counted), so that a one-site reduction or deprotection cannot carry an advanced problem.",
       "proposedOn": "2026-11-10"
@@ -124,19 +120,18 @@
       "topic": "Ratings of advanced problems are low overall.",
       "kind": "rating",
       "problemIds": [
-        "jacs2026-dithiane-hydrolysis-arnicenone",
         "nature2026-acetal-hydrolysis-pyridine-rupestine-d",
         "nature2026-pd-decarboxylative-ring-expansion-rupestine-d",
         "jacs2026-rh-hydrosilylation-protonation-narbomycin"
       ],
       "evidence": {
-        "ratings": 5,
-        "distinctProblems": 4,
-        "meanStars": 1.8,
-        "results": 6
+        "ratings": 3,
+        "distinctProblems": 3,
+        "meanStars": 2.33,
+        "results": 4
       },
       "firstSeen": "2026-11-10",
-      "lastSeen": "2026-11-10",
+      "lastSeen": "2026-11-11",
       "status": "proposed",
       "proposal": "For the advanced level, require that specialized steps and uncommon reagents provide at least two thirds of the difficulty score (undergraduate steps contributing at most one third), so that advanced problems rest on the specialized chemistry that was rated well (4 stars for the Pd-catalysed ring expansion).",
       "proposedOn": "2026-11-10"
@@ -250,6 +245,27 @@
         "graduate-level-low-ratings"
       ],
       "note": "New data since the last run: ratings of the 2026-11-09 and 2026-11-10 sets. difficulty_summary: at most 1 answer per problem (plus one test entry outside the problem set), so no calibration check."
+    },
+    {
+      "date": "2026-11-11",
+      "targetDate": "2026-11-12",
+      "store": "ok",
+      "results": 30,
+      "ratings": 15,
+      "remarks": 14,
+      "newObservations": [],
+      "updated": [
+        "undergraduate-problems-include-extra-steps",
+        "advanced-problems-built-on-deprotection-too-easy",
+        "advanced-problems-small-structural-change-too-easy",
+        "advanced-level-low-ratings"
+      ],
+      "newProposals": [],
+      "tierA": {
+        "applied": [],
+        "skipped": 0
+      },
+      "note": "Evidence recounted from the current data. Rows for jacs2026-dithiane-hydrolysis-arnicenone (2 results, 2 ratings) are ignored: that id is no longer in data/problems.json (the 2026-11-05 advanced problem was replaced) and there is no archive yet. One new remark (2026-11-11 undergraduate problem: a reagent-derived fragment reacting further judged too complex for the level) was merged into undergraduate-problems-include-extra-steps. difficulty_summary: at most 2 answers and 2 votes per problem, so no calibration check. check_clusters returned no clusters."
     }
   ]
 }
