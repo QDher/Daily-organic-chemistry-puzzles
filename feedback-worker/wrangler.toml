@@ -9,7 +9,7 @@ workers_dev = true
 ALLOWED_ORIGINS = "https://qdher.github.io"
 # Tester labels accepted by POST /mech_entries for site "mechpilot": first 8 hex digits of the SHA-256 of each tester
 # code (data/testers.json of QDher/Daily_Curly_Chem; updated 2026-11-13). Not secret.
-MECH_TESTERS = "bad7de23,3005a301,c7eda040,1d947771,cb9ecc7f,6527e5a7"
+MECH_TESTERS = "4f7c82a3,3005a301,c7eda040,1d947771,cb9ecc7f,6527e5a7,93cd24ee"
 
 [[d1_databases]]
 binding = "DB"
