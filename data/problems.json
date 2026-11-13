@@ -5483,6 +5483,367 @@
           }
         }
       ]
+    },
+    {
+      "date": "2026-11-13",
+      "problems": [
+        {
+          "id": "os1933-friedel-crafts-succinic-anhydride-benzoylpropionic",
+          "level": "undergraduate",
+          "textbookLevel": "undergraduate",
+          "reaction": "Friedel–Crafts acylation: AlCl3 opens succinic anhydride to an acylium ion (C–O bond of the anhydride broken), benzene attacks the acylium carbon (C–C formed, arenium σ-complex), and loss of the ring proton restores the aromatic ring; aqueous acid work-up liberates 3-benzoylpropanoic acid from its aluminium complex",
+          "source": {
+            "citation": "L. F. Somerville, C. F. H. Allen. β-Benzoylpropionic acid. Org. Synth. 1933, 13, 12 (Coll. Vol. 2, 81).",
+            "doi": "10.15227/orgsyn.013.0012",
+            "context": "First step of the Haworth sequence to α-tetralones and polycyclic aromatics (R. D. Haworth, J. Chem. Soc. 1932, 1125): succinic anhydride and AlCl3 in boiling benzene give 3-benzoylpropanoic acid, which is then reduced (Clemmensen) and cyclised to α-tetralone."
+          },
+          "verified": false,
+          "verificationNote": "Procedure not read in this run (orgsyn.org and publisher pages not reachable from the run). Reagents, solvent and work-up follow the well-known Organic Syntheses preparation (succinic anhydride, excess benzene as solvent, about 2 equiv of anhydrous AlCl3, reflux, then water and hydrochloric acid); a chemist should check the amounts and the reflux time (about 30 min) against the procedure. Intermediates follow the textbook Friedel–Crafts acylation mechanism (acylium ion from the anhydride, arenium ion). PubChem (InChIKey connectivity layer): succinic anhydride matches CID 7922, benzene CID 241, 3-benzoylpropanoic acid CID 72871.",
+          "substrate": {
+            "label": "Succinic anhydride",
+            "smiles": "O=C1CCC(=O)O1"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "benzene (solvent, excess)",
+                  "smiles": "c1ccccc1"
+                },
+                {
+                  "text": "AlCl3 (about 2.2 equiv)"
+                }
+              ],
+              "conditions": "benzene, reflux, 30 min; then H2O and conc. HCl",
+              "intermediates": [
+                {
+                  "label": "Acylium ion: AlCl3 opens the anhydride (C–O bond broken), leaving an aluminium carboxylate",
+                  "forms": [
+                    "[O+]#CCCC(=O)O",
+                    "[O+]#CCCC(=O)[O-]",
+                    "O=[C+]CCC(=O)O",
+                    "O=[C+]CCC(=O)[O-]"
+                  ]
+                },
+                {
+                  "label": "Arenium ion (σ-complex): benzene attacks the acylium carbon (C–C formed)",
+                  "forms": [
+                    "OC(=O)CCC(=O)C1C=CC=C[CH+]1",
+                    "OC(=O)CCC(=O)C1C=C[CH+]C=C1",
+                    "[O-]C(=O)CCC(=O)C1C=CC=C[CH+]1",
+                    "[O-]C(=O)CCC(=O)C1C=C[CH+]C=C1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "3-Benzoylpropanoic acid (β-benzoylpropionic acid)",
+            "smiles": "OC(=O)CCC(=O)c1ccccc1"
+          },
+          "byproducts": "HCl (aluminium salts after work-up)",
+          "mechanismRefs": [
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., Oxford University Press, 2012, ch. 21 (Friedel–Crafts acylation).",
+            "R. D. Haworth, J. Chem. Soc. 1932, 1125 (succinoylation of aromatic hydrocarbons in the Haworth synthesis)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 1
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 6
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "benzene (solvent, excess)",
+              "atom": 0
+            }
+          ],
+          "difficulty": {
+            "steps": 1,
+            "intermediates": 2,
+            "sigmaBondEvents": 2,
+            "textbookLevel": "undergraduate",
+            "stepScores": [
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 1
+          }
+        },
+        {
+          "id": "os1959-favorskii-chlorocyclohexanone-cyclopentanecarboxylate",
+          "level": "graduate",
+          "textbookLevel": "graduate",
+          "courseRef": "Kürti–Czakó, Strategic Applications of Named Reactions in Organic Synthesis (2005), entry \"Favorskii and homo-Favorskii rearrangement\"; Carey–Sundberg, Advanced Organic Chemistry Part B, 5th ed., ch. 10 (rearrangements of α-haloketones)",
+          "reaction": "Favorskii rearrangement (ring contraction): methoxide forms the enolate of 2-chlorocyclohexanone, which displaces chloride intramolecularly to give a bicyclic cyclopropanone (C–C formed, C–Cl broken); methoxide adds to the cyclopropanone carbonyl (C–O formed) and the tetrahedral alkoxide opens the three-membered ring (C–C broken) to the more stable ring carbanion, which is protonated to methyl cyclopentanecarboxylate",
+          "source": {
+            "citation": "D. W. Goheen, W. R. Vaughan. Methyl cyclopentanecarboxylate. Org. Synth. 1959, 39, 37 (Coll. Vol. 4, 594).",
+            "doi": "10.15227/orgsyn.039.0037",
+            "context": "Preparative ring contraction of 2-chlorocyclohexanone with sodium methoxide in diethyl ether to give methyl cyclopentanecarboxylate, a standard example of the Favorskii rearrangement of cyclic α-chloroketones."
+          },
+          "verified": false,
+          "verificationNote": "Procedure not read in this run (orgsyn.org and publisher pages not reachable from the run). Reagents and solvent follow the well-known Organic Syntheses preparation (2-chlorocyclohexanone added to a suspension of sodium methoxide in anhydrous diethyl ether, then heated at reflux; aqueous work-up); a chemist should check the amounts, the reflux time and the work-up against the procedure. Intermediates follow the cyclopropanone mechanism (Loftfield, J. Am. Chem. Soc. 1951); the enolate of the substrate and the ring-opened ester carbanion are not listed because they differ from the substrate and the product only by a proton. PubChem (InChIKey connectivity layer): 2-chlorocyclohexanone matches CID 13203, sodium methoxide CID 10942334, methyl cyclopentanecarboxylate CID 78365.",
+          "substrate": {
+            "label": "2-Chlorocyclohexanone",
+            "smiles": "O=C1C(Cl)CCCC1"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "NaOMe (about 1.1 equiv)",
+                  "smiles": "C[O-].[Na+]"
+                }
+              ],
+              "conditions": "Et2O, reflux, 2 h; then H2O",
+              "intermediates": [
+                {
+                  "label": "Bicyclic cyclopropanone (bicyclo[3.1.0]hexan-6-one): the enolate carbon displaces chloride (C–C formed, C–Cl broken)",
+                  "forms": [
+                    "O=C1C2CCCC12"
+                  ]
+                },
+                {
+                  "label": "Tetrahedral alkoxide: methoxide adds to the cyclopropanone carbonyl (C–O formed)",
+                  "forms": [
+                    "COC1([O-])C2CCCC12",
+                    "COC1(O)C2CCCC12"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Methyl cyclopentanecarboxylate (three-membered ring opened, C–C broken)",
+            "smiles": "COC(=O)C1CCCC1"
+          },
+          "byproducts": "NaCl",
+          "mechanismRefs": [
+            "R. B. Loftfield, J. Am. Chem. Soc. 1951, 73, 4707 (cyclopropanone mechanism, 14C labelling with 2-chlorocyclohexanone).",
+            "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis, Elsevier, 2005 (Favorskii rearrangement)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 2
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 3
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 7
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 1
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "NaOMe (about 1.1 equiv)",
+              "atom": 1
+            }
+          ],
+          "difficulty": {
+            "steps": 1,
+            "intermediates": 2,
+            "sigmaBondEvents": 4,
+            "textbookLevel": "graduate",
+            "stepScores": [
+              4.0
+            ],
+            "uncommonReagents": 0,
+            "score": 4.0
+          }
+        },
+        {
+          "id": "jacs2026-weinreb-ketone-broc-cyclization-gummiferolate",
+          "level": "advanced",
+          "textbookLevel": "specialized",
+          "reaction": "Lithium–iodine exchange, Weinreb ketone synthesis, then MHAT-initiated reductive olefin coupling (Baran BROC, 6-endo-trig): tBuLi converts the primary iodide into the alkyllithium (C–I broken, C–Li formed), which adds to the Weinreb amide (C–C formed, chelated tetrahedral intermediate); aqueous work-up releases the enone (C–N broken). With Fe(dpm)3/PhSiH3 in hot ethanol an iron hydride transfers H to the less substituted carbon of the trisubstituted cyclohexene, giving a tertiary radical that adds to the β-carbon of the enone (C–C formed, six-membered B ring), and the α-keto radical is reduced and protonated to the tricyclic ketone",
+          "source": {
+            "citation": "W. Zhao, J. Zhen, M. Dai. Convergent Total Synthesis of (−)-Methyl Gummiferolate Enabled by Pattern Recognition and Radical Cyclization. J. Am. Chem. Soc. 2026, 148, 42898–42903.",
+            "doi": "10.1021/jacs.6c15246",
+            "context": "Scheme 1, steps 7 and 8 of the (−)-methyl gummiferolate route: iodide 17 is lithiated with tBuLi (Et2O, −78 °C) and coupled with the perillaldehyde-derived Weinreb amide 19 to give enone 21 (55%), which undergoes the Fe(dpm)3/PhSiH3 reductive olefin coupling (EtOH, 80 °C) to the tricyclic ketone 22 (81%). These are two separate operations (21 is isolated by chromatography); conditions are given for each."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central) and Supporting Information read (procedures for 21 and 22); Scheme 1 viewed. Two sequential reactions of the same scheme, not one pot: enone 21 is isolated between them. Structures 17, 19, 21 and 22 drawn from Scheme 1; formulas agree with the SI HRMS of 21 (C22H32O4) and 22 (C22H34O4). The epoxide is a 1:1 mixture of epimers (stereochemistry not required). Radical intermediates follow the established MHAT/Giese mechanism of the reductive olefin coupling (Markovnikov H-atom transfer, 6-endo-trig addition shown in the paper, reduction of the α-keto radical); the iron-bound species and the enolate before protonation are not listed. Online publication 2026-09-28 (Crossref): extended window (46 days); the 31-day candidate (Aggarwal, merocyclophane A, JACS 2026, one-pot boronate allylation/oxidation) was set aside again because its tetracoordinate boronate intermediates ([B-]) are not readable by the structure key. PubChem (InChIKey connectivity layer): tBuLi matches CID 53628101; 17, 19, 21 and 22 have no PubChem entry.",
+          "substrate": {
+            "label": "Primary iodide 17 (dioxolane-protected cyclohexene)",
+            "smiles": "ICC1C(C)=CCCC1(C)C1OCCO1"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "tBuLi (2.2 equiv)",
+                  "smiles": "[Li]C(C)(C)C"
+                }
+              ],
+              "conditions": "Et2O, −78 °C, 15 min",
+              "intermediates": [
+                {
+                  "label": "Primary alkyllithium 18 (lithium–iodine exchange: C–I broken, C–Li formed)",
+                  "forms": [
+                    "[Li]CC1C(C)=CCCC1(C)C1OCCO1"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "Weinreb amide 19 (3.0 equiv), N-methoxy-N-methyl 4-(2-methyloxiran-2-yl)cyclohex-1-ene-1-carboxamide",
+                  "smiles": "CON(C)C(=O)C1CCC(C2(C)CO2)CC=1"
+                }
+              ],
+              "conditions": "Et2O, −78 °C, 1 h, then warmed to 23 °C",
+              "intermediates": [
+                {
+                  "label": "Chelated tetrahedral intermediate: the alkyllithium adds to the amide carbonyl (C–C formed); the Li-chelated N-methoxy hemiaminal alkoxide is stable until work-up",
+                  "forms": [
+                    "[O-]C(N(C)OC)(CC1C(C)=CCCC1(C)C1OCCO1)C1CCC(C2(C)CO2)CC=1",
+                    "OC(N(C)OC)(CC1C(C)=CCCC1(C)C1OCCO1)C1CCC(C2(C)CO2)CC=1"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 3,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "sat. aq. NaHCO3"
+                }
+              ],
+              "conditions": "23 °C (quench), extraction, chromatography",
+              "intermediates": [
+                {
+                  "label": "Enone 21 (isolated, 55%): the tetrahedral intermediate collapses and N,O-dimethylhydroxylamine is released (C–N broken)",
+                  "forms": [
+                    "O=C(CC1C(C)=CCCC1(C)C1OCCO1)C1CCC(C2(C)CO2)CC=1"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 4,
+              "stepLevel": "specialized",
+              "reagents": [
+                {
+                  "text": "Fe(dpm)3 (1.0 equiv)",
+                  "uncommon": true
+                },
+                {
+                  "text": "PhSiH3 (3.0 equiv)",
+                  "uncommon": true
+                }
+              ],
+              "conditions": "EtOH, 80 °C, 12 h",
+              "intermediates": [
+                {
+                  "label": "Tertiary radical: H atom transferred from the iron hydride to the less substituted alkene carbon (C–H formed)",
+                  "forms": [
+                    "O=C(CC1[C](C)CCCC1(C)C1OCCO1)C1CCC(C2(C)CO2)CC=1"
+                  ]
+                },
+                {
+                  "label": "α-Keto radical: 6-endo-trig addition of the tertiary radical to the enone β-carbon (C–C formed, B ring closed)",
+                  "forms": [
+                    "O=C1CC2C(C)(CCCC2(C)C2OCCO2)C2CC(C3(C)CO3)CC[C]12",
+                    "[O]C1=C2CCC(C3(C)CO3)CC2C2(C)CCCC(C)(C4OCCO4)C2C1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Tricyclic ketone 22 (α-keto radical reduced and protonated)",
+            "smiles": "O=C1CC2C(C)(CCCC2(C)C2OCCO2)C2CC(C3(C)CO3)CCC12"
+          },
+          "byproducts": "LiI, tBuI (consumed by the second equivalent of tBuLi: isobutane, isobutene); MeNH(OMe); iron(III) and phenylsilane-derived silicon by-products",
+          "mechanismRefs": [
+            "W. Zhao, J. Zhen, M. Dai, J. Am. Chem. Soc. 2026, 148, 42898 (Scheme 1: 6-endo-trig BROC cyclization).",
+            "J. C. Lo, Y. Yabe, P. S. Baran, J. Am. Chem. Soc. 2014, 136, 1304 (practical and catalytic reductive olefin coupling, Fe(acac)3/PhSiH3); J. C. Lo, J. Gui, Y. Yabe, C.-M. Pan, P. S. Baran, Nature 2014, 516, 343 (functionalized olefin cross-coupling).",
+            "S. W. M. Crossley, C. Obradors, R. M. Martinez, R. A. Shenvi, Chem. Rev. 2016, 116, 8912 (MHAT mechanism).",
+            "S. Nahm, S. M. Weinreb, Tetrahedron Lett. 1981, 22, 3815 (N-methoxy-N-methylamides as acylating agents)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 0
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 1
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "reagent",
+              "step": 2,
+              "reagent": "Weinreb amide 19 (3.0 equiv), N-methoxy-N-methyl 4-(2-methyloxiran-2-yl)cyclohex-1-ene-1-carboxamide",
+              "atom": 4
+            },
+            {
+              "transition": "step 3 int 1",
+              "mol": "reagent",
+              "step": 2,
+              "reagent": "Weinreb amide 19 (3.0 equiv), N-methoxy-N-methyl 4-(2-methyloxiran-2-yl)cyclohex-1-ene-1-carboxamide",
+              "atom": 2
+            },
+            {
+              "transition": "step 4 int 1",
+              "mol": "substrate",
+              "atom": 3
+            },
+            {
+              "transition": "step 4 int 2",
+              "mol": "reagent",
+              "step": 2,
+              "reagent": "Weinreb amide 19 (3.0 equiv), N-methoxy-N-methyl 4-(2-methyloxiran-2-yl)cyclohex-1-ene-1-carboxamide",
+              "atom": 15
+            }
+          ],
+          "difficulty": {
+            "steps": 4,
+            "intermediates": 5,
+            "sigmaBondEvents": 6,
+            "textbookLevel": "specialized",
+            "stepScores": [
+              1,
+              3.0,
+              1,
+              5.5
+            ],
+            "uncommonReagents": 2,
+            "score": 12.5
+          }
+        }
+      ]
     }
   ]
 }

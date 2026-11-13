@@ -15,7 +15,7 @@
         "ratings": 5,
         "distinctProblems": 4,
         "meanStars": 3.2,
-        "results": 12,
+        "results": 13,
         "medianScore": {
           "jlac1850-strecker-alanine": 2,
           "jacs1969-corey-saponification-iodolactonization": 2,
@@ -24,7 +24,7 @@
         }
       },
       "firstSeen": "2026-11-06",
-      "lastSeen": "2026-11-11",
+      "lastSeen": "2026-11-12",
       "status": "proposed",
       "proposal": "Add a rule for the undergraduate level: the problem covers one textbook transformation; a preliminary or follow-up operation (e.g. a saponification before the key step, or hydrolysis of the product of the key step) is left out unless it is part of the same named textbook reaction.",
       "proposedOn": "2026-11-06"
@@ -138,24 +138,49 @@
     },
     {
       "id": "graduate-level-low-ratings",
-      "topic": "Ratings of graduate problems average below 3, pulled down by one long multi-step graduate problem with an uncommon reagent.",
+      "topic": "Ratings of graduate problems average about 3 (lower than undergraduate problems), pulled down by one long multi-step graduate problem with an uncommon reagent.",
       "kind": "rating",
       "problemIds": [
         "jacs2026-danheiser-benzannulation-pde-i",
         "jacs2026-aspartic-acid-diazotization-bromosuccinic-benthol",
-        "jacs2026-seyferth-gilbert-ribose-alkyne-benthol"
+        "jacs2026-seyferth-gilbert-ribose-alkyne-benthol",
+        "jacs1969-hwe-enone-corey-prostaglandin"
       ],
       "evidence": {
-        "ratings": 5,
-        "distinctProblems": 3,
-        "meanStars": 2.8,
-        "results": 6
+        "ratings": 6,
+        "distinctProblems": 4,
+        "meanStars": 3.0,
+        "results": 9
       },
       "firstSeen": "2026-11-10",
-      "lastSeen": "2026-11-10",
+      "lastSeen": "2026-11-12",
       "status": "proposed",
       "proposal": "Set an upper limit for the graduate difficulty score (for example 7) and no uncommon reagent at the graduate level, so that graduate problems stay below the advanced level in complexity.",
       "proposedOn": "2026-11-10"
+    },
+    {
+      "id": "undergraduate-single-transformation-rated-highly",
+      "topic": "Undergraduate problems built on one core textbook transformation with a short, direct sequence of intermediates receive the highest ratings, with solvers praising their clarity and level.",
+      "kind": "remark",
+      "problemIds": [
+        "hca1950-lialh4-sclareolide-ambradiol",
+        "ber1903-komppa-claisen-condensation-camphoric"
+      ],
+      "evidence": {
+        "ratings": 3,
+        "distinctProblems": 2,
+        "meanStars": 5.0,
+        "results": 6,
+        "medianScore": {
+          "hca1950-lialh4-sclareolide-ambradiol": 1,
+          "ber1903-komppa-claisen-condensation-camphoric": 2
+        }
+      },
+      "firstSeen": "2026-11-12",
+      "lastSeen": "2026-11-12",
+      "status": "proposed",
+      "proposal": "Add to the selection rules of the procedure a preference for undergraduate problems consisting of one core textbook transformation whose intermediates all belong to that transformation (no preliminary deprotection, separate work-up step or further reaction of a reagent-derived fragment); this is the positive counterpart of the earlier proposal undergraduate-problems-include-extra-steps and could be decided together with it.",
+      "proposedOn": "2026-11-12"
     }
   ],
   "runs": [
@@ -266,6 +291,29 @@
         "skipped": 0
       },
       "note": "Evidence recounted from the current data. Rows for jacs2026-dithiane-hydrolysis-arnicenone (2 results, 2 ratings) are ignored: that id is no longer in data/problems.json (the 2026-11-05 advanced problem was replaced) and there is no archive yet. One new remark (2026-11-11 undergraduate problem: a reagent-derived fragment reacting further judged too complex for the level) was merged into undergraduate-problems-include-extra-steps. difficulty_summary: at most 2 answers and 2 votes per problem, so no calibration check. check_clusters returned no clusters."
+    },
+    {
+      "date": "2026-11-12",
+      "targetDate": "2026-11-13",
+      "store": "ok",
+      "results": 38,
+      "ratings": 18,
+      "remarks": 17,
+      "newObservations": [
+        "undergraduate-single-transformation-rated-highly"
+      ],
+      "updated": [
+        "undergraduate-problems-include-extra-steps",
+        "graduate-level-low-ratings"
+      ],
+      "newProposals": [
+        "undergraduate-single-transformation-rated-highly"
+      ],
+      "tierA": {
+        "applied": [],
+        "skipped": 0
+      },
+      "note": "Evidence recounted from the current data. Rows for jacs2026-dithiane-hydrolysis-arnicenone (2 results, 2 ratings) are ignored (not in data/problems.json; no archive yet). New since the last run: two 5-star ratings of the 2026-11-12 undergraduate problem and one 4-star rating of the 2026-11-12 graduate problem; one remark (a reagent's anionic form hard to recognize in the drawing) is a single rating and is not an observation yet. difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters returned no clusters."
     }
   ]
 }
