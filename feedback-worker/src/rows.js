@@ -8,6 +8,10 @@ export const VERDICTS = ['product', 'intermediate', 'substrate', 'none'];
 export const TABLES = ['results', 'ratings', 'difficulty_answers', 'difficulty_votes', 'checks'];
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
+export const MECH_SITES = ['mechpilot'];
+export const MECH_KINDS = ['arrows', 'drawing', 'votes', 'questionnaire'];
+export const MECH_MAX_PAYLOAD = 250000;
+
 export class Invalid extends Error {}
 
 const chars = s => Array.from(s).length;
@@ -76,6 +80,32 @@ export function validRow(table, b) {
     default:
       throw new Invalid('unknown table');
   }
+}
+
+// One entry of the curly-arrow pages (table mech_entries). testers: allowed visitor labels for site 'mechpilot'.
+export function validMechRow(b, testers) {
+  if (!b || typeof b !== 'object' || Array.isArray(b)) throw new Invalid('body must be a JSON object');
+  if (!MECH_SITES.includes(b.site)) throw new Invalid('invalid site');
+  if (typeof b.visitor !== 'string' || !/^[0-9a-f]{8}$/.test(b.visitor)) throw new Invalid('invalid visitor');
+  if (!testers.includes(b.visitor)) throw new Invalid('unknown visitor');
+  if (typeof b.session !== 'string' || !UUID_RE.test(b.session)) throw new Invalid('invalid session');
+  if (!isInt(b.seq, 0, 9999)) throw new Invalid('invalid seq');
+  if (!MECH_KINDS.includes(b.kind)) throw new Invalid('invalid kind');
+  const task = b.task === undefined ? null : b.task;
+  if (task !== null && (typeof task !== 'string' || chars(task) < 1 || chars(task) > 120)) throw new Invalid('invalid task');
+  const lv = b.user_level === undefined ? null : b.user_level;
+  if (lv !== null && !LEVELS.includes(lv)) throw new Invalid('invalid user_level');
+  const p = b.payload;
+  if (!p || typeof p !== 'object' || Array.isArray(p)) throw new Invalid('invalid payload');
+  const payload = JSON.stringify(p);
+  if (payload.length > MECH_MAX_PAYLOAD) throw new Invalid('payload too large');
+  // summary columns are taken from the payload, so that they cannot disagree with it
+  let accepted = null;
+  if (b.kind === 'arrows') accepted = Number.isInteger(p.accepted) ? 1 : 0;
+  if (b.kind === 'drawing') accepted = p.accepted === true ? 1 : 0;
+  const flagged = b.kind === 'drawing' && p.flagged === 'wrong' ? 'wrong' : null;
+  return { site: b.site, visitor: b.visitor, session: b.session.toLowerCase(), seq: b.seq, kind: b.kind, task,
+    user_level: lv, accepted, flagged, payload };
 }
 
 // UTC time as stored in D1 (ISO 8601 with milliseconds). Accepts ISO dates and the Postgres text

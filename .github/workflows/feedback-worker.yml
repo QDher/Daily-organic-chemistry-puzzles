@@ -1,6 +1,7 @@
 name: Feedback Worker (Cloudflare)
 # Tests the Worker in feedback-worker/ and deploys it with its D1 database (created on the first run).
 # Needs the repository secrets CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID; without them only the tests run.
+# Optional secret MECH_EXPORT_KEY: key of the export of the curly-arrow entries (feedback-worker/README.md).
 # It can also be run manually (Actions → Feedback Worker (Cloudflare) → Run workflow).
 on:
   push:
@@ -22,6 +23,7 @@ jobs:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       HAS_CLOUDFLARE: ${{ secrets.CLOUDFLARE_API_TOKEN != '' && secrets.CLOUDFLARE_ACCOUNT_ID != '' }}
+      MECH_EXPORT_KEY: ${{ secrets.MECH_EXPORT_KEY }}
       WRANGLER_SEND_METRICS: 'false'
     steps:
       - uses: actions/checkout@v4
@@ -58,3 +60,7 @@ jobs:
       - name: Deploy
         if: env.HAS_CLOUDFLARE == 'true'
         run: npx wrangler deploy --message "${GITHUB_SHA::7}"
+      - name: Set the export key of the curly-arrow entries
+        # Optional repository secret MECH_EXPORT_KEY: without it /rpc/mech_export stays closed (403).
+        if: env.HAS_CLOUDFLARE == 'true' && env.MECH_EXPORT_KEY != ''
+        run: printf '%s' "$MECH_EXPORT_KEY" | npx wrangler secret put MECH_EXPORT_KEY

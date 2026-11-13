@@ -15,6 +15,7 @@ Scheduled runs: the scheduled-task prompt is authoritative; this file does not c
 | Feedback log | `data/feedback_log.json` (written by the scheduled runs, step 3b) |
 | Feedback-driven selection and quality (plan) | `ML_PLAN.md` (both sites) |
 | Future development: curly-arrow mechanisms | `ML_PLAN.md` section "Future development: curly-arrow mechanisms" and GitHub issue #4 (not scheduled) |
+| Curly-arrow test run | QDher/Daily_Curly_Chem (page https://qdher.github.io/Daily_Curly_Chem/, modules, task list); its entries are stored in D1 table `mech_entries` (site key `mechpilot`) through `POST /mech_entries` of the Worker; export `mech_export` needs the secret `MECH_EXPORT_KEY` (`feedback-worker/README.md`) |
 | Results and ratings | Cloudflare Worker `puzzle-feedback` (https://puzzle-feedback.dailyorgchem.workers.dev) and D1 database `puzzle-feedback`, site key `onepot`; code, schema and deployment in `feedback-worker/` of QDher/Daily-organic-chemistry-puzzles (deployed by its `.github/workflows/feedback-worker.yml`). `supabase/schema.sql` describes the former Supabase store |
 
 ## Working conventions

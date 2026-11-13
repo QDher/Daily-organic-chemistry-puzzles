@@ -13,7 +13,7 @@ const mf = new Miniflare(convertV4MiniflareOptions({
   modulesRoot: path.join(root, 'src'),
   compatibilityDate: '2026-10-23',
   d1Databases: { DB: 'test-db' },
-  bindings: { ALLOWED_ORIGINS: ORIGIN },
+  bindings: { ALLOWED_ORIGINS: ORIGIN, MECH_TESTERS: 'aaaaaaaa,bbbbbbbb', MECH_EXPORT_KEY: 'test-key' },
 }));
 const db = await mf.getD1Database('DB');
 const statements = sql => sql.replace(/^\s*--.*$/gm, '').split(/;\s*$/m).map(s => s.trim()).filter(Boolean);
@@ -214,6 +214,66 @@ try {
     assert.equal((await post('/rpc/check_clusters', { p_site: 'onepot', p_min: 1 })).status, 400);
     for (let k = 0; k < 200; k++) await db.prepare("INSERT INTO checks (site, problem_id, client_id, key, smiles, verdict, hints) VALUES ('onepot', 'p8', ?, ?, 'C', 'none', 0)").bind(U(70), 'InChI=1S/x' + k).run();
     assert.deepEqual((await post('/checks', { ...c(70, 'InChI=1S/y', 'C'), problem_id: 'p8' })).data, { error: 'too many checks' });
+  });
+
+  await t('mech_entries: validated, replaced when sent again, limited to known testers; summary and keyed export', async () => {
+    const S = U(900);
+    const e = { site: 'mechpilot', visitor: 'aaaaaaaa', session: S, seq: 0, kind: 'arrows', task: 't1-addition', user_level: 'graduate',
+      payload: { kind: 'arrows', accepted: 0, submitted: null, strokes: [{ points: [{ x: 1, y: 2 }] }] } };
+    assert.equal((await post('/mech_entries', e)).status, 201);
+    // the same entry completed later replaces the row
+    assert.equal((await post('/mech_entries', { ...e, payload: { ...e.payload, submitted: { match: true } } })).status, 200);
+    assert.equal((await post('/mech_entries', { ...e, seq: 1, payload: { kind: 'arrows', accepted: null } })).status, 201);
+    assert.equal((await post('/mech_entries', { ...e, seq: 2, kind: 'drawing', task: 't2-diketone', payload: { accepted: false, flagged: 'wrong', wrong: ['letter'] } })).status, 201);
+    assert.equal((await post('/mech_entries', { ...e, visitor: 'bbbbbbbb', kind: 'drawing', task: 't2-diketone', payload: { accepted: true, flagged: null } })).status, 201);
+    assert.equal((await post('/mech_entries', { ...e, visitor: 'bbbbbbbb', seq: 1, kind: 'questionnaire', task: undefined, payload: { remark: 'private text' } })).status, 201);
+    const bad = async (patch, msg) => {
+      const r = await post('/mech_entries', { ...e, seq: 50, ...patch });
+      assert.equal(r.status, 400, JSON.stringify(patch));
+      assert.equal(r.data.error, msg);
+    };
+    await bad({ site: 'onepot' }, 'invalid site');
+    await bad({ visitor: 'cccccccc' }, 'unknown visitor');
+    await bad({ visitor: 'XYZ' }, 'invalid visitor');
+    await bad({ session: 'abc' }, 'invalid session');
+    await bad({ seq: -1 }, 'invalid seq');
+    await bad({ kind: 'other' }, 'invalid kind');
+    await bad({ user_level: 'expert' }, 'invalid user_level');
+    await bad({ payload: 'text' }, 'invalid payload');
+    await bad({ payload: { big: 'x'.repeat(250001) } }, 'payload too large');
+    assert.equal((await post('/mech_entries', { ...e, payload: { big: 'x'.repeat(260000) } })).data.error, 'body too large');
+    assert.equal((await call('GET', '/mech_entries')).status, 405);
+    // the other endpoints keep their small body limit
+    assert.equal((await post('/results', { site: 'onepot', problem_id: 'p', client_id: U(1), pad: 'x'.repeat(5000) })).data.error, 'body too large');
+
+    assert.deepEqual(await rpc('mech_summary', { p_site: 'mechpilot' }), [
+      { task: null, kind: 'questionnaire', entries: 1, visitors: 1, accepted: null, wrong: 0 },
+      { task: 't1-addition', kind: 'arrows', entries: 2, visitors: 1, accepted: 1, wrong: 0 },
+      { task: 't2-diketone', kind: 'drawing', entries: 2, visitors: 2, accepted: 1, wrong: 1 },
+    ]);
+    assert.equal((await post('/rpc/mech_summary', { p_site: 'onepot' })).status, 400);
+    assert.ok(!JSON.stringify(await rpc('mech_summary', { p_site: 'mechpilot' })).includes('private text'));
+
+    assert.equal((await post('/rpc/mech_export', { p_site: 'mechpilot' })).status, 403);
+    const exp = async (key, q = '') => {
+      const r = await mf.dispatchFetch('http://localhost/rpc/mech_export?p_site=mechpilot' + q, { headers: { 'X-Export-Key': key } });
+      return { status: r.status, data: await r.json() };
+    };
+    assert.equal((await exp('wrong')).status, 403);
+    const out = await exp('test-key');
+    assert.equal(out.status, 200);
+    assert.equal(out.data.length, 5);
+    assert.deepEqual(out.data[0].payload.submitted, { match: true });
+    assert.ok(out.data[0].updated_at);
+    assert.equal(out.data[4].payload.remark, 'private text');
+    assert.equal((await exp('test-key', '&p_since=2999-01-01')).data.length, 0);
+
+    // limit per visitor
+    await db.prepare(`INSERT INTO mech_entries (site, visitor, session, seq, kind, payload)
+      WITH RECURSIVE c(i) AS (SELECT 100 UNION ALL SELECT i + 1 FROM c WHERE i < 696)
+      SELECT 'mechpilot', 'aaaaaaaa', ?, i, 'votes', '{}' FROM c`).bind(S).run();
+    assert.equal((await post('/mech_entries', { ...e, seq: 3000 })).status, 429);
+    assert.equal((await post('/mech_entries', e)).status, 200);
   });
 
   console.log(`ALL OK (${n} tests)`);

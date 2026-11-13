@@ -211,20 +211,30 @@ expect, frequent wrong arrows per reaction class, and votes on the AI's own step
 
 ### D. Data recorded
 
-One D1 table `mech_entries` (site key `mechpilot` during the test run), one row per confirmed or abandoned entry:
-tester code or visitor id, level, pointer type and screen size, task and problem id, step, scene before (graph),
-strokes, recognized graph and the corrections made, arrows as snapped, candidate readings with rank, reading accepted,
-literal result, answer submitted or not and its verdict, seconds, tool and rule versions. Votes on AI steps in `mech_votes`.
-Remarks stay in D1 (never in the repository).
+D1 table `mech_entries` (migration `0004_mech_entries.sql`, site key `mechpilot` during the test run; `onepot` and
+`namerxn` reserved for phase 3), one row per entry of a page session, replaced when the entry is completed later:
 
-Training sets come from this table only through a replay: `src/mech_replay.js` re-runs recognition, snapping and C1
-on the stored row and must reproduce the stored result. Rows that do not replay are excluded.
+| Kind | Payload (JSON) |
+|---|---|
+| `arrows` | scene before, raw strokes, candidate readings with score and structure, readings rejected, reading accepted (or none), structure submitted as an answer and its verdict (separate choice), seconds, tool versions |
+| `drawing` | raw strokes, scene drawn on (if any), structure read, labels not read with confidence, corrections, final structure; outcome: confirmed, flagged as a wrong reading (with what is wrong), or discarded |
+| `votes` | mechanism and one vote per step (correct, wrong, unclear) |
+| `questionnaire` | input used, ease of arrows and of drawing, clarity of the rules, free text |
+
+Columns outside the payload: visitor (tester label in the test run), session, level, task, `accepted`, `flagged`.
+`mech_summary` returns counts per task and kind without payloads; `mech_export` returns the rows and needs a key
+(Worker secret `MECH_EXPORT_KEY`), because payloads hold strokes and free text. Remarks stay in D1 (never in a
+repository).
+
+Training sets come from this table only through a replay: `tools/replay.js` of QDher/Daily_Curly_Chem re-runs
+recognition, snapping and C1 on the stored row and must reproduce the stored result. Rows that do not replay are
+excluded.
 
 The label is the visitor's answer on the structure produced by their arrows (accepted or rejected, with the rank of
 the reading). Whether that structure equals a structure of the problem is stored as a separate field, filled when
 the visitor submits it as an answer (and computable afterwards); it is a label for the mechanism model, not for the
-intent model. Only entries that pass C1 and are confirmed train a model; for I1 and M1, a step counts when at least 3 different
-visitors gave the same result or it equals a structure of the problem.
+intent model. Only entries that pass C1 and are confirmed train a model; for I1 and M1, a step counts when at least
+3 different visitors gave the same result or it equals a structure of the problem.
 
 ### E. Order
 
@@ -269,7 +279,7 @@ Purpose: decide whether tool and logging are ready for phase 3. It is not meant 
 
 | Criterion | Threshold |
 |---|---|
-| Stored rows that replay to the same result (`src/mech_replay.js`) | 100 % |
+| Stored rows that replay to the same result (`tools/replay.js` of QDher/Daily_Curly_Chem) | 100 % |
 | Reference steps of the tasks reproduced by C1; C1 tests | 100 %; all pass |
 | T1: first reading accepted / accepted within 3 readings | ≥ 80 % / ≥ 95 %, reported per pointer type |
 | T2: structure confirmed without correction / with at most 2 corrections | ≥ 60 % / ≥ 90 % |
