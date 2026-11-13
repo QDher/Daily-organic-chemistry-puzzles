@@ -191,9 +191,12 @@ In the modes of R0 every stroke carries its type, so the test run already yields
    proposes the smallest change of the arrows that gives a valid structure; these cases are recorded by type from the
    test run on.
 
-The intent model predicts what the user meant, not what is chemically correct. Correctness is judged separately,
-against the problem's reference step; an entry that is read as intended but is wrong chemistry is kept as such (data
-on common errors), never corrected silently.
+The intent model predicts what the user meant, not what is chemically correct. On the pages these are two separate
+choices of the user (precision of 2026-11-13): (1) confirming the structure given by the arrows, which is the recorded
+entry and is never judged against the problem; (2) submitting a structure as an answer to the problem, which alone is
+compared with the problem's structures. Arrows do not have to lead to an intermediate of the problem; an entry that is
+read as intended but is wrong chemistry, or a step the problem does not list, is kept as such and never corrected
+silently.
 
 **C4. Mechanism model (goal 2).**
 
@@ -211,15 +214,17 @@ expect, frequent wrong arrows per reaction class, and votes on the AI's own step
 One D1 table `mech_entries` (site key `mechpilot` during the test run), one row per confirmed or abandoned entry:
 tester code or visitor id, level, pointer type and screen size, task and problem id, step, scene before (graph),
 strokes, recognized graph and the corrections made, arrows as snapped, candidate readings with rank, reading accepted,
-literal result, verdict against the reference, seconds, tool and rule versions. Votes on AI steps in `mech_votes`.
+literal result, answer submitted or not and its verdict, seconds, tool and rule versions. Votes on AI steps in `mech_votes`.
 Remarks stay in D1 (never in the repository).
 
 Training sets come from this table only through a replay: `src/mech_replay.js` re-runs recognition, snapping and C1
 on the stored row and must reproduce the stored result. Rows that do not replay are excluded.
 
 The label is the visitor's answer on the structure produced by their arrows (accepted or rejected, with the rank of
-the reading), together with the problem's known intermediate. Only entries that pass C1 and are confirmed train a model; for I1 and M1, a step counts when at least 3 different
-visitors gave the same result or it equals the reference.
+the reading). Whether that structure equals a structure of the problem is stored as a separate field, filled when
+the visitor submits it as an answer (and computable afterwards); it is a label for the mechanism model, not for the
+intent model. Only entries that pass C1 and are confirmed train a model; for I1 and M1, a step counts when at least 3 different
+visitors gave the same result or it equals a structure of the problem.
 
 ### E. Order
 
@@ -227,7 +232,7 @@ visitors gave the same result or it equals the reference.
 |---|---|---|
 | 1. Build | scene format, C1 with tests, canvas (pointer input, snapping, modes), R0, I0, reference mechanisms by M0 for the tasks, Worker table and replay script | none |
 | 2. Test run | section F; report; decision by the user | none |
-| 3. Data collection | optional arrow step on both daily pages after the product is found (the problem's own species: known answers); freehand input next to Ketcher, not instead of it; notice of what is recorded | none; R1 optional |
+| 3. Data collection | optional arrow drawing on both daily pages (on the problem's own species), separate from the submission of structures; freehand input next to Ketcher, not instead of it; notice of what is recorded | none; R1 optional |
 | 4. Training | R2, I1, M1 on Nibi, each compared with its untrained version on held-out data; activation by pull request (shadow → advisory → active, as for the selection models) | yes |
 
 Start conditions for phase 4 (proposed, to be revised after the test run): R2 at least 2,000 confirmed drawings from
@@ -248,7 +253,8 @@ Purpose: decide whether tool and logging are ready for phase 3. It is not meant 
   repositories (identical files, as `src/chemkey.js`) and added by `src/build.js` as an optional step after the
   product is found; the daily pages do not load code from the test-run site.
 - Testers: 3 to 5, with at least one mouse and one touch screen or stylus, and at least two declared levels.
-- Tasks (about 14, from published, verified problems; about 20 minutes):
+- Tasks (about 14, from published problems of both sites, none of which is marked verified yet: the steps used are
+  reviewed first; about 20 minutes):
 
 | Type | Number | Task | Tests |
 |---|---|---|---|
