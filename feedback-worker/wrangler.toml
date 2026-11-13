@@ -8,8 +8,8 @@ workers_dev = true
 # Pages allowed to call the Worker from a browser (comma-separated). Both sites are on this origin.
 ALLOWED_ORIGINS = "https://qdher.github.io"
 # Tester labels accepted by POST /mech_entries for site "mechpilot": first 8 hex digits of the SHA-256 of each tester
-# code (data/testers.json of QDher/Daily_Curly_Chem). Not secret.
-MECH_TESTERS = "bad7de23,f84b5443,defa5566,a8ab329b,27246f6e,c9dc4bd2"
+# code (data/testers.json of QDher/Daily_Curly_Chem; updated 2026-11-13). Not secret.
+MECH_TESTERS = "bad7de23,3005a301,c7eda040,1d947771,cb9ecc7f,6527e5a7"
 
 [[d1_databases]]
 binding = "DB"
