@@ -90,7 +90,7 @@ reviewable and revertible: 3 (decided 2026-11-11).
 
 | Tool | Use when | Not by default because |
 |---|---|---|
-| RXNMapper (ML atom mapping) | the mapping of `curate.py` is doubtful (symmetric rings, look-alike atoms, cases where step 6 of the prompts asks to reorder SMILES); mapping atoms for curly arrows (Future development, below) | PyTorch install in every run; less tested on charged intermediates |
+| RXNMapper (ML atom mapping) | the mapping of `curate.py` is doubtful (symmetric rings, look-alike atoms, cases where step 6 of the prompts asks to reorder SMILES); atom ids for curly arrows (Future development, section B) | PyTorch install in every run; less tested on charged intermediates |
 | Forward reaction prediction (Molecular Transformer, Chemformer) | checking that the product can be deduced from substrate and reagents (undergraduate and graduate problems, Name Reaction Daily); flag only | lower accuracy on total-synthesis substrates; install size |
 | DeepChem (pretrained molecular embeddings) | difficulty model once a few hundred problems have results; compared with RDKit fingerprints first | data volume too low now |
 
@@ -112,77 +112,180 @@ Rank correlation of predicted and observed difficulty; share of One-Pot sets who
 level order; share of "about right" votes from visitors of the matching level; mean stars; errors confirmed by a
 chemist; completion rate (secondary).
 
-## Future development: curly-arrow mechanisms (plan, 2026-11-11)
+## Future development: curly-arrow mechanisms (plan, 2026-11-11; refined 2026-11-13)
 
-Tracked on GitHub: https://github.com/QDher/Daily-organic-chemistry-puzzles/issues/4. Not scheduled.
+Tracked on GitHub: https://github.com/QDher/Daily-organic-chemistry-puzzles/issues/4. Status: nothing built. First
+milestone: a test run with a few users (section F) that decides whether the tool and its logging are ready for the
+data collection phase.
 
 ### A. Goals
 
-1. A user draws curly arrows on a structure; Claude interprets them correctly and gives the resulting structure
-   (intermediate or product).
-2. Claude draws a mechanism from and to a molecule as curly arrows (forward from a substrate, backward from a target).
+1. Intent model: a user draws curly arrows on a structure; a trained model converts them into the structure the user
+   meant (intermediate or product), also when the arrows are imprecise or ambiguous.
+2. Mechanism model: the AI draws the curly-arrow mechanism itself when given a substrate (with reagents) and a product.
+3. Drawing recognition (required by 1 and 2): a hand-drawn structure (mouse or touch screen) is converted into a clean
+   structure with a SMILES-based representation, as in chemistry viewers. Software-drawn and hand-drawn content are
+   interchangeable on one canvas: hand-drawn arrows and additions act on a rendered structure, and a hand-drawn
+   structure becomes a rendered one.
+4. Later (section G): mechanisms drawn on 3D structures (ball-and-stick models optimized by molecular mechanics).
 
-### B. Plan
+### B. One representation for all views
 
-1. Drawing to structure, without a Ketcher-type sketcher: the user draws the structure freehand (mouse or stylus) and
-   Claude converts the drawing into a readable structure (SMILES with atom positions). The recognized structure is
-   redrawn cleanly for the user to confirm or correct before any arrow is drawn.
-   - The Claude API accepts images and can return a fixed JSON shape (structured outputs). Calls go through the
-     feedback Worker, which keeps the API key as a Worker secret; the page never holds it. Each call has a cost, so the
-     Worker needs a limit per visitor and per day.
-   - Open recognition models for drawn structures (e.g. DECIMER, MolScribe) are an alternative or a cross-check; their
-     accuracy on hand drawings, like Claude's, is to be measured on a test set before use.
-2. Arrows drawn by the user: on the confirmed structure, the user draws one or more arrows from bonds and atoms with
-   the pointer (mouse, touch or stylus), confirms the entry, and then Claude applies the arrows.
-   - Arrows are drawn over the clean rendering, whose atom and bond positions are known: each arrow end is snapped to
-     the nearest atom, bond or lone-pair position, so an arrow is stored as data (source, sink), not as pixels. The
-     direction of the stroke gives source → sink.
-3. Conventions (common organic chemistry practice):
-   - Hydrogens on carbon are implicit, and an arrow is never interpreted as involving an implicit hydrogen; to move a
-     C–H proton or hydride, the user draws that hydrogen.
-   - Lone pairs and vacant orbitals are implicit. An arrow end placed in empty space next to an atom is attached to
-     that atom only if the atom can play that role:
-     - start (electron source): the atom has an available valence lone pair (e.g. the oxygen of an ether, the
-       nitrogen of an amine, a halide, an anion, a carbanion); one of its lone pairs is used;
-     - end (electron sink): the atom has a vacant valence orbital (e.g. the boron of triethylborane, a carbocation)
-       and receives the new bond. An atom with a full octet (e.g. an sp3 carbon) accepts an arrow end only if another
-       arrow of the same entry breaks one of its bonds (e.g. SN2, addition to C=O).
-     Otherwise the arrow is not accepted, and the user is asked to start or end it on a bond or on another atom.
-   - Arrow from a bond to one of its own atoms: heterolysis toward that atom. Arrow from a lone pair or a bond to
-     another atom, or to the space between two atoms: a new bond (σ or π) to that atom. Each rule is written down and
-     covered by tests before use; half-headed (radical) arrows come later.
-   - Transition metals (variable electron count, d orbitals, oxidative addition, reductive elimination, migratory
-     insertion, ligand exchange) need their own rules; they are outside the first version.
-4. Validation: the resulting structure is shown and the user accepts it or not. If not, Claude proposes another
-   structure from the same arrows (another reading of an ambiguous arrow end), until the user accepts or stops.
-   Accepted and rejected readings are both recorded.
+Goals 1 to 4 need the same data whatever the view (ink, clean 2D, 3D). A SMILES string alone loses atom positions and
+atom identity, which arrows need; the stored object is therefore a scene, and SMILES is derived from it.
 
-Applying arrows to a structure is deterministic (bond orders, charges, lone pairs) and can run with RDKit in the page
-or the Worker; every result is checked for valences, charge and electron count. Claude is needed for reading the
-drawing (B1), for alternative readings (B4) and for goal A2.
+| Part | Content |
+|---|---|
+| Graph | atoms (stable id, element, charge, explicit H, radical; 2D coordinates; optional 3D coordinates), bonds (atom ids, order, stereo). Stored as a molfile or CXSMILES with coordinates; canonical SMILES and the comparison key (`src/chemkey.js`) are derived |
+| Strokes | raw pointer input: points (x, y, time, pressure), pointer type (mouse, touch, pen), in scene coordinates |
+| Arrows | source (atom lone pair, bond), sink (atom, bond, or new bond between two atoms), electrons (2; 1 later), id of the stroke it came from |
+| Edits | what each structure stroke became: add bond, change bond order, set element or charge, delete; or "unresolved ink" |
 
-### C. Crowd data and model
+Rules:
+- Arrows refer to atom and bond ids, never to pixels, so one arrow can be shown and entered in any view.
+- Ink and clean rendering are two views of one graph. A stroke drawn on a rendered structure is snapped to its atoms
+  and merged into the graph; a fully hand-drawn structure is recognized, shown clean, and confirmed or corrected.
+- Raw strokes are always kept next to the confirmed graph: these pairs are the training data of goal 3.
+- Atom ids of a problem's species follow the atom mapping of `curate.py` (RXNMapper when doubtful), so the same atom
+  keeps its id from substrate to product.
 
-- Each confirmed (structure, arrows, result) entry, and each rejection, is stored anonymously in D1 with the visitor
-  level.
-- With enough checked data, a model is trained or fine-tuned to use curly arrows for mechanisms, reactivity,
-  synthesis and retrosynthesis (arrows run backward from a target). Public datasets of elementary steps (e.g. PMechDB,
-  mech-USPTO-31K; not reviewed here) can serve for pre-training and evaluation.
-- Only entries that pass the deterministic checks and are confirmed by several users train the model; a held-out set
-  measures it (share of steps whose predicted arrows give the correct next species).
-- Claude is not retrained by these data: the model is a separate tool Claude can call, and the data also serve as
-  examples and as a test set for the mechanisms Claude writes (goal A2 and the scheduled runs).
+### C. Components
 
-### Order and prerequisites
+Four components. Each has a version without training (enough for the test run) and a trained version (needs the data
+collection phase).
 
-1. Arrow interpreter (deterministic, tested) and arrow data format; no ML.
-2. Arrows drawn on the puzzle pages after the product is found, on the problem's own species (atom mapping from
-   `curate.py`, RXNMapper when doubtful): first data, with known answers.
-3. Freehand structure drawing read by Claude (B1) and alternative readings by Claude (B4): Claude API key as a Worker
-   secret, cost limit.
-4. Model training (C), once enough confirmed steps exist.
+**C1. Arrow interpreter (deterministic, no ML).** Applies arrows to a graph: bond orders, charges, lone pairs; checks
+valence, total charge and electron count. `src/arrows.js` (same file in both repositories, runs in the page and in
+Node) with tests. Conventions:
+- Hydrogens on carbon are implicit; an arrow never involves an implicit hydrogen. To move a C–H proton or hydride, the
+  user draws that hydrogen.
+- Lone pairs and vacant orbitals are implicit. An arrow end in empty space next to an atom attaches to that atom only
+  if the atom can play the role: start = available valence lone pair (ether O, amine N, halide, anion); end = vacant
+  valence orbital (BEt3, carbocation). An atom with a full octet accepts an arrow end only if another arrow of the same
+  entry breaks one of its bonds (SN2, addition to C=O).
+- Bond → one of its own atoms: heterolysis toward that atom. Lone pair or bond → another atom, or → the space between
+  two atoms: new σ or π bond.
+- Outside the first version: half-headed (radical) arrows, transition metals.
 
-Open: who pays the API calls and the daily limit; whether the collected data are published, and under which licence.
+**C2. Drawing recognition (goal 3).** Input is strokes (order and timing known), not a picture, which is an easier
+problem than image recognition.
+
+| Version | Method | Needs |
+|---|---|---|
+| R0 (test run) | geometry: strokes cut at corners into segments = bonds; close endpoints merged = atoms; parallel close segments = double or triple bond; small strokes near a vertex = label, matched against templates (N, O, S, P, F, Cl, Br, I, H, B, Si, +, −) with a point-cloud recognizer; unrecognized label → the user picks the element. Structure, arrow and erase are explicit modes | no training, no API call; runs in the page |
+| R1 (optional cross-check) | the ink as an image to the Claude API, fixed JSON output (graph), through the feedback Worker (API key as Worker secret, limit per visitor and day) | API cost; accuracy to be measured |
+| R2 (after data collection) | model trained on (strokes, confirmed graph) pairs; pre-training on synthetic ink (published structures redrawn with jitter) and on open hand-drawn recognition work (DECIMER hand-drawn, ChemPix; not reviewed here); also learns stroke type (structure, arrow, label), which removes the modes | collected pairs; GPU (Nibi) |
+
+In the modes of R0 every stroke carries its type, so the test run already yields labelled strokes for R2.
+
+**C3. Intent model (goal 1).** Formulated as ranking, not generation, so that little data is needed:
+1. Candidates: for each arrow end, the k nearest attachment points that pass the role rules of C1; all combinations
+   are applied by C1; invalid results are dropped.
+2. Ranking: I0 (test run) = fixed score (snapping distance, validity, fewest formal charges). I1 (trained) = learned
+   ranker on features of the stroke (distances, curvature, start and end direction), of the graph (element, charge,
+   hybridization at each end) and of the context (reagents, step); label = the reading the user accepted, or the
+   problem's known intermediate.
+3. The first-ranked structure is shown; on rejection the next one; accepted and rejected readings are recorded with
+   their rank.
+4. Repair (later): when no candidate is accepted (missing arrow, arrow drawn in the wrong direction), the model
+   proposes the smallest change of the arrows that gives a valid structure; these cases are recorded by type from the
+   test run on.
+
+The intent model predicts what the user meant, not what is chemically correct. Correctness is judged separately,
+against the problem's reference step; an entry that is read as intended but is wrong chemistry is kept as such (data
+on common errors), never corrected silently.
+
+**C4. Mechanism model (goal 2).**
+
+| Version | Method |
+|---|---|
+| M0 (test run) | Claude writes each elementary step as arrows in the format of section B; C1 applies them; a step is accepted only if it gives the next species and the last one gives the product (comparison key). Repeated until every step passes. Produces the reference mechanisms of the test-run tasks; shown to testers, who mark each step correct, wrong or unclear |
+| M1 (after data collection) | separate model: pre-trained on public elementary-step datasets (e.g. PMechDB, mech-USPTO-31K, FlowER; licences and content not reviewed here), fine-tuned on crowd-confirmed steps; measured on a held-out set (share of steps whose predicted arrows give the correct next species; share of complete mechanisms) |
+| Use | Claude is not retrained. M1 is a tool Claude calls and a cross-check of M0; confirmed crowd steps also serve as retrieved examples for M0 and as its test set. Every output still passes C1 |
+
+What the crowd data add over public datasets: accepted alternative depictions of one step, step granularity that users
+expect, frequent wrong arrows per reaction class, and votes on the AI's own steps.
+
+### D. Data recorded
+
+One D1 table `mech_entries` (site key `mechpilot` during the test run), one row per confirmed or abandoned entry:
+tester code or visitor id, level, pointer type and screen size, task and problem id, step, scene before (graph),
+strokes, recognized graph and the corrections made, arrows as snapped, candidate readings with rank, reading accepted,
+literal result, verdict against the reference, seconds, tool and rule versions. Votes on AI steps in `mech_votes`.
+Remarks stay in D1 (never in the repository).
+
+Training sets come from this table only through a replay: `src/mech_replay.js` re-runs recognition, snapping and C1
+on the stored row and must reproduce the stored result. Rows that do not replay are excluded.
+
+Only entries that pass C1 and are confirmed train a model; for I1 and M1, a step counts when at least 3 different
+visitors gave the same result or it equals the reference.
+
+### E. Order
+
+| Phase | Content | ML |
+|---|---|---|
+| 1. Build | scene format, C1 with tests, canvas (pointer input, snapping, modes), R0, I0, reference mechanisms by M0 for the tasks, Worker table and replay script | none |
+| 2. Test run | section F; report; decision by the user | none |
+| 3. Data collection | optional arrow step on both daily pages after the product is found (the problem's own species: known answers); freehand input next to Ketcher, not instead of it; notice of what is recorded | none; R1 optional |
+| 4. Training | R2, I1, M1 on Nibi, each compared with its untrained version on held-out data; activation by pull request (shadow → advisory → active, as for the selection models) | yes |
+
+Start conditions for phase 4 (proposed, to be revised after the test run): R2 at least 2,000 confirmed drawings from
+at least 50 visitors; I1 at least 1,000 confirmed entries with at least 150 where the first reading was rejected; M1
+fine-tuning at least 500 distinct confirmed steps.
+
+### F. Test run
+
+Purpose: decide whether tool and logging are ready for phase 3. It is not meant to produce training data.
+
+- Page: `pilot/` in this repository (built by `src/build.js`), not linked from the daily pages, opened with a tester
+  code (`?t=...`). The daily pages, their problems and visitor progress are not changed.
+- Testers: 3 to 5, with at least one mouse and one touch screen or stylus, and at least two declared levels.
+- Tasks (about 14, from published, verified problems; about 20 minutes):
+
+| Type | Number | Task | Tests |
+|---|---|---|---|
+| T1 | 6 | arrows on a rendered structure for one elementary step with a known result (substitution, carbonyl addition, elimination, proton transfer with a drawn H, enolate alkylation, iminium formation) | canvas, snapping, C1, I0 |
+| T2 | 4 | copy a displayed structure by hand (chain with heteroatom, ring, charged species, stereocentre not required) | R0, correction |
+| T3 | 2 | rendered substrate; the tester hand-draws the reagent or a change of the structure, then arrows | mixed ink and rendering |
+| T4 | 2 | a mechanism drawn by M0 is displayed; the tester marks each step correct, wrong or unclear | M0 output, arrow rendering |
+
+  A short questionnaire at the end (5 questions: input device comfort, clarity of the conventions, blocking problems).
+
+- Readiness criteria (proposed; with about 60 entries the percentages are indicative, the decision is the user's):
+
+| Criterion | Threshold |
+|---|---|
+| Stored rows that replay to the same result (`src/mech_replay.js`) | 100 % |
+| Reference steps of the tasks reproduced by C1; C1 tests | 100 %; all pass |
+| T1: first reading accepted / accepted within 3 readings | ≥ 80 % / ≥ 95 %, reported per pointer type |
+| T2: structure confirmed without correction / with at most 2 corrections | ≥ 60 % / ≥ 90 % |
+| Tasks started that are completed; median time per T1 entry | ≥ 80 %; ≤ 60 s |
+| T4: steps marked correct | reported; no threshold (M0 quality, not tool readiness) |
+| Blocking problem reported by at least 2 testers | none |
+
+- Outcome: a report (`pilot/REPORT.md`) with the criteria, the failed entries by cause (recognition, snapping,
+  convention, page) and the changes proposed. Below threshold: fix and repeat with the same tasks. All met: phase 3
+  by pull request.
+
+### G. Later: mechanisms on 3D structures
+
+Not built. The only requirement now is in section B: arrows by atom id and optional 3D coordinates in the graph.
+- Conformer per species from RDKit (ETKDG, then MMFF94) in the scheduled run or the Worker; whether RDKit's JavaScript
+  build can do it in the page is to be checked.
+- 3D viewer with atom and bond picking (e.g. 3Dmol.js); an arrow is entered by picking source and sink and shown as a
+  curve in 3D; C1, C3 and C4 are unchanged.
+- Hydrogens are explicit in 3D, so the implicit-hydrogen rule applies to the 2D views only.
+- Possible gain: geometric conditions of a step (anti-periplanar elimination, trajectory of attack on C=O, facial
+  selectivity) become part of the recorded data.
+
+### Open decisions
+
+| Decision | Proposal |
+|---|---|
+| Claude API in the test run (R1) | not used: R0 and I0 need no call; M0 runs in a maintenance session before the test run. Decide on R1 from the T2 results |
+| Who pays API calls in phase 3, daily limit | open |
+| Notice to visitors and publication of the data | page states that drawings (strokes with timing) and answers are stored anonymously; publication and licence (CC0 proposed) decided before phase 3 |
+| Ketcher | kept on the daily pages; freehand is an additional input until R2 is measured |
 
 ## Compute: HPC cluster (Nibi, Digital Research Alliance of Canada) (note, 2026-11-11)
 
@@ -193,8 +296,8 @@ Not needed now; useful later for training and batch jobs only.
 | Feedback statistics, difficulty and rating models, Thompson sampling, Tier A | No: seconds of CPU; queue wait and data transfer exceed the computation |
 | RXNMapper or forward prediction on the daily candidates | No: a few reactions per day, CPU inference is enough |
 | The same models over a large candidate pool (results stored as flags in the repository) | Yes, as an occasional batch job (GPU) |
-| Drawing recognition (DECIMER, MolScribe): evaluation and fine-tuning on hand drawings | Yes, training and evaluation only |
-| Curly-arrow model (section C above): pre-training on public datasets, then on crowd data | Yes: the main case (GPU hours to days) |
+| Drawing recognition (R2, section C2): pre-training on synthetic ink, training on collected strokes | Yes, training and evaluation only |
+| Intent and mechanism models (I1, M1, sections C3 and C4): pre-training on public datasets, then on crowd data | Yes: the main case (GPU hours to days) |
 
 Claude Code on Nibi (in tmux on a login node):
 - It keeps one authenticated session (multi-factor authentication once), so Claude can export the data, write and submit
