@@ -226,7 +226,12 @@ Columns outside the payload: visitor (tester label in the test run), session, le
 (Worker secret `MECH_EXPORT_KEY`), because payloads hold strokes and free text. Remarks stay in D1 (never in a
 repository).
 
-Training sets come from this table only through a replay: `tools/replay.js` of QDher/Daily_Curly_Chem re-runs
+Order decided on 2026-11-13: the Worker part (this table and its endpoints, on branch
+`claude/beautiful-pasteur-7tg1k3`) is merged after the training and ML work. Until then the test-run page sends
+nothing: testers save their entries as a JSON file (same entry format), and these files are the data for the first
+training and evaluation work.
+
+Training sets come from stored entries (files, later this table) only through a replay: `tools/replay.js` of QDher/Daily_Curly_Chem re-runs
 recognition, snapping and C1 on the stored row and must reproduce the stored result. Rows that do not replay are
 excluded.
 
