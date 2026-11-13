@@ -217,7 +217,8 @@ Remarks stay in D1 (never in the repository).
 Training sets come from this table only through a replay: `src/mech_replay.js` re-runs recognition, snapping and C1
 on the stored row and must reproduce the stored result. Rows that do not replay are excluded.
 
-Only entries that pass C1 and are confirmed train a model; for I1 and M1, a step counts when at least 3 different
+The label is the visitor's answer on the structure produced by their arrows (accepted or rejected, with the rank of
+the reading), together with the problem's known intermediate. Only entries that pass C1 and are confirmed train a model; for I1 and M1, a step counts when at least 3 different
 visitors gave the same result or it equals the reference.
 
 ### E. Order
@@ -237,8 +238,15 @@ fine-tuning at least 500 distinct confirmed steps.
 
 Purpose: decide whether tool and logging are ready for phase 3. It is not meant to produce training data.
 
-- Page: `pilot/` in this repository (built by `src/build.js`), not linked from the daily pages, opened with a tester
-  code (`?t=...`). The daily pages, their problems and visitor progress are not changed.
+- Repository (decided 2026-11-13): QDher/Daily_Curly_Chem holds the test-run page (its own GitHub Pages site, opened
+  with a tester code `?t=...`, not linked from the daily sites) and is the single source of the shared modules (scene
+  format, C1, canvas, R0, I0, replay) with their tests. The daily pages, their problems and visitor progress are not
+  changed during the test run.
+- Worker: table and site key `mechpilot` are added to `feedback-worker/` of this repository by a migration (one
+  database and one export for test run and phase 3).
+- Deployment (phase 3): a versioned bundle from QDher/Daily_Curly_Chem is copied into `src/` of both site
+  repositories (identical files, as `src/chemkey.js`) and added by `src/build.js` as an optional step after the
+  product is found; the daily pages do not load code from the test-run site.
 - Testers: 3 to 5, with at least one mouse and one touch screen or stylus, and at least two declared levels.
 - Tasks (about 14, from published, verified problems; about 20 minutes):
 
@@ -263,7 +271,7 @@ Purpose: decide whether tool and logging are ready for phase 3. It is not meant 
 | T4: steps marked correct | reported; no threshold (M0 quality, not tool readiness) |
 | Blocking problem reported by at least 2 testers | none |
 
-- Outcome: a report (`pilot/REPORT.md`) with the criteria, the failed entries by cause (recognition, snapping,
+- Outcome: a report (`REPORT.md` in QDher/Daily_Curly_Chem) with the criteria, the failed entries by cause (recognition, snapping,
   convention, page) and the changes proposed. Below threshold: fix and repeat with the same tasks. All met: phase 3
   by pull request.
 
