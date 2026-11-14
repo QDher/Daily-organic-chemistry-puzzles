@@ -152,9 +152,13 @@ Order of work in stages 1 and 2:
    (`tools/agent_ink.js`; a second synthetic generator is not built beside it), then the items of
    `docs/PLAN_DRAWING.md` in their order.
 
-Not decided: adoption of the training-data plan for the reading model
-(`docs/handoff/ml-training-data_2026-11-14.md` of QDher/Daily_Curly_Chem); whether only one session at a time
-changes the page of QDher/Daily_Curly_Chem.
+Decided on 2026-11-14 (user):
+- Data generation and evaluation stay as described in this file (entries of people, judged agent entries, section F).
+- Note, not adopted: Monte Carlo generation of synthetic arrow strokes to fit `Readings.P`
+  (`docs/handoff/ml-training-data_2026-11-14.md` of QDher/Daily_Curly_Chem). It may not be the best method; it is
+  kept as one option to compare when a reading model is considered.
+- Several sessions may change the page of QDher/Daily_Curly_Chem. Rule: rebase on `origin/main`, run `npm run check`
+  (all unit, page and agent-driver tests) and push only when every set ends with N/N passed.
 
 ## Future development: curly-arrow mechanisms (plan, 2026-11-11; refined 2026-11-13 and 2026-11-14)
 
