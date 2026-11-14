@@ -371,10 +371,14 @@ for phase 3. Its entries (people, and judged agent entries below) are the data f
   readings accepted) and model evaluations are measured on entries of people only.
 - Replacement of clear-cut agent testers (decision of 2026-11-14): a tester whose attempts are always judged
   correct, or always judged incorrect, with more than 98 % confidence, is retired and replaced by a tester whose
-  drawings are closer to the less clear-cut cases. Working definition (proposed, to be confirmed by the user):
-  "correct" is the answer "should give the right structure", "unsure" is not counted; a tester is clear-cut when
-  the one-sided 98 % confidence bound (exact binomial) of its share of "correct" among judged attempts is above
-  90 %, or of "incorrect" above 90 %; with identical judgements this is reached at 38 judged attempts. The
+  drawings are closer to the less clear-cut cases. Definition (user, 2026-11-14), per judged attempt:
+  "correct" = the page accepted the agent's answer and the user answered "yes" to "should the arrows (or the
+  drawing) have given the right structure"; "incorrect" = the page gave no reading or the answer was not accepted,
+  and the user judged the outcome of the arrows right (the page was right not to give the structure). The other
+  judged attempts (the page and the user's judgement disagree, or "unsure") are neither; they are the less
+  clear-cut cases. Threshold (proposed, not confirmed): a tester is clear-cut when the one-sided 98 % confidence
+  bound (exact binomial) of its share of "correct" among judged attempts is above 90 %, or of "incorrect" above
+  90 %; with identical judgements this is reached at 38 judged attempts. The
   replacement gets a new name, seed and traits (precision and consistency moved toward the testers with mixed
   judgements); the retired tester's name is not reused, its traits are not changed and its judged entries are kept.
 
