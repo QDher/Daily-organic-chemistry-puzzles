@@ -376,7 +376,7 @@ for phase 3. Its entries (people, and judged agent entries below) are the data f
   drawing) have given the right structure"; "incorrect" = the page gave no reading or the answer was not accepted,
   and the user judged the outcome of the arrows right (the page was right not to give the structure). The other
   judged attempts (the page and the user's judgement disagree, or "unsure") are neither; they are the less
-  clear-cut cases. Threshold (proposed, not confirmed): a tester is clear-cut when the one-sided 98 % confidence
+  clear-cut cases. Threshold (user, 2026-11-14): a tester is clear-cut when the one-sided 98 % confidence
   bound (exact binomial) of its share of "correct" among judged attempts is above 90 %, or of "incorrect" above
   90 %; with identical judgements this is reached at 38 judged attempts. The
   replacement gets a new name, seed and traits (precision and consistency moved toward the testers with mixed
