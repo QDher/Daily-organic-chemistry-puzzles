@@ -295,6 +295,16 @@ Purpose: decide whether tool and logging are ready for phase 3. It is not meant 
 - Outcome: a report (`REPORT.md` in QDher/Daily_Curly_Chem) with the criteria, the failed entries by cause (recognition, snapping,
   convention, page) and the changes proposed. Below threshold: fix and repeat with the same tasks. All met: phase 3
   by pull request.
+- Agent testers (decision of 2026-11-14; `docs/AGENT_TESTER.md` of QDher/Daily_Curly_Chem): synthetic testers named
+  john0002, john0003, and so on, one run per day from the Claude Console (Managed Agents, scheduled deployment). Each
+  knows the answer and draws the arrow and copy tasks (standard set and daily set) through the real page with mouse
+  events; the ink is made in code from two traits, precision and consistency (reproducibility), and atoms are typed
+  (handwritten letters would only reproduce the recognizer's templates). The Console agent runs the script, checks
+  the replay, explains the attempts that failed, reviews the day's reference steps and writes a report. Use:
+  pre-training of R2 and I1 with exact labels, a daily end-to-end check, feedback on the page. Their entries carry
+  their own labels and are never counted in the readiness criteria above, in the phase-4 start conditions or in the
+  "at least 3 different visitors" rule, and no model is evaluated on them. Review after two weeks (cost, report
+  quality, calibration of the noise on drawings of people, more testers per day): decision of the user.
 
 ### G. Later: mechanisms on 3D structures
 
