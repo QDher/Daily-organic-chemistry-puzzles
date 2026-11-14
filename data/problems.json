@@ -5844,6 +5844,330 @@
           }
         }
       ]
+    },
+    {
+      "date": "2026-11-14",
+      "problems": [
+        {
+          "id": "os1950-hofmann-rearrangement-nicotinamide-aminopyridine",
+          "level": "undergraduate",
+          "textbookLevel": "undergraduate",
+          "reaction": "Hofmann rearrangement: hypobromite (from Br₂ and NaOH) brominates the amide nitrogen to the N-bromoamide (N–Br formed); in hot alkali the deprotonated N-bromoamide loses bromide as the pyridyl group migrates from carbon to nitrogen (C–C broken, C–N formed, N–Br broken), giving 3-pyridyl isocyanate; hydroxide adds to the isocyanate (C–O formed) to the carbamate/carbamic acid, which loses CO₂ (C–N broken) to 3-aminopyridine",
+          "source": {
+            "citation": "C. F. H. Allen, C. N. Wolf. 3-Aminopyridine. Org. Synth. 1950, 30, 3 (Coll. Vol. 4, 45).",
+            "doi": "10.15227/orgsyn.030.0003",
+            "context": "Preparative conversion of nicotinamide into 3-aminopyridine with sodium hypobromite (bromine in aqueous sodium hydroxide, ice-cold), followed by heating of the clear solution; a standard example of the Hofmann rearrangement of a primary amide."
+          },
+          "verified": false,
+          "verificationNote": "Procedure not read in this run (orgsyn.org is not reachable from the run's network; publisher pages not accessed); the Crossref record of the DOI (title 3-Aminopyridine, Org. Synth. vol. 30, p. 3, 1950) was checked. Reagents and conditions follow the well-known Organic Syntheses preparation as remembered (bromine added to cold aqueous NaOH, nicotinamide added at about 0 °C and stirred until dissolved, then the solution heated at about 70–75 °C for 45 min; product extracted with ether after saturation with NaCl); a chemist should check the amounts, temperatures and times against the procedure. Intermediates follow the textbook Hofmann mechanism (Clayden ch. 36 / Klein ch. 23); the N-bromoamide anion is not listed separately because it differs from the N-bromoamide only by a proton. PubChem (InChIKey connectivity layer, RDKit vs PubChem): nicotinamide matches CID 936, bromine CID 24408, 3-aminopyridine CID 10009.",
+          "substrate": {
+            "label": "Nicotinamide (pyridine-3-carboxamide)",
+            "smiles": "NC(=O)c1cccnc1"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "Br₂ (0.60 mol)",
+                  "smiles": "BrBr"
+                },
+                {
+                  "text": "NaOH (75 g) in H₂O (800 mL)"
+                }
+              ],
+              "conditions": "Br₂ added to the aqueous NaOH at 0 °C; nicotinamide (60 g, 0.49 mol) added at 0 °C, stirred until the solution is clear (about 15 min)",
+              "intermediates": [
+                {
+                  "label": "N-Bromonicotinamide: the amide nitrogen attacks bromine of hypobromite (N–Br formed); in the alkaline solution it is present as its N-anion",
+                  "forms": [
+                    "BrNC(=O)c1cccnc1",
+                    "Br[N-]C(=O)c1cccnc1"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "undergraduate",
+              "reagents": [],
+              "conditions": "70–75 °C, 45 min; then cooled, saturated with NaCl and extracted with Et₂O",
+              "intermediates": [
+                {
+                  "label": "3-Pyridyl isocyanate: the pyridyl group migrates from the carbonyl carbon to nitrogen as bromide leaves (C–C broken, C–N formed, N–Br broken)",
+                  "forms": [
+                    "O=C=Nc1cccnc1"
+                  ]
+                },
+                {
+                  "label": "Pyridin-3-ylcarbamate (carbamic acid): hydroxide adds to the isocyanate carbon (C–O formed)",
+                  "forms": [
+                    "[O-]C(=O)Nc1cccnc1",
+                    "OC(=O)Nc1cccnc1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "3-Aminopyridine (CO₂ lost from the carbamic acid: C–N broken)",
+            "smiles": "Nc1cccnc1"
+          },
+          "byproducts": "NaBr (2 equiv), Na₂CO₃ (CO₂ in the alkaline solution), H₂O",
+          "mechanismRefs": [
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., Oxford University Press, 2012, ch. 36 (Hofmann rearrangement: N-bromoamide, isocyanate, carbamic acid).",
+            "D. Klein, Organic Chemistry, Wiley, ch. 23 (preparation of amines by the Hofmann rearrangement)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 0
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "substrate",
+              "atom": 1
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "substrate",
+              "atom": 3
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 3,
+            "sigmaBondEvents": 6,
+            "textbookLevel": "undergraduate",
+            "stepScores": [
+              1,
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 2
+          }
+        },
+        {
+          "id": "jacs1963-stork-enamine-acrylonitrile-cyanoethylcyclohexanone",
+          "level": "graduate",
+          "textbookLevel": "graduate",
+          "courseRef": "Kürti–Czakó, Strategic Applications of Named Reactions in Organic Synthesis (2005), entry \"Stork enamine synthesis\"; Carey–Sundberg, Advanced Organic Chemistry Part B, 5th ed., ch. 1 (enamines as nucleophiles: alkylation and conjugate addition)",
+          "reaction": "Stork enamine conjugate addition and hydrolysis: the nucleophilic β-carbon of 1-pyrrolidinocyclohexene adds to the β-carbon of acrylonitrile (C–C formed), giving an iminium ion with a nitrile-stabilized carbanion (zwitterion); proton transfer regenerates an enamine bearing the 2-cyanoethyl chain; on heating with water the enamine is protonated on carbon to the iminium ion, water adds (C–O formed) to the carbinolamine, and loss of pyrrolidine (C–N broken) gives 2-(2-cyanoethyl)cyclohexanone",
+          "source": {
+            "citation": "G. Stork, A. Brizzolara, H. Landesman, J. Szmuszkovicz, R. Terrell. The Enamine Alkylation and Acylation of Carbonyl Compounds. J. Am. Chem. Soc. 1963, 85, 207–222.",
+            "doi": "10.1021/ja00885a021",
+            "context": "Cyanoethylation of the pyrrolidine enamine of cyclohexanone with acrylonitrile followed by hydrolysis with water to 2-(2-cyanoethyl)cyclohexanone, one of the conjugate additions of enamines to electrophilic alkenes reported in the full paper on the enamine method."
+          },
+          "verified": false,
+          "verificationNote": "Paper not read in this run (ACS pages are blocked by the run's network); the reaction is cited from the general literature account of the Stork enamine method. Conditions shown (ethanol at reflux, then water at reflux) are as remembered and were not read; a chemist should check the solvent, the times, the amounts and whether the paper used dioxane or ethanol, and should check the DOI (taken from memory; Crossref record checked: J. Am. Chem. Soc. 1963, 85, 207–222). Intermediates follow the textbook mechanism of enamine conjugate addition and enamine hydrolysis (Kürti–Czakó; Clayden ch. 25). The iminium ion formed on protonation in step 2 is not listed because it differs from the step-1 zwitterion only by a proton. PubChem (InChIKey connectivity layer): 1-(cyclohex-1-en-1-yl)pyrrolidine matches CID 70768, acrylonitrile CID 7855, water CID 962, 2-(2-cyanoethyl)cyclohexanone (3-(2-oxocyclohexyl)propanenitrile) CID 96223.",
+          "substrate": {
+            "label": "1-(Cyclohex-1-en-1-yl)pyrrolidine",
+            "smiles": "C1=C(CCCC1)N1CCCC1"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "Acrylonitrile (1 equiv)",
+                  "smiles": "C=CC#N"
+                }
+              ],
+              "conditions": "EtOH, reflux",
+              "intermediates": [
+                {
+                  "label": "Zwitterion: the enamine β-carbon adds to the β-carbon of acrylonitrile (C–C formed); iminium ion with an α-cyano carbanion",
+                  "forms": [
+                    "N#C[CH-]CC1CCCCC1=[N+]1CCCC1",
+                    "[N-]=C=CCC1CCCCC1=[N+]1CCCC1"
+                  ]
+                },
+                {
+                  "label": "2-(2-Cyanoethyl) enamine after proton transfer from the ring α-carbon to the carbanion",
+                  "forms": [
+                    "N#CCCC1=C(N2CCCC2)CCCC1",
+                    "N#CCCC1CCCC=C1N1CCCC1"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "H₂O",
+                  "smiles": "O"
+                }
+              ],
+              "conditions": "reflux",
+              "intermediates": [
+                {
+                  "label": "Carbinolamine: the enamine is protonated on carbon to the iminium ion and water adds to the iminium carbon (C–O formed)",
+                  "forms": [
+                    "N#CCCC1CCCCC1(O)N1CCCC1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "2-(2-Cyanoethyl)cyclohexanone (pyrrolidine released: C–N broken)",
+            "smiles": "N#CCCC1CCCCC1=O"
+          },
+          "byproducts": "Pyrrolidine",
+          "mechanismRefs": [
+            "G. Stork et al., J. Am. Chem. Soc. 1963, 85, 207 (enamine alkylation and acylation; conjugate additions to acrylonitrile and acrylates).",
+            "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis, Elsevier, 2005 (Stork enamine synthesis).",
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., Oxford University Press, 2012, ch. 25 (enamines; hydrolysis of enamines)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 0
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 6
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "Acrylonitrile (1 equiv)",
+              "atom": 0
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "reagent",
+              "step": 2,
+              "reagent": "H₂O",
+              "atom": 0
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 3,
+            "sigmaBondEvents": 3,
+            "textbookLevel": "graduate",
+            "stepScores": [
+              2.5,
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 3.5
+          }
+        },
+        {
+          "id": "jacs2026-iodine-dmso-furan-ibx-oxidation-halenaquinone",
+          "level": "advanced",
+          "textbookLevel": "specialized",
+          "reaction": "Iodonium-induced oxidative furan annulation, then IBX oxidation (telescoped): iodine adds to the exocyclic C4=CH2 alkene of the allylic alcohol (iodonium ion, positive charge at the tertiary allylic C4); the enol oxygen of the diosphenol attacks the methylene carbon (C–O formed, 5-membered ring; C–I kept at C4), giving a 4-iodo-dihydrofuran; loss of HI (C–I broken, C4=C21 formed) aromatizes the strained 3,4-fused furan (DMSO reoxidizes iodide to iodine); IBX then exchanges a hydroxy ligand for the C3 alcohol (O–I formed) and the alkoxy-λ⁵-iodane collapses (C–H removed, I–O broken) to the C3 ketone conjugated with the furan, giving the diketofuran of dimethyl-protected halenaquinone",
+          "source": {
+            "citation": "J. D. Hart, J. K. Lawrence, P. N. Franqui, D. R. Perrott, B. Yi, Y. Xi, C. J. Sumby, C. G. Newton, J. H. George. Biomimetic Synthesis of Seven Halenaquinone Meroterpenoids. J. Am. Chem. Soc. 2026, 148, 23316–23324 (published online 2026-05-28).",
+            "doi": "10.1021/jacs.6c06760",
+            "context": "Last C–C/C–O bond-forming operation of the halenaquinone route (Scheme 3): allylic alcohol 16 (obtained in one pot from the protected diosphenol acid by aerobic decarboxylation with Amberlyst 15, epoxidation with m-CPBA and epoxide opening in warm chloroform) undergoes the iodine/DMSO oxidative furan formation used for protected xestoquinone; the furan alcohol is telescoped with an IBX oxidation of the new furylic (benzylic) C3 alcohol to protected halenaquinone, which is deprotected oxidatively to halenaquinone. The furan alcohol is not isolated; the two operations are carried out in sequence (telescoped)."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central, text only; Scheme 3, its condition footnotes and the SI were not accessible), so no amounts, temperatures or reaction times were read and the conditions give only the reagents and solvent named in the text ('modified iodine/DMSO protocol', IBX). Whether the IBX oxidation is done in the same flask or after a solvent change is not stated ('telescoped'); a chemist should check this and the temperatures. Structures: the product, as its 1,4-dimethyl ether, was checked against halenaquinone (PubChem CID 370346): the demethylated quinone form of the drawn product has the same InChIKey connectivity layer (SMGBXXZKAPMTBB) and formula C20H12O5. Substrate 16 is reconstructed from the text ('C3-allylic alcohol derivative of exocyclic alkene 14', formed by epoxidation of the endocyclic C3=C4 alkene and epoxide opening) and from the earlier entries of this paper on the site (C4 carboxylic acid precursor; 1,4-dimethoxynaphthalene); it has no PubChem entry. Mechanism: the authors propose iodonium formation, cyclization and elimination; the regiochemistry (enol O6 to the methylene carbon, iodide at C4, HI elimination) is drawn so that the furan matches halenaquinone; the role of DMSO (reoxidation of HI/iodide) is from the literature on I₂/DMSO oxidations, not from the paper. IBX mechanism as for periodinane oxidations (ligand exchange, then elimination). Same paper as two earlier problems (CAN deprotection/decarboxylation to orhalquinone; aryne annulation), different transformation. Online publication 2026-05-28 (Crossref): extended window (170 days). In the 31-day window the papers with readable full text either lacked a two-step one-pot process with a distinct intermediate in each step or were already used, and the SI of the merocyclophane A paper (JACS 2026, 10.1021/jacs.6c14045) could not be read. PubChem (InChIKey connectivity layer): iodine matches CID 807; IBX drawn as the cyclic 1-hydroxy-1-oxo-1λ⁵,2-benziodoxol-3-one matches CID 339496 (the name '2-iodoxybenzoic acid' returns the open 2-iodylbenzoic acid drawing, CID 108794, a different drawing of the same reagent); the product (halenaquinone 1,4-dimethyl ether) matches CID 11325922 (C22H18O5); substrate 16 has no PubChem entry (searched by structure).",
+          "substrate": {
+            "label": "Allylic alcohol 16: C3 secondary alcohol, C4 exocyclic methylene, ring-B diosphenol, 1,4-dimethoxynaphthalene",
+            "smiles": "C=C1C(O)CCC2(C)C1=C(O)C(=O)c1cc3c(cc12)C(OC)=CC=C3OC"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "specialized",
+              "reagents": [
+                {
+                  "text": "I₂",
+                  "smiles": "II"
+                }
+              ],
+              "conditions": "DMSO",
+              "intermediates": [
+                {
+                  "label": "Iodonium ion on the exocyclic alkene (I–C bonds formed); open form: β-iodo tertiary allylic cation at C4",
+                  "forms": [
+                    "C1[I+]C12C(O)CCC3(C)C2=C(O)C(=O)c2cc4c(cc23)C(OC)=CC=C4OC",
+                    "IC[C+]1C(O)CCC2(C)C1=C(O)C(=O)c1cc3c(cc12)C(OC)=CC=C3OC"
+                  ]
+                },
+                {
+                  "label": "4-Iodo-2,3-dihydrofuran: the diosphenol enol oxygen attacks the methylene carbon (C–O formed, five-membered ring), iodide stays on C4; proton lost from oxygen",
+                  "forms": [
+                    "C1OC2=C3C(C)(CCC(O)C13I)c1cc4c(cc1C2=O)C(OC)=CC=C4OC"
+                  ]
+                },
+                {
+                  "label": "Furan alcohol (not isolated): HI eliminated (C–I broken), aromatic 3,4-fused furan",
+                  "forms": [
+                    "OC1CCC2(C)C3=C(OC=C13)C(=O)c1cc3c(cc12)C(OC)=CC=C3OC"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "2-Iodoxybenzoic acid (IBX)",
+                  "smiles": "O=C1OI(=O)(O)c2ccccc21"
+                }
+              ],
+              "conditions": "IBX added to the crude furan alcohol",
+              "intermediates": [
+                {
+                  "label": "Alkoxy-λ⁵-iodane: ligand exchange of the C3 alcohol with the hydroxy group on iodine(V) (O–I formed, water released)",
+                  "forms": [
+                    "O=C1OI(=O)(OC2CCC3(C)C4=C(OC=C24)C(=O)c2cc4c(cc23)C(OC)=CC=C4OC)c2ccccc21"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Halenaquinone 1,4-dimethyl ether (diketofuran): C3 ketone formed as the C3–H is removed and the iodane leaves as IBA (I–O broken)",
+            "smiles": "CC12CCC(=O)C3=COC(=C31)C(=O)c1cc3c(cc12)C(OC)=CC=C3OC"
+          },
+          "byproducts": "HI (reoxidized by DMSO to I₂, giving dimethyl sulfide and water); 2-iodosobenzoic acid (IBA) and water",
+          "mechanismRefs": [
+            "J. D. Hart et al., J. Am. Chem. Soc. 2026, 148, 23316 (iodine/DMSO oxidative cyclization to the furan 'via iodonium formation, followed by cyclization and elimination'; telescoped IBX oxidation of the C3 alcohol).",
+            "Iodine-promoted cyclizations of alkenes with internal oxygen nucleophiles: F. A. Carey, R. J. Sundberg, Advanced Organic Chemistry Part B, 5th ed., ch. 4 (electrophilic additions: halocyclization).",
+            "IBX oxidation of alcohols: M. Frigerio, M. Santagostino, J. Org. Chem. 1994, 59, 7272; L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis, Elsevier, 2005 (Dess–Martin oxidation entry, IBX)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 0
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 10
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 4,
+            "sigmaBondEvents": 8,
+            "textbookLevel": "specialized",
+            "stepScores": [
+              8.5,
+              3.5
+            ],
+            "uncommonReagents": 0,
+            "score": 12.0
+          }
+        }
+      ]
     }
   ]
 }
