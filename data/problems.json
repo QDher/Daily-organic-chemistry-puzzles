@@ -6168,6 +6168,314 @@
           }
         }
       ]
+    },
+    {
+      "date": "2026-11-15",
+      "problems": [
+        {
+          "id": "os1972-borch-reductive-amination-dimethylcyclohexylamine",
+          "level": "undergraduate",
+          "textbookLevel": "undergraduate",
+          "reaction": "Reductive amination with sodium cyanoborohydride: dimethylamine adds to the carbonyl carbon of cyclohexanone (C–N formed) to give the carbinolamine (hemiaminal); loss of water (C–O broken) gives the N,N-dimethyliminium ion, which is reduced by hydride from NaBH₃CN much faster than the ketone (C–H formed), giving N,N-dimethylcyclohexylamine",
+          "source": {
+            "citation": "R. F. Borch. Reductive Amination with Sodium Cyanoborohydride: N,N-Dimethylcyclohexylamine. Org. Synth. 1972, 52, 124 (Coll. Vol. 6, 499).",
+            "doi": "10.15227/orgsyn.052.0124",
+            "context": "Organic Syntheses procedure for the one-pot reductive amination of cyclohexanone with dimethylamine hydrochloride and sodium cyanoborohydride in methanol, the standard example of the Borch reductive amination."
+          },
+          "verified": false,
+          "verificationNote": "Procedure not read in this run (orgsyn.org is not reachable from the run's network); the title, volume and page were checked on Crossref (DOI 10.15227/orgsyn.052.0124: 'Reductive amination with sodium cyanoborohydride: N,N-dimethylcyclohexylamine', Org. Synth. 1972, 52, 124). Substrate, amine and product follow from the title; the conditions shown (methanol, room temperature) are as remembered and amounts, time, the base used to buffer the amine salt and the work-up were not read: a chemist should check them against the procedure. Intermediates follow the textbook mechanism of reductive amination (Clayden ch. 11; Borch, Bernstein, Durst, J. Am. Chem. Soc. 1971). PubChem (InChIKey connectivity layer): cyclohexanone matches CID 7967, dimethylamine CID 674, N,N-dimethylcyclohexylamine CID 7415.",
+          "substrate": {
+            "label": "Cyclohexanone",
+            "smiles": "O=C1CCCCC1"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "Dimethylamine hydrochloride (Me₂NH·HCl)",
+                  "smiles": "CNC"
+                },
+                {
+                  "text": "NaBH₃CN"
+                }
+              ],
+              "conditions": "MeOH, rt",
+              "intermediates": [
+                {
+                  "label": "Carbinolamine (hemiaminal): dimethylamine adds to the carbonyl carbon (C–N formed)",
+                  "forms": [
+                    "CN(C)C1(O)CCCCC1"
+                  ]
+                },
+                {
+                  "label": "N,N-Dimethyliminium ion after protonation of the OH and loss of water (C–O broken)",
+                  "forms": [
+                    "C[N+](C)=C1CCCCC1",
+                    "CN(C)[C+]1CCCCC1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "N,N-Dimethylcyclohexylamine (hydride from NaBH₃CN added to the iminium carbon)",
+            "smiles": "CN(C)C1CCCCC1"
+          },
+          "byproducts": "H₂O; boron and cyanide-containing salts",
+          "mechanismRefs": [
+            "R. F. Borch, M. D. Bernstein, H. D. Durst, J. Am. Chem. Soc. 1971, 93, 2897 (cyanohydridoborate anion as a selective reducing agent; iminium ions reduced faster than ketones at pH 6–8).",
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., Oxford University Press, 2012, ch. 11 (imines and iminium ions; reductive amination with NaBH₃CN)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 0
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "Dimethylamine hydrochloride (Me₂NH·HCl)",
+              "atom": 1
+            }
+          ],
+          "difficulty": {
+            "steps": 1,
+            "intermediates": 2,
+            "sigmaBondEvents": 2,
+            "textbookLevel": "undergraduate",
+            "stepScores": [
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 1
+          }
+        },
+        {
+          "id": "os1970-wolff-rearrangement-silver-benzoate-naphthylacetate",
+          "level": "graduate",
+          "textbookLevel": "graduate",
+          "courseRef": "Kürti–Czakó, Strategic Applications of Named Reactions in Organic Synthesis (2005), entries \"Wolff rearrangement\" and \"Arndt–Eistert homologation\"; Carey–Sundberg, Advanced Organic Chemistry Part B, 5th ed., ch. 10 (reactions of carbenes: Wolff rearrangement of α-diazo ketones)",
+          "reaction": "Wolff rearrangement (second stage of the Arndt–Eistert homologation, silver benzoate/triethylamine conditions): silver(I) promotes loss of N₂ from the α-diazo ketone (C–N broken) to give an α-oxo carbene (silver carbenoid); the naphthyl group migrates from the carbonyl carbon to the carbene carbon (C–C broken and formed), giving 1-naphthylketene; ethanol adds to the ketene carbonyl carbon (C–O formed), and the ester enol tautomerizes to ethyl 1-naphthylacetate",
+          "source": {
+            "citation": "V. Lee, M. S. Newman. Ethyl 1-Naphthylacetate. Org. Synth. 1970, 50, 77 (Coll. Vol. 6, 613).",
+            "doi": "10.15227/orgsyn.050.0077",
+            "context": "Organic Syntheses procedure for the one-carbon homologation of 1-naphthoic acid: 1-naphthoyl chloride is converted with diazomethane into 1-(diazoacetyl)naphthalene, which is then rearranged in boiling absolute ethanol with a solution of silver benzoate in triethylamine to ethyl 1-naphthylacetate. Only the second operation (from the isolated diazo ketone) is the problem."
+          },
+          "verified": false,
+          "verificationNote": "Procedure not read in this run (orgsyn.org is not reachable from the run's network); the title, volume and page were checked on Crossref (DOI 10.15227/orgsyn.050.0077: 'Ethyl 1-naphthylacetate', Org. Synth. 1970, 50, 77). The attribution to V. Lee and M. S. Newman, the route through 1-(diazoacetyl)naphthalene and the silver benzoate/triethylamine conditions in ethanol (Newman and Beal, J. Am. Chem. Soc. 1950, 72, 5163) are as remembered: a chemist should check authors, amounts, temperature and work-up against the procedure. The α-oxo carbene is drawn as a free carbene; with silver(I) it may be a silver carbenoid, and a concerted loss of N₂ with migration is also discussed in the literature (Kürti–Czakó). PubChem (InChIKey connectivity layer): 2-diazo-1-(naphthalen-1-yl)ethan-1-one matches CID 73176926 (found by name \"2-diazo-1-naphthalen-1-ylethanone\"), ethanol CID 702, ethyl 1-naphthylacetate CID 62428.",
+          "substrate": {
+            "label": "1-(Diazoacetyl)naphthalene (2-diazo-1-(naphthalen-1-yl)ethan-1-one)",
+            "smiles": "[N-]=[N+]=CC(=O)c1cccc2ccccc12"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "Absolute EtOH",
+                  "smiles": "CCO"
+                },
+                {
+                  "text": "Silver benzoate (cat.) in Et₃N"
+                }
+              ],
+              "conditions": "EtOH, reflux; the silver benzoate/Et₃N solution added in portions",
+              "intermediates": [
+                {
+                  "label": "α-Oxo carbene (or silver carbenoid) after loss of N₂ (C–N broken)",
+                  "forms": [
+                    "O=C([CH])c1cccc2ccccc12"
+                  ]
+                },
+                {
+                  "label": "1-Naphthylketene: the naphthyl group migrates from the carbonyl carbon to the carbene carbon (C–C broken and formed)",
+                  "forms": [
+                    "O=C=Cc1cccc2ccccc12"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Ethyl 1-naphthylacetate (ethanol added to the ketene carbonyl carbon, C–O formed; the enol of the ester tautomerizes)",
+            "smiles": "CCOC(=O)Cc1cccc2ccccc12"
+          },
+          "byproducts": "N₂",
+          "mechanismRefs": [
+            "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis, Elsevier, 2005 (Wolff rearrangement; Arndt–Eistert homologation).",
+            "M. S. Newman, P. F. Beal, J. Am. Chem. Soc. 1950, 72, 5163 (silver benzoate–triethylamine as catalyst for the Wolff rearrangement of diazo ketones in alcohols).",
+            "W. Kirmse, Eur. J. Org. Chem. 2002, 2193 (100 years of the Wolff rearrangement: mechanism, carbene and concerted pathways)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 1
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 3
+            },
+            {
+              "transition": "product",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "Absolute EtOH",
+              "atom": 2
+            }
+          ],
+          "difficulty": {
+            "steps": 1,
+            "intermediates": 2,
+            "sigmaBondEvents": 4,
+            "textbookLevel": "graduate",
+            "stepScores": [
+              4.0
+            ],
+            "uncommonReagents": 0,
+            "score": 4.0
+          }
+        },
+        {
+          "id": "jacs2026-et2zn-o2-epoxidation-bisiodozinciomethane-cyclopropanol-stemocurtisine",
+          "level": "advanced",
+          "textbookLevel": "specialized",
+          "reaction": "Two consecutive operations of Scheme 1. (1) Nucleophilic epoxidation of the γ-silyloxy enone with Et₂Zn/O₂: O₂ inserts into a Zn–Et bond to give an ethylperoxyzinc species, whose peroxide oxygen adds to the β-carbon of the enone (C–O formed), giving a zinc enolate bearing a β-ethylperoxy group; the enolate α-carbon then displaces ethoxide from the peroxide (C–O formed, O–O broken), giving the α,β-epoxy ketone. (2) Cyclopropanol formation with bis(iodozincio)methane: the gem-dizinc reagent adds to the ketone (C–C formed), giving a zinc alkoxide that carries a CH₂–ZnI group; this carbanion opens the epoxide at the α-carbon with inversion (3-exo-tet ring closure: C–C formed, C–O broken), giving the cyclopropanol with a free secondary alcohol on the former β-carbon (C10a) after work-up",
+          "source": {
+            "citation": "M. Zhang, H. Yu, X. Huang, M. Dai. Total Synthesis of (±)-Stemocurtisine via Catalytic Carbonylation. J. Am. Chem. Soc. 2026, 148, 37600–37605.",
+            "doi": "10.1021/jacs.6c12593",
+            "context": "Scheme 1, preparation of the cyclopropanol substrate for the Pd-catalysed carbonylative lactonization: the TBDPS-protected γ-hydroxy enone 23a (from cross metathesis of enone 20 with allylic alcohol 21) is epoxidised with diethylzinc and oxygen (Yamamoto's method; dr 3.3:1) to the α,β-epoxy ketone 24a, which is treated with freshly generated bis(iodozincio)methane (Matsubara's method) to give a 3.1:1 mixture of cyclopropanols (73%), 25a being the major isomer. These are two separate, consecutive operations (24a is isolated); conditions are given for each."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central, PMC13564418); schemes and SI not seen, so amounts, solvents and temperatures are not given here. Structures were reconstructed from the text and from the structure of stemocurtisine used for the two earlier problems from this paper (furofuranone core with two 3-(benzyloxy)propyl chains): the substrate is taken as 1,10-bis(benzyloxy)-7-(TBDPS-oxy)dec-5-en-4-one (enone 20 = 6-(benzyloxy)hex-1-en-3-one, allylic alcohol 21 = 6-(benzyloxy)hex-1-en-3-ol), which leads to the cyclopropanol and, after desilylation and carbonylative lactonization, to the furofuranone with the C10a alcohol. A chemist should check the chain lengths, the positions of the benzyloxy groups and the protecting group of 23a against Scheme 1 and the SI. Intermediates of step 1 follow the mechanism of Et₂Zn/O₂ nucleophilic epoxidation (alkylperoxyzinc conjugate addition, then ring closure; Enders 1996), not described in the paper; step 2 follows the 1,2-addition/epoxide-opening cascade stated in the paper. Paper published online 2026-08-25 (Crossref). PubChem (InChIKey connectivity layer): diethylzinc matches CID 101667988, O₂ CID 977; the substrate enone and the cyclopropanol have no PubChem entry (CID 0); bis(iodozincio)methane could not be standardized by PubChem (no comparison).",
+          "substrate": {
+            "label": "TBDPS-protected γ-hydroxy enone 23a (two 3-(benzyloxy)propyl chains)",
+            "smiles": "O=C(CCCOCc1ccccc1)C=CC(O[Si](c1ccccc1)(c1ccccc1)C(C)(C)C)CCCOCc1ccccc1"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "Et₂Zn",
+                  "smiles": "CC[Zn]CC"
+                },
+                {
+                  "text": "O₂",
+                  "smiles": "O=O"
+                }
+              ],
+              "conditions": "see SI (Et₂Zn/O₂ conditions of Yamamoto)",
+              "intermediates": [
+                {
+                  "label": "Zinc enolate with a β-ethylperoxy group: the ethylperoxyzinc species (from O₂ insertion into Zn–Et) adds its peroxide oxygen to the enone β-carbon (C–O formed)",
+                  "forms": [
+                    "[O-]C(CCCOCc1ccccc1)=CC(OOCC)C(O[Si](c1ccccc1)(c1ccccc1)C(C)(C)C)CCCOCc1ccccc1",
+                    "O=C(CCCOCc1ccccc1)CC(OOCC)C(O[Si](c1ccccc1)(c1ccccc1)C(C)(C)C)CCCOCc1ccccc1"
+                  ]
+                },
+                {
+                  "label": "α,β-Epoxy ketone 24a (isolated): the enolate α-carbon displaces ethoxide from the peroxide (C–O formed, O–O broken)",
+                  "forms": [
+                    "O=C(CCCOCc1ccccc1)C1OC1C(O[Si](c1ccccc1)(c1ccccc1)C(C)(C)C)CCCOCc1ccccc1"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "specialized",
+              "reagents": [
+                {
+                  "text": "Bis(iodozincio)methane, CH₂(ZnI)₂ (freshly prepared)",
+                  "smiles": "I[Zn]C[Zn]I",
+                  "uncommon": true
+                }
+              ],
+              "conditions": "isolated 24a; THF (see SI)",
+              "intermediates": [
+                {
+                  "label": "1,2-Adduct: the gem-dizinc reagent adds to the ketone carbonyl (C–C formed), giving a zinc alkoxide carrying a CH₂–ZnI group",
+                  "forms": [
+                    "I[Zn]CC(O[Zn]I)(CCCOCc1ccccc1)C1OC1C(O[Si](c1ccccc1)(c1ccccc1)C(C)(C)C)CCCOCc1ccccc1",
+                    "[CH2-]C([O-])(CCCOCc1ccccc1)C1OC1C(O[Si](c1ccccc1)(c1ccccc1)C(C)(C)C)CCCOCc1ccccc1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Cyclopropanol 25a with the free secondary alcohol at C10a (CH₂–Zn carbanion opens the epoxide at the α-carbon: C–C formed, C–O broken; alkoxides protonated on work-up)",
+            "smiles": "OC2(CCCOCc1ccccc1)CC2C(O)C(O[Si](c1ccccc1)(c1ccccc1)C(C)(C)C)CCCOCc1ccccc1"
+          },
+          "byproducts": "EtOZn species (step 1); zinc iodide/zinc alkoxide salts (step 2)",
+          "mechanismRefs": [
+            "M. Zhang, H. Yu, X. Huang, M. Dai, J. Am. Chem. Soc. 2026, 148, 37600 (cascade of 1,2-addition and stereospecific epoxide ring opening with bis(iodozincio)methane, described in the text).",
+            "S. Matsubara et al., bis(iodozincio)methane: preparation and reactions with carbonyl compounds and α,β-epoxy ketones giving cyclopropanols (cited in the paper as Matsubara's method).",
+            "D. Enders, J. Zhu, G. Raabe, Angew. Chem. Int. Ed. Engl. 1996, 35, 1725 (Et₂Zn/O₂ epoxidation of enones: alkylperoxyzinc species, conjugate addition, ring closure of the zinc enolate).",
+            "F. A. Carey, R. J. Sundberg, Advanced Organic Chemistry Part B, 5th ed., ch. 12 (nucleophilic epoxidation of α,β-unsaturated carbonyl compounds)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 1
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 13
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "O₂",
+              "atom": 0
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "reagent",
+              "step": 2,
+              "reagent": "Bis(iodozincio)methane, CH₂(ZnI)₂ (freshly prepared)",
+              "atom": 1
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "reagent",
+              "step": 2,
+              "reagent": "Bis(iodozincio)methane, CH₂(ZnI)₂ (freshly prepared)",
+              "atom": 2
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "reagent",
+              "step": 2,
+              "reagent": "Bis(iodozincio)methane, CH₂(ZnI)₂ (freshly prepared)",
+              "atom": 3
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 3,
+            "sigmaBondEvents": 12,
+            "textbookLevel": "specialized",
+            "stepScores": [
+              4.5,
+              7.5
+            ],
+            "uncommonReagents": 1,
+            "score": 13.0
+          }
+        }
+      ]
     }
   ]
 }

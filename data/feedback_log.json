@@ -171,7 +171,7 @@
         "ratings": 4,
         "distinctProblems": 3,
         "meanStars": 5.0,
-        "results": 9,
+        "results": 10,
         "medianScore": {
           "hca1950-lialh4-sclareolide-ambradiol": 1,
           "ber1903-komppa-claisen-condensation-camphoric": 2,
@@ -179,7 +179,7 @@
         }
       },
       "firstSeen": "2026-11-12",
-      "lastSeen": "2026-11-13",
+      "lastSeen": "2026-11-14",
       "status": "proposed",
       "proposal": "Add to the selection rules of the procedure a preference for undergraduate problems consisting of one core textbook transformation whose intermediates all belong to that transformation (no preliminary deprotection, separate work-up step or further reaction of a reagent-derived fragment); this is the positive counterpart of the earlier proposal undergraduate-problems-include-extra-steps and could be decided together with it.",
       "proposedOn": "2026-11-12"
@@ -334,6 +334,24 @@
         "skipped": 0
       },
       "note": "Evidence recounted from the current data. Rows for jacs2026-dithiane-hydrolysis-arnicenone (2 results, 2 ratings) and zz-test-ignore are ignored (not in data/problems.json; no archive yet). New since the last run: one 5-star rating without remark of the 2026-11-13 undergraduate problem (a single textbook transformation), added to undergraduate-single-transformation-rated-highly; results of the 2026-11-13 problems (Friedel-Crafts 3, Favorskii 2). difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters returned no clusters."
+    },
+    {
+      "date": "2026-11-14",
+      "targetDate": "2026-11-15",
+      "store": "ok",
+      "results": 45,
+      "ratings": 19,
+      "remarks": 17,
+      "newObservations": [],
+      "updated": [
+        "undergraduate-single-transformation-rated-highly"
+      ],
+      "newProposals": [],
+      "tierA": {
+        "applied": [],
+        "skipped": 0
+      },
+      "note": "Evidence recounted from the current data. Rows for jacs2026-dithiane-hydrolysis-arnicenone (2 results, 2 ratings) and zz-test-ignore are ignored (not in data/problems.json; no archive yet). New since the last run: one more result each for the 2026-11-13 undergraduate (Friedel-Crafts) and graduate (Favorskii) problems; no new ratings or remarks. difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters returned no clusters."
     }
   ]
 }
