@@ -6476,6 +6476,336 @@
           }
         }
       ]
+    },
+    {
+      "date": "2026-11-16",
+      "problems": [
+        {
+          "id": "os1922-nitrile-hydrolysis-benzyl-cyanide-phenylacetic-acid",
+          "level": "undergraduate",
+          "textbookLevel": "undergraduate",
+          "reaction": "Acid-catalysed hydrolysis of a nitrile: the nitrile nitrogen is protonated, water adds to the nitrile carbon (C–O formed) and the imidic acid tautomerizes to phenylacetamide; water then adds to the protonated amide carbonyl (C–O formed) to give the tetrahedral intermediate, which expels ammonia (C–N broken; trapped as ammonium hydrogen sulfate) to give phenylacetic acid",
+          "source": {
+            "citation": "R. Adams, A. F. Thal. Phenylacetic Acid. Org. Synth. 1922, 2, 63 (Coll. Vol. 1, 436).",
+            "doi": "10.15227/orgsyn.002.0063",
+            "context": "Organic Syntheses procedure: benzyl cyanide is hydrolysed by heating with dilute aqueous sulfuric acid to phenylacetic acid, which separates on pouring the mixture into cold water."
+          },
+          "verified": false,
+          "verificationNote": "Procedure not read in this run (orgsyn.org is not reachable from the run's network); the title, volume and pages were checked on Crossref (DOI 10.15227/orgsyn.002.0063: 'Phenylacetic acid [α-Toluic acid]', Org. Synth. 1922, 2, 63–64). Authors (R. Adams, A. F. Thal) and conditions (benzyl cyanide heated under reflux with stirring in water/concentrated H₂SO₄ for about 3 h, then poured into cold water) are as remembered: a chemist should check authors, amounts, time and work-up against the procedure. The intermediates follow the textbook mechanism of acid-catalysed nitrile hydrolysis (the amide is an intermediate; the imidic acid is accepted as the same species). PubChem (InChIKey connectivity layer): benzyl cyanide matches CID 8794, water CID 962, phenylacetic acid CID 999.",
+          "substrate": {
+            "label": "Benzyl cyanide (phenylacetonitrile)",
+            "smiles": "N#CCc1ccccc1"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "H₂O",
+                  "smiles": "O"
+                },
+                {
+                  "text": "Concentrated H₂SO₄"
+                }
+              ],
+              "conditions": "Water/conc. H₂SO₄, heated at reflux with stirring, 3 h; poured into cold water",
+              "intermediates": [
+                {
+                  "label": "Phenylacetamide: water adds to the protonated nitrile carbon (C–O formed); the imidic acid tautomerizes to the amide",
+                  "forms": [
+                    "NC(=O)Cc1ccccc1",
+                    "N=C(O)Cc1ccccc1"
+                  ]
+                },
+                {
+                  "label": "Tetrahedral intermediate: water adds to the protonated amide carbonyl carbon (C–O formed)",
+                  "forms": [
+                    "NC(O)(O)Cc1ccccc1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Phenylacetic acid (ammonia expelled from the tetrahedral intermediate, C–N broken)",
+            "smiles": "OC(=O)Cc1ccccc1"
+          },
+          "byproducts": "NH₄HSO₄",
+          "mechanismRefs": [
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., Oxford University Press, 2012, ch. 10 (hydrolysis of nitriles via amides).",
+            "D. R. Klein, Organic Chemistry, Wiley, chapter on carboxylic acid derivatives (acid-catalysed hydrolysis of nitriles)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 0
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "H₂O",
+              "atom": 0
+            }
+          ],
+          "difficulty": {
+            "steps": 1,
+            "intermediates": 2,
+            "sigmaBondEvents": 2,
+            "textbookLevel": "undergraduate",
+            "stepScores": [
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 1
+          }
+        },
+        {
+          "id": "jacs1970-johnson-claisen-methylbutenol",
+          "level": "graduate",
+          "textbookLevel": "graduate",
+          "courseRef": "Kürti–Czakó, Strategic Applications of Named Reactions in Organic Synthesis (2005), entry \"Claisen rearrangement\" (Johnson–Claisen orthoester variant); Carey–Sundberg, Advanced Organic Chemistry Part B, 5th ed., ch. 6 ([3,3]-sigmatropic rearrangements: orthoester Claisen rearrangement)",
+          "reaction": "Johnson–Claisen (orthoester Claisen) rearrangement: under propionic acid catalysis the allylic alcohol exchanges with one ethoxy group of triethyl orthoacetate (C–O formed, C–O broken; ethanol distilled off) to give the mixed orthoester; loss of a second ethoxide gives the dialkoxycarbenium ion, whose deprotonation gives the ketene acetal (allyl vinyl ether); the [3,3]-sigmatropic rearrangement (C–O broken, C–C formed) through a chair transition state gives ethyl (E)-4-methylhex-4-enoate with a trans-trisubstituted double bond",
+          "source": {
+            "citation": "W. S. Johnson, L. Werthemann, W. R. Bartlett, T. J. Brocksom, T.-T. Li, D. J. Faulkner, M. R. Petersen. Simple stereoselective version of the Claisen rearrangement leading to trans-trisubstituted olefinic bonds. Synthesis of squalene. J. Am. Chem. Soc. 1970, 92, 741–743.",
+            "doi": "10.1021/ja00706a074",
+            "context": "Model reaction of the orthoester Claisen rearrangement used in the squalene synthesis: 3-methyl-3-buten-2-ol is heated with excess triethyl orthoacetate and a trace of propionic acid, ethanol being distilled off, to give ethyl (E)-4-methylhex-4-enoate with high trans selectivity."
+          },
+          "verified": false,
+          "verificationNote": "Paper not read in this run (publisher page blocked); title, authors, volume and pages checked on Crossref. The substrate (3-methyl-3-buten-2-ol), the conditions (excess triethyl orthoacetate, catalytic propionic acid, about 138 °C with removal of ethanol) and the product are given as remembered from this paper and from textbook presentations of the Johnson–Claisen rearrangement: a chemist should check that this model substrate, the amounts and the temperature appear in the paper. Intermediates follow the established mechanism (mixed orthoester, dialkoxycarbenium ion, ketene acetal). PubChem (InChIKey connectivity layer): 3-methyl-3-buten-2-ol matches CID 66329, triethyl orthoacetate CID 66221, ethyl 4-methylhex-4-enoate CID 54524556.",
+          "substrate": {
+            "label": "3-Methyl-3-buten-2-ol",
+            "smiles": "CC(O)C(C)=C"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "Triethyl orthoacetate, CH₃C(OEt)₃ (excess)",
+                  "smiles": "CCOC(C)(OCC)OCC"
+                },
+                {
+                  "text": "Propionic acid (trace)"
+                }
+              ],
+              "conditions": "Neat, about 138 °C; ethanol distilled off",
+              "intermediates": [
+                {
+                  "label": "Mixed orthoester: the allylic alcohol replaces one ethoxy group of the orthoester (C–O formed, C–O broken)",
+                  "forms": [
+                    "CC(OC(C)C(C)=C)(OCC)OCC"
+                  ]
+                },
+                {
+                  "label": "Dialkoxycarbenium ion after loss of ethanol (C–O broken)",
+                  "forms": [
+                    "CC(OCC)=[O+]C(C)C(C)=C",
+                    "CC(=[O+]CC)OC(C)C(C)=C",
+                    "C[C+](OCC)OC(C)C(C)=C"
+                  ]
+                },
+                {
+                  "label": "Ketene acetal (allyl vinyl ether) after loss of a proton from the methyl group",
+                  "forms": [
+                    "C=C(OCC)OC(C)C(C)=C"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Ethyl (E)-4-methylhex-4-enoate ([3,3]-sigmatropic rearrangement: C–O broken, C–C formed)",
+            "smiles": "CCOC(=O)CCC(C)=CC"
+          },
+          "byproducts": "EtOH (2 equiv)",
+          "mechanismRefs": [
+            "W. S. Johnson et al., J. Am. Chem. Soc. 1970, 92, 741 (orthoester Claisen rearrangement).",
+            "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis, Elsevier, 2005, Claisen rearrangement (Johnson–Claisen variant)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 2
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "Triethyl orthoacetate, CH₃C(OEt)₃ (excess)",
+              "atom": 8
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "Triethyl orthoacetate, CH₃C(OEt)₃ (excess)",
+              "atom": 5
+            },
+            {
+              "transition": "step 1 int 3",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "Triethyl orthoacetate, CH₃C(OEt)₃ (excess)",
+              "atom": 4
+            },
+            {
+              "transition": "product",
+              "mol": "substrate",
+              "atom": 4
+            }
+          ],
+          "difficulty": {
+            "steps": 1,
+            "intermediates": 3,
+            "sigmaBondEvents": 5,
+            "textbookLevel": "graduate",
+            "stepScores": [
+              4.5
+            ],
+            "uncommonReagents": 0,
+            "score": 4.5
+          }
+        },
+        {
+          "id": "jacs2026-pd-carbonylative-lactonization-transesterification-stemocurtisine",
+          "level": "advanced",
+          "textbookLevel": "specialized",
+          "reaction": "Pd(II)-catalysed ring-opening carbonylative lactonization of a hydroxycyclopropanol, then base-mediated lactone transposition (one pot): Pd(OAc)₂ forms a palladium cyclopropoxide that undergoes β-carbon elimination (C–C broken, C–Pd formed) to the Pd homoenolate (β-keto alkylpalladium); CO inserts into the C–Pd bond (C–C formed) to give the acylpalladium; in the pathway that dominates initially, the C10a alcohol traps the acylpalladium (C–O formed, Pd(0) released and reoxidized by DDQ) to give the γ-lactone with a free ketone. Triethylamine added at the end converts this lactone into the furo[2,3-b]furanone: the C1 alcohol adds to the ketone (hemiketal, C–O formed), the hemiketal OH adds to the lactone carbonyl (tetrahedral intermediate, C–O formed) and the C10a alkoxide is expelled (C–O broken), giving the bicyclic ketal-lactone with a free C10a alcohol. Part of the product also forms directly in the Pd step (hemiketal formation before lactonization).",
+          "source": {
+            "citation": "M. Zhang, H. Yu, X. Huang, M. Dai. Total Synthesis of (±)-Stemocurtisine via Catalytic Carbonylation. J. Am. Chem. Soc. 2026, 148, 37600–37605.",
+            "doi": "10.1021/jacs.6c12593",
+            "context": "Key carbonylation of the route (Scheme 1): after removal of the TBDPS group from cyclopropanol 25a, the triol was subjected to the authors' carbonylative lactonization conditions (Pd(OAc)₂, DDQ, CO balloon, benzene), which gave the desired furofuranone and the isomeric γ-lactone (from lactonization of the C10a alcohol) in a 1.2:1 ratio favouring the undesired lactone; adding triethylamine at the end of the carbonylation partly isomerized the undesired lactone into the desired one (50% desired and 30% undesired, gram scale). One pot: the Et₃N addition is the second step."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central, PMC13564418; compound numbers, schemes and SI not rendered), so amounts, temperatures and times are not given. Online publication 2026-08-25 (Crossref): extended window (83 days); the papers of the 31-day window were either without accessible full text or had no two-step sequence whose intermediates the structure key can read (the clovane-to-triquinane skeletal-remodeling cascade, J. Am. Chem. Soc. 2026, 10.1021/jacs.6c11562, ends with an aldehyde reduction whose only intermediate is a borate). Structures were reconstructed from the text and the structures used for the three earlier problems from this paper: triol = 1-(3-(benzyloxy)propyl)-2-[1,2-dihydroxy-5-(benzyloxy)pentyl]cyclopropan-1-ol; the Pd homoenolate forms by cleavage of the less substituted cyclopropane bond, consistent with the lactone α-carbon (later methylated) of the furofuranone used in the 2026-11-04 and earlier problems. The mechanism of the Pd step follows the authors' earlier work (Cai, Liang, Liu, Li, Dai, J. Am. Chem. Soc. 2020, 142, 13677); the paper states the competing lactonization of the C10a alcohol and the Et₃N-induced isomerization (described as transesterification), but does not draw the intermediates of the isomerization; the hemiketal route of the isomerization is our reading. Palladium species are drawn as Pd–C bonds without ligands (a drawing with one acetate ligand is also accepted). A chemist should check the structures of the triol, of the undesired lactone and of the product against Scheme 1 and the SI. PubChem (InChIKey connectivity layer): CO matches CID 281; the triol and the furofuranone have no PubChem entry (CID 0, searched by structure); the undesired lactone was not checked (intermediate).",
+          "substrate": {
+            "label": "Triol from desilylation of cyclopropanol 25a (cyclopropanol with a 1,2-diol side chain and two 3-(benzyloxy)propyl chains)",
+            "smiles": "OC1(CCCOCc2ccccc2)CC1C(O)C(O)CCCOCc1ccccc1"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "specialized",
+              "reagents": [
+                {
+                  "text": "Pd(OAc)₂"
+                },
+                {
+                  "text": "DDQ (2,3-dichloro-5,6-dicyano-1,4-benzoquinone)"
+                },
+                {
+                  "text": "CO (balloon)",
+                  "smiles": "[C-]#[O+]"
+                }
+              ],
+              "conditions": "Benzene, CO (1 atm, balloon)",
+              "intermediates": [
+                {
+                  "label": "Pd homoenolate: the palladium cyclopropoxide undergoes β-carbon elimination (cyclopropane C–C broken, C–Pd formed), unveiling the ketone",
+                  "forms": [
+                    "[Pd]CC(C(=O)CCCOCc1ccccc1)C(O)C(O)CCCOCc1ccccc1",
+                    "CC(=O)O[Pd]CC(C(=O)CCCOCc1ccccc1)C(O)C(O)CCCOCc1ccccc1"
+                  ]
+                },
+                {
+                  "label": "Acylpalladium: CO inserts into the C–Pd bond (C–C formed)",
+                  "forms": [
+                    "O=C([Pd])CC(C(=O)CCCOCc1ccccc1)C(O)C(O)CCCOCc1ccccc1",
+                    "CC(=O)O[Pd]C(=O)CC(C(=O)CCCOCc1ccccc1)C(O)C(O)CCCOCc1ccccc1"
+                  ]
+                },
+                {
+                  "label": "γ-Lactone (undesired isomer, major at this stage): the C10a alcohol attacks the acylpalladium (C–O formed, Pd(0) released and reoxidized by DDQ)",
+                  "forms": [
+                    "O=C1CC(C(=O)CCCOCc2ccccc2)C(C(O)CCCOCc2ccccc2)O1"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "Et₃N"
+                }
+              ],
+              "conditions": "Added to the same flask at the end of the carbonylation",
+              "intermediates": [
+                {
+                  "label": "Hemiketal: the C1 alcohol adds to the ketone (C–O formed), closing the tetrahydrofuran ring",
+                  "forms": [
+                    "O=C1CC2C(O1)C(CCCOCc1ccccc1)OC2(O)CCCOCc1ccccc1"
+                  ]
+                },
+                {
+                  "label": "Tetrahedral intermediate: the hemiketal oxygen adds to the lactone carbonyl (C–O formed)",
+                  "forms": [
+                    "OC14CC2C(O1)C(CCCOCc5ccccc5)OC2(CCCOCc6ccccc6)O4",
+                    "[O-]C14CC2C(O1)C(CCCOCc5ccccc5)OC2(CCCOCc6ccccc6)O4"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Furo[2,3-b]furanone with a free C10a alcohol (the C10a alkoxide is expelled from the tetrahedral intermediate, C–O broken)",
+            "smiles": "O=C1CC2C(O)C(CCCOCc3ccccc3)OC2(CCCOCc2ccccc2)O1"
+          },
+          "byproducts": "AcOH; Pd(0) reoxidized by DDQ (DDQH₂)",
+          "mechanismRefs": [
+            "M. Zhang, H. Yu, X. Huang, M. Dai, J. Am. Chem. Soc. 2026, 148, 37600 (competing hemiacetal/lactonization pathways and Et₃N isomerization, described in the text).",
+            "X. Cai, W. Liang, M. Liu, X. Li, M. Dai, J. Am. Chem. Soc. 2020, 142, 13677 (catalytic hydroxycyclopropanol ring-opening carbonylative lactonization to fused bicyclic lactones).",
+            "D. C. Davis, K. L. Walker, C. Hu, R. N. Zare, R. M. Waymouth, M. Dai, J. Am. Chem. Soc. 2016, 138, 10693 (mechanism of the Pd-catalysed cyclopropanol ring-opening carbonylative lactonization; reference given from memory, not checked)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 0
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 1
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 13
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "CO (balloon)",
+              "atom": 0
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "substrate",
+              "atom": 18
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 5,
+            "sigmaBondEvents": 10,
+            "textbookLevel": "specialized",
+            "stepScores": [
+              9.5,
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 10.5
+          }
+        }
+      ]
     }
   ]
 }
