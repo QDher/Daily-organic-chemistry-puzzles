@@ -388,6 +388,12 @@ for phase 3. Its entries (people, and judged agent entries below) are the data f
   90 %; with identical judgements this is reached at 38 judged attempts. The
   replacement gets a new name, seed and traits (precision and consistency moved toward the testers with mixed
   judgements); the retired tester's name is not reused, its traits are not changed and its judged entries are kept.
+- Several reviewers (decision of 2026-11-16): members of the team review the agent testers in the same review page,
+  each under their own claude.ai account; each reviewer's answers are kept apart and reviewers do not see each
+  other's answers (the owner and Editors see all). Every judgement is a record of its own: one attempt can be
+  "correct" for one reviewer and "incorrect" for another, and all judgements of all reviewers count in the 98 %
+  bound above (n = number of judgements, not of attempts). Disagreements between reviewers are shown to the owner
+  for information and do not change any count. Reviewers outside the organization cannot use this page.
 
 ### G. Later: mechanisms on 3D structures
 
