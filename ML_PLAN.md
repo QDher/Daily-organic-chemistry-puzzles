@@ -145,7 +145,8 @@ Order of work in stages 1 and 2:
 1. Contact e-mail of the test run (`contact` in `data/config.json` of QDher/Daily_Curly_Chem), then invitation of
    the five testers. Strokes of people are needed by: calibration of the agent ink, tuning of `Readings.P` and of
    the recognizer, the evidence log of `docs/PLAN_DRAWING.md`, acceptance of any trained reading model.
-2. Agent testers: the user applies the Console resources and judges the attempts in the review page.
+2. Agent testers: one run per day by a Claude Code scheduled task (since 2026-11-16); the user judges the attempts
+   in the review page.
 3. Independent of the test run: Name Reaction Daily (corrections of the catalogue draft, queue buffer rule, prompt
    update that keeps steps 3b and 3c); this repository (items 1 and 2 of "Next steps"); fuzz test of `src/arrows.js`.
 4. After the first files of people: replay, `docs/WEAKNESSES.md`, one ink model calibrated on people's strokes
@@ -348,11 +349,13 @@ for phase 3. Its entries (people, and judged agent entries below) are the data f
   convention, page) and the changes proposed. Below threshold: fix and repeat with the same tasks. All met: phase 3
   by pull request.
 - Agent testers (decision of 2026-11-14; `docs/AGENT_TESTER.md` of QDher/Daily_Curly_Chem): synthetic testers named
-  john0002, john0003, and so on, one run per day from the Claude Console (Managed Agents, scheduled deployment). Each
+  john0002, john0003, and so on, one run per day from a Claude Code scheduled task (decision of 2026-11-16; it
+  replaces the Claude Console deployment, never applied). Each
   knows the answer and draws the arrow and copy tasks (standard set and daily set) through the real page with mouse
   events; the ink is made in code from two traits, precision and consistency (reproducibility), and atoms are typed
-  (handwritten letters would only reproduce the recognizer's templates). The Console agent runs the script, checks
-  the replay, explains the attempts that failed, reviews the day's reference steps and writes a report. Use:
+  (handwritten letters would only reproduce the recognizer's templates). The scheduled session runs the script, checks
+  the replay, explains the attempts that failed, reviews the day's reference steps, writes a report and adds the run
+  to the review page, which keeps every run (answers per run in its database). Use:
   pre-training of R2 and I1 with exact labels, a daily end-to-end check, feedback on the page. Review after two
   weeks (cost, report quality, calibration of the noise on drawings of people, more testers per day): decision of
   the user.
