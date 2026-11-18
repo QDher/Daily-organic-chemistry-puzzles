@@ -7189,6 +7189,342 @@
           }
         }
       ]
+    },
+    {
+      "date": "2026-11-18",
+      "problems": [
+        {
+          "id": "jacs2026-vinylsilane-bromodesilylation-z-vinyl-bromide-merocyclophane",
+          "level": "undergraduate",
+          "textbookLevel": "undergraduate",
+          "reaction": "Halogenation of a vinylsilane with inversion of alkene geometry: the (E)-vinylsilane adds bromine (from tribromide) to give a bromonium ion (two C–Br bonds formed), bromide opens it anti (one C–Br broken, one C–Br formed) to the 1,2-dibromo-1-silyl compound, and anti-periplanar elimination of Me₃SiBr (C–Si and C–Br broken) gives the (Z)-vinyl bromide.",
+          "source": {
+            "citation": "Z.-S. Wang, J. D. Mitchell, J. L. Tyler, L. J. McCormick McPherson, S. J. Coles, V. K. Aggarwal. Simultaneous Installation of 1,6-Stereocenters by Asymmetric Allylation of Resorcinol Boronates: Application to the Synthesis of Merocyclophane A. J. Am. Chem. Soc. 2026, 148, 46485–46493.",
+            "doi": "10.1021/jacs.6c14045",
+            "context": "Route to merocyclophane A (Figure 3a): (E)-vinylsilane boronic ester 15 is converted into (Z)-vinyl bromide 12c (84%, >20:1 Z/E), the boronic ester used in the iridium-catalysed allylation step. SI: 15 (2.64 mmol) in CH₂Cl₂ at −78 °C, tetrabutylammonium tribromide (1.10 equiv) in CH₂Cl₂ added dropwise, warmed to rt and stirred 2 h, quenched with aqueous Na₂S₂O₃."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central, PMC13741844; Europe PMC full-text XML), Figure 1 image and the SI PDF (Europe PMC supplementary files): procedure for (R,Z)-vinyl bromide 12c (p. S43: vinylsilane 15 2.64 mmol in CH₂Cl₂, −78 °C, TBABr₃ 1.10 equiv in CH₂Cl₂ dropwise, warmed to rt, 2 h, aqueous Na₂S₂O₃; 84%, >20:1 Z/E; the note states that Br₂ gave a lower Z/E ratio). Structures from the SI compound names: 15 = (R,E)-trimethyl(4-Bpin-pent-1-en-1-yl)silane (C14H29BO2Si, 268 mg = 1.00 mmol as stated), 12c = (R,Z)-2-(5-bromopent-4-en-2-yl)-Bpin (HRMS [M−Me]+ C10H17BBrO2 agrees). The paper does not discuss the mechanism; the bromonium/anti-addition and anti-elimination of Me₃SiBr (inversion of geometry) is the textbook mechanism for halogenation of vinylsilanes; the open β-silyl cation is accepted as an alternative drawing. A chemist should check that the bromonium ion and the 1,2-dibromide are acceptable as drawn. Tetrabutylammonium tribromide is written as Bu₄N⁺ Br⁻ + Br₂ because RDKit cannot read the Br₃⁻ anion; its InChIKey therefore differs from PubChem CID 2723680 (Br[Br-]Br): same composition, different representation. 15 and 12c have no PubChem entry (searched by structure).",
+          "substrate": {
+            "label": "(R,E)-Trimethyl[4-(4,4,5,5-tetramethyl-1,3,2-dioxaborolan-2-yl)pent-1-en-1-yl]silane (15)",
+            "smiles": "CC(C/C=C/[Si](C)(C)C)B1OC(C)(C)C(C)(C)O1"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "Tetrabutylammonium tribromide (Bu₄N⁺ Br₃⁻, 1.10 equiv) in CH₂Cl₂, added dropwise",
+                  "smiles": "CCCC[N+](CCCC)(CCCC)CCCC.[Br-].BrBr"
+                }
+              ],
+              "conditions": "CH₂Cl₂, −78 °C, then warmed to rt, 2 h; aqueous Na₂S₂O₃",
+              "intermediates": [
+                {
+                  "label": "Bromonium ion: bromine adds to the C=C bond of the vinylsilane (two C–Br bonds formed); the open β-silyl carbocation is an acceptable drawing",
+                  "forms": [
+                    "CC(CC1[Br+]C1[Si](C)(C)C)B1OC(C)(C)C(C)(C)O1",
+                    "CC(C[CH+]C(Br)[Si](C)(C)C)B1OC(C)(C)C(C)(C)O1"
+                  ]
+                },
+                {
+                  "label": "1,2-Dibromide: bromide opens the bromonium ion anti (anti addition; C–Br formed at C2, bridging C–Br broken)",
+                  "forms": [
+                    "CC(CC(Br)C(Br)[Si](C)(C)C)B1OC(C)(C)C(C)(C)O1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "(R,Z)-2-(5-Bromopent-4-en-2-yl)-4,4,5,5-tetramethyl-1,3,2-dioxaborolane (12c; anti elimination of Me₃SiBr: C–Si and C–Br broken)",
+            "smiles": "CC(C/C=C\\Br)B1OC(C)(C)C(C)(C)O1"
+          },
+          "byproducts": "Me₃SiBr; Bu₄N⁺ Br⁻",
+          "mechanismRefs": [
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., Oxford University Press, 2012, ch. 27 (electrophilic substitution of vinylsilanes; halogenation by addition and anti elimination with inversion of geometry).",
+            "R. B. Miller, G. McGarvey, J. Org. Chem. 1978, 43, 4424–4431 (stereospecific synthesis of (Z)-vinyl bromides from (E)-vinylsilanes by bromine addition and anti elimination)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 4
+            },
+            {
+              "transition": "product",
+              "mol": "substrate",
+              "atom": 5
+            }
+          ],
+          "difficulty": {
+            "steps": 1,
+            "intermediates": 2,
+            "sigmaBondEvents": 6,
+            "textbookLevel": "undergraduate",
+            "stepScores": [
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 1
+          }
+        },
+        {
+          "id": "jacs2026-formyl-activated-robinson-annulation-grandifolia",
+          "level": "graduate",
+          "textbookLevel": "graduate",
+          "courseRef": "Kürti–Czakó, Strategic Applications of Named Reactions in Organic Synthesis (2005), entry \"Robinson annulation\"; Carey–Sundberg, Advanced Organic Chemistry Part B, 5th ed., ch. 2.1.4 (Robinson annulation, including activation of the ketone by a formyl group that is removed during annulation)",
+          "reaction": "Robinson annulation of a 2-formyl (hydroxymethylene) ketone: Et₃N deprotonates the 1,3-dicarbonyl and its enolate adds to methyl vinyl ketone (Michael addition, C–C formed) to give the 2-formyl-2-(3-oxobutyl) ketone. In ethanol, ethoxide adds to the formyl carbonyl (C–O formed) and the tetrahedral intermediate expels the ketone enolate (C–C broken; retro-Claisen deformylation, ethyl formate released). The methyl-ketone enolate then adds to the ring ketone (intramolecular aldol, C–C formed) and the β-hydroxy ketone dehydrates through its enolate (E1cB, C–O broken) to the tricyclic enone 28.",
+          "source": {
+            "citation": "E. L. Pettipiece, S. Begum, J. Cacho Bravo, Y. Fei, R. D. Gilbert, M. Martin, D. Sarlah. A General Approach to geminal-Dimethyl trans-Decalin Terpenoids. J. Am. Chem. Soc. 2026, 148, 30617–30626.",
+            "doi": "10.1021/jacs.6c11334",
+            "context": "Total synthesis of grandifolia C (Scheme 1b, steps 5–6): ketone 29 is formylated (NaH, ethyl formate, THF/PhMe, 0 °C to rt; aqueous NH₄Cl work-up) and the crude 2-(hydroxymethylene) ketone is treated with Et₃N (0.6 equiv) and MVK (3.0 equiv) in CH₂Cl₂ (rt, 72 h); after removal of the volatiles, NaOEt (3.0 equiv) in EtOH is added (rt, 3 h), giving enone 28 (44% over 3 steps, >20:1 d.r.)."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central, PMC13397545; Europe PMC full-text XML), Scheme 1 image and the SI PDF (Europe PMC supplementary files): procedure 'Robinson Annulation Product 28' (p. S20: 29 1.19 mmol, NaH 2.3 equiv, ethyl formate 30 equiv, THF/PhMe, 0 °C to rt, 4 h, aqueous NH₄Cl work-up; crude product in CH₂Cl₂ with Et₃N 0.6 equiv and MVK 3.0 equiv, rt, 72 h; volatiles removed; NaOEt 3.0 equiv in EtOH, rt, 3 h; 44% over 3 steps, >20:1 d.r.) and Table S2 (Et₃N alone gives the Michael adduct; Et₃N then NaOEt gives 28). Structures from Scheme 1b; formulas agree with the SI HRMS of 29 (C15H24O3) and 28 (C19H28O3). The substrate is the crude formylation product of 29, drawn as the hydroxymethylene (enol) tautomer. The paper does not discuss the mechanism; the order shown (Michael addition with Et₃N; then ethoxide attack at the formyl group and retro-Claisen loss of ethyl formate before the intramolecular aldol and E1cB dehydration) is the usual course of formyl-activated Robinson annulations; a chemist should check whether deformylation is better placed after the aldol addition. Stereochemistry is not required. PubChem (InChIKey connectivity layer): methyl vinyl ketone CID 6570 and sodium ethoxide CID 2723922 match; the hydroxymethylene ketone and 28 have no PubChem entry (searched by structure).",
+          "substrate": {
+            "label": "Ethyl 2-(hydroxymethylene)-1-oxo-5,5-dimethyl-trans-decalin-8a-carboxylate (crude formylation product of ketone 29)",
+            "smiles": "CCOC(=O)C12CCCC(C)(C)C1CCC(=CO)C2=O"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "Et₃N (0.6 equiv)"
+                },
+                {
+                  "text": "Methyl vinyl ketone (MVK, 3.0 equiv)",
+                  "smiles": "C=CC(C)=O"
+                }
+              ],
+              "conditions": "CH₂Cl₂, rt, 72 h; volatiles removed",
+              "intermediates": [
+                {
+                  "label": "Michael adduct: the 1,3-dicarbonyl enolate adds to the β-carbon of MVK (C–C formed), giving the 2-formyl-2-(3-oxobutyl) ketone",
+                  "forms": [
+                    "CCOC(=O)C12CCCC(C)(C)C1CCC(C=O)(CCC(C)=O)C2=O"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "NaOEt (3.0 equiv) in EtOH",
+                  "smiles": "CC[O-].[Na+]"
+                }
+              ],
+              "conditions": "EtOH, rt, 3 h; aqueous NH₄Cl",
+              "intermediates": [
+                {
+                  "label": "Tetrahedral intermediate: ethoxide adds to the formyl carbonyl (C–O formed)",
+                  "forms": [
+                    "CCOC([O-])C1(CCC(C)=O)CCC2C(C)(C)CCCC2(C(=O)OCC)C1=O",
+                    "CCOC(=O)C12CCCC(C)(C)C1CCC(C(O)OCC)(CCC(C)=O)C2=O"
+                  ]
+                },
+                {
+                  "label": "Deformylated 1,5-diketone: the tetrahedral intermediate expels the ring-ketone enolate (C–C broken, ethyl formate released); drawn after protonation",
+                  "forms": [
+                    "CCOC(=O)C12CCCC(C)(C)C1CCC(CCC(C)=O)C2=O"
+                  ]
+                },
+                {
+                  "label": "Aldol adduct: the enolate of the methyl ketone adds to the ring ketone (intramolecular aldol, C–C formed), giving the β-hydroxy ketone",
+                  "forms": [
+                    "CCOC(=O)C12CCCC(C)(C)C1CCC1CCC(=O)CC12O",
+                    "CCOC(=O)C12CCCC(C)(C)C1CCC1CCC(=O)CC12[O-]"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Tricyclic enone 28 (dehydration of the aldol through its enolate, C–O broken)",
+            "smiles": "CCOC(=O)C12CCCC(C)(C)C1CCC1CCC(=O)C=C12"
+          },
+          "byproducts": "Ethyl formate (step 2); water / hydroxide (step 2)",
+          "mechanismRefs": [
+            "W. S. Rapson, R. Robinson, J. Chem. Soc. 1935, 1285–1288 (Robinson annulation).",
+            "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis, Elsevier, 2005 (Robinson annulation).",
+            "F. A. Carey, R. J. Sundberg, Advanced Organic Chemistry Part B, 5th ed., Springer, 2007, ch. 2 (Robinson annulation; formyl activation and retro-Claisen removal of the activating group)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 15
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "Methyl vinyl ketone (MVK, 3.0 equiv)",
+              "atom": 0
+            },
+            {
+              "transition": "step 2 int 3",
+              "mol": "substrate",
+              "atom": 18
+            },
+            {
+              "transition": "step 2 int 3",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "Methyl vinyl ketone (MVK, 3.0 equiv)",
+              "atom": 3
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 4,
+            "sigmaBondEvents": 6,
+            "textbookLevel": "graduate",
+            "stepScores": [
+              1,
+              4.5
+            ],
+            "uncommonReagents": 0,
+            "score": 5.5
+          }
+        },
+        {
+          "id": "jacs2026-hcl-diene-heck-tsuji-trost-spirocyclization-stachybotrylactone",
+          "level": "advanced",
+          "textbookLevel": "specialized",
+          "reaction": "Two consecutive reactions of the route. 1) Acid-mediated dehydration (E1): the tertiary allylic alcohol of diol 43 is protonated and leaves as water (C–O broken), giving an allylic tertiary carbocation (charge shared between C9 and C7); loss of a proton from the C9 methyl group gives the exocyclic 1,3-diene 37. 2) Heck/Tsuji–Trost cascade: Pd(0) inserts into the C–I bond of aryl iodide 38 (oxidative addition, C–Pd formed, C–I broken); the aryl–Pd adds across the exocyclic methylene (migratory insertion: aryl–CH₂ bond formed, Pd on C9), which is an allylpalladium species (σ-allyl at C9, π-allyl over C9–C8–C7); the phenol oxygen (deprotonated, with Ag₂CO₃ as base and halide scavenger) attacks the π-allyl at C9 (C–O formed, C–Pd broken), closing the spirodihydrobenzofuran 44 and releasing Pd(0).",
+          "source": {
+            "citation": "E. L. Pettipiece, S. Begum, J. Cacho Bravo, Y. Fei, R. D. Gilbert, M. Martin, D. Sarlah. A General Approach to geminal-Dimethyl trans-Decalin Terpenoids. J. Am. Chem. Soc. 2026, 148, 30617–30626.",
+            "doi": "10.1021/jacs.6c11334",
+            "context": "Synthesis of stachybotrylactone (Scheme 2b, steps 6 and 7), two separate operations: diol 43 in CH₂Cl₂/1 M aqueous HCl (1:1, vigorous stirring, rt, overnight) gives exocyclic diene 37 (95%, isolated by chromatography); 37 and aryl iodide 38 (1.3 equiv) with Pd[P(tBu)₃]₂ (20 mol%) and Ag₂CO₃ (2.5 equiv) in degassed PhMe/HFIP (2:1) at 150 °C in a sealed tube for 5 h give spirodihydrobenzofuran 44 (85%, 7:1 d.r.). Online publication 2026-07-10 (Crossref)."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central, PMC13397545; Europe PMC full-text XML), Scheme 2 image and the SI PDF (Europe PMC supplementary files): procedures 'Diene 37' (p. S36: 43 2.43 mmol in CH₂Cl₂/1 M aq. HCl 1:1, rt, overnight; 95%) and 'Spirodihydrobenzofuran 44' (p. S37: 37 0.91 mmol, 38 1.3 equiv, Pd[P(tBu)₃]₂ 20 mol%, Ag₂CO₃ 2.5 equiv, degassed PhMe/HFIP 2:1, 150 °C, sealed tube, 5 h; 85%, 7:1 d.r.), and Table S4 (optimization of the Heck/Tsuji–Trost cascade). Online publication 2026-07-10 (Crossref): extended window (131 days). Two separate operations (consecutive steps 6 and 7 of Scheme 2b; diene 37 is isolated), not one pot. Within the 31-day window, the one-pot boronate allylation/oxidation of the merocyclophane A paper (J. Am. Chem. Soc. 2026, 10.1021/jacs.6c14045) was set aside because its tetracoordinate boronate intermediates ([B-]) are not readable by the structure key; the other papers of the window had no accessible schemes or SI. Structures drawn from Scheme 2; formulas agree with the SI HRMS of 43 ([M−OH]+ C15H25O), 37 (C15H24O) and 44 (C24H30O5). The paper names the cascade (Heck/Tsuji–Trost, after Heck and Larock) without a drawn mechanism; the allylpalladium intermediate is drawn as an iodopalladium σ-allyl at C9 or C7 (the structure key cannot distinguish η¹ positions because InChI disconnects the metal), and the aryl–Pd oxidative-addition species is not listed because it does not contain the substrate. The E1 course of step 1 (allylic cation) is the textbook mechanism. A chemist should check the regiochemistry of the aryl ring of 38 (OMe, I and OH contiguous; OH next to the lactone CH₂) and of the spiro ring closure. Stereochemistry is not required. PubChem (InChIKey connectivity layer): aryl iodide 38 matches CID 151022885; 43 and 44 have no PubChem entry (searched by structure).",
+          "substrate": {
+            "label": "Diol 43 (trans-decalin tertiary allylic alcohol with a secondary C3 alcohol)",
+            "smiles": "CC1=CCC2C(C)(C)C(O)CCC2(C)C1(C)O"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "1 M aqueous HCl (equal volume to CH₂Cl₂)"
+                }
+              ],
+              "conditions": "CH₂Cl₂/1 M aqueous HCl (1:1), vigorous stirring, rt, overnight; extraction and chromatography",
+              "intermediates": [
+                {
+                  "label": "Allylic tertiary carbocation: the protonated C9 hydroxyl leaves as water (C–O broken); the positive charge is shared by C9 and C7",
+                  "forms": [
+                    "CC1=CCC2C(C)(C)C(O)CCC2(C)[C+]1C",
+                    "CC1=C(C)C2(C)CCC(O)C(C)(C)C2C[CH+]1"
+                  ]
+                },
+                {
+                  "label": "Exocyclic 1,3-diene 37 (isolated, 95%): loss of a proton from the C9 methyl group",
+                  "forms": [
+                    "CC1=CCC2C(C)(C)C(O)CCC2(C)C1=C"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "specialized",
+              "reagents": [
+                {
+                  "text": "Aryl iodide 38 (7-hydroxy-6-iodo-5-methoxyisobenzofuran-1(3H)-one, 1.3 equiv)",
+                  "smiles": "COc1cc2C(=O)OCc2c(O)c1I"
+                },
+                {
+                  "text": "Pd[P(tBu)₃]₂ (20 mol%)",
+                  "uncommon": true
+                },
+                {
+                  "text": "Ag₂CO₃ (2.5 equiv)"
+                }
+              ],
+              "conditions": "PhMe/HFIP (2:1, degassed), 150 °C, sealed tube, 5 h; filtration through Celite, chromatography",
+              "intermediates": [
+                {
+                  "label": "Allylpalladium intermediate: Pd(0) inserts into the C–I bond of 38 (C–I broken) and the aryl–Pd adds across the exocyclic C=CH₂ (aryl–CH₂ bond formed, Pd on C9); σ-allyl at C9 or C7, or π-allyl over C9–C8–C7",
+                  "forms": [
+                    "COc1cc2C(=O)OCc2c(O)c1CC1([Pd]I)C(C)=CCC2C(C)(C)C(O)CCC21C",
+                    "COc1cc2C(=O)OCc2c(O)c1CC1=C(C)C([Pd]I)CC2C(C)(C)C(O)CCC12C"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Spirodihydrobenzofuran 44 (phenoxide attacks the allyl at C9: C–O formed, C–Pd broken)",
+            "smiles": "COc1cc2C(=O)OCc2c3OC4(Cc13)C(C)=CCC1C(C)(C)C(O)CCC14C"
+          },
+          "byproducts": "H₂O (step 1); AgI and Ag/carbonate salts, Pd(0) regenerated (step 2)",
+          "mechanismRefs": [
+            "E. L. Pettipiece et al., J. Am. Chem. Soc. 2026, 148, 30617 (Heck/Tsuji–Trost cascade for the spirodihydrobenzofuran; elimination of 43 to the exocyclic diene).",
+            "R. C. Larock, N. Berrios-Peña, K. Narayanan, J. Org. Chem. 1990, 55, 3447–3450 (palladium-catalysed heteroannulation of 1,3-dienes with o-iodophenols via π-allylpalladium intermediates).",
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., Oxford University Press, 2012, ch. 17 (E1 elimination) and ch. 40 (Heck reaction, π-allyl palladium chemistry)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 14
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 16
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 15
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "reagent",
+              "step": 2,
+              "reagent": "Aryl iodide 38 (7-hydroxy-6-iodo-5-methoxyisobenzofuran-1(3H)-one, 1.3 equiv)",
+              "atom": 12
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "reagent",
+              "step": 2,
+              "reagent": "Aryl iodide 38 (7-hydroxy-6-iodo-5-methoxyisobenzofuran-1(3H)-one, 1.3 equiv)",
+              "atom": 13
+            },
+            {
+              "transition": "product",
+              "mol": "reagent",
+              "step": 2,
+              "reagent": "Aryl iodide 38 (7-hydroxy-6-iodo-5-methoxyisobenzofuran-1(3H)-one, 1.3 equiv)",
+              "atom": 11
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 3,
+            "sigmaBondEvents": 7,
+            "textbookLevel": "specialized",
+            "stepScores": [
+              1,
+              7.0
+            ],
+            "uncommonReagents": 1,
+            "score": 9.0
+          }
+        }
+      ]
     }
   ]
 }

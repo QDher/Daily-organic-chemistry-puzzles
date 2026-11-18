@@ -386,6 +386,22 @@
         "skipped": 0
       },
       "note": "Evidence recounted from the current data. Rows for jacs2026-dithiane-hydrolysis-arnicenone are ignored (not in data/problems.json; no archive yet). Since the last run: 6 new results (55 in total for problems in data/problems.json), no new ratings or remarks. difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters returned no clusters."
+    },
+    {
+      "date": "2026-11-17",
+      "targetDate": "2026-11-18",
+      "store": "ok",
+      "results": 59,
+      "ratings": 19,
+      "remarks": 17,
+      "newObservations": [],
+      "updated": [],
+      "newProposals": [],
+      "tierA": {
+        "applied": [],
+        "skipped": 0
+      },
+      "note": "Evidence recounted from the current data; unchanged since the last run except 4 new results (59 in total for problems in data/problems.json); no new ratings or remarks. Rows for jacs2026-dithiane-hydrolysis-arnicenone are ignored (not in data/problems.json; no archive yet). difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters returned no clusters."
     }
   ]
 }
