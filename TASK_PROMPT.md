@@ -16,7 +16,7 @@ Backup of the Claude Code scheduled task that adds a daily set to this repositor
 
 The earlier Cowork task "One-Pot Puzzles daily set" was deleted on 2026-11-10 (it used the claude.ai page, also deleted).
 
-Backed up on 2026-11-11, after the merge of the changes (step 3b: scoring rule that does not count correct intermediates, feedback reaches selection only through a model the user activates, difficulty votes; step 3c: Tier A additions of resonance forms, at most 3 per run); the scheduled task holds this prompt text (compared character by character after the update). Previous backup: 2026-11-10, step 3b updated for the Cloudflare feedback store (the GitHub repository is the only copy of the site and its data; the claude.ai page was deleted; sets older than 32 days are archived in data/archive.json.gz).
+Prompt text updated on 2026-11-19 (step 3c: classification of rejected structures into data/wrong_answers.json; data/features.json written by src/build.js); the scheduled task receives this text after the merge. Previous backup: backed up on 2026-11-11, after the merge of the changes (step 3b: scoring rule that does not count correct intermediates, feedback reaches selection only through a model the user activates, difficulty votes; step 3c: Tier A additions of resonance forms, at most 3 per run); the scheduled task holds this prompt text (compared character by character after the update). Previous backup: 2026-11-10, step 3b updated for the Cloudflare feedback store (the GitHub repository is the only copy of the site and its data; the claude.ai page was deleted; sets older than 32 days are archived in data/archive.json.gz).
 
 ## Prompt
 
@@ -27,9 +27,11 @@ REPOSITORY: QDher/Daily-organic-chemistry-puzzles, branch main: the only copy of
 It holds the page and its source:
 - index.html: the built page (problems and key function embedded)
 - data/feedback_log.json: observations and proposals from user feedback (step 3b)
+- data/features.json: problem features, rewritten by src/build.js (never edit by hand)
+- data/wrong_answers.json: classification of the structures visitors checked and the page rejected (step 3c)
 - data/problems.json: schedule and the daily sets of the last 32 days and later (the source of truth)
 - data/archive.json.gz: older sets, moved there by src/build.js (gzip of {"sets": [...]}; read with `zcat data/archive.json.gz`); the page shows only the last month
-- src/index.src.html, src/chemkey.js, src/curate.py, src/validate_problems.js, src/build.js, src/archive.js, src/test_chemkey.js, src/tier_a.py, src/PIPELINE.md
+- src/index.src.html, src/chemkey.js, src/curate.py, src/validate_problems.js, src/build.js, src/archive.js, src/test_chemkey.js, src/tier_a.py, src/classify_checks.py, src/features.js, src/PIPELINE.md
 - rdkit/RDKit_minimal.wasm (runtime) and ketcher/ (structure editor)
 Never change rdkit/, ketcher/, ketcher-build/, feedback-worker/, supabase/, .github/, README.md, CLAUDE.md, .gitignore and TASK_PROMPT.md; a run changes only index.html and files under data/.
 
@@ -71,6 +73,10 @@ Tier A (ML_PLAN.md in QDher/Daily-organic-chemistry-puzzles; approved by the use
   curl -sS -X POST -H "Content-Type: application/json" -d '{"p_site": "onepot"}' https://puzzle-feedback.dailyorgchem.workers.dev/rpc/check_clusters > /tmp/clusters.json
   python3 src/tier_a.py data/problems.json /tmp/clusters.json --write --max 3
 The script only appends forms to existing intermediates in data/problems.json (order of intermediates, hints and visitors' progress unchanged) and prints what it applied and skipped. Do not apply skipped items by hand and change nothing else in existing sets because of feedback. Add to this run's entry in data/feedback_log.json "tierA": {"applied": [{"problemId", "step", "intermediate", "addedForm", "visitors"}], "skipped": <number>}. If step 6 (validate_problems.js) reports a problem caused by an added form, remove that addition, list it as skipped with the validator message, and continue. If the clusters cannot be fetched, skip this step and say so in the report.
+Then classify every rejected structure (this changes no problem; nothing is shown to visitors):
+  curl -sS -X POST -H "Content-Type: application/json" -d '{"p_site": "onepot", "p_min": 1}' https://puzzle-feedback.dailyorgchem.workers.dev/rpc/check_clusters > /tmp/rejected.json
+  python3 src/classify_checks.py data/problems.json /tmp/rejected.json --write data/wrong_answers.json
+It writes data/wrong_answers.json (counts per problem and category; structures only when drawn by at least 2 visitors) and prints the totals per category. If the request fails, leave data/wrong_answers.json unchanged and say so in the report.
 
 4. CHOOSE THREE PROBLEMS: levels "undergraduate", "graduate", "advanced", in that order.
 Common rules:
@@ -115,11 +121,11 @@ Compare the first 14 characters of the InChIKey (connectivity layer) computed fr
   node src/validate_problems.js data/problems.json
     Must end with "ALL OK". It also rejects steps that add no reagent and change neither solvent nor temperature, and advanced problems with fewer than 2 steps. Fix every reported problem (or replace the problem) and rerun.
   Confirm the advanced problem has at least 2 steps, each starting with an added reagent or a change of solvent/temperature, each with at least one intermediate, and a score of at least 8; the graduate score is at least 3.
-  node src/build.js            (moves sets older than 32 days into data/archive.json.gz, then writes index.html)
+  node src/build.js            (moves sets older than 32 days into data/archive.json.gz, then writes index.html and data/features.json)
   Confirm index.html contains the three new ids.
 
 7. COMMIT AND PUSH (inside <repo>)
-- `git status --porcelain` must show changes only to index.html and files under data/ (data/problems.json, data/feedback_log.json, and data/archive.json.gz when sets were archived). Restore any other changed tracked file with `git checkout -- <file>` before committing.
+- `git status --porcelain` must show changes only to index.html and files under data/ (data/problems.json, data/feedback_log.json, data/features.json, data/wrong_answers.json, and data/archive.json.gz when sets were archived). Restore any other changed tracked file with `git checkout -- <file>` before committing.
 - git add index.html data; git commit -m "Add daily set <target date>" (append "; Tier A: <n> form(s)" when step 3c applied changes); git push origin main. Push to main only: never to a claude/ branch, never a pull request, never a force-push.
 - Only on network errors, retry the push up to 4 times with waits of 2, 4, 8, 16 s.
 - If the push is rejected because the remote has new commits: keep a copy of your new set and of your feedback-log changes, run git fetch origin main && git reset --hard origin/main, re-add only your new set, your step 3c additions (rerun step 3c) and your log changes (if the remote already has a set for the target date, stop and report it), rerun step 6, commit and push again.
@@ -131,7 +137,7 @@ GitHub Pages deploys the pushed commit automatically.
 - For each level: reaction; paper (authors, journal, year, DOI link); online publication date for the advanced paper and which window was needed (31 days or extended); whether the advanced problem is one pot or two sequential reactions; number of steps, intermediates and hints; difficulty score.
 - What was read (full text / SI / abstract) and which structures should be checked by a chemist.
 - PubChem: which structures matched (CID), which were corrected, which have no entry; or that PubChem could not be reached.
-- Tier A (step 3c): forms added (problem id, step, intermediate, number of visitors) and number skipped, or that nothing qualified or the clusters could not be fetched.
+- Tier A (step 3c): forms added (problem id, step, intermediate, number of visitors) and number skipped, or that nothing qualified or the clusters could not be fetched; totals per category of data/wrong_answers.json in one line.
 - Feedback (step 3b): results, ratings and remarks read; observations added or updated; NEW PROPOSALS (not applied), each with its topic, its evidence (number of ratings, problems concerned) and the proposed improvement; number of earlier proposals in the log. Or that the feedback store could not be reached.
 - GitHub: commit hash pushed to QDher/Daily-organic-chemistry-puzzles main, or "no change", or the failure and its error message.
 - If nothing was published: the reason.

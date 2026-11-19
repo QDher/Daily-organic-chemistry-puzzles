@@ -26,8 +26,12 @@ scheduled-task prompts, `src/tier_a.py`); no model is active.
 | Rating 1–5 and remark | `ratings` | both | existing |
 | Where the reaction was met, hardest step, known reagents | `difficulty_answers` | One-Pot | existing |
 | One-click vote for the problem's level: too easy, about right, too hard | `difficulty_votes` | One-Pot | added 2026-11-11 |
-| Problem opened (completion rate) | `views` | both | to add |
-| Each distinct structure checked: comparison key, SMILES, verdict, matched step and intermediate, hints, seconds since opened | `checks` (read: `check_clusters`) | both | added 2026-11-11 |
+| Problem first displayed, with days after its set date | `views` | both | added 2026-11-19 |
+| Latest progress of each visitor (intermediates found, checks, hints, seconds, solved, answer shown), sent when leaving or switching problem, also from visitors who do not finish | `progress` (read: `attempts_summary`) | both | added 2026-11-19 |
+| Time to finish and days after the set date, with each result | `results` (`seconds`, `day_offset`) | both | added 2026-11-19 |
+| Each distinct structure checked: comparison key, SMILES, verdict, matched step and intermediate, hints, seconds since opened | `checks` (read: `check_clusters`, `p_min` ≥ 1 from 2026-11-19) | both | added 2026-11-11 |
+| Problem features (steps, intermediates, hints, difficulty score, step levels, reagents, substrate and product descriptors) | `data/features.json` (written by `src/build.js` via `src/features.js`) | both | added 2026-11-19 |
+| Rejected structures classified against the problem's species (resonance form, same skeleton, ± small molecule, isomer, reagent, other) | `data/wrong_answers.json` (`src/classify_checks.py`, step 3c of the scheduled runs) | both | added 2026-11-19 |
 | Problem `revision` and set `ruleVersion` sent with every row | all | both | to add |
 | Per-row export with a key (visitor id, level, rule) for model fitting | Worker endpoint | both | to add (the public endpoints stay aggregated) |
 
@@ -111,6 +115,73 @@ Activation stages: shadow (predictions logged in `data/feedback_log.json`, not u
 Rank correlation of predicted and observed difficulty; share of One-Pot sets whose observed difficulty follows the
 level order; share of "about right" votes from visitors of the matching level; mean stars; errors confirmed by a
 chemist; completion rate (secondary).
+
+## Assessment of the collected data (2026-11-19)
+
+Source: aggregates of the feedback Worker (`problem_summary`, `feedback_export`, `difficulty_summary`, `check_clusters`)
+and the problems on `main`. Per-visitor rows are not available (keyed export not built).
+
+| | One-Pot | Name Reaction Daily |
+|---|---|---|
+| Problems published | 69 (23 sets) | 21 |
+| Problems with at least one result | 28 | 9 |
+| Results (answer shown) | 61 (1) | 17 (1) |
+| Results per problem | median 2, max 4 | median 2, max 3 |
+| Problems with ≥ 5 results | 0 | 0 |
+| Ratings | 20 on 15 problems, mostly 3 stars | 10 on 9 problems, all 4 or 5 stars |
+| Difficulty votes / answers | 19 / 21 | not asked |
+| Rejected structures drawn by ≥ 2 visitors | 2 | 1 |
+| Rate | about 3 results and 1 rating per day | about 1 result and 0.5 rating per day |
+
+One-Pot by level (median score over problems with ≥ 3 solvers; lower = easier):
+
+| Level | Results | Median score | Mean stars | Votes |
+|---|---|---|---|---|
+| Undergraduate | 33 | 2.0 (8 problems) | 3.8 (11 ratings) | 6 about right, 2 too hard |
+| Graduate | 23 | 1.5 (4 problems) | 3.0 (6 ratings) | 8 about right, 2 too easy |
+| Advanced | 5 on 23 problems | — | 2.3 (3 ratings) | 1 about right |
+
+Observations:
+- The `curate.py` difficulty score does not predict the observed score (Spearman 0.02 over 12 problems); graduate
+  problems were not solved with more checks than undergraduate ones.
+- Ratings decrease with the difficulty score (Spearman −0.92), but over 5 problems only; not significant.
+- Advanced problems are rarely finished (5 results on 23 problems); without the `views` table, abandonment cannot be
+  told apart from no attempt.
+- Name Reaction Daily ratings are at the ceiling (4–5); problems from TCI and the Organic Chemistry Portal (5) have no
+  results.
+- Results per problem do not grow over time: visitors mostly solve the current day's problems, so each problem stays
+  at 1–4 results. The start condition "≥ 40 problems with ≥ 5 results" is not approached at this traffic.
+
+Conclusion: ML or neural networks cannot improve problem selection with these data; the limit is the number of
+solvers, not the method.
+
+| Approach | Data needed | Now |
+|---|---|---|
+| Neural network for selection | thousands of labelled problems | No: tens of noisy labels |
+| Difficulty model (Glicko / item response) | ≥ 5 results per problem and per-visitor rows | No: max 4 results per problem; keyed export not built |
+| Regression on problem features (level, steps, reaction class, source) | about 40 problems with ≥ 5 results | No: 0 problems qualify |
+| Per-level summaries and rules | available data | Yes: they support the pending proposals in the One-Pot feedback log (advanced level rated low and rarely finished) |
+
+What would change this: (1) more daily solvers, the deciding factor; with about 10 regular solvers per site (e.g. a
+class), about one month gives 40 problems with ≥ 5 results; (2) the `views` table (attempts and abandonment);
+(3) the keyed per-visitor export. Neural networks remain relevant for the curly-arrow model (stage 6, public datasets
+plus crowd data), not for problem selection at this scale.
+
+### Data collection improvements (2026-11-19)
+
+Nothing changes for visitors: they open the page and solve as before. The level question asked before the first answer
+remains the only extra step.
+
+| # | Improvement | Status |
+|---|---|---|
+| 1 | `views`: one row when a problem is first displayed (attempts, completion rate, "not tried" vs "abandoned") | Implemented 2026-11-19 |
+| 2 | `progress`: latest state sent with `navigator.sendBeacon` when the visitor leaves the page or switches problem (data from non-finishers); summary `attempts_summary` | Implemented 2026-11-19 |
+| 3 | `seconds` and `day_offset` with each result | Implemented 2026-11-19 |
+| 4 | Classification of rejected structures (`src/classify_checks.py` → `data/wrong_answers.json`, run in step 3c) | Implemented 2026-11-19 |
+| 5 | Results of one visitor combined across both sites (shared visitor id) | With the keyed per-visitor export (not built) |
+| 6 | Agent attempts: an agent solves each problem before publication; its checks and hints are stored as agent data | Proposed |
+| 7 | Problem features table (`src/features.js` → `data/features.json`, written by every build) | Implemented 2026-11-19 |
+| 8 | Batch quality checks with forward prediction and ML atom mapping over all published problems (flags for a chemist; predictability and reaction class as features) | Long-term goal |
 
 ## Overall plan in six stages (user, 2026-11-14)
 
@@ -455,7 +526,8 @@ To check before use:
 
 ## Next steps
 
-1. Worker: `views`, revision and rule-version columns, keyed per-row export (`checks` added 2026-11-11).
+1. Worker: revision and rule-version columns, keyed per-row export (`checks` added 2026-11-11; `views`, `progress` and
+   result timing added 2026-11-19).
 2. `src/feedback_stats.py` and remark labels; step 3b reads them.
 3. Pull-request step in the scheduled runs (needs GitHub write access from the scheduled sessions; not verified).
 4. Difficulty model (One-Pot) and quality model (Name Reaction Daily) in shadow mode.

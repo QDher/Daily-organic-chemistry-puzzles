@@ -2,12 +2,15 @@
 // Name Reaction Daily (site "namerxn"): Cloudflare Worker with a D1 database (binding DB).
 // It replaced the former Supabase store on 2026-11-11; the read functions return the same JSON as supabase/schema.sql.
 //
-//   POST /results | /ratings | /difficulty_answers | /difficulty_votes | /checks   JSON body: insert one row
+//   POST /results | /ratings | /difficulty_answers | /difficulty_votes | /checks | /views | /progress   JSON body: insert one row
+//        (progress: one row per visitor and problem, overwritten by each call: always 201; the body may be sent as
+//        text/plain, e.g. by navigator.sendBeacon)
 //        (checks: one row per distinct structure, at most MAX_CHECKS per visitor and problem: 429 beyond)
 //        201 {} | 409 {"error": "duplicate"} (this visitor already answered this problem) | 400 {"error": ...}
 //   POST /rpc/<fn> with a JSON body {"p_site": ..., ...}, or GET /rpc/<fn>?p_site=...   200 JSON
 //        problem_stats (p_problem), problem_summary, feedback_export (p_since, default 120 days ago),
-//        difficulty_summary, check_clusters (p_min, default 3: wrong structures drawn by at least p_min visitors)
+//        difficulty_summary, check_clusters (p_min, default 3: wrong structures drawn by at least p_min visitors),
+//        attempts_summary (per problem: views, visitors with progress, solved, answer shown, unfinished, median seconds)
 //
 // Browsers may call it only from ALLOWED_ORIGINS (wrangler.toml); requests without an Origin header
 // (curl in the scheduled tasks) are accepted. Anyone can call feedback_export: remarks are not private.
@@ -84,8 +87,12 @@ async function insert(db, table, body) {
   }
   const conflict = table === 'checks' ? 'site, problem_id, client_id, key' : 'site, problem_id, client_id';
   const cols = Object.keys(row);
+  const keys = new Set(conflict.split(', '));
+  const onConflict = table === 'progress'   // latest state wins
+    ? `DO UPDATE SET ${cols.filter(c => !keys.has(c)).map(c => `${c} = excluded.${c}`).join(', ')}, updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now')`
+    : 'DO NOTHING';
   const sql = `INSERT INTO ${table} (${cols.join(', ')}) VALUES (${cols.map(() => '?').join(', ')})
-               ON CONFLICT (${conflict}) DO NOTHING`;
+               ON CONFLICT (${conflict}) ${onConflict}`;
   const r = await db.prepare(sql).bind(...cols.map(c => row[c])).run();
   if (!r.meta.changes) return { status: 409, data: { error: 'duplicate' } };
   return { status: 201, data: {} };
@@ -161,10 +168,24 @@ async function rpc(db, fn, a) {
     case 'check_clusters': {
       // structures the page answered "not on the path" for, drawn by at least p_min different visitors
       const min = a.p_min === undefined ? 3 : Number(a.p_min);
-      if (!Number.isInteger(min) || min < 2 || min > 1000) throw new Invalid('invalid p_min');
+      if (!Number.isInteger(min) || min < 1 || min > 1000) throw new Invalid('invalid p_min');
       return all(db, `SELECT problem_id, min(smiles) AS smiles, count(DISTINCT client_id) AS visitors FROM checks
         WHERE site = ? AND verdict = 'none' GROUP BY problem_id, key HAVING count(DISTINCT client_id) >= ?
         ORDER BY problem_id, visitors DESC, smiles`, site, min);
+    }
+    case 'attempts_summary': {
+      // completion and abandonment per problem (aggregates only)
+      const views = await all(db, 'SELECT problem_id FROM views WHERE site = ?', site);
+      const prog = await all(db, 'SELECT problem_id, found, total, solved, revealed, seconds FROM progress WHERE site = ?', site);
+      return sortedIds([...views, ...prog]).map(id => {
+        const p = prog.filter(r => r.problem_id === id);
+        const unfinished = p.filter(r => !r.solved && !r.revealed);
+        const solvedSec = p.filter(r => r.solved && !r.revealed && r.seconds !== null).map(r => r.seconds);
+        return { problem_id: id, views: views.filter(r => r.problem_id === id).length, with_progress: p.length,
+          solved: p.filter(r => r.solved).length, revealed: p.filter(r => r.revealed && !r.solved).length, unfinished: unfinished.length,
+          unfinished_found_share: unfinished.length ? Math.round(100 * sum(unfinished.map(r => (r.total ? r.found / r.total : 0))) / unfinished.length) / 100 : null,
+          median_seconds_solved: median(solvedSec) };
+      });
     }
     default:
       throw new Invalid('unknown function');
