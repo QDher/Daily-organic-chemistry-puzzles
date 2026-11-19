@@ -179,7 +179,7 @@ remains the only extra step.
 | 3 | `seconds` and `day_offset` with each result | Implemented 2026-11-19 |
 | 4 | Classification of rejected structures (`src/classify_checks.py` → `data/wrong_answers.json`, run in step 3c) | Implemented 2026-11-19 |
 | 5 | Results of one visitor combined across both sites (shared visitor id) | With the keyed per-visitor export (not built) |
-| 6 | Agent attempts: an agent solves each problem before publication; its checks and hints are stored as agent data | Proposed |
+| 6 | Agent attempts: four agents solve each new problem (and a backlog of solved ones) as a visitor would; data only, never used to choose, curate or change problems | One-week trial 2026-11-19 to 2026-11-25 (`trial/agents/`, scheduled task "Agent attempts trial (Claude Code)"); review by the user, then by Claude; decision: implement, modify or drop |
 | 7 | Problem features table (`src/features.js` → `data/features.json`, written by every build) | Implemented 2026-11-19 |
 | 8 | Batch quality checks with forward prediction and ML atom mapping over all published problems (flags for a chemist; predictability and reaction class as features) | Long-term goal |
 

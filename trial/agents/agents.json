@@ -1,0 +1,9 @@
+{
+  "note": "Agent-attempt trial (ML_PLAN.md, proposal 6). Four profiles with different abilities and strategies; data only.",
+  "agents": [
+    {"id": "haiku-product", "model": "haiku", "strategy": "Aim for the product directly; check intermediates only when you are unsure of the route."},
+    {"id": "sonnet-product", "model": "sonnet", "strategy": "Aim for the product directly; check intermediates only when you are unsure of the route."},
+    {"id": "opus-product", "model": "opus", "strategy": "Aim for the product directly; check intermediates only when you are unsure of the route."},
+    {"id": "opus-mechanism", "model": "opus", "strategy": "Work through the mechanism: check the intermediates in order, then the product."}
+  ]
+}
