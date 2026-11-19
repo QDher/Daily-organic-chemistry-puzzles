@@ -26,8 +26,12 @@ scheduled-task prompts, `src/tier_a.py`); no model is active.
 | Rating 1–5 and remark | `ratings` | both | existing |
 | Where the reaction was met, hardest step, known reagents | `difficulty_answers` | One-Pot | existing |
 | One-click vote for the problem's level: too easy, about right, too hard | `difficulty_votes` | One-Pot | added 2026-11-11 |
-| Problem opened (completion rate) | `views` | both | to add |
-| Each distinct structure checked: comparison key, SMILES, verdict, matched step and intermediate, hints, seconds since opened | `checks` (read: `check_clusters`) | both | added 2026-11-11 |
+| Problem first displayed, with days after its set date | `views` | both | added 2026-11-19 |
+| Latest progress of each visitor (intermediates found, checks, hints, seconds, solved, answer shown), sent when leaving or switching problem, also from visitors who do not finish | `progress` (read: `attempts_summary`) | both | added 2026-11-19 |
+| Time to finish and days after the set date, with each result | `results` (`seconds`, `day_offset`) | both | added 2026-11-19 |
+| Each distinct structure checked: comparison key, SMILES, verdict, matched step and intermediate, hints, seconds since opened | `checks` (read: `check_clusters`, `p_min` ≥ 1 from 2026-11-19) | both | added 2026-11-11 |
+| Problem features (steps, intermediates, hints, difficulty score, step levels, reagents, substrate and product descriptors) | `data/features.json` (written by `src/build.js` via `src/features.js`) | both | added 2026-11-19 |
+| Rejected structures classified against the problem's species (resonance form, same skeleton, ± small molecule, isomer, reagent, other) | `data/wrong_answers.json` (`src/classify_checks.py`, step 3c of the scheduled runs) | both | added 2026-11-19 |
 | Problem `revision` and set `ruleVersion` sent with every row | all | both | to add |
 | Per-row export with a key (visitor id, level, rule) for model fitting | Worker endpoint | both | to add (the public endpoints stay aggregated) |
 
@@ -162,6 +166,22 @@ What would change this: (1) more daily solvers, the deciding factor; with about 
 class), about one month gives 40 problems with ≥ 5 results; (2) the `views` table (attempts and abandonment);
 (3) the keyed per-visitor export. Neural networks remain relevant for the curly-arrow model (stage 6, public datasets
 plus crowd data), not for problem selection at this scale.
+
+### Data collection improvements (2026-11-19)
+
+Nothing changes for visitors: they open the page and solve as before. The level question asked before the first answer
+remains the only extra step.
+
+| # | Improvement | Status |
+|---|---|---|
+| 1 | `views`: one row when a problem is first displayed (attempts, completion rate, "not tried" vs "abandoned") | Implemented 2026-11-19 |
+| 2 | `progress`: latest state sent with `navigator.sendBeacon` when the visitor leaves the page or switches problem (data from non-finishers); summary `attempts_summary` | Implemented 2026-11-19 |
+| 3 | `seconds` and `day_offset` with each result | Implemented 2026-11-19 |
+| 4 | Classification of rejected structures (`src/classify_checks.py` → `data/wrong_answers.json`, run in step 3c) | Implemented 2026-11-19 |
+| 5 | Results of one visitor combined across both sites (shared visitor id) | With the keyed per-visitor export (not built) |
+| 6 | Agent attempts: an agent solves each problem before publication; its checks and hints are stored as agent data | Proposed |
+| 7 | Problem features table (`src/features.js` → `data/features.json`, written by every build) | Implemented 2026-11-19 |
+| 8 | Batch quality checks with forward prediction and ML atom mapping over all published problems (flags for a chemist; predictability and reaction class as features) | Long-term goal |
 
 ## Overall plan in six stages (user, 2026-11-14)
 
@@ -506,7 +526,8 @@ To check before use:
 
 ## Next steps
 
-1. Worker: `views`, revision and rule-version columns, keyed per-row export (`checks` added 2026-11-11).
+1. Worker: revision and rule-version columns, keyed per-row export (`checks` added 2026-11-11; `views`, `progress` and
+   result timing added 2026-11-19).
 2. `src/feedback_stats.py` and remark labels; step 3b reads them.
 3. Pull-request step in the scheduled runs (needs GitHub write access from the scheduled sessions; not verified).
 4. Difficulty model (One-Pot) and quality model (Name Reaction Daily) in shadow mode.

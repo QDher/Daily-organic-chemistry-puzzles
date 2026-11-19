@@ -211,9 +211,39 @@ try {
     for (const [b, msg] of bad) assert.deepEqual((await post('/checks', b)).data, { error: msg }, msg);
     assert.deepEqual(await rpc('check_clusters', { p_site: 'onepot' }), [{ problem_id: 'p7', smiles: 'C=C[CH2+]', visitors: 3 }]);
     assert.deepEqual((await rpc('check_clusters', { p_site: 'onepot', p_min: 2 })).map(r => [r.smiles, r.visitors]), [['C=C[CH2+]', 3], ['CCO', 2]]);
-    assert.equal((await post('/rpc/check_clusters', { p_site: 'onepot', p_min: 1 })).status, 400);
+    assert.equal((await post('/rpc/check_clusters', { p_site: 'onepot', p_min: 0 })).status, 400);
+    assert.deepEqual((await rpc('check_clusters', { p_site: 'onepot', p_min: 1 })).map(r => r.visitors), [3, 2]);
     for (let k = 0; k < 200; k++) await db.prepare("INSERT INTO checks (site, problem_id, client_id, key, smiles, verdict, hints) VALUES ('onepot', 'p8', ?, ?, 'C', 'none', 0)").bind(U(70), 'InChI=1S/x' + k).run();
     assert.deepEqual((await post('/checks', { ...c(70, 'InChI=1S/y', 'C'), problem_id: 'p8' })).data, { error: 'too many checks' });
+  });
+
+  await t('views, progress (overwritten, text/plain body), result timing; attempts_summary', async () => {
+    const v = { site: 'onepot', problem_id: 'p10', client_id: U(80), day_offset: 0, user_level: 'graduate' };
+    assert.equal((await post('/views', v)).status, 201);
+    assert.equal((await post('/views', v)).status, 409);
+    assert.equal((await post('/views', { ...v, client_id: U(81), day_offset: undefined })).status, 201);
+    assert.equal((await post('/views', { ...v, client_id: U(82), day_offset: 4000 })).status, 400);
+    const p = { site: 'onepot', problem_id: 'p10', client_id: U(80), found: 1, total: 4, checks: 2, hints: 0, seconds: 50,
+      solved: false, revealed: false, day_offset: 0, score_rule: 2 };
+    assert.equal((await post('/progress', p)).status, 201);
+    assert.equal((await post('/progress', JSON.stringify({ ...p, found: 3, checks: 4, seconds: 300 }))).status, 201); // same visitor: overwritten
+    const raw = await mf.dispatchFetch('http://localhost/progress', { method: 'POST', headers: { Origin: ORIGIN, 'Content-Type': 'text/plain' },
+      body: JSON.stringify({ ...p, client_id: U(81), found: 4, checks: 5, seconds: 400, solved: true }) });
+    assert.equal(raw.status, 201);
+    for (const [b, msg] of [[{ ...p, found: -1 }, 'invalid found'], [{ ...p, solved: 'no' }, 'invalid solved'], [{ ...p, named: 2 }, 'invalid named'],
+      [{ ...p, score_rule: 3 }, 'invalid score_rule'], [{ ...p, seconds: 1e7 }, 'invalid seconds']]) {
+      assert.deepEqual((await post('/progress', b)).data, { error: msg }, msg);
+    }
+    const rows = (await db.prepare("SELECT client_id, found, checks, seconds, solved FROM progress WHERE problem_id = 'p10' ORDER BY id").all()).results;
+    assert.deepEqual(rows.map(r => [r.found, r.checks, r.seconds, r.solved]), [[3, 4, 300, 0], [4, 5, 400, 1]]);
+    const r = { site: 'onepot', problem_id: 'p10', client_id: U(81), checks: 1, hints: 0, score: 1, revealed: false, score_rule: 2, seconds: 400, day_offset: 0 };
+    assert.equal((await post('/results', r)).status, 201);
+    assert.deepEqual(await db.prepare("SELECT seconds, day_offset FROM results WHERE problem_id = 'p10'").first(), { seconds: 400, day_offset: 0 });
+    assert.equal((await post('/results', { ...r, client_id: U(83), day_offset: -1 })).status, 400);
+    assert.deepEqual((await rpc('attempts_summary', { p_site: 'onepot' })).find(x => x.problem_id === 'p10'),
+      { problem_id: 'p10', views: 2, with_progress: 2, solved: 1, revealed: 0, unfinished: 1, unfinished_found_share: 0.75, median_seconds_solved: 400 });
+    const out = JSON.stringify(await rpc('attempts_summary', { p_site: 'onepot' }));
+    assert.ok(!/client_id|graduate/.test(out));
   });
 
   console.log(`ALL OK (${n} tests)`);

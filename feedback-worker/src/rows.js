@@ -5,13 +5,15 @@ export const SEEN = ['undergraduate', 'graduate', 'papers', 'never'];
 export const LEVELS = ['undergraduate', 'graduate', 'postgraduate'];
 export const VOTES = ['too_easy', 'about_right', 'too_hard'];
 export const VERDICTS = ['product', 'intermediate', 'substrate', 'none'];
-export const TABLES = ['results', 'ratings', 'difficulty_answers', 'difficulty_votes', 'checks'];
+export const TABLES = ['results', 'ratings', 'difficulty_answers', 'difficulty_votes', 'checks', 'views', 'progress'];
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 export class Invalid extends Error {}
 
 const chars = s => Array.from(s).length;
 const isInt = (v, lo, hi) => Number.isInteger(v) && v >= lo && v <= hi;
+// optional integer: absent or null -> null
+const optInt = (v, lo, hi, f) => { const x = v === undefined ? null : v; if (x !== null && !isInt(x, lo, hi)) throw new Invalid('invalid ' + f); return x; };
 
 function base(b) {
   if (!b || typeof b !== 'object' || Array.isArray(b)) throw new Invalid('body must be a JSON object');
@@ -44,7 +46,8 @@ export function validRow(table, b) {
       // 1 = every distinct structure counted; 2 = correct intermediates not counted (pages from 2026-11-11)
       const rule = b.score_rule === undefined ? 1 : b.score_rule;
       if (rule !== 1 && rule !== 2) throw new Invalid('invalid score_rule');
-      return { ...row, checks: b.checks, hints: b.hints, score: b.score, revealed: b.revealed ? 1 : 0, score_rule: rule };
+      return { ...row, checks: b.checks, hints: b.hints, score: b.score, revealed: b.revealed ? 1 : 0, score_rule: rule,
+        seconds: optInt(b.seconds, 0, 864000, 'seconds'), day_offset: optInt(b.day_offset, 0, 3650, 'day_offset') };
     case 'ratings': {
       if (!isInt(b.stars, 1, 5)) throw new Invalid('invalid stars');
       const remark = b.remark === undefined ? null : b.remark;
@@ -62,6 +65,18 @@ export function validRow(table, b) {
     case 'difficulty_votes':
       if (!VOTES.includes(b.vote)) throw new Invalid('invalid vote');
       return { ...row, vote: b.vote };
+    case 'views':
+      return { ...row, day_offset: optInt(b.day_offset, 0, 3650, 'day_offset') };
+    case 'progress': {
+      const n = (v, lo, hi, f) => { if (!isInt(v, lo, hi)) throw new Invalid('invalid ' + f); return v; };
+      const flag = (v, f) => { if (typeof v !== 'boolean') throw new Invalid('invalid ' + f); return v ? 1 : 0; };
+      const rule = b.score_rule === undefined ? 2 : b.score_rule;
+      if (rule !== 1 && rule !== 2) throw new Invalid('invalid score_rule');
+      const named = b.named === undefined || b.named === null ? null : flag(b.named, 'named');
+      return { ...row, found: n(b.found, 0, 100, 'found'), total: n(b.total, 0, 100, 'total'), checks: n(b.checks, 0, 999, 'checks'),
+        hints: n(b.hints, 0, 30, 'hints'), seconds: optInt(b.seconds, 0, 864000, 'seconds'), solved: flag(b.solved, 'solved'),
+        revealed: flag(b.revealed, 'revealed'), named, day_offset: optInt(b.day_offset, 0, 3650, 'day_offset'), score_rule: rule };
+    }
     case 'checks': {
       if (typeof b.key !== 'string' || !b.key.startsWith('InChI=') || chars(b.key) > 2000) throw new Invalid('invalid key');
       if (typeof b.smiles !== 'string' || chars(b.smiles) < 1 || chars(b.smiles) > 1000) throw new Invalid('invalid smiles');
