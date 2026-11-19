@@ -9,22 +9,24 @@
         "jlac1850-strecker-alanine",
         "jacs1969-corey-saponification-iodolactonization",
         "oprd1999-haloform-veratric-acid",
-        "jacs2026-chloroformate-dmap-ethyl-ester-rhabdobranin"
+        "jacs2026-chloroformate-dmap-ethyl-ester-rhabdobranin",
+        "jacs2026-vinylsilane-bromodesilylation-z-vinyl-bromide-merocyclophane"
       ],
       "evidence": {
-        "ratings": 5,
-        "distinctProblems": 4,
-        "meanStars": 3.2,
-        "results": 13,
+        "ratings": 6,
+        "distinctProblems": 5,
+        "meanStars": 3.17,
+        "results": 14,
         "medianScore": {
           "jlac1850-strecker-alanine": 2,
           "jacs1969-corey-saponification-iodolactonization": 2,
           "oprd1999-haloform-veratric-acid": 4,
-          "jacs2026-chloroformate-dmap-ethyl-ester-rhabdobranin": 1.5
+          "jacs2026-chloroformate-dmap-ethyl-ester-rhabdobranin": 1.5,
+          "jacs2026-vinylsilane-bromodesilylation-z-vinyl-bromide-merocyclophane": 1
         }
       },
       "firstSeen": "2026-11-06",
-      "lastSeen": "2026-11-12",
+      "lastSeen": "2026-11-18",
       "status": "proposed",
       "proposal": "Add a rule for the undergraduate level: the problem covers one textbook transformation; a preliminary or follow-up operation (e.g. a saponification before the key step, or hydrolysis of the product of the key step) is left out unless it is part of the same named textbook reaction.",
       "proposedOn": "2026-11-06"
@@ -402,6 +404,24 @@
         "skipped": 0
       },
       "note": "Evidence recounted from the current data; unchanged since the last run except 4 new results (59 in total for problems in data/problems.json); no new ratings or remarks. Rows for jacs2026-dithiane-hydrolysis-arnicenone are ignored (not in data/problems.json; no archive yet). difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters returned no clusters."
+    },
+    {
+      "date": "2026-11-18",
+      "targetDate": "2026-11-19",
+      "store": "ok",
+      "results": 60,
+      "ratings": 20,
+      "remarks": 18,
+      "newObservations": [],
+      "updated": [
+        "undergraduate-problems-include-extra-steps"
+      ],
+      "newProposals": [],
+      "tierA": {
+        "applied": [],
+        "skipped": 0
+      },
+      "note": "Evidence recounted from the current data. One new rating with a remark (undergraduate problem of 2026-11-18): an event beyond the core textbook transformation was felt to exceed the undergraduate level; merged into undergraduate-problems-include-extra-steps (already proposed; status unchanged). Rows for jacs2026-dithiane-hydrolysis-arnicenone are ignored (not in data/problems.json; no archive yet). difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters returned no clusters."
     }
   ]
 }

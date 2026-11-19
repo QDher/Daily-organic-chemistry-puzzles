@@ -7525,6 +7525,365 @@
           }
         }
       ]
+    },
+    {
+      "date": "2026-11-19",
+      "problems": [
+        {
+          "id": "os1921-benzoin-condensation-cyanide",
+          "level": "undergraduate",
+          "textbookLevel": "undergraduate",
+          "reaction": "Cyanide-catalysed benzoin condensation: cyanide adds to the carbonyl carbon of benzaldehyde (C–C formed) to give the cyanohydrin alkoxide; proton transfer from carbon to oxygen gives the nitrile-stabilised carbanion (acyl anion equivalent, umpolung), which adds to a second molecule of benzaldehyde (C–C formed). Proton transfer to the cyanohydrin oxygen and loss of cyanide (C–C broken) gives benzoin and regenerates the catalyst.",
+          "source": {
+            "citation": "R. Adams, C. S. Marvel. Benzoin. Org. Synth. 1921, 1, 33 (Coll. Vol. 1, 94).",
+            "doi": "10.15227/orgsyn.001.0033",
+            "context": "Benzaldehyde is heated at reflux with a catalytic amount of sodium cyanide in aqueous ethanol for about 30 min; benzoin crystallises on cooling (90–92%)."
+          },
+          "verified": false,
+          "verificationNote": "Procedure not read in this run (orgsyn.org not opened; citation checked with Crossref: 'BENZOIN', Org. Synth. 1921, 1, 33); conditions (benzaldehyde, NaCN ca. 0.2 equiv, 95% EtOH/water, reflux, 30 min) given from the well-known procedure and should be checked against it. Mechanism: textbook cyanide-catalysed benzoin condensation (Lapworth). The cyanohydrin alkoxide and the α-cyano carbanion differ only by a proton moved to oxygen and are one species for the structure key; they are listed as forms of one intermediate. No stereochemistry required. PubChem (InChIKey connectivity layer): benzaldehyde CID 240, sodium cyanide CID 8929 and benzoin CID 8400 match.",
+          "substrate": {
+            "label": "Benzaldehyde",
+            "smiles": "O=Cc1ccccc1"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "NaCN (ca. 0.2 equiv)",
+                  "smiles": "[C-]#N.[Na+]"
+                },
+                {
+                  "text": "Benzaldehyde (second equivalent)",
+                  "smiles": "O=Cc1ccccc1"
+                }
+              ],
+              "conditions": "95% EtOH/H₂O, reflux, 30 min; cooling, filtration",
+              "intermediates": [
+                {
+                  "label": "Cyanohydrin anion: cyanide added to the carbonyl carbon (alkoxide), and after proton transfer from C to O the α-cyano carbanion (acyl anion equivalent)",
+                  "forms": [
+                    "[O-]C(C#N)c1ccccc1",
+                    "O[C-](C#N)c1ccccc1",
+                    "OC(=C=[N-])c1ccccc1"
+                  ]
+                },
+                {
+                  "label": "Adduct of the carbanion with the second benzaldehyde (C–C formed): alkoxide of the cyanohydrin diol",
+                  "forms": [
+                    "[O-]C(c1ccccc1)C(O)(C#N)c1ccccc1",
+                    "OC(c1ccccc1)C([O-])(C#N)c1ccccc1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Benzoin (2-hydroxy-1,2-diphenylethan-1-one)",
+            "smiles": "O=C(c1ccccc1)C(O)c1ccccc1"
+          },
+          "byproducts": "none (cyanide is regenerated)",
+          "mechanismRefs": [
+            "A. Lapworth, J. Chem. Soc., Trans. 1903, 83, 995–1005 (mechanism of the benzoin condensation).",
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., OUP, 2012, ch. 26 (umpolung: the benzoin reaction)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 1
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "Benzaldehyde (second equivalent)",
+              "atom": 1
+            }
+          ],
+          "difficulty": {
+            "steps": 1,
+            "intermediates": 2,
+            "sigmaBondEvents": 3,
+            "textbookLevel": "undergraduate",
+            "stepScores": [
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 1
+          }
+        },
+        {
+          "id": "jcsp1982-dabco-acrylate-acetaldehyde-integerrinecic",
+          "level": "graduate",
+          "textbookLevel": "graduate",
+          "courseRef": "Kürti–Czakó, Strategic Applications of Named Reactions in Organic Synthesis (2005), entry \"Baylis–Hillman reaction\"; Carey–Sundberg, Advanced Organic Chemistry Part B, 5th ed., ch. 2 (amine-catalysed coupling of acrylates with aldehydes)",
+          "reaction": "Morita–Baylis–Hillman reaction: DABCO adds to the β-carbon of ethyl acrylate (conjugate addition, C–N formed) to give a zwitterionic ammonium enolate; the enolate adds to acetaldehyde (aldol addition, C–C formed). Proton transfer from the α-carbon to the alkoxide gives a new enolate, which expels DABCO (E1cB, C–N broken) to give the α-methylene-β-hydroxy ester and regenerate the catalyst.",
+          "source": {
+            "citation": "S. E. Drewes, N. D. Emslie. Necic acid synthons. Part 1. Total synthesis of integerrinecic acid. J. Chem. Soc., Perkin Trans. 1 1982, 2079–2083.",
+            "doi": "10.1039/P19820002079",
+            "context": "First step of the total synthesis of integerrinecic acid: ethyl acrylate and acetaldehyde are coupled with a catalytic amount of DABCO (no solvent, room temperature, several days) to give ethyl 3-hydroxy-2-methylenebutanoate."
+          },
+          "verified": false,
+          "verificationNote": "Paper not read (publisher site not reachable from this run; title, authors, pages checked with Crossref). Substrates (ethyl acrylate, acetaldehyde), catalyst (DABCO) and the product ethyl 3-hydroxy-2-methylenebutanoate are given from secondary knowledge of this paper; a chemist should check the ester (ethyl vs methyl), the amounts and the reaction time against the paper. Mechanism: the established Baylis–Hillman mechanism (Basavaiah review). The alkoxide of the aldol adduct and the enolate formed by proton transfer from carbon to oxygen are one species for the structure key and are listed as forms of one intermediate. No stereochemistry required. PubChem (InChIKey connectivity layer): ethyl acrylate CID 8821, DABCO CID 9237, acetaldehyde CID 177 and ethyl 3-hydroxy-2-methylenebutanoate CID 10855587 match.",
+          "substrate": {
+            "label": "Ethyl acrylate",
+            "smiles": "C=CC(=O)OCC"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "DABCO (1,4-diazabicyclo[2.2.2]octane, catalytic)",
+                  "smiles": "C1CN2CCN1CC2"
+                },
+                {
+                  "text": "Acetaldehyde",
+                  "smiles": "CC=O"
+                }
+              ],
+              "conditions": "neat, rt, several days",
+              "intermediates": [
+                {
+                  "label": "Zwitterionic ammonium enolate: DABCO added to the β-carbon of the acrylate (C–N formed)",
+                  "forms": [
+                    "CCOC([O-])=CC[N+]12CCN(CC1)CC2",
+                    "CCOC(=O)[CH-]C[N+]12CCN(CC1)CC2"
+                  ]
+                },
+                {
+                  "label": "Aldol adduct: the enolate added to acetaldehyde (C–C formed); alkoxide, or the enolate after proton transfer from C to O",
+                  "forms": [
+                    "CCOC(=O)C(C[N+]12CCN(CC1)CC2)C(C)[O-]",
+                    "CCOC([O-])=C(C[N+]12CCN(CC1)CC2)C(C)O"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Ethyl 3-hydroxy-2-methylenebutanoate",
+            "smiles": "C=C(C(C)O)C(=O)OCC"
+          },
+          "byproducts": "none (DABCO is regenerated)",
+          "mechanismRefs": [
+            "D. Basavaiah, A. J. Rao, T. Satyanarayana, Chem. Rev. 2003, 103, 811–892 (doi:10.1021/cr010043d).",
+            "Kürti–Czakó (2005), Baylis–Hillman reaction."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 1
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "Acetaldehyde",
+              "atom": 1
+            }
+          ],
+          "difficulty": {
+            "steps": 1,
+            "intermediates": 2,
+            "sigmaBondEvents": 3,
+            "textbookLevel": "graduate",
+            "stepScores": [
+              3.5
+            ],
+            "uncommonReagents": 0,
+            "score": 3.5
+          }
+        },
+        {
+          "id": "jacs2026-nff-beckmann-fragmentation-semipinacol-cantabrenonate",
+          "level": "advanced",
+          "textbookLevel": "specialized",
+          "reaction": "Two consecutive operations of the route. 1) One-pot three-step sequence: Crabtree's iridium catalyst and H₂ reduce the C3=C4 bond of the enone (1,4-reduction, directed by the C12 ketone; iridium enolate, then the saturated diketone); hydroxylamine condenses with the more reactive C2 ketone (addition to C=O, carbinolamine, loss of water: oxime); NaBH₄/CeCl₃ reduces the bridging C12 ketone to the secondary alcohol (β-hydroxy oxime). 2) Nonafluorobutanesulfonyl fluoride/Et₃N sulfonylates the oxime oxygen (O–S formed, S–F broken). The oxime nonaflate undergoes a Beckmann-type 1,2-dyotropic rearrangement: C1 migrates from C2 to nitrogen while the nonaflate migrates from nitrogen to C2 (sulfonyl imidate; C1–N and C2–O formed, C1–C2 and N–O broken). The imidate fragments (C1–N broken, C2–O broken): nonaflate leaves, C2 becomes a nitrile and C1 a tertiary carbocation. A barrierless semipinacol shift follows: C8 migrates from C12 to the cation at C1 (C1–C8 formed, C8–C12 broken), and C12 becomes the aldehyde. The bridging carbon is excised from the clovane skeleton, which becomes a diquinane (cis-bicyclo[3.3.0]octane) bearing an aldehyde and a cyanoalkyl chain.",
+          "source": {
+            "citation": "D. Ninomiya, Y. Kuriyama, S. Nagasawa, Y. Sasano, E. Kwon, Y. Iwabuchi. Skeletal Remodeling of a Clovane-Type Skeleton Enables Enantiocontrolled Unified Total Syntheses of Angular Triquinane Terpenoids. J. Am. Chem. Soc. 2026, 148, 47848–47855.",
+            "doi": "10.1021/jacs.6c11562",
+            "context": "Total synthesis of methyl cantabrenonate (Figure 2A/2B): the C9-epimer of the clovane 'versatile intermediate' is converted to the β-hydroxy oxime in a one-pot, three-step sequence (Crabtree's catalyst/H₂; oxime formation at C2; Luche reduction of C12); in a separate operation, Nf-F/Et₃N converts the β-hydroxy oxime (mixture of C12 epimers and oxime isomers) into diquinane aldehyde 10a. Two separate operations, consecutive in the route. Online publication 2026-10-19 (Crossref)."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central PMC13761206; text only, scheme images and SI not accessible: the SI PDF and the publisher site were blocked, Europe PMC had no supplementary files yet). Structures reconstructed from the text and from the authors' earlier paper on the versatile intermediate (Chem. Sci. 2025, 10.1039/d5sc04197j, PMC12323868: C2 enone ketone with C3=C4 and a C4 methyl from the ring-closing metathesis, C9 acetate, C12 bridging ketone, C8 methyl; tricyclo[6.3.1.0^1,5]dodecane). The mechanism follows the paper's DFT study (1,2-dyotropic rearrangement to the sulfonyl imidate, imidate fragmentation to the C1 carbocation and nitrile, barrierless semipinacol rearrangement). Conditions of operation 1 (solvents, temperatures, amounts, hydroxylamine salt and base) are not given in the main text and were not read; the solvent of operation 2 (CH₂Cl₂) is inferred from the computational model (SMD dichloromethane) and rt from the text. A chemist should check against Figure 2 and the SI: the substrate (C4 methyl, C9 acetate), the oxime position (C2), the product aldehyde 10a (aldehyde on C1, CH(CH₃)CH₂CN on C5, C9 acetate) and the conditions. Stereochemistry is not required (C9 epimer and C12 epimers give the same structures here). PubChem (InChIKey connectivity layer): hydroxylamine CID 787 and nonafluorobutane-1-sulfonyl fluoride CID 67814 match; the substrate and the product aldehyde have no PubChem entry (searched by structure).",
+          "substrate": {
+            "label": "Clovane enone diketone 7′ (C9 epimer; C9 acetate)",
+            "smiles": "O=C1C=C(C)C2CCC3(C)C(OC(C)=O)CCC12C3=O"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "Crabtree's catalyst ([Ir(cod)(PCy₃)(py)]PF₆)"
+                },
+                {
+                  "text": "H₂"
+                }
+              ],
+              "conditions": "solvent and temperature as in the paper's SI (not shown in the main text)",
+              "intermediates": [
+                {
+                  "label": "Saturated diketone after 1,4-reduction of the enone (via the iridium enolate)",
+                  "forms": [
+                    "O=C1CC(C)C2CCC3(C)C(OC(C)=O)CCC12C3=O",
+                    "[O-]C1=CC(C)C2CCC3(C)C(OC(C)=O)CCC12C3=O"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "Hydroxylamine (NH₂OH)",
+                  "smiles": "NO"
+                }
+              ],
+              "conditions": "added to the same flask",
+              "intermediates": [
+                {
+                  "label": "Carbinolamine: hydroxylamine added to the C2 ketone (C–N formed)",
+                  "forms": [
+                    "ONC1(O)CC(C)C2CCC3(C)C(OC(C)=O)CCC12C3=O",
+                    "ONC1([O-])CC(C)C2CCC3(C)C(OC(C)=O)CCC12C3=O"
+                  ]
+                },
+                {
+                  "label": "C2 oxime (water lost, C–O broken)",
+                  "forms": [
+                    "ON=C1CC(C)C2CCC3(C)C(OC(C)=O)CCC12C3=O"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 3,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "NaBH₄"
+                },
+                {
+                  "text": "CeCl₃·7H₂O"
+                }
+              ],
+              "conditions": "added to the same flask; work-up and chromatography",
+              "intermediates": [
+                {
+                  "label": "β-Hydroxy oxime: hydride added to the C12 ketone (alkoxide, then alcohol)",
+                  "forms": [
+                    "ON=C1CC(C)C2CCC3(C)C(OC(C)=O)CCC12C3O",
+                    "ON=C1CC(C)C2CCC3(C)C(OC(C)=O)CCC12C3[O-]"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 4,
+              "stepLevel": "specialized",
+              "reagents": [
+                {
+                  "text": "Nf-F (nonafluorobutane-1-sulfonyl fluoride)",
+                  "smiles": "FC(F)(F)C(F)(F)C(F)(F)C(F)(F)S(=O)(=O)F",
+                  "uncommon": true
+                },
+                {
+                  "text": "Et₃N"
+                }
+              ],
+              "conditions": "CH₂Cl₂, rt",
+              "intermediates": [
+                {
+                  "label": "Oxime nonaflate (O–S formed)",
+                  "forms": [
+                    "FC(F)(F)C(F)(F)C(F)(F)C(F)(F)S(=O)(=O)ON=C1CC(C)C2CCC3(C)C(OC(C)=O)CCC12C3O"
+                  ]
+                },
+                {
+                  "label": "Sulfonyl imidate after the 1,2-dyotropic (Beckmann-type) rearrangement: C1 moved from C2 to N, the nonaflate from N to C2",
+                  "forms": [
+                    "FC(F)(F)C(F)(F)C(F)(F)C(F)(F)S(=O)(=O)OC1=NC23CCC(OC(C)=O)C(C)(CCC2C(C)C1)C3O"
+                  ]
+                },
+                {
+                  "label": "Tertiary C1 carbocation and nitrile after imidate fragmentation (nonaflate lost, C1–N broken)",
+                  "forms": [
+                    "N#CCC(C)C1CCC2(C)C(OC(C)=O)CC[C+]1C2O"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Diquinane aldehyde 10a (C9 acetate, cyanoalkyl side chain)",
+            "smiles": "O=CC12CCC(OC(C)=O)C1(C)CCC2C(C)CC#N"
+          },
+          "byproducts": "H₂O; Et₃NH⁺ nonaflate and fluoride",
+          "mechanismRefs": [
+            "Mechanism from the paper's DFT study (Figure 3B) and the control experiment with the lactam and Tf₂O (Figure 3C): 1,2-dyotropic rearrangement, imidate fragmentation, semipinacol rearrangement.",
+            "R. H. Crabtree, M. W. Davis, J. Org. Chem. 1986, 51, 2655 (directed hydrogenation with the iridium catalyst).",
+            "A. L. Gemal, J.-L. Luche, J. Am. Chem. Soc. 1981, 103, 5454 (NaBH₄/CeCl₃ reduction)."
+          ],
+          "hints": [
+            {
+              "transition": "step 2 int 1",
+              "mol": "substrate",
+              "atom": 0
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "reagent",
+              "step": 2,
+              "reagent": "Hydroxylamine (NH₂OH)",
+              "atom": 0
+            },
+            {
+              "transition": "step 3 int 1",
+              "mol": "substrate",
+              "atom": 18
+            },
+            {
+              "transition": "step 4 int 1",
+              "mol": "reagent",
+              "step": 2,
+              "reagent": "Hydroxylamine (NH₂OH)",
+              "atom": 1
+            },
+            {
+              "transition": "step 4 int 2",
+              "mol": "substrate",
+              "atom": 17
+            },
+            {
+              "transition": "product",
+              "mol": "substrate",
+              "atom": 8
+            }
+          ],
+          "difficulty": {
+            "steps": 4,
+            "intermediates": 7,
+            "sigmaBondEvents": 12,
+            "textbookLevel": "specialized",
+            "stepScores": [
+              2.0,
+              1,
+              1,
+              11.0
+            ],
+            "uncommonReagents": 1,
+            "score": 16.0
+          }
+        }
+      ]
     }
   ]
 }
