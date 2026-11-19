@@ -6,7 +6,7 @@ publishes problems; the daily scheduled tasks are unchanged.
 
 | Item | Value |
 |---|---|
-| Run by | Scheduled task "Agent attempts trial (Claude Code)", nightly at 23:17 America/New_York, 2026-11-19 to 2026-11-25 (the run stops by itself after that date) |
+| Run by | Scheduled task "Agent attempts trial (Claude Code)" (`trig_019fhPftvU5XeeW4214WAB5q`), nightly at 23:17 America/New_York, 2026-11-19 to 2026-11-25 (the run stops by itself after that date) |
 | Problems per night | the sets dated the next day on both sites (new; before visitors see them) and a backlog of older problems with visitor results, not yet attempted (3 One-Pot, 1 Name Reaction Daily) |
 | Agents (`agents.json`) | `haiku-product`, `sonnet-product`, `opus-product` (aim for the product), `opus-mechanism` (intermediates in order, then the product) |
 | What an agent sees | only what the page shows before solving (`trial.py statement`): substrate, reagents, conditions, steps, number of intermediates, number of hints, level |
