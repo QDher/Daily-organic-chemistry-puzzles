@@ -422,6 +422,22 @@
         "skipped": 0
       },
       "note": "Evidence recounted from the current data. One new rating with a remark (undergraduate problem of 2026-11-18): an event beyond the core textbook transformation was felt to exceed the undergraduate level; merged into undergraduate-problems-include-extra-steps (already proposed; status unchanged). Rows for jacs2026-dithiane-hydrolysis-arnicenone are ignored (not in data/problems.json; no archive yet). difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters returned no clusters."
+    },
+    {
+      "date": "2026-11-19",
+      "targetDate": "2026-11-20",
+      "store": "ok",
+      "results": 66,
+      "ratings": 20,
+      "remarks": 18,
+      "newObservations": [],
+      "updated": [],
+      "newProposals": [],
+      "tierA": {
+        "applied": [],
+        "skipped": 0
+      },
+      "note": "Evidence recounted from the current data: unchanged for all observations (no new ratings or remarks since the last run; 6 new results, all on problems without observations, at most 4 results per problem, so no kind of problem stands out). Rows for jacs2026-dithiane-hydrolysis-arnicenone are ignored (not in data/problems.json; no archive yet). difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters returned no clusters; 47 rejected structures classified into data/wrong_answers.json."
     }
   ]
 }

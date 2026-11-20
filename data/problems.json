@@ -7884,6 +7884,359 @@
           }
         }
       ]
+    },
+    {
+      "date": "2026-11-20",
+      "problems": [
+        {
+          "id": "acsomega2026-dibal-ester-reduction-piperic-acid",
+          "level": "undergraduate",
+          "textbookLevel": "undergraduate",
+          "reaction": "Reduction of an α,β-unsaturated methyl ester to the allylic alcohol with excess DIBAL-H: the Lewis-acidic aluminium coordinates the carbonyl oxygen and delivers hydride (C–H formed) to give a tetrahedral aluminium hemiacetal; this collapses, expelling methoxide on aluminium (C–OMe broken), to the α,β-unsaturated aldehyde, which takes up a second hydride (1,2-addition) to give the aluminium alkoxide; aqueous acid work-up cleaves the O–Al bond to release the (E)-allylic alcohol.",
+          "source": {
+            "citation": "J. R. Ngnouzouba Kuete, V.-A. Nchiozem-Ngnitedem, E. Sperlich, B. Sandargo, L. A. Tapondjou, R. B. Teponno, B. Schmidt. Total Synthesis of Piperine and Derivatives: Antimicrobial and Cytotoxic Activities. ACS Omega 2026, 11, 39218–39227.",
+            "doi": "10.1021/acsomega.6c03524",
+            "context": "Second step of the route to piperic acid and piperine (Scheme 1): methyl (E)-3-(1,3-benzodioxol-5-yl)acrylate is reduced with DIBAL-H (2.5 equiv, 1.0 M in toluene) in THF, added at −10 °C, then 6 h at room temperature; the mixture is acidified to pH 5 with 2 M aqueous HCl and diluted with water; the allylic alcohol is isolated in 92% yield and then oxidised with MnO₂ to the aldehyde."
+          },
+          "verified": false,
+          "verificationNote": "Full text with experimental section read (PubMed Central). Substrate, reagent amounts, solvent, temperatures, work-up and product are taken from the experimental procedure. Mechanism: the textbook mechanism of ester reduction by aluminium hydrides (two hydride transfers via the aldehyde); the aluminium species are drawn as monomeric diisobutylaluminium derivatives, which simplifies the real aggregated species. No stereochemistry required (E alkene retained). PubChem (InChIKey connectivity layer): methyl (E)-3-(1,3-benzodioxol-5-yl)prop-2-enoate CID 736823, DIBAL-H CID 14487 and (E)-3-(1,3-benzodioxol-5-yl)prop-2-en-1-ol CID 5869753 match.",
+          "substrate": {
+            "label": "Methyl (E)-3-(1,3-benzodioxol-5-yl)acrylate",
+            "smiles": "COC(=O)/C=C/c1ccc2OCOc2c1"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "DIBAL-H (diisobutylaluminium hydride, 1.0 M in toluene, 2.5 equiv)",
+                  "smiles": "CC(C)C[AlH]CC(C)C"
+                }
+              ],
+              "conditions": "THF, added at −10 °C, then rt, 6 h",
+              "intermediates": [
+                {
+                  "label": "Tetrahedral aluminium hemiacetal: hydride delivered to the carbonyl carbon of the Al-coordinated ester (C–H formed, O–Al formed)",
+                  "forms": [
+                    "COC(O[Al](CC(C)C)CC(C)C)/C=C/c1ccc2OCOc2c1"
+                  ]
+                },
+                {
+                  "label": "α,β-Unsaturated aldehyde: the tetrahedral intermediate collapses and methoxide leaves on aluminium (C–OMe broken)",
+                  "forms": [
+                    "O=C/C=C/c1ccc2OCOc2c1"
+                  ]
+                },
+                {
+                  "label": "Aluminium alkoxide: a second hydride adds to the aldehyde carbon (C–H formed, O–Al formed)",
+                  "forms": [
+                    "CC(C)C[Al](CC(C)C)OC/C=C/c1ccc2OCOc2c1"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "2 M aqueous HCl (to pH 5), then water"
+                }
+              ],
+              "conditions": "work-up, rt",
+              "intermediates": []
+            }
+          ],
+          "product": {
+            "label": "(E)-3-(1,3-Benzodioxol-5-yl)prop-2-en-1-ol",
+            "smiles": "OC/C=C/c1ccc2OCOc2c1"
+          },
+          "byproducts": "methanol (as aluminium methoxide, released on work-up), aluminium salts, isobutane from excess DIBAL-H on work-up",
+          "mechanismRefs": [
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., OUP 2012, ch. 23 (reduction of esters by aluminium hydrides; DIBAL-H)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 2
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 0
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 1
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 3,
+            "sigmaBondEvents": 13,
+            "textbookLevel": "undergraduate",
+            "stepScores": [
+              1,
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 2
+          }
+        },
+        {
+          "id": "os1959-vilsmeier-haack-indole-3-aldehyde",
+          "level": "graduate",
+          "textbookLevel": "graduate",
+          "courseRef": "Kürti–Czakó, Strategic Applications of Named Reactions in Organic Synthesis (2005), entry \"Vilsmeier–Haack formylation\"; Carey–Sundberg, Advanced Organic Chemistry Part B, 5th ed., ch. 11 (electrophilic aromatic substitution: formylation with DMF/POCl₃)",
+          "reaction": "Vilsmeier–Haack formylation of indole: DMF and POCl₃ form the chloromethyleneiminium ion (Vilsmeier reagent); C3 of indole adds to its carbon (C–C formed) to give the α-chloroamine after rearomatisation (σ-complex, then loss of the C3 proton); chloride leaves (C–Cl broken) to give the 3-(dimethyliminiomethyl)indole (or the neutral 3-(dimethylaminomethylene)-3H-indole after N–H deprotonation). On basic aqueous work-up hydroxide adds to the iminium carbon (C–O formed) to give the hemiaminal, which expels dimethylamine (C–N broken) to give indole-3-carbaldehyde.",
+          "source": {
+            "citation": "P. N. James, H. R. Snyder. Indole-3-aldehyde. Org. Synth. 1959, 39, 30 (Coll. Vol. 4, 539 (1963)).",
+            "doi": "10.15227/orgsyn.039.0030",
+            "context": "Organic Syntheses preparation of indole-3-carbaldehyde, a common building block of indole alkaloid syntheses (not a total synthesis paper): POCl₃ is added to ice-cold DMF, a solution of indole in DMF is added below 10 °C, the mixture is stirred at about 35 °C, then crushed ice and excess aqueous NaOH are added and the mixture is brought to the boil; the aldehyde crystallises on cooling (about 97%)."
+          },
+          "verified": false,
+          "verificationNote": "Procedure not read in this run (orgsyn.org not reachable from the run environment; DOI, volume and page checked with Crossref). Amounts, temperatures and work-up are given from secondary knowledge of this Organic Syntheses procedure; a chemist should check them against the procedure. Mechanism: the established Vilsmeier–Haack mechanism (Kürti–Czakó). The σ-complex and the rearomatised α-chloroamine are one species for the structure key (proton moved between C3 and N1) and are given as forms of one intermediate; the iminium ion and the neutral 3-(dimethylaminomethylene)-3H-indole differ by N–H deprotonation and are forms of one intermediate. PubChem (InChIKey connectivity layer): indole CID 798, N,N-dimethylformamide CID 6228, phosphoryl chloride CID 24813 and indole-3-carbaldehyde CID 10256 match.",
+          "substrate": {
+            "label": "Indole",
+            "smiles": "c1ccc2[nH]ccc2c1"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "N,N-Dimethylformamide (solvent and reagent)",
+                  "smiles": "CN(C)C=O"
+                },
+                {
+                  "text": "POCl₃ (1.1 equiv), added to the DMF at 0 °C before the indole",
+                  "smiles": "O=P(Cl)(Cl)Cl"
+                }
+              ],
+              "conditions": "DMF; indole (in DMF) added below 10 °C, then 35 °C, 1 h",
+              "intermediates": [
+                {
+                  "label": "α-Chloroamine: C3 of indole added to the chloromethyleneiminium carbon (C–C formed); σ-complex (3H-indolium) and the rearomatised indole",
+                  "forms": [
+                    "CN(C)C(Cl)c1c[nH]c2ccccc12",
+                    "CN(C)C(Cl)C1C=[NH+]c2ccccc21"
+                  ]
+                },
+                {
+                  "label": "3-(Dimethyliminiomethyl)indole: chloride leaves (C–Cl broken); or the neutral 3-(dimethylaminomethylene)-3H-indole after N–H deprotonation",
+                  "forms": [
+                    "C[N+](C)=Cc1c[nH]c2ccccc12",
+                    "CN(C)C=C1C=Nc2ccccc21"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "Crushed ice, then aqueous NaOH (excess)",
+                  "smiles": "[OH-].[Na+]"
+                }
+              ],
+              "conditions": "water; heated to the boil, then cooled",
+              "intermediates": [
+                {
+                  "label": "Hemiaminal: hydroxide added to the iminium carbon (C–O formed)",
+                  "forms": [
+                    "CN(C)C(O)c1c[nH]c2ccccc12",
+                    "CN(C)C([O-])c1c[nH]c2ccccc12"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Indole-3-carbaldehyde",
+            "smiles": "O=Cc1c[nH]c2ccccc12"
+          },
+          "byproducts": "dimethylamine, sodium phosphate and sodium chloride",
+          "mechanismRefs": [
+            "Kürti–Czakó (2005), Vilsmeier–Haack formylation.",
+            "G. Jones, S. P. Stanforth, Org. React. 1997, 49, 1–330 (The Vilsmeier reaction of fully conjugated carbocycles and heterocycles; doi:10.1002/0471264180.or049.01)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 6
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "N,N-Dimethylformamide (solvent and reagent)",
+              "atom": 3
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "N,N-Dimethylformamide (solvent and reagent)",
+              "atom": 1
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 3,
+            "sigmaBondEvents": 6,
+            "textbookLevel": "graduate",
+            "stepScores": [
+              4.0,
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 5.0
+          }
+        },
+        {
+          "id": "jacs2026-kita-spirocyclization-aerobic-thioaminal-discorhabdin-b",
+          "level": "advanced",
+          "textbookLevel": "specialized",
+          "reaction": "Two consecutive operations of the optimised discorhabdin B route. 1) Kita-type oxidative dearomatisation: PIFA in the presence of TfOH oxidises the electron-rich 4-methoxyarene of the makaluvamine-type precursor; C6 of the pyrroloiminoquinone adds to the ipso carbon (C–C formed) to give a spirocyclic O-methyl oxocarbenium ion, which loses the methyl group (O–CH₃ broken) to give the spiro-cyclohexadienone with the discorhabdin skeleton. 2) Azide cleaves the S-pivaloyl thioester (S–C(O) broken, pivaloyl azide released) to the dienone thiolate (a vinylogous thioacid); under O₂ the C–H bond α to N9 is oxidised (proposed by the authors to be mediated by the vinylogous thioacid) to the cyclic imine, and the sulfur adds to it (C–S formed) to close the N,S-acetal bridge of discorhabdin B.",
+          "source": {
+            "citation": "N. L. Magann, G. L. Barnes, R. Schioldager, F. M. Hörmann, R. Muñoz, H. Han, D. Von Hoff, C. D. Vanderwal. Optimized Biomimetic Syntheses of Discorhabdin B and Aleutianamine Drives a Deeper Exploration of Their Anticancer Potential. J. Am. Chem. Soc. 2026, 148, 23280–23292 (published online 2026-05-29).",
+            "doi": "10.1021/jacs.6c06599",
+            "context": "Optimised synthesis of discorhabdin B: the makaluvamine-type condensation product of the brominated, S-pivaloylated tyramine with the pyrroloiminoquinone core is free-based and treated with Kita's hypervalent-iodine conditions (PIFA) in the presence of three equivalents of triflic acid; the crude spirodienone is free-based again and exposed to exactly one equivalent of sodium azide under an oxygen atmosphere, giving discorhabdin B (50% after reverse-phase chromatography and trituration). These are two separate, consecutive operations (not one pot)."
+          },
+          "verified": false,
+          "verificationNote": "Full text of the main article read (PubMed Central); the schemes and the SI were not read (structures, solvents and temperatures are in the SI). Reagents and stoichiometry (PIFA with 3 equiv TfOH; NaN₃ 1.0 equiv under O₂) are from the text. Structures were derived from the text and from the known structure of discorhabdin B; a chemist should check: (1) the phenol protecting group of the tyramine unit, drawn as a methyl ether (the desbromo building block is made from anisaldehyde dimethyl acetal and no demethylation is described); (2) the positions of Br (ortho to OMe) and of the S-pivaloyl group (ortho to the ethylamine chain), deduced from the substitution pattern of discorhabdin B; (3) the solvents and temperatures of both operations. The Kita oxidation mechanism (radical cation vs. direct ipso attack) is simplified to the spiro oxocarbenium ion; the oxidation of the C–H bond α to N9 in step 2 is a proposal of the authors and is drawn as the cyclic imine. No stereochemistry required (racemic). PubChem: PIFA CID 102317 matches; discorhabdin B (CID 375889, stored as a different N/O tautomer) has the same skeleton after tautomer canonicalisation; the pyrroloiminoquinone core drawing was checked against makaluvamine D (CID 457711) in the same way. The precursor and the spirodienone have no PubChem entry.",
+          "substrate": {
+            "label": "Makaluvamine-type precursor: 7-[2-(5-bromo-4-methoxy-2-(pivaloylthio)phenyl)ethylamino]pyrroloiminoquinone (free base)",
+            "smiles": "O=C1C(NCCc4cc(Br)c(OC)cc4SC(=O)C(C)(C)C)=CC2=NCCc3c[nH]c1c32"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "specialized",
+              "reagents": [
+                {
+                  "text": "PhI(OCOCF₃)₂ (PIFA)",
+                  "smiles": "O=C(OI(OC(=O)C(F)(F)F)c1ccccc1)C(F)(F)F",
+                  "uncommon": true
+                },
+                {
+                  "text": "TfOH (3 equiv)"
+                }
+              ],
+              "conditions": "solvent and temperature given in the SI (not read); then free-based",
+              "intermediates": [
+                {
+                  "label": "Spirocyclic O-methyl oxocarbenium ion: C6 of the iminoquinone added to the ipso carbon of the oxidised methoxyarene (C–C formed, dearomatised)",
+                  "forms": [
+                    "C[O+]=C1C=C(SC(=O)C(C)(C)C)C2(C=C1Br)CCNC1=C2C2=NCCc3c[nH]c(C1=O)c32"
+                  ]
+                },
+                {
+                  "label": "Spiro-cyclohexadienone (crude product of the first operation): the methyl group is removed from the oxocarbenium oxygen (O–CH₃ broken)",
+                  "forms": [
+                    "O=C1C=C(SC(=O)C(C)(C)C)C2(C=C1Br)CCNC1=C2C2=NCCc3c[nH]c(C1=O)c32"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "specialized",
+              "reagents": [
+                {
+                  "text": "NaN₃ (1.0 equiv)"
+                },
+                {
+                  "text": "O₂ (atmosphere)"
+                }
+              ],
+              "conditions": "crude free base from step 1; solvent and temperature given in the SI (not read)",
+              "intermediates": [
+                {
+                  "label": "Dienone thiolate (vinylogous thioacid): azide cleaves the S-pivaloyl thioester (S–C(O) broken, pivaloyl azide released)",
+                  "forms": [
+                    "O=C1C=C([S-])C2(C=C1Br)CCNC1=C2C2=NCCc3c[nH]c(C1=O)c32",
+                    "O=C1C=C(S)C2(C=C1Br)CCNC1=C2C2=NCCc3c[nH]c(C1=O)c32",
+                    "[O-]C1=CC(=S)C2(C=C1Br)CCNC1=C2C2=NCCc3c[nH]c(C1=O)c32"
+                  ]
+                },
+                {
+                  "label": "Cyclic imine (proposed): the C–H bond α to N9 oxidised by O₂ (C8=N9 formed)",
+                  "forms": [
+                    "O=C1C=C(S)C2(C=C1Br)CC=NC1=C2C2=NCCc3c[nH]c(C1=O)c32",
+                    "O=C1C=C([S-])C2(C=C1Br)CC=[NH+]C1=C2C2=NCCc3c[nH]c(C1=O)c32"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Discorhabdin B (racemic)",
+            "smiles": "O=C1C=C4C2(C=C1Br)CC(S4)NC1=C2C2=NCCc3c[nH]c(C1=O)c32"
+          },
+          "byproducts": "step 1: iodobenzene, trifluoroacetic acid, methyl trifluoroacetate/methanol; step 2: pivaloyl azide, reduced oxygen (water/H₂O₂)",
+          "mechanismRefs": [
+            "N. L. Magann et al., J. Am. Chem. Soc. 2026, 148, 23280–23292 (doi:10.1021/jacs.6c06599): mechanistic proposal for the aerobic N,S-acetal formation.",
+            "Y. Kita, H. Tohma et al., J. Am. Chem. Soc. 1994, 116, 3684–3691 (hypervalent iodine-induced nucleophilic substitution of para-substituted phenol ethers via cation radicals; doi:10.1021/ja00088a003).",
+            "Y. Kita, H. Tohma et al., J. Am. Chem. Soc. 1992, 114, 2175–2180 (hypervalent iodine aza-spirodienone formation in the synthesis of discorhabdin C; doi:10.1021/ja00032a036)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 11
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 22
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 6
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 12
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "substrate",
+              "atom": 15
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "substrate",
+              "atom": 16
+            },
+            {
+              "transition": "step 2 int 2",
+              "mol": "substrate",
+              "atom": 4
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 4,
+            "sigmaBondEvents": 4,
+            "textbookLevel": "specialized",
+            "stepScores": [
+              6.0,
+              6.0
+            ],
+            "uncommonReagents": 1,
+            "score": 13.0
+          }
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,152 @@
+{
+ "version": 1,
+ "problems": {
+  "anie2026-photoredox-ring-expansion-aldol-melicodenone": {
+   "rejected": 2,
+   "visitors": 2,
+   "categories": {
+    "other": 1,
+    "same_skeleton": 1
+   },
+   "examples": []
+  },
+  "jacs1969-hwe-enone-corey-prostaglandin": {
+   "rejected": 1,
+   "visitors": 1,
+   "categories": {
+    "same_skeleton": 1
+   },
+   "examples": []
+  },
+  "jacs1970-johnson-claisen-methylbutenol": {
+   "rejected": 2,
+   "visitors": 2,
+   "categories": {
+    "other": 1,
+    "fragment_difference": 1
+   },
+   "examples": []
+  },
+  "jacs2026-chloroformate-dmap-ethyl-ester-rhabdobranin": {
+   "rejected": 13,
+   "visitors": 13,
+   "categories": {
+    "fragment_difference": 6,
+    "other": 7
+   },
+   "examples": []
+  },
+  "jacs2026-formyl-activated-robinson-annulation-grandifolia": {
+   "rejected": 4,
+   "visitors": 4,
+   "categories": {
+    "fragment_difference": 4
+   },
+   "examples": []
+  },
+  "jacs2026-lioh-h2o2-evans-auxiliary-cleavage-rhabdobranin": {
+   "rejected": 1,
+   "visitors": 1,
+   "categories": {
+    "fragment_difference": 1
+   },
+   "examples": []
+  },
+  "jacs2026-peterson-olefination-sestermobaraene": {
+   "rejected": 2,
+   "visitors": 3,
+   "categories": {
+    "other": 3
+   },
+   "examples": [
+    {
+     "smiles": "COC1(C[Si](C)(C)C)CCC23C(C)CCC2C3(C)C2CC3C(C(C)C)CCC3(C)CC21",
+     "visitors": 2,
+     "category": "other",
+     "nearest": "step 1 intermediate 1",
+     "similarity": 0.84
+    }
+   ]
+  },
+  "jacs2026-vinylsilane-bromodesilylation-z-vinyl-bromide-merocyclophane": {
+   "rejected": 1,
+   "visitors": 1,
+   "categories": {
+    "other": 1
+   },
+   "examples": []
+  },
+  "jacs2026-weinreb-ketone-broc-cyclization-gummiferolate": {
+   "rejected": 1,
+   "visitors": 1,
+   "categories": {
+    "fragment_difference": 1
+   },
+   "examples": []
+  },
+  "jcsp1982-dabco-acrylate-acetaldehyde-integerrinecic": {
+   "rejected": 3,
+   "visitors": 3,
+   "categories": {
+    "fragment_difference": 2,
+    "isomer": 1
+   },
+   "examples": []
+  },
+  "os1921-benzoin-condensation-cyanide": {
+   "rejected": 6,
+   "visitors": 6,
+   "categories": {
+    "same_skeleton": 2,
+    "isomer": 3,
+    "fragment_difference": 1
+   },
+   "examples": []
+  },
+  "os1922-nitrile-hydrolysis-benzyl-cyanide-phenylacetic-acid": {
+   "rejected": 2,
+   "visitors": 2,
+   "categories": {
+    "other": 1,
+    "same_skeleton": 1
+   },
+   "examples": []
+  },
+  "os1933-friedel-crafts-succinic-anhydride-benzoylpropionic": {
+   "rejected": 4,
+   "visitors": 4,
+   "categories": {
+    "fragment_difference": 2,
+    "other": 1,
+    "same_skeleton": 1
+   },
+   "examples": []
+  },
+  "os1950-hofmann-rearrangement-nicotinamide-aminopyridine": {
+   "rejected": 2,
+   "visitors": 2,
+   "categories": {
+    "same_skeleton": 1,
+    "fragment_difference": 1
+   },
+   "examples": []
+  },
+  "os1959-favorskii-chlorocyclohexanone-cyclopentanecarboxylate": {
+   "rejected": 3,
+   "visitors": 4,
+   "categories": {
+    "fragment_difference": 3,
+    "other": 1
+   },
+   "examples": [
+    {
+     "smiles": "O=C(O)C1CCCC1",
+     "visitors": 2,
+     "category": "fragment_difference (+H2O)",
+     "nearest": "step 1 intermediate 1",
+     "similarity": 0.45
+    }
+   ]
+  }
+ }
+}

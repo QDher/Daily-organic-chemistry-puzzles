@@ -2945,6 +2945,135 @@
    "heavyAtomChange": 8,
    "ringChange": 1,
    "verified": false
+  },
+  {
+   "id": "acsomega2026-dibal-ester-reduction-piperic-acid",
+   "date": "2026-11-20",
+   "level": "undergraduate",
+   "textbookLevel": "undergraduate",
+   "reaction": "Reduction of an α,β-unsaturated methyl ester to the allylic alcohol with excess DIBAL-H: the Lewis-acidic aluminium coordinates the carbonyl oxygen and delivers hydride (C–H formed) to give a tetrahedral aluminium hemiacetal; this collapses, expelling methoxide on aluminium (C–OMe broken), to the α,β-unsaturated aldehyde, which takes up a second hydride (1,2-addition) to give the aluminium alkoxide; aqueous acid work-up cleaves the O–Al bond to release the (E)-allylic alcohol.",
+   "source": "acsomega",
+   "sourceYear": 2026,
+   "steps": 2,
+   "intermediates": 3,
+   "forms": 3,
+   "stepLevels": [
+    "undergraduate",
+    "undergraduate"
+   ],
+   "reagents": 2,
+   "reagentsWithSmiles": 1,
+   "uncommonReagents": 0,
+   "hints": 3,
+   "difficultyScore": 2,
+   "sigmaBondEvents": 13,
+   "substrate": {
+    "heavyAtoms": 15,
+    "rings": 2,
+    "aromaticRings": 1,
+    "heteroatoms": 4,
+    "stereocentres": 0,
+    "fsp3": 0.18,
+    "mw": 206.1
+   },
+   "product": {
+    "heavyAtoms": 13,
+    "rings": 2,
+    "aromaticRings": 1,
+    "heteroatoms": 3,
+    "stereocentres": 0,
+    "fsp3": 0.2,
+    "mw": 178.1
+   },
+   "heavyAtomChange": -2,
+   "ringChange": 0,
+   "verified": false
+  },
+  {
+   "id": "jacs2026-kita-spirocyclization-aerobic-thioaminal-discorhabdin-b",
+   "date": "2026-11-20",
+   "level": "advanced",
+   "textbookLevel": "specialized",
+   "reaction": "Two consecutive operations of the optimised discorhabdin B route. 1) Kita-type oxidative dearomatisation: PIFA in the presence of TfOH oxidises the electron-rich 4-methoxyarene of the makaluvamine-type precursor; C6 of the pyrroloiminoquinone adds to the ipso carbon (C–C formed) to give a spirocyclic O-methyl oxocarbenium ion, which loses the methyl group (O–CH₃ broken) to give the spiro-cyclohexadienone with the discorhabdin skeleton. 2) Azide cleaves the S-pivaloyl thioester (S–C(O) broken, pivaloyl azide released) to the dienone thiolate (a vinylogous thioacid); under O₂ the C–H bond α to N9 is oxidised (proposed by the authors to be mediated by the vinylogous thioacid) to the cyclic imine, and the sulfur adds to it (C–S formed) to close the N,S-acetal bridge of discorhabdin B.",
+   "source": "jacs",
+   "sourceYear": 2026,
+   "steps": 2,
+   "intermediates": 4,
+   "forms": 7,
+   "stepLevels": [
+    "specialized",
+    "specialized"
+   ],
+   "reagents": 4,
+   "reagentsWithSmiles": 1,
+   "uncommonReagents": 1,
+   "hints": 7,
+   "difficultyScore": 13,
+   "sigmaBondEvents": 4,
+   "substrate": {
+    "heavyAtoms": 32,
+    "rings": 4,
+    "aromaticRings": 2,
+    "heteroatoms": 8,
+    "stereocentres": 0,
+    "fsp3": 0.38,
+    "mw": 515.1
+   },
+   "product": {
+    "heavyAtoms": 25,
+    "rings": 6,
+    "aromaticRings": 1,
+    "heteroatoms": 7,
+    "stereocentres": 2,
+    "fsp3": 0.28,
+    "mw": 413
+   },
+   "heavyAtomChange": -7,
+   "ringChange": 2,
+   "verified": false
+  },
+  {
+   "id": "os1959-vilsmeier-haack-indole-3-aldehyde",
+   "date": "2026-11-20",
+   "level": "graduate",
+   "textbookLevel": "graduate",
+   "reaction": "Vilsmeier–Haack formylation of indole: DMF and POCl₃ form the chloromethyleneiminium ion (Vilsmeier reagent); C3 of indole adds to its carbon (C–C formed) to give the α-chloroamine after rearomatisation (σ-complex, then loss of the C3 proton); chloride leaves (C–Cl broken) to give the 3-(dimethyliminiomethyl)indole (or the neutral 3-(dimethylaminomethylene)-3H-indole after N–H deprotonation). On basic aqueous work-up hydroxide adds to the iminium carbon (C–O formed) to give the hemiaminal, which expels dimethylamine (C–N broken) to give indole-3-carbaldehyde.",
+   "source": "os",
+   "sourceYear": 1959,
+   "steps": 2,
+   "intermediates": 3,
+   "forms": 6,
+   "stepLevels": [
+    "graduate",
+    "undergraduate"
+   ],
+   "reagents": 3,
+   "reagentsWithSmiles": 3,
+   "uncommonReagents": 0,
+   "hints": 3,
+   "difficultyScore": 5,
+   "sigmaBondEvents": 6,
+   "substrate": {
+    "heavyAtoms": 9,
+    "rings": 2,
+    "aromaticRings": 2,
+    "heteroatoms": 1,
+    "stereocentres": 0,
+    "fsp3": 0,
+    "mw": 117.1
+   },
+   "product": {
+    "heavyAtoms": 11,
+    "rings": 2,
+    "aromaticRings": 2,
+    "heteroatoms": 2,
+    "stereocentres": 0,
+    "fsp3": 0,
+    "mw": 145.1
+   },
+   "heavyAtomChange": 2,
+   "ringChange": 0,
+   "verified": false
   }
  ]
 }
