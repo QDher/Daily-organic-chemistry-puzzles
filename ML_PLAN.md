@@ -210,7 +210,10 @@ Consequences for the sections below (2026-11-14):
   order (session, task, step).
 - Agent testers: rules of 2026-11-14 in section F ("judged agent entries", replacement of clear-cut testers).
 - Page changes of `docs/PLAN_DRAWING.md` (QDher/Daily_Curly_Chem, 11 planned items) belong to stages 1 and 4; the
-  page is not changed for them while the first test run collects data.
+  page is not changed for them while the first test run collects data. Exception (user, 2026-11-20): item 6
+  (overlapping bonds in shown structures, extended to atom labels and charge signs) is done in round 1 of the
+  rule-based drawing fixes (2026-11-21), before the testers are invited, so that the whole test run uses one page
+  version.
 
 Order of work in stages 1 and 2:
 1. Contact e-mail of the test run (`contact` in `data/config.json` of QDher/Daily_Curly_Chem), then invitation of
