@@ -17,7 +17,7 @@ Scheduled runs: the scheduled-task prompt is authoritative; this file does not c
 | Rejected structures, classified | `data/wrong_answers.json`, written by `src/classify_checks.py` (same file in both repositories) in step 3c of the scheduled runs |
 | Feedback-driven selection and quality (plan) | `ML_PLAN.md` (both sites) |
 | Agent-attempt trial (data only, 2026-11-19 to 2026-11-25) | `trial/agents/` (README, tools, `data/attempts.jsonl`); scheduled task "Agent attempts trial (Claude Code)" (`trig_019fhPftvU5XeeW4214WAB5q`); never changes problems or the daily tasks |
-| Future development: curly-arrow mechanisms | `ML_PLAN.md` section "Future development: curly-arrow mechanisms" and GitHub issue #4 (not scheduled) |
+| Curly-arrow interface and models (six-stage plan) | `docs/PLAN.md` of QDher/Daily_Curly_Chem (moved from `ML_PLAN.md` on 2026-11-21); decisions in its `docs/DECISIONS.md`, work queue in its `docs/BOARD.md`; GitHub issue #4 |
 | Results and ratings | Cloudflare Worker `puzzle-feedback` (https://puzzle-feedback.dailyorgchem.workers.dev) and D1 database `puzzle-feedback`, site key `onepot`; code, schema and deployment in `feedback-worker/` of QDher/Daily-organic-chemistry-puzzles (deployed by its `.github/workflows/feedback-worker.yml`). `supabase/schema.sql` describes the former Supabase store |
 
 ## Working conventions
