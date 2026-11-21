@@ -1,6 +1,14 @@
 {
  "version": 1,
  "problems": {
+  "acsomega2026-dibal-ester-reduction-piperic-acid": {
+   "rejected": 2,
+   "visitors": 2,
+   "categories": {
+    "same_skeleton": 2
+   },
+   "examples": []
+  },
   "anie2026-photoredox-ring-expansion-aldol-melicodenone": {
    "rejected": 2,
    "visitors": 2,

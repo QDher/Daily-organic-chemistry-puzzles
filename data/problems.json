@@ -8237,6 +8237,320 @@
           }
         }
       ]
+    },
+    {
+      "date": "2026-11-21",
+      "problems": [
+        {
+          "id": "os1932-claisen-schmidt-dibenzalacetone",
+          "level": "undergraduate",
+          "textbookLevel": "undergraduate",
+          "reaction": "Double crossed aldol condensation (Claisen–Schmidt): hydroxide forms the enolate of acetone, which adds to benzaldehyde (C–C formed) to give the β-hydroxy ketone (alkoxide, then alcohol); deprotonation to the enolate and loss of hydroxide (E1cB, C–O broken) give benzalacetone. The same sequence on the other methyl group with a second benzaldehyde gives the second aldol adduct and, after E1cB dehydration, dibenzalacetone (1,5-diphenylpenta-1,4-dien-3-one), which precipitates.",
+          "source": {
+            "citation": "C. R. Conard, M. A. Dolliver. Dibenzalacetone. Org. Synth. 1932, 12, 22 (Coll. Vol. 2, 167 (1943)).",
+            "doi": "10.15227/orgsyn.012.0022",
+            "context": "Organic Syntheses preparation (not a total synthesis paper): a mixture of benzaldehyde (2 equiv) and acetone (1 equiv) is added in two portions to a stirred solution of sodium hydroxide in water and ethanol kept at 20–25 °C; after about 45 min in total the yellow dibenzalacetone is filtered off and washed with water (about 90–94%)."
+          },
+          "verified": false,
+          "verificationNote": "Procedure not read in this run (orgsyn.org not reachable from the run environment; DOI, title, volume and page checked with Crossref). Amounts, temperature and times are given from secondary knowledge of this Organic Syntheses procedure; a chemist should check them. Mechanism: the textbook base-catalysed aldol condensation (Clayden ch. 26; Klein ch. 21). The enolates are the deprotonated forms of acetone and of the aldol adducts and are not separate species for the structure key; the alkoxide and the neutral β-hydroxy ketone are forms of one intermediate. Structures to check: the two aldol adducts. PubChem (InChIKey connectivity layer): acetone CID 180, benzaldehyde CID 240 and dibenzalacetone CID 640180 match; intermediates not checked.",
+          "substrate": {
+            "label": "Acetone",
+            "smiles": "CC(C)=O"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "Benzaldehyde (2 equiv; first portion)",
+                  "smiles": "O=Cc1ccccc1"
+                },
+                {
+                  "text": "Benzaldehyde (second equivalent)",
+                  "smiles": "O=Cc1ccccc1"
+                },
+                {
+                  "text": "NaOH (aq.)"
+                }
+              ],
+              "conditions": "H₂O/EtOH, 20–25 °C, about 45 min; the solid is filtered and washed with water",
+              "intermediates": [
+                {
+                  "label": "First aldol adduct, 4-hydroxy-4-phenylbutan-2-one: the acetone enolate added to the benzaldehyde carbonyl (C–C formed); alkoxide or alcohol",
+                  "forms": [
+                    "CC(=O)CC(O)c1ccccc1",
+                    "CC(=O)CC([O-])c1ccccc1"
+                  ]
+                },
+                {
+                  "label": "Benzalacetone (4-phenylbut-3-en-2-one): enolate formation and loss of hydroxide (E1cB, C–O broken)",
+                  "forms": [
+                    "CC(=O)C=Cc1ccccc1"
+                  ]
+                },
+                {
+                  "label": "Second aldol adduct, 1-hydroxy-1,5-diphenylpent-4-en-3-one: the enolate of the methyl group of benzalacetone added to the second benzaldehyde (C–C formed); alkoxide or alcohol",
+                  "forms": [
+                    "O=C(CC(O)c1ccccc1)C=Cc1ccccc1",
+                    "O=C(CC([O-])c1ccccc1)C=Cc1ccccc1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Dibenzalacetone (1,5-diphenylpenta-1,4-dien-3-one)",
+            "smiles": "O=C(C=Cc1ccccc1)C=Cc1ccccc1"
+          },
+          "byproducts": "water (two equivalents)",
+          "mechanismRefs": [
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., ch. 26 (aldol reactions; crossed aldol with a non-enolisable aldehyde, E1cB dehydration).",
+            "D. R. Klein, Organic Chemistry, ch. 21 (aldol condensation, crossed aldol reactions)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 2
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "Benzaldehyde (2 equiv; first portion)",
+              "atom": 0
+            },
+            {
+              "transition": "step 1 int 3",
+              "mol": "substrate",
+              "atom": 0
+            }
+          ],
+          "difficulty": {
+            "steps": 1,
+            "intermediates": 3,
+            "sigmaBondEvents": 5,
+            "textbookLevel": "undergraduate",
+            "stepScores": [
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 1
+          }
+        },
+        {
+          "id": "os1971-shapiro-camphor-tosylhydrazone-bornene",
+          "level": "graduate",
+          "textbookLevel": "graduate",
+          "courseRef": "Kürti–Czakó, Strategic Applications of Named Reactions in Organic Synthesis (2005), entry \"Shapiro reaction\"; Carey–Sundberg, Advanced Organic Chemistry Part B, 5th ed., ch. 5 (eliminations: decomposition of arenesulfonylhydrazones with alkyllithium)",
+          "reaction": "Shapiro reaction: methyllithium deprotonates the N–H of camphor tosylhydrazone and then the α-C–H at C3 (syn to the N-sulfonyl group) to give the dianion; the sulfinate leaves (N–S broken) to give the lithium vinyldiazenide; loss of N₂ (C–N broken) gives 2-bornenyllithium (C–Li formed), which water protonates (C–H formed) to give 2-bornene.",
+          "source": {
+            "citation": "R. H. Shapiro, J. H. Duncan. 2-Bornene. Org. Synth. 1971, 51, 66 (Coll. Vol. 6, 172 (1988)).",
+            "doi": "10.15227/orgsyn.051.0066",
+            "context": "Organic Syntheses preparation of 2-bornene from camphor p-toluenesulfonylhydrazone with excess methyllithium in diethyl ether at room temperature, followed by addition of water; 2-bornene is isolated by sublimation/distillation (not a total synthesis paper)."
+          },
+          "verified": false,
+          "verificationNote": "Procedure not read in this run (orgsyn.org not reachable from the run environment; DOI, title, volume and page checked with Crossref). Reagent amounts, time and work-up are given from secondary knowledge of this Organic Syntheses procedure; a chemist should check them. Mechanism: the established Shapiro mechanism (Kürti–Czakó; Shapiro, Org. React. 1976). The N-anion and the N,C-dianion differ from the substrate only by deprotonation and are not separate species for the structure key, so they are not listed; the vinyldiazenide and the vinyllithium are drawn with N–Li and C–Li bonds (the free vinyl anion would be the product for the key). Structures to check: the lithium vinyldiazenide. PubChem (InChIKey connectivity layer): camphor p-toluenesulfonylhydrazone CID 260732, 2-bornene CID 10047, methyllithium CID 2724049 (drawn as [Li+].[CH3-], as in PubChem; the covalent C[Li] drawing gave a different InChIKey and was replaced) and water CID 962 match; intermediates not checked.",
+          "substrate": {
+            "label": "Camphor p-toluenesulfonylhydrazone",
+            "smiles": "Cc1ccc(cc1)S(=O)(=O)NN=C1CC2CCC1(C)C2(C)C"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "MeLi (excess, about 4 equiv, in Et₂O)",
+                  "smiles": "[Li+].[CH3-]"
+                }
+              ],
+              "conditions": "Et₂O, room temperature, several hours",
+              "intermediates": [
+                {
+                  "label": "Lithium vinyldiazenide: after N–H and C3–H deprotonation (dianion), p-toluenesulfinate leaves (N–S broken)",
+                  "forms": [
+                    "[Li]N=NC1=CC2CCC1(C)C2(C)C",
+                    "[N-]=NC1=CC2CCC1(C)C2(C)C"
+                  ]
+                },
+                {
+                  "label": "2-Bornenyllithium: loss of N₂ (C–N broken, C–Li formed)",
+                  "forms": [
+                    "[Li]C1=CC2CCC1(C)C2(C)C"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "H₂O",
+                  "smiles": "O"
+                }
+              ],
+              "conditions": "added at 0 °C to room temperature; ether layer separated",
+              "intermediates": []
+            }
+          ],
+          "product": {
+            "label": "2-Bornene",
+            "smiles": "C1=CC2CCC1(C)C2(C)C"
+          },
+          "byproducts": "lithium p-toluenesulfinate, N₂, methane, LiOH",
+          "mechanismRefs": [
+            "Kürti–Czakó (2005), Shapiro reaction.",
+            "R. H. Shapiro, Org. React. 1976, 23, 405–507 (Alkenes from tosylhydrazones; doi:10.1002/0471264180.or023.03).",
+            "R. H. Shapiro, M. J. Heath, J. Am. Chem. Soc. 1967, 89, 5734–5735 (doi:10.1021/ja00998a601)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 10
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 11
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 2,
+            "sigmaBondEvents": 5,
+            "textbookLevel": "graduate",
+            "stepScores": [
+              4.0,
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 5.0
+          }
+        },
+        {
+          "id": "jacs2026-ktmp-allylic-borylation-oxidation-z-santalol",
+          "level": "advanced",
+          "textbookLevel": "specialized",
+          "reaction": "One-pot Z-selective allylic oxidation of β-santalene (Schlosser–Clanton type superbase metalation, borylation, oxidation). KOtBu/n-BuLi/TMP form potassium 2,2,6,6-tetramethylpiperidide, which removes a proton from a terminal methyl of the trisubstituted alkene (C–H broken) to give the allylpotassium, which adopts the endo-Z configuration. Triisopropyl borate traps it at the primary carbon (C–B formed) to give the allyltriisopropoxyborate (or the allylboronic ester after loss of KOiPr). Hydrogen peroxide adds to boron to give the peroxyborate (B–O formed); the allyl group migrates from boron to oxygen with loss of hydroxide (C–B and O–O broken, C–O formed), and hydrolysis of the borate ester (B–O broken) releases (Z)-β-santalol with 97:3 Z/E.",
+          "source": {
+            "citation": "O. Iniutina, S. Ghosh, N. Tsuji, M. De, B. List. Catalytic Asymmetric Diels–Alder Reaction of β,β-Disubstituted Enals with Cyclopentadiene: Syntheses of (−)-Camphene, (−)-β-Santalene, and (−)-(Z)-β-Santalol. J. Am. Chem. Soc. 2026, 148.",
+            "doi": "10.1021/jacs.6c14863",
+            "context": "Final step of the five-step synthesis of (−)-(Z)-β-santalol (Figure 3; SI section 7.8, procedure adopted from Clanton et al.): KOtBu (3.0 equiv) in THF at −78 °C, n-BuLi (3.0 equiv, 15 min), 2,2,6,6-tetramethylpiperidine (3.0 equiv, 15 min), then (−)-β-santalene, 1 h at −78 °C; B(OiPr)₃ (3.0 equiv), warming to rt; 35% aq. H₂O₂ (6.0 equiv), 1 h; 48% (65% brsm), Z/E 97:3. One pot."
+          },
+          "verified": false,
+          "verificationNote": "Full text (PMC13761267) and SI (section 7.8, procedure and characterisation of 7) read; conditions are taken from the SI. The paper describes the step as a superbase deprotonation/borylation/oxidation sequence (citing Schlosser and Clanton) without drawing intermediates; the intermediates are the established ones for allylmetal borylation and borane oxidation. The allylpotassium is drawn with C–K bonds (the free allyl anion is the substrate for the structure key). Tetracoordinate borate ate complexes (allyltriisopropoxyborate, peroxyborate) cannot be read by the structure key and are named in the labels but not drawn; the neutral allylboronic ester and the borate ester are the intermediates to find. Structures to check: the allylboronic ester and the borate ester. Stereochemistry (endo, Z) omitted. PubChem (InChIKey connectivity layer): β-santalene CID 10889018, (Z)-β-santalol CID 11031396 (C15H24O, as in the paper's HRMS), triisopropyl borate CID 21531 and hydrogen peroxide CID 784 match; intermediates not checked.",
+          "substrate": {
+            "label": "(−)-β-Santalene",
+            "smiles": "C=C1C2CCC(C2)C1(C)CCC=C(C)C"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "specialized",
+              "reagents": [
+                {
+                  "text": "KOtBu (3.0 equiv)"
+                },
+                {
+                  "text": "n-BuLi (3.0 equiv, hexanes), added to the KOtBu at −78 °C, 15 min"
+                },
+                {
+                  "text": "2,2,6,6-Tetramethylpiperidine (3.0 equiv), 15 min, then the substrate"
+                }
+              ],
+              "conditions": "THF, −78 °C, 1 h",
+              "intermediates": [
+                {
+                  "label": "Allylpotassium: a proton of a terminal methyl group removed (C–H broken); drawn with the potassium on either terminus of the allyl unit",
+                  "forms": [
+                    "[K]CC(C)=CCCC1(C)C2CCC(C2)C1=C",
+                    "C=C(C)C([K])CCC1(C)C2CCC(C2)C1=C"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "B(OiPr)₃ (3.0 equiv)",
+                  "smiles": "CC(C)OB(OC(C)C)OC(C)C"
+                }
+              ],
+              "conditions": "−78 °C to rt",
+              "intermediates": [
+                {
+                  "label": "Allylboronic ester: the primary allylic carbon added to boron (C–B formed, C–K broken) to give the allyltriisopropoxyborate, which loses KOiPr",
+                  "forms": [
+                    "CC(C)OB(CC(C)=CCCC1(C)C2CCC(C2)C1=C)OC(C)C"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 3,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "35% aq. H₂O₂ (6.0 equiv)",
+                  "smiles": "OO"
+                }
+              ],
+              "conditions": "rt, 1 h; diluted with water, extracted with MTBE, washed with 1 M HCl and brine",
+              "intermediates": [
+                {
+                  "label": "Allyl borate ester: hydroperoxide added to boron (peroxyborate), then the allyl group migrated from boron to oxygen (C–B and O–O broken, C–O formed)",
+                  "forms": [
+                    "CC(C)OB(OCC(C)=CCCC1(C)C2CCC(C2)C1=C)OC(C)C"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "(−)-(Z)-β-Santalol",
+            "smiles": "OCC(C)=CCCC1(C)C2CCC(C2)C1=C"
+          },
+          "byproducts": "2,2,6,6-tetramethylpiperidine, butane, tert-butanol, isopropanol, boric acid (as borates), water",
+          "mechanismRefs": [
+            "M. Schlosser, Pure Appl. Chem. 1988, 60, 1627–1634 (superbases; endo-Z preference of 2-alkenylpotassium species).",
+            "Clanton et al., direct deprotonation of unactivated allylic C–H bonds with KTMP and trapping with borates (ref. 36 of the paper; cited in the SI).",
+            "H. C. Brown, Organic Syntheses via Boranes (oxidation of organoboranes by alkaline H₂O₂: 1,2-migration with retention)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 13
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "reagent",
+              "step": 2,
+              "reagent": "B(OiPr)₃ (3.0 equiv)",
+              "atom": 4
+            }
+          ],
+          "difficulty": {
+            "steps": 3,
+            "intermediates": 3,
+            "sigmaBondEvents": 8,
+            "textbookLevel": "specialized",
+            "stepScores": [
+              4.5,
+              3.5,
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 9.0
+          }
+        }
+      ]
     }
   ]
 }

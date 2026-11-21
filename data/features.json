@@ -3074,6 +3074,135 @@
    "heavyAtomChange": 2,
    "ringChange": 0,
    "verified": false
+  },
+  {
+   "id": "jacs2026-ktmp-allylic-borylation-oxidation-z-santalol",
+   "date": "2026-11-21",
+   "level": "advanced",
+   "textbookLevel": "specialized",
+   "reaction": "One-pot Z-selective allylic oxidation of β-santalene (Schlosser–Clanton type superbase metalation, borylation, oxidation). KOtBu/n-BuLi/TMP form potassium 2,2,6,6-tetramethylpiperidide, which removes a proton from a terminal methyl of the trisubstituted alkene (C–H broken) to give the allylpotassium, which adopts the endo-Z configuration. Triisopropyl borate traps it at the primary carbon (C–B formed) to give the allyltriisopropoxyborate (or the allylboronic ester after loss of KOiPr). Hydrogen peroxide adds to boron to give the peroxyborate (B–O formed); the allyl group migrates from boron to oxygen with loss of hydroxide (C–B and O–O broken, C–O formed), and hydrolysis of the borate ester (B–O broken) releases (Z)-β-santalol with 97:3 Z/E.",
+   "source": "jacs",
+   "sourceYear": 2026,
+   "steps": 3,
+   "intermediates": 3,
+   "forms": 4,
+   "stepLevels": [
+    "specialized",
+    "graduate",
+    "undergraduate"
+   ],
+   "reagents": 5,
+   "reagentsWithSmiles": 2,
+   "uncommonReagents": 0,
+   "hints": 2,
+   "difficultyScore": 9,
+   "sigmaBondEvents": 8,
+   "substrate": {
+    "heavyAtoms": 15,
+    "rings": 2,
+    "aromaticRings": 0,
+    "heteroatoms": 0,
+    "stereocentres": 3,
+    "fsp3": 0.73,
+    "mw": 204.2
+   },
+   "product": {
+    "heavyAtoms": 16,
+    "rings": 2,
+    "aromaticRings": 0,
+    "heteroatoms": 1,
+    "stereocentres": 3,
+    "fsp3": 0.73,
+    "mw": 220.2
+   },
+   "heavyAtomChange": 1,
+   "ringChange": 0,
+   "verified": false
+  },
+  {
+   "id": "os1932-claisen-schmidt-dibenzalacetone",
+   "date": "2026-11-21",
+   "level": "undergraduate",
+   "textbookLevel": "undergraduate",
+   "reaction": "Double crossed aldol condensation (Claisen–Schmidt): hydroxide forms the enolate of acetone, which adds to benzaldehyde (C–C formed) to give the β-hydroxy ketone (alkoxide, then alcohol); deprotonation to the enolate and loss of hydroxide (E1cB, C–O broken) give benzalacetone. The same sequence on the other methyl group with a second benzaldehyde gives the second aldol adduct and, after E1cB dehydration, dibenzalacetone (1,5-diphenylpenta-1,4-dien-3-one), which precipitates.",
+   "source": "os",
+   "sourceYear": 1932,
+   "steps": 1,
+   "intermediates": 3,
+   "forms": 5,
+   "stepLevels": [
+    "undergraduate"
+   ],
+   "reagents": 3,
+   "reagentsWithSmiles": 2,
+   "uncommonReagents": 0,
+   "hints": 3,
+   "difficultyScore": 1,
+   "sigmaBondEvents": 5,
+   "substrate": {
+    "heavyAtoms": 4,
+    "rings": 0,
+    "aromaticRings": 0,
+    "heteroatoms": 1,
+    "stereocentres": 0,
+    "fsp3": 0.67,
+    "mw": 58
+   },
+   "product": {
+    "heavyAtoms": 18,
+    "rings": 2,
+    "aromaticRings": 2,
+    "heteroatoms": 1,
+    "stereocentres": 0,
+    "fsp3": 0,
+    "mw": 234.1
+   },
+   "heavyAtomChange": 14,
+   "ringChange": 2,
+   "verified": false
+  },
+  {
+   "id": "os1971-shapiro-camphor-tosylhydrazone-bornene",
+   "date": "2026-11-21",
+   "level": "graduate",
+   "textbookLevel": "graduate",
+   "reaction": "Shapiro reaction: methyllithium deprotonates the N–H of camphor tosylhydrazone and then the α-C–H at C3 (syn to the N-sulfonyl group) to give the dianion; the sulfinate leaves (N–S broken) to give the lithium vinyldiazenide; loss of N₂ (C–N broken) gives 2-bornenyllithium (C–Li formed), which water protonates (C–H formed) to give 2-bornene.",
+   "source": "os",
+   "sourceYear": 1971,
+   "steps": 2,
+   "intermediates": 2,
+   "forms": 3,
+   "stepLevels": [
+    "graduate",
+    "undergraduate"
+   ],
+   "reagents": 2,
+   "reagentsWithSmiles": 2,
+   "uncommonReagents": 0,
+   "hints": 2,
+   "difficultyScore": 5,
+   "sigmaBondEvents": 5,
+   "substrate": {
+    "heavyAtoms": 22,
+    "rings": 3,
+    "aromaticRings": 1,
+    "heteroatoms": 5,
+    "stereocentres": 2,
+    "fsp3": 0.59,
+    "mw": 320.2
+   },
+   "product": {
+    "heavyAtoms": 10,
+    "rings": 2,
+    "aromaticRings": 0,
+    "heteroatoms": 0,
+    "stereocentres": 2,
+    "fsp3": 0.8,
+    "mw": 136.1
+   },
+   "heavyAtomChange": -12,
+   "ringChange": -1,
+   "verified": false
   }
  ]
 }
