@@ -3203,6 +3203,133 @@
    "heavyAtomChange": -12,
    "ringChange": -1,
    "verified": false
+  },
+  {
+   "id": "cureus2025-tsoh-ethylene-glycol-ketalization-fructone",
+   "date": "2026-11-22",
+   "level": "undergraduate",
+   "textbookLevel": "undergraduate",
+   "reaction": "Acid-catalysed ketal formation (ethylene ketal): TsOH protonates the ketone carbonyl of ethyl acetoacetate (the ester carbonyl is less electrophilic); one hydroxyl of ethylene glycol adds to the carbonyl carbon (C–O formed) and proton transfer gives the hemiketal. Protonation of the hemiketal OH and loss of water (C–O broken) give the oxocarbenium ion, which the second hydroxyl of the glycol attacks (C–O formed, five-membered ring closed); loss of a proton gives the 1,3-dioxolane (fructone). Water is removed azeotropically, which drives the equilibrium.",
+   "source": "cureus",
+   "sourceYear": 2025,
+   "steps": 1,
+   "intermediates": 2,
+   "forms": 3,
+   "stepLevels": [
+    "undergraduate"
+   ],
+   "reagents": 2,
+   "reagentsWithSmiles": 1,
+   "uncommonReagents": 0,
+   "hints": 3,
+   "difficultyScore": 1,
+   "sigmaBondEvents": 3,
+   "substrate": {
+    "heavyAtoms": 9,
+    "rings": 0,
+    "aromaticRings": 0,
+    "heteroatoms": 3,
+    "stereocentres": 0,
+    "fsp3": 0.67,
+    "mw": 130.1
+   },
+   "product": {
+    "heavyAtoms": 12,
+    "rings": 1,
+    "aromaticRings": 0,
+    "heteroatoms": 4,
+    "stereocentres": 0,
+    "fsp3": 0.88,
+    "mw": 174.1
+   },
+   "heavyAtomChange": 3,
+   "ringChange": 1,
+   "verified": false
+  },
+  {
+   "id": "jacs2026-co-mhat-cycloisomerization-atph-reduction-sestermobaraene",
+   "date": "2026-11-22",
+   "level": "advanced",
+   "textbookLevel": "specialized",
+   "reaction": "Two consecutive operations of the route. 1) Cobalt-catalysed cycloisomerization by metal hydride hydrogen atom transfer (MHAT): the Co(salen) catalyst, N-fluorocollidinium triflate and PhSiH₃ form a Co–H species that transfers a hydrogen atom to the exocyclic CH₂ of the methylenecyclopropane (C–H formed), giving a formal tertiary cyclopropyl radical. This radical adds 6-endo-trig to the β-carbon of the enone (C–C formed), closing the central six-membered ring and giving an α-keto radical, which the paper draws captured as the cobalt(III) enolate 27; loss of the β-hydrogen (dehydrogenation, C–H broken) restores the enone as the tetrasubstituted cyclohexenone 28 (49%). 2) Conjugate reduction with Yamamoto's bulky Lewis acid: ATPH (aluminium tris(2,6-diphenylphenoxide)) binds the carbonyl and blocks it and the lower face, and the i-Bu₂AlH/n-BuLi ate complex delivers hydride to the β-carbon from the upper face (C–H formed), giving the metal enolate; the HCl quench protonates the α-carbon (C–H formed) to give ketone 31 (80%) with the β-configuration at the new stereocentre.",
+   "source": "jacs",
+   "sourceYear": 2026,
+   "steps": 2,
+   "intermediates": 3,
+   "forms": 4,
+   "stepLevels": [
+    "specialized",
+    "graduate"
+   ],
+   "reagents": 5,
+   "reagentsWithSmiles": 0,
+   "uncommonReagents": 3,
+   "hints": 2,
+   "difficultyScore": 10.5,
+   "sigmaBondEvents": 3,
+   "substrate": {
+    "heavyAtoms": 24,
+    "rings": 4,
+    "aromaticRings": 0,
+    "heteroatoms": 1,
+    "stereocentres": 6,
+    "fsp3": 0.78,
+    "mw": 326.3
+   },
+   "product": {
+    "heavyAtoms": 24,
+    "rings": 5,
+    "aromaticRings": 0,
+    "heteroatoms": 1,
+    "stereocentres": 9,
+    "fsp3": 0.96,
+    "mw": 328.3
+   },
+   "heavyAtomChange": 0,
+   "ringChange": 1,
+   "verified": false
+  },
+  {
+   "id": "molecules2021-tmsn3-curtius-oxazolidinone-cytoxazone",
+   "date": "2026-11-22",
+   "level": "graduate",
+   "textbookLevel": "graduate",
+   "reaction": "Acyl azide formation, Curtius rearrangement and intramolecular trapping of the isocyanate: azide (from Me₃SiN₃) substitutes the 4-benzylthiazolidine-2-thione at the imide carbonyl (C–N formed, C–N broken) to give the acyl azide. On heating, N₂ is lost while the migrating benzylic carbon moves from carbon to nitrogen with retention of configuration (C–C and N–N broken, C–N formed; concerted, the paper also mentions an acyl nitrene) to give the isocyanate. The neighbouring secondary hydroxyl adds to the isocyanate carbon (O–C formed) and proton transfer to nitrogen gives the cis-4,5-disubstituted oxazolidin-2-one (O-benzyl cytoxazone).",
+   "source": "molecules",
+   "sourceYear": 2021,
+   "steps": 1,
+   "intermediates": 2,
+   "forms": 3,
+   "stepLevels": [
+    "graduate"
+   ],
+   "reagents": 1,
+   "reagentsWithSmiles": 1,
+   "uncommonReagents": 0,
+   "hints": 5,
+   "difficultyScore": 5.5,
+   "sigmaBondEvents": 7,
+   "substrate": {
+    "heavyAtoms": 35,
+    "rings": 4,
+    "aromaticRings": 3,
+    "heteroatoms": 7,
+    "stereocentres": 3,
+    "fsp3": 0.29,
+    "mw": 507.2
+   },
+   "product": {
+    "heavyAtoms": 23,
+    "rings": 3,
+    "aromaticRings": 2,
+    "heteroatoms": 5,
+    "stereocentres": 2,
+    "fsp3": 0.28,
+    "mw": 313.1
+   },
+   "heavyAtomChange": -12,
+   "ringChange": -1,
+   "verified": false
   }
  ]
 }

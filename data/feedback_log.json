@@ -147,16 +147,17 @@
         "jacs2026-aspartic-acid-diazotization-bromosuccinic-benthol",
         "jacs2026-seyferth-gilbert-ribose-alkyne-benthol",
         "jacs1969-hwe-enone-corey-prostaglandin",
-        "os1959-vilsmeier-haack-indole-3-aldehyde"
+        "os1959-vilsmeier-haack-indole-3-aldehyde",
+        "os1971-shapiro-camphor-tosylhydrazone-bornene"
       ],
       "evidence": {
-        "ratings": 7,
-        "distinctProblems": 5,
-        "meanStars": 3.29,
-        "results": 10
+        "ratings": 8,
+        "distinctProblems": 6,
+        "meanStars": 3.5,
+        "results": 11
       },
       "firstSeen": "2026-11-10",
-      "lastSeen": "2026-11-20",
+      "lastSeen": "2026-11-21",
       "status": "proposed",
       "proposal": "Set an upper limit for the graduate difficulty score (for example 7) and no uncommon reagent at the graduate level, so that graduate problems stay below the advanced level in complexity.",
       "proposedOn": "2026-11-10"
@@ -457,6 +458,24 @@
         "skipped": 0
       },
       "note": "Evidence recounted from the current data. One new rating without remark (graduate problem of 2026-11-20, 5 stars) added to graduate-level-low-ratings (mean now 3.29 over 7 ratings; already proposed, status unchanged). 4 new results, at most 4 results per problem, so no kind of problem stands out. Rows for jacs2026-dithiane-hydrolysis-arnicenone are ignored (not in data/problems.json; no archive yet). difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters (p_min default) returned no clusters; 49 rejected structures classified into data/wrong_answers.json."
+    },
+    {
+      "date": "2026-11-21",
+      "targetDate": "2026-11-22",
+      "store": "ok",
+      "results": 72,
+      "ratings": 22,
+      "remarks": 18,
+      "newObservations": [],
+      "updated": [
+        "graduate-level-low-ratings"
+      ],
+      "newProposals": [],
+      "tierA": {
+        "applied": [],
+        "skipped": 0
+      },
+      "note": "Evidence recounted from the current data. One new rating without remark (graduate problem of 2026-11-21, 5 stars) added to graduate-level-low-ratings (mean now 3.5 over 8 ratings on 6 problems; already proposed, status unchanged). 2 new results; at most 4 results per problem, so no kind of problem stands out. Rows for jacs2026-dithiane-hydrolysis-arnicenone are ignored (not in data/problems.json; no archive yet). difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters (p_min default) returned no clusters; 50 rejected structures classified into data/wrong_answers.json."
     }
   ]
 }

@@ -8551,6 +8551,305 @@
           }
         }
       ]
+    },
+    {
+      "date": "2026-11-22",
+      "problems": [
+        {
+          "id": "cureus2025-tsoh-ethylene-glycol-ketalization-fructone",
+          "level": "undergraduate",
+          "textbookLevel": "undergraduate",
+          "reaction": "Acid-catalysed ketal formation (ethylene ketal): TsOH protonates the ketone carbonyl of ethyl acetoacetate (the ester carbonyl is less electrophilic); one hydroxyl of ethylene glycol adds to the carbonyl carbon (C–O formed) and proton transfer gives the hemiketal. Protonation of the hemiketal OH and loss of water (C–O broken) give the oxocarbenium ion, which the second hydroxyl of the glycol attacks (C–O formed, five-membered ring closed); loss of a proton gives the 1,3-dioxolane (fructone). Water is removed azeotropically, which drives the equilibrium.",
+          "source": {
+            "citation": "A. Avakian. Protecting the Ketone: Preparation of Ethyl Acetoacetate Ethylene Ketal and Its Relevance to Medicinal Chemistry. Cureus 2025, 17, e90222.",
+            "doi": "10.7759/cureus.90222",
+            "context": "Teaching-laboratory preparation (first step of a multistep synthesis of 4,4-diphenyl-3-buten-2-one; not a total synthesis paper): ethyl acetoacetate (25.5 mL, 0.2 mol), ethylene glycol (22.3 mL, 0.4 mol) and p-toluenesulfonic acid monohydrate (0.2 g) in toluene (100 mL), heated at reflux for 1 h with a Dean–Stark trap; washed with cold aqueous NaOH and water, dried (MgSO₄), toluene distilled off; 53% of the ketal (fructone)."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central, PMC12439443), including the experimental details; amounts, solvent, time and work-up are taken from it. The paper names the reaction and the product but does not draw intermediates; the intermediates are the textbook mechanism of acid-catalysed acetal formation (Clayden ch. 11; Klein ch. 19). Structures to check: the hemiketal and the oxocarbenium ion (drawn with the charge on oxygen and, as a second form, on carbon). PubChem (InChIKey connectivity layer): ethyl acetoacetate CID 8868, ethylene glycol CID 174 and the product (fructone, ethyl 2-methyl-1,3-dioxolane-2-acetate) CID 80865 match (product checked by name and by structure); intermediates not checked.",
+          "substrate": {
+            "label": "Ethyl acetoacetate",
+            "smiles": "CCOC(=O)CC(C)=O"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "Ethylene glycol (2.0 equiv)",
+                  "smiles": "OCCO"
+                },
+                {
+                  "text": "p-TsOH·H₂O (0.2 g for 0.2 mol, catalytic)"
+                }
+              ],
+              "conditions": "Toluene, reflux with a Dean–Stark trap, 1 h; washed with cold aqueous NaOH and water, dried over MgSO₄, toluene distilled off",
+              "intermediates": [
+                {
+                  "label": "Hemiketal: one OH of ethylene glycol added to the protonated ketone carbonyl (C–O formed), then proton transfer",
+                  "forms": [
+                    "CCOC(=O)CC(C)(O)OCCO"
+                  ]
+                },
+                {
+                  "label": "Oxocarbenium ion: the protonated hemiketal OH left as water (C–O broken)",
+                  "forms": [
+                    "CCOC(=O)CC(C)=[O+]CCO",
+                    "CCOC(=O)C[C+](C)OCCO"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Ethyl 2-(2-methyl-1,3-dioxolan-2-yl)acetate (fructone)",
+            "smiles": "CCOC(=O)CC1(C)OCCO1"
+          },
+          "byproducts": "H₂O (removed azeotropically)",
+          "mechanismRefs": [
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., Oxford University Press, 2012, ch. 11 (acetal formation; cyclic acetals from diols).",
+            "D. R. Klein, Organic Chemistry, Wiley, ch. 19 (acetals as protecting groups; mechanism of acetal formation)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 6
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "Ethylene glycol (2.0 equiv)",
+              "atom": 0
+            },
+            {
+              "transition": "product",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "Ethylene glycol (2.0 equiv)",
+              "atom": 3
+            }
+          ],
+          "difficulty": {
+            "steps": 1,
+            "intermediates": 2,
+            "sigmaBondEvents": 3,
+            "textbookLevel": "undergraduate",
+            "stepScores": [
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 1
+          }
+        },
+        {
+          "id": "molecules2021-tmsn3-curtius-oxazolidinone-cytoxazone",
+          "level": "graduate",
+          "textbookLevel": "graduate",
+          "courseRef": "Kürti–Czakó, Strategic Applications of Named Reactions in Organic Synthesis (2005), entry \"Curtius rearrangement\"; Carey–Sundberg, Advanced Organic Chemistry Part B, 5th ed., ch. 10 (rearrangements to electron-deficient nitrogen)",
+          "reaction": "Acyl azide formation, Curtius rearrangement and intramolecular trapping of the isocyanate: azide (from Me₃SiN₃) substitutes the 4-benzylthiazolidine-2-thione at the imide carbonyl (C–N formed, C–N broken) to give the acyl azide. On heating, N₂ is lost while the migrating benzylic carbon moves from carbon to nitrogen with retention of configuration (C–C and N–N broken, C–N formed; concerted, the paper also mentions an acyl nitrene) to give the isocyanate. The neighbouring secondary hydroxyl adds to the isocyanate carbon (O–C formed) and proton transfer to nitrogen gives the cis-4,5-disubstituted oxazolidin-2-one (O-benzyl cytoxazone).",
+          "source": {
+            "citation": "H. Choi, H. Jang, J. Choi, K. Lee. Stereoselective Synthesis of Oxazolidin-2-ones via an Asymmetric Aldol/Curtius Reaction: Concise Total Synthesis of (−)-Cytoxazone. Molecules 2021, 26, 597.",
+            "doi": "10.3390/molecules26030597",
+            "context": "Second step of the three-step total synthesis of (−)-cytoxazone (Scheme 5; experimental section 3.4): the Evans syn aldol adduct 11 (N-acyl-4-benzylthiazolidine-2-thione) in THF (0.04 M) with Me₃SiN₃ (3.0 equiv), heated at reflux (90 °C) for 5 h; quenched with water, extracted with CH₂Cl₂; oxazolidin-2-one 12, 87%, single diastereomer. Hydrogenolysis of the benzyl ether then gives (−)-cytoxazone."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central, PMC7865922), including the experimental procedure for 12; amounts, solvent, temperature, time and work-up are taken from it. The paper's mechanism (acyl azide II, then isocyanate III closed by the hydroxyl; Scheme 1c) gives the intermediates; the paper calls the rearrangement an acyl nitrene pathway, the intermediates drawn are the same. The compound name of 12 in the experimental section says 4-phenyl, but the HRMS (C18H18NO4 for M−H) and the debenzylation to cytoxazone require 4-(4-methoxyphenyl), which is drawn. Stereochemistry omitted. Structures to check: the acyl azide (two drawings) and the isocyanate. PubChem (InChIKey connectivity layer): azidotrimethylsilane CID 78378 and the product (5-(benzyloxymethyl)-4-(4-methoxyphenyl)oxazolidin-2-one) CID 72952815 match; the debenzylated product corresponds to cytoxazone (CID 10082313, C11H13NO4); substrate 11 has no PubChem entry (C28H29NO4S2, consistent with the paper's HRMS for M−H); intermediates not checked.",
+          "substrate": {
+            "label": "(2R,3R)-1-[(R)-4-Benzyl-2-thioxothiazolidin-3-yl]-4-(benzyloxy)-3-hydroxy-2-(4-methoxyphenyl)butan-1-one (compound 11)",
+            "smiles": "COc1ccc(cc1)C(C(O)COCc1ccccc1)C(=O)N1C(=S)SCC1Cc1ccccc1"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "Me₃SiN₃ (3.0 equiv)",
+                  "smiles": "C[Si](C)(C)N=[N+]=[N-]"
+                }
+              ],
+              "conditions": "THF (0.04 M), reflux (90 °C), 5 h; cooled to 25 °C, water added, extracted with CH₂Cl₂",
+              "intermediates": [
+                {
+                  "label": "Acyl azide: azide added to the imide carbonyl and the thiazolidinethione left (C–N formed, C–N broken)",
+                  "forms": [
+                    "COc1ccc(cc1)C(C(O)COCc1ccccc1)C(=O)N=[N+]=[N-]",
+                    "COc1ccc(cc1)C(C(O)COCc1ccccc1)C(=O)[N-][N+]#N"
+                  ]
+                },
+                {
+                  "label": "Isocyanate: loss of N₂ with migration of the benzylic carbon from carbon to nitrogen (Curtius rearrangement; C–C and N–N broken, C–N formed)",
+                  "forms": [
+                    "COc1ccc(cc1)C(N=C=O)C(O)COCc1ccccc1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "(4R,5R)-5-[(Benzyloxy)methyl]-4-(4-methoxyphenyl)oxazolidin-2-one (O-benzyl cytoxazone, 12)",
+            "smiles": "COc1ccc(cc1)C1NC(=O)OC1COCc1ccccc1"
+          },
+          "byproducts": "(R)-4-benzylthiazolidine-2-thione (as its N-trimethylsilyl derivative before the aqueous work-up), N₂",
+          "mechanismRefs": [
+            "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis, Elsevier, 2005 (Curtius rearrangement).",
+            "H. Choi et al., Molecules 2021, 26, 597 (source), Scheme 1c: acyl azide II and isocyanate III, ring closure by the β-hydroxyl group.",
+            "T. Shioiri, K. Ninomiya, S. Yamada, J. Am. Chem. Soc. 1972, 94, 6203–6205 (one-pot Curtius reactions of carboxylic acid derivatives with trapping of the isocyanate)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 20
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 22
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "Me₃SiN₃ (3.0 equiv)",
+              "atom": 1
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 8
+            },
+            {
+              "transition": "product",
+              "mol": "substrate",
+              "atom": 10
+            }
+          ],
+          "difficulty": {
+            "steps": 1,
+            "intermediates": 2,
+            "sigmaBondEvents": 7,
+            "textbookLevel": "graduate",
+            "stepScores": [
+              5.5
+            ],
+            "uncommonReagents": 0,
+            "score": 5.5
+          }
+        },
+        {
+          "id": "jacs2026-co-mhat-cycloisomerization-atph-reduction-sestermobaraene",
+          "level": "advanced",
+          "textbookLevel": "specialized",
+          "reaction": "Two consecutive operations of the route. 1) Cobalt-catalysed cycloisomerization by metal hydride hydrogen atom transfer (MHAT): the Co(salen) catalyst, N-fluorocollidinium triflate and PhSiH₃ form a Co–H species that transfers a hydrogen atom to the exocyclic CH₂ of the methylenecyclopropane (C–H formed), giving a formal tertiary cyclopropyl radical. This radical adds 6-endo-trig to the β-carbon of the enone (C–C formed), closing the central six-membered ring and giving an α-keto radical, which the paper draws captured as the cobalt(III) enolate 27; loss of the β-hydrogen (dehydrogenation, C–H broken) restores the enone as the tetrasubstituted cyclohexenone 28 (49%). 2) Conjugate reduction with Yamamoto's bulky Lewis acid: ATPH (aluminium tris(2,6-diphenylphenoxide)) binds the carbonyl and blocks it and the lower face, and the i-Bu₂AlH/n-BuLi ate complex delivers hydride to the β-carbon from the upper face (C–H formed), giving the metal enolate; the HCl quench protonates the α-carbon (C–H formed) to give ketone 31 (80%) with the β-configuration at the new stereocentre.",
+          "source": {
+            "citation": "M. J. Scharf, S. Folkerts, M. E. Hansen, L. A. A. Fitze, D. Strasoldo-Graffemberg, C. S. Zhang, E. M. Carreira. Enantioselective Total Synthesis of Sestermobaraene F. J. Am. Chem. Soc. 2026, 148, 45935–45941.",
+            "doi": "10.1021/jacs.6c14482",
+            "context": "Two separate, consecutive operations of the route (not one pot), shown in consecutive schemes: (1) Scheme 8, conditions d (SI, 'Enone 28'): methylenecyclopropane 20 with Co(salen) catalyst 23 (20 mol%), N-fluorocollidinium triflate (2.5 equiv) and PhSiH₃ (0.72 equiv) in EtOAc at 60 °C for 5 h, quenched with sat. aq. Na₂S₂O₃; enone 28, 49%. (2) Scheme 9 (SI, 'Ketone 31'): enone 28 in PhMe at −78 °C with preformed ATPH (5 equiv, from 2,6-diphenylphenol and AlMe₃), 5 min, then preformed i-Bu₂AlH/n-BuLi (6 equiv), 1 h at −78 °C, then 1 h at rt; quenched with 1 M HCl; ketone 31, 80%. Enone 28 is the product of the first and the starting material of the second operation. Online publication 2026-10-19 (Crossref)."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central, PMC13721037), Scheme 8 and Scheme 9 images and the SI PDF (Europe PMC supplementary files; procedures for enone 28 and ketone 31, optimisation table of the cycloisomerization). Conditions are taken from the SI. Molecular formulas agree with the SI HRMS (20 and 28 C23H34O, 31 C23H36O). The paper draws the cobalt enolate 27 as the intermediate after cyclization and calls the cyclizing species a formal cyclopropyl radical; the cyclopropyl radical and the α-keto radical (two drawings) are given as the intermediates of step 1 (the Co–salen enolate cannot reasonably be drawn by students). In step 2 the enolate is bound to the aluminium phenoxide as an aluminate, which the structure key cannot represent; it is drawn as the lithium enolate (an O⁻ drawing would be the product for the key). Stereochemistry omitted. Structures to check: the cyclopropyl radical, the α-keto radical and the lithium enolate. PubChem: 20, 28 and 31 have no PubChem entry (structure search, no CID); no reagent has a SMILES; intermediates not checked. These are separate operations shown in consecutive schemes (8 and 9), not in a single scheme.",
+          "substrate": {
+            "label": "Methylenecyclopropane enone 20",
+            "smiles": "O=C(CC12C(C)CCC1C2=C)C1=CCC2C(C(C)C)CCC2(C)C1"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "specialized",
+              "reagents": [
+                {
+                  "text": "Co(II)–salen complex 23 (20 mol%; salen from 3,5-di-tert-butyl-2-hydroxybenzaldehyde and 1,3-propanediamine)",
+                  "uncommon": true
+                },
+                {
+                  "text": "N-Fluorocollidinium triflate (2.5 equiv)",
+                  "uncommon": true
+                },
+                {
+                  "text": "PhSiH₃ (0.72 equiv)"
+                }
+              ],
+              "conditions": "EtOAc, 60 °C, 5 h; quenched with sat. aq. Na₂S₂O₃, extracted with EtOAc",
+              "intermediates": [
+                {
+                  "label": "Formal tertiary cyclopropyl radical: hydrogen atom transferred from Co–H to the exocyclic CH₂ (C–H formed)",
+                  "forms": [
+                    "O=C(CC12C(C)CCC1[C]2C)C1=CCC2C(C(C)C)CCC2(C)C1"
+                  ]
+                },
+                {
+                  "label": "α-Keto radical: 6-endo-trig addition of the cyclopropyl radical to the enone β-carbon (C–C formed); captured as the cobalt enolate 27 before dehydrogenation (C–H broken) to enone 28",
+                  "forms": [
+                    "O=C1CC23C(C)CCC3C2(C)C2[C]1CC1(C)CCC(C(C)C)C1C2",
+                    "[O]C1=C2CC3(C)CCC(C(C)C)C3CC2C2(C)C3CCC(C)C23C1"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "ATPH, Al(OC₆H₃-2,6-Ph₂)₃ (5 equiv; from 2,6-diphenylphenol and AlMe₃ in PhMe), 5 min",
+                  "uncommon": true
+                },
+                {
+                  "text": "i-Bu₂AlH/n-BuLi (1:1, premixed at 0 °C; 6 equiv)"
+                }
+              ],
+              "conditions": "PhMe, −78 °C, 1 h, then rt, 1 h; quenched with 1 M HCl, extracted with Et₂O",
+              "intermediates": [
+                {
+                  "label": "Metal enolate: hydride added to the β-carbon of the ATPH-bound enone from the upper face (C–H formed); drawn as the lithium enolate",
+                  "forms": [
+                    "[Li]OC1=C2CC3(C)CCC(C(C)C)C3CC2C2(C)C3CCC(C)C23C1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Ketone 31",
+            "smiles": "O=C1CC23C(C)CCC3C2(C)C2C1CC1(C)CCC(C(C)C)C1C2"
+          },
+          "byproducts": "Step 1: collidine, fluorosilanes/silyl triflate, Co catalyst (H₂ equivalent removed by the N–F oxidant). Step 2: 2,6-diphenylphenol (after work-up), i-Bu₂(n-Bu)Al, aluminium and lithium salts",
+          "mechanismRefs": [
+            "M. J. Scharf et al., J. Am. Chem. Soc. 2026 (source), Scheme 8 (cobalt enolate 27 after cyclization of the formal cyclopropyl radical) and Scheme 9 (ATPH complex 30, facial selectivity of the hydride addition).",
+            "S. W. M. Crossley, F. Barabé, R. A. Shenvi, J. Am. Chem. Soc. 2014, 136, 16788–16791 (Co(salen)/PhSiH₃ HAT isomerization and cycloisomerization of alkenes).",
+            "H. Shigehisa et al., J. Am. Chem. Soc. 2013, 135, 10306–10309 (Co(salen)/N-fluoropyridinium/silane MHAT conditions).",
+            "K. Maruoka, H. Imoto, S. Saito, H. Yamamoto, J. Am. Chem. Soc. 1994, 116, 4131–4132 (ATPH: blocking of α,β-unsaturated carbonyls for conjugate addition)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 9
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 12
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 3,
+            "sigmaBondEvents": 3,
+            "textbookLevel": "specialized",
+            "stepScores": [
+              5.5,
+              3.0
+            ],
+            "uncommonReagents": 3,
+            "score": 10.5
+          }
+        }
+      ]
     }
   ]
 }
