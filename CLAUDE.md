@@ -8,7 +8,7 @@ Scheduled runs: the scheduled-task prompt is authoritative; this file does not c
 |---|---|
 | Source of truth | this repository, branch `main` (the claude.ai page was deleted on 2026-11-10) |
 | Site | GitHub Pages https://qdher.github.io/Daily-organic-chemistry-puzzles/ (deployed from `main` by `.github/workflows/pages.yml`) |
-| Daily generation | Claude Code scheduled task "One-Pot Puzzles daily set (Claude Code)" (`trig_01Hcu3iDawxUzV2mvz3jy9qf`), daily at 20:43 America/New_York |
+| Daily generation | Claude Code scheduled task "Daily puzzle" (`trig_01Hcu3iDawxUzV2mvz3jy9qf`; before 2026-11-23 "One-Pot Puzzles daily set (Claude Code)"), runs daily at 20:43 America/New_York; sets are dated Monday to Friday only and prepared up to five weekdays ahead (decision of 2026-11-23); on Saturday and Sunday the page shows Friday's set |
 | Scheduled-task prompt backup | `TASK_PROMPT.md` |
 | Problems | `data/problems.json` (last 32 days and later; built into `index.html` by `src/build.js`) |
 | Archive | `data/archive.json.gz` (older sets, moved by `src/build.js` via `src/archive.js`; read with `zcat`); the page shows the last month only |
@@ -37,6 +37,7 @@ Scheduled runs: the scheduled-task prompt is authoritative; this file does not c
 - Structure comparison (`src/chemkey.js`, same file in both repositories): tautomers are equivalent only when each moved proton forms or breaks a bond to N, O or S (keto/enol, imine/enamine, amide/imidic acid). A net proton move from carbon to carbon (alkene isomer) is a different species, even via an enol. Matching is checked in both directions. An intermediate that is such a tautomer of the substrate, the product or another intermediate cannot be found on the page and must be removed (the validator reports it). `node src/test_chemkey.js` must pass.
 - Hints (`src/curate.py`): atoms with a bond made or broken between substrate (with reagents) and product, never both atoms of a double or triple bond (only the C or the O of a carbonyl, one C of an alkene/alkyne); at least 2 per problem. Atoms changed only in intermediates are used only to reach that minimum.
 - New entries: `"verified": false`; `verificationNote` states what was read and which structures need checking; SMILES checked against PubChem (InChIKey connectivity layer).
+- Sets are dated Monday to Friday only from 2026-11-24 (the validator rejects a Saturday or Sunday date).
 - Each set: undergraduate, graduate, advanced, in that order, with increasing difficulty scores; the graduate score is at least 3; the advanced problem has at least 2 steps and a score of at least 8.
 - Difficulty (`curate.py`): score = sum of step scores (`stepLevel` undergraduate 1; graduate 2 + 0.5 × σ bonds of the step; specialized 3 + intermediates of the step + 0.5 × σ bonds) + 1 per distinct `"uncommon": true` reagent (max 2). Graduate problems need a graduate step and `courseRef`; advanced problems need a specialized step or an uncommon reagent. The validator applies the step, increasing-score and advanced rules to all sets except `LEGACY_DATES` in `src/validate_problems.js` (published sets kept as they are although they do not meet the difficulty thresholds; do not search for replacements of older problems).
 

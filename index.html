@@ -234,7 +234,7 @@ body { padding-block: 14px 40px; }
   <header class="top">
     <div class="brand">
       <h1>Moran's lab mechanistic puzzle</h1>
-      <p>Three one-pot steps from recent total syntheses, renewed every day at 10:00 Eastern time: undergraduate, graduate and advanced. Draw the product; mechanistic intermediates count too.</p>
+      <p>Three one-pot steps from recent total syntheses, renewed every weekday (Monday to Friday) at 10:00 Eastern time: undergraduate, graduate and advanced. Draw the product; mechanistic intermediates count too.</p>
     </div>
     <div class="clock">
       <span class="eyebrow" id="setText">Today's set</span>
@@ -941,6 +941,8 @@ function changeInstant(i) {            // UTC instant of day i at changeHour, ti
   return t;
 }
 const dateOf = i => new Date(START_UTC_DAY + i * 864e5).toISOString().slice(0, 10);
+// sets are published Monday to Friday (decision of 2026-11-23); Saturday and Sunday show Friday's set
+const isWeekend = iso => { const d = new Date(iso + 'T12:00:00Z').getUTCDay(); return d === 0 || d === 6; };
 const fmtDay = iso => new Date(iso + 'T12:00:00Z').toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric', timeZone: 'UTC' });
 function setFor(i) {
   const want = dateOf(i);
@@ -1022,11 +1024,12 @@ function loadDay(i) {
   viewDay = i;
   daySet = setFor(i);
   const startT = changeInstant(i);
-  $('setText').textContent = (i === currentDay ? "Today's set · " : 'Set of ') + fmtDay(dateOf(i));
+  const weekend = isWeekend(dateOf(i)) && daySet.date !== dateOf(i);
+  $('setText').textContent = weekend ? 'Weekend · set of ' + fmtDay(daySet.date) : (i === currentDay ? "Today's set · " : 'Set of ') + fmtDay(dateOf(i));
   $('prevDay').disabled = i <= firstDay();
   $('nextDay').disabled = i >= currentDay;
   renderDayList();
-  const stale = daySet.date !== dateOf(i);
+  const stale = daySet.date !== dateOf(i) && !weekend;
   $('staleNote').hidden = !stale;
   if (stale) $('staleNote').textContent = `No set has been added for ${fmtDay(dateOf(i))} yet; showing the set of ${fmtDay(daySet.date)}.`;
   tabIndex = Math.min(tabIndex, daySet.problems.length - 1);
@@ -1189,7 +1192,9 @@ async function check() {
 function tick() {
   const now = Date.now(), d = Math.max(0, dayIndex(now));
   if (d !== currentDay) { const follow = viewDay === currentDay; currentDay = d; if (follow) loadDay(d); else loadDay(viewDay); }
-  const left = Math.max(0, changeInstant(currentDay + 1) - now);
+  let next = currentDay + 1;
+  while (isWeekend(dateOf(next))) next += 1;   // no set on Saturday and Sunday
+  const left = Math.max(0, changeInstant(next) - now);
   const h = Math.floor(left / 3.6e6), m = Math.floor(left % 3.6e6 / 6e4), s = Math.floor(left % 6e4 / 1e3);
   $('countdown').textContent = 'next set in ' + [h, m, s].map(x => String(x).padStart(2, '0')).join(':');
 }
@@ -1210,9 +1215,11 @@ async function main() {
   $('loadSubBtn').onclick = () => editor.setSmiles(P.substrate.smiles);
   $('answerLink').onclick = () => { if (!state.solved && !state.final) { state.revealed = true; finishProblem(true); save(); renderAll(); updateAttempts(); } };
   $('resetBtn').onclick = () => { store.del('onepot:' + P.id); selectProblem(tabIndex); };
-  $('prevDay').onclick = () => loadDay(viewDay - 1);
+  // previous and next skip days without a set (weekends), today excepted
+  const step = dir => { let i = viewDay + dir; while (i > firstDay() && i < currentDay && !setOnDate(dateOf(i))) i += dir; loadDay(i); };
+  $('prevDay').onclick = () => step(-1);
   $('dayList').onchange = e => loadDay(+e.target.value);
-  $('nextDay').onclick = () => loadDay(viewDay + 1);
+  $('nextDay').onclick = () => step(1);
   currentDay = Math.max(0, dayIndex(Date.now()));
   loadDay(currentDay); tick(); setInterval(tick, 1000);
   // The editor iframe takes focus while loading and the browser scrolls to it; return to the question

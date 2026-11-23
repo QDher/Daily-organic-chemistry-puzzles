@@ -11,6 +11,7 @@ const data = JSON.parse(fs.readFileSync(file, 'utf8'));
 
 const LEVELS = ['undergraduate', 'graduate', 'advanced'];
 const MAX_HINTS = { undergraduate: 3, graduate: 5, advanced: 8 };
+const WEEKDAY_FROM = '2026-11-24';
 // From this date on: a step starts only when a reagent is added or the solvent/temperature changes,
 // and the advanced problem has at least 2 such steps. Applied to all sets except LEGACY_DATES.
 const STEP_RULE_FROM = '2000-01-01';
@@ -50,6 +51,8 @@ init().then(R => {
   const dates = data.sets.map(s => s.date);
   if ([...dates].sort().join() !== dates.join()) err('sets', 'dates are not in ascending order');
   if (new Set(dates).size !== dates.length) err('sets', 'duplicate date');
+  // sets are published Monday to Friday from this date on (decision of 2026-11-23)
+  for (const d of dates) if (d >= WEEKDAY_FROM && [0, 6].includes(new Date(d + 'T12:00:00Z').getUTCDay())) err(d, 'sets are published Monday to Friday only: this date is a Saturday or Sunday');
   const ids = new Map(), steps = new Map();
   // archived sets (data/archive.json.gz): their ids and paper + reaction pairs stay used
   for (const day of readArchive()) for (const P of day.problems) { ids.set(P.id, day.date + ' (archived)'); steps.set((P.source && P.source.doi) + ' | ' + P.reaction, day.date + ' (archived)'); }

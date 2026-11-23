@@ -1,12 +1,12 @@
-# Scheduled task backup: One-Pot Puzzles daily set
+# Scheduled task backup: Daily puzzle (One-Pot Puzzles)
 
 Backup of the Claude Code scheduled task that adds a daily set to this repository and pushes it to `main` (GitHub Pages site). Use it to recreate the task if it is deleted, and update this file whenever the task is edited.
 
 | Setting | Value |
 |---|---|
-| Name | One-Pot Puzzles daily set (Claude Code) |
+| Name | Daily puzzle (renamed on 2026-11-23; before: One-Pot Puzzles daily set (Claude Code)) |
 | Where | Claude Code scheduled tasks: https://claude.ai/code/routines |
-| Schedule | Daily at 20:43, America/New_York (Ottawa time) — cron `CRON_TZ=America/New_York 43 20 * * *` |
+| Schedule | Runs daily at 20:43, America/New_York (Ottawa time) — cron `CRON_TZ=America/New_York 43 20 * * *`; sets are dated Monday to Friday only (up to five weekdays ahead), so weekend runs prepare sets ahead |
 | Model | Opus 5.5 |
 | Repository attached | `QDher/Daily-organic-chemistry-puzzles` (cloned at the start of each run; the run pushes to `main`) |
 | Connectors | PubMed, ChEMBL, SciSpace |
@@ -16,7 +16,7 @@ Backup of the Claude Code scheduled task that adds a daily set to this repositor
 
 The earlier Cowork task "One-Pot Puzzles daily set" was deleted on 2026-11-10 (it used the claude.ai page, also deleted).
 
-Backed up on 2026-11-19, after the merge of the changes (step 3c: classification of rejected structures into data/wrong_answers.json; data/features.json written by src/build.js); the scheduled task holds this prompt text (compared character by character after the update). Previous backup: backed up on 2026-11-11, after the merge of the changes (step 3b: scoring rule that does not count correct intermediates, feedback reaches selection only through a model the user activates, difficulty votes; step 3c: Tier A additions of resonance forms, at most 3 per run); the scheduled task holds this prompt text (compared character by character after the update). Previous backup: 2026-11-10, step 3b updated for the Cloudflare feedback store (the GitHub repository is the only copy of the site and its data; the claude.ai page was deleted; sets older than 32 days are archived in data/archive.json.gz).
+Backed up on 2026-11-23: renamed "Daily puzzle"; sets published Monday to Friday only, prepared up to five weekdays ahead by the daily runs; dates computed in America/New_York with an explicit command (the run of 2026-11-22 took the UTC date). The scheduled task holds the identical text.
 
 ## Prompt
 
@@ -46,7 +46,9 @@ In the clone: git fetch origin main && git checkout -B main origin/main. Work in
   node src/test_chemkey.js                            (every case must pass: the last line reads N/N as expected)
 
 3. WHICH DATE
-A set appears every day at 10:00 America/New_York. Let "tomorrow" be tomorrow's date in America/New_York. Target date = the earliest date >= tomorrow with no entry in data/problems.json "sets". If tomorrow and the day after both already have sets, do not change anything: report "queue already full until <date>" and stop.
+A set appears every weekday (Monday to Friday) at 10:00 America/New_York; no set is dated on a Saturday or Sunday. The task runs every day, so that the weekend runs prepare sets ahead. Dates are in America/New_York, never UTC: today = output of `TZ=America/New_York date +%F`; the next five weekdays from tomorrow on = output of
+  for i in $(seq 1 9); do d=$(TZ=America/New_York date -d "+$i day" +%F); [ "$(date -d "$d" +%u)" -le 5 ] && echo "$d"; done | head -5
+Target date = the first of these five dates with no entry in data/problems.json "sets". If all five already have sets, do not change anything: report "queue already full until <last of the five dates>" and stop.
 
 3b. READ USER FEEDBACK AND UPDATE THE FEEDBACK LOG (observation only; skip this step when step 3 found the queue full)
 Visitors' results and ratings are stored in a Cloudflare D1 database behind the Worker https://puzzle-feedback.dailyorgchem.workers.dev (code, schema and deployment in feedback-worker/ of the GitHub repository QDher/Daily-organic-chemistry-puzzles). Fetch with curl, POST, header "Content-Type: application/json" (no key):
