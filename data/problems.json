@@ -8850,6 +8850,388 @@
           }
         }
       ]
+    },
+    {
+      "date": "2026-11-24",
+      "problems": [
+        {
+          "id": "jacs2026-grignard-vinylogous-ester-acid-transposition-arnicenone",
+          "level": "undergraduate",
+          "textbookLevel": "undergraduate",
+          "reaction": "1,2-Addition of a Grignard reagent to a vinylogous ester followed by acid hydrolysis (carbonyl transposition, known as the Stork–Danheiser transposition) and ketal hydrolysis in the same acidic work-up. The alkylmagnesium chloride adds to the ketone carbonyl of 3-isobutoxycyclopent-2-en-1-one (C–C formed, tertiary alkoxide). Aqueous HCl protonates the tertiary alcohol, which leaves as water (C–O broken) to give an allyl cation stabilized by the isobutoxy group (oxocarbenium). Water adds to the oxocarbenium carbon (C–O formed: hemiacetal), and isobutanol is lost (C–O broken) to give the transposed enone. The same acid hydrolyses the 2-methyl-1,3-dioxolane: ring opening to an oxocarbenium (C–O broken), addition of water (hemiketal, C–O formed) and loss of ethylene glycol (C–O broken) release the methyl ketone.",
+          "source": {
+            "citation": "C.-H. Liu, H.-T. Huang, H.-J. Li, S. A. Dighe, D.-L. Hou, L.-Y. Wu, Y.-W. Huang. Diastereodivergent Access to cis,cis- and cis,trans-Angular Triquinanes: Total Synthesis of (±)-Arnicenone. J. Am. Chem. Soc. 2026, 148, 41724–41732.",
+            "doi": "10.1021/jacs.6c09019",
+            "context": "Preparation of diketone 24b, the common precursor of the allenes used for the angular triquinanes and (±)-arnicenone (Scheme 2; SI general procedure for 24(a-d)): vinylogous ester 22 and Grignard reagent 23 (1.2 equiv) in THF, 0 °C then 60 °C for 24 h; then ice-cold 6 N aqueous HCl at 0 °C for 30 min ('to remove the protecting group'), then 6 N NaOH; 78% of 24b. One pot."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central PMC13651531) and the SI PDF (Europe PMC supplementary files: general procedure for 24(a-d), characterization of 24b: 1H/13C NMR, HRMS C10H15O2 [M+H]+). Scheme 2 (structures of 22 and 23) could not be viewed (image server blocked), so both were deduced: 22 is 3-isobutoxycyclopent-2-en-1-one from the amounts in the SI (15.12 g = 0.098 mol, i.e. 154 g/mol, C9H14O2) and the vinylogous-ester wording; 23 is drawn as the chloride Grignard reagent of 2-(3-chloropropyl)-2-methyl-1,3-dioxolane, because 24b carries a 4-oxopentyl chain and the acid treatment is said to remove a protecting group (a ketal is assumed; the halide is assumed). A chemist should check 22 and 23 against Scheme 2. The paper does not discuss the mechanism; it follows the generally accepted mechanism of the Stork–Danheiser transposition and of ketal hydrolysis; the order of the two hydrolyses in the acidic work-up is not known (enone formation is drawn first). PubChem (InChIKey connectivity layer, RDKit vs PubChem): 22 = 3-(2-methylpropoxy)cyclopent-2-en-1-one CID 12579141 (by structure); product 24b = 3-(4-oxopentyl)cyclopent-2-en-1-one CID 100929364 (by name); Grignard reagent CID 11769299 found by structure (PubChem stores it as a salt, so its InChIKey differs from the covalent drawing); its precursor 2-(3-chloropropyl)-2-methyl-1,3-dioxolane CID 80079.",
+          "substrate": {
+            "label": "3-Isobutoxycyclopent-2-en-1-one (22)",
+            "smiles": "CC(C)COC1=CC(=O)CC1"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "[3-(2-Methyl-1,3-dioxolan-2-yl)propyl]magnesium chloride (23, 1.2 equiv, in THF)",
+                  "smiles": "CC1(CCC[Mg]Cl)OCCO1"
+                }
+              ],
+              "conditions": "THF, added at 0 °C; then 60 °C, 24 h",
+              "intermediates": [
+                {
+                  "label": "Tertiary magnesium alkoxide: the alkyl group adds to the ketone carbonyl (C–C formed)",
+                  "forms": [
+                    "CC(C)COC1=CC([O-])(CCCC2(C)OCCO2)CC1",
+                    "CC(C)COC1=CC(O[Mg]Cl)(CCCC2(C)OCCO2)CC1",
+                    "CC(C)COC1=CC(O)(CCCC2(C)OCCO2)CC1"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "6 N aqueous HCl (ice-cold, 15 equiv)"
+                }
+              ],
+              "conditions": "0 °C, 30 min; then ice-cold 6 N aqueous NaOH, extraction",
+              "intermediates": [
+                {
+                  "label": "Allyl cation stabilized by the isobutoxy group (oxocarbenium) after the protonated tertiary alcohol leaves as water (C–O broken)",
+                  "forms": [
+                    "CC(C)C[O+]=C1C=C(CCCC2(C)OCCO2)CC1",
+                    "CC(C)CO[C+]1C=C(CCCC2(C)OCCO2)CC1",
+                    "CC(C)COC1=C[C+](CCCC2(C)OCCO2)CC1"
+                  ]
+                },
+                {
+                  "label": "Hemiacetal: water adds to the oxocarbenium carbon (C–O formed)",
+                  "forms": [
+                    "CC(C)COC1(O)C=C(CCCC2(C)OCCO2)CC1"
+                  ]
+                },
+                {
+                  "label": "Transposed enone, ketal still present: isobutanol is lost (C–O broken)",
+                  "forms": [
+                    "O=C1C=C(CCCC2(C)OCCO2)CC1"
+                  ]
+                },
+                {
+                  "label": "Oxocarbenium after protonation and ring opening of the dioxolane (C–O broken)",
+                  "forms": [
+                    "O=C1C=C(CCCC(C)=[O+]CCO)CC1",
+                    "O=C1C=C(CCC[C+](C)OCCO)CC1"
+                  ]
+                },
+                {
+                  "label": "Hemiketal: water adds to the oxocarbenium carbon (C–O formed); ethylene glycol is then lost (C–O broken)",
+                  "forms": [
+                    "O=C1C=C(CCCC(C)(O)OCCO)CC1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "3-(4-Oxopentyl)cyclopent-2-en-1-one (24b)",
+            "smiles": "CC(=O)CCCC1=CC(=O)CC1"
+          },
+          "byproducts": "Isobutanol; ethylene glycol; water; MgCl₂/Mg(OH)Cl; NaCl",
+          "mechanismRefs": [
+            "G. Stork, R. L. Danheiser, J. Org. Chem. 1973, 38, 1775–1776 (alkylation of vinylogous esters; addition of organometallic reagents followed by acid hydrolysis gives the transposed enone).",
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., Oxford University Press, 2012, ch. 9 (Grignard addition to C=O) and ch. 11 (acetal and enol ether hydrolysis)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 7
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "substrate",
+              "atom": 5
+            },
+            {
+              "transition": "step 2 int 4",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "[3-(2-Methyl-1,3-dioxolan-2-yl)propyl]magnesium chloride (23, 1.2 equiv, in THF)",
+              "atom": 7
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 6,
+            "sigmaBondEvents": 8,
+            "textbookLevel": "undergraduate",
+            "stepScores": [
+              1,
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 2
+          }
+        },
+        {
+          "id": "jacs2026-dibal-hemiacetal-hwe-olefination-rhabdobranin",
+          "level": "graduate",
+          "textbookLevel": "graduate",
+          "courseRef": "Kürti–Czakó, Strategic Applications of Named Reactions in Organic Synthesis (2005), entry \"Horner–Wadsworth–Emmons olefination\"; Clayden, Greeves, Warren, Organic Chemistry, 2nd ed., ch. 27 (phosphonate-stabilized anions)",
+          "reaction": "One-pot partial reduction and Horner–Wadsworth–Emmons olefination. DIBAL delivers hydride to the ethyl ester at −78 °C; the tetrahedral aluminium hemiacetal is stable at this temperature, so the labile aldehyde (which would otherwise cyclize with the side-chain carbamate) is not formed until the phosphonate anion is present. On warming, the hemiacetal collapses (C–OEt broken) to the α-amino aldehyde, which is trapped by the sodium salt of triethyl phosphonoacetate: C–C bond formation gives the β-alkoxy phosphonate, the alkoxide adds to phosphorus (O–P formed: oxaphosphetane), and syn-elimination (C–P and C–O broken) releases diethyl phosphate and the (E)-α,β-unsaturated ethyl ester (two-carbon homologation).",
+          "source": {
+            "citation": "W. S. Jo, Z. Attieh, J. J. Crames, C. L. Knopp, J. Connelly, Y.-M. Shi, C. S. Wilson, M. Dehghan, P. Grün, S. Chang, F. S. Refai, F. Piano, K. C. Gunsalus, T. Schneider, H. B. Bode, A. R. Healy. Total Synthesis and Structural Revision of Rhabdobranin Reveals a Cryptic Gram-Negative Antibiotic. J. Am. Chem. Soc. 2026, 148, 38069–38079.",
+            "doi": "10.1021/jacs.6c09931",
+            "context": "First step of the synthesis of allylic aldehyde 9 (Scheme 2, step a; SI p. S50): Fmoc-Orn(Boc)-OEt (10) is reduced with DIBAL (2.2 equiv) in Et₂O at −78 °C for 30 min, then a THF solution of the sodium salt of triethyl phosphonoacetate (1.2 equiv, from NaH 1.1 equiv, 0 °C) is added at −78 °C and the mixture is stirred at 23 °C for 7 h; Rochelle salt work-up gives α,β-unsaturated ester 12 (60%). One pot ('one-pot reductive olefination', avoiding isolation of the aldehyde, which cyclizes)."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central PMC13564427) and the SI PDF (Europe PMC supplementary files; procedure for ester 12 on p. S50 with amounts, temperatures and times; characterization of 12: 1H NMR with the trans CH=CH coupling of 15.7 Hz, HRMS C29H37N2O6 [M+H]+, which matches the SMILES used). Structures of 10 and 12 follow from the SI names, NMR and HRMS; stereochemistry (L-ornithine, E-alkene) is not required. The mechanism is not discussed in the paper; the hemiacetal and HWE intermediates follow the generally accepted mechanism (the SI cites literature precedents for the one-pot reduction/olefination). The fate of the excess DIBAL (the second equivalent, probably consumed by the carbamate N–H groups) is not drawn. A chemist should check the ester group of 12 (ethyl, from triethyl phosphonoacetate). PubChem (InChIKey connectivity layer): substrate Fmoc-Orn(Boc)-OEt CID 77278889 (by structure), DIBAL CID 14487 and triethyl phosphonoacetate CID 13345 match; product 12 has no PubChem entry (searched by structure).",
+          "substrate": {
+            "label": "Fmoc-Orn(Boc)-OEt (10)",
+            "smiles": "CC(C)(C)OC(=O)NCCCC(NC(=O)OCC1c2ccccc2-c2ccccc21)C(=O)OCC"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "DIBAL (1.0 M in toluene, 2.2 equiv)",
+                  "smiles": "CC(C)C[AlH]CC(C)C"
+                }
+              ],
+              "conditions": "Et₂O, −78 °C, 30 min",
+              "intermediates": [
+                {
+                  "label": "Tetrahedral aluminium hemiacetal: hydride added to the ester carbonyl (stable at −78 °C)",
+                  "forms": [
+                    "CC(C)(C)OC(=O)NCCCC(NC(=O)OCC1c2ccccc2-c2ccccc21)C(O[Al](CC(C)C)CC(C)C)OCC",
+                    "CC(C)(C)OC(=O)NCCCC(NC(=O)OCC1c2ccccc2-c2ccccc21)C([O-])OCC",
+                    "CC(C)(C)OC(=O)NCCCC(NC(=O)OCC1c2ccccc2-c2ccccc21)C(O)OCC"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "Triethyl phosphonoacetate (1.20 equiv) and NaH (1.10 equiv), premixed in THF at 0 °C",
+                  "smiles": "CCOC(=O)CP(=O)(OCC)OCC"
+                }
+              ],
+              "conditions": "THF solution added at −78 °C; then 23 °C, 7 h; aqueous sodium potassium tartrate work-up",
+              "intermediates": [
+                {
+                  "label": "α-Amino aldehyde released as the hemiacetal collapses on warming (C–OEt broken)",
+                  "forms": [
+                    "CC(C)(C)OC(=O)NCCCC(NC(=O)OCC1c2ccccc2-c2ccccc21)C=O"
+                  ]
+                },
+                {
+                  "label": "β-Alkoxy phosphonate: the phosphonate carbanion adds to the aldehyde (C–C formed)",
+                  "forms": [
+                    "CC(C)(C)OC(=O)NCCCC(NC(=O)OCC1c2ccccc2-c2ccccc21)C([O-])C(C(=O)OCC)P(=O)(OCC)OCC",
+                    "CC(C)(C)OC(=O)NCCCC(NC(=O)OCC1c2ccccc2-c2ccccc21)C(O)C(C(=O)OCC)P(=O)(OCC)OCC"
+                  ]
+                },
+                {
+                  "label": "Oxaphosphetane: the alkoxide adds to phosphorus (O–P formed)",
+                  "forms": [
+                    "CC(C)(C)OC(=O)NCCCC(NC(=O)OCC1c2ccccc2-c2ccccc21)C1OP([O-])(OCC)(OCC)C1C(=O)OCC"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "(E)-α,β-Unsaturated ethyl ester 12",
+            "smiles": "CC(C)(C)OC(=O)NCCCC(NC(=O)OCC1c2ccccc2-c2ccccc21)/C=C/C(=O)OCC"
+          },
+          "byproducts": "Sodium diethyl phosphate; ethoxide (as its aluminium salt); isobutane-derived aluminium salts after work-up",
+          "mechanismRefs": [
+            "W. S. Wadsworth, W. D. Emmons, J. Am. Chem. Soc. 1961, 83, 1733–1738 (phosphonate carbanion olefination).",
+            "B. E. Maryanoff, A. B. Reitz, Chem. Rev. 1989, 89, 863–927 (mechanism of Wittig and Horner–Wadsworth–Emmons reactions: β-alkoxy phosphonate and oxaphosphetane).",
+            "W. S. Jo et al., J. Am. Chem. Soc. 2026, 148, 38069 (one-pot reductive olefination of the ornithine ester to avoid cyclization of the aldehyde)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 30
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "substrate",
+              "atom": 32
+            },
+            {
+              "transition": "step 2 int 2",
+              "mol": "reagent",
+              "step": 2,
+              "reagent": "Triethyl phosphonoacetate (1.20 equiv) and NaH (1.10 equiv), premixed in THF at 0 °C",
+              "atom": 5
+            },
+            {
+              "transition": "step 2 int 3",
+              "mol": "reagent",
+              "step": 2,
+              "reagent": "Triethyl phosphonoacetate (1.20 equiv) and NaH (1.10 equiv), premixed in THF at 0 °C",
+              "atom": 6
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 4,
+            "sigmaBondEvents": 7,
+            "textbookLevel": "graduate",
+            "stepScores": [
+              1,
+              5.0
+            ],
+            "uncommonReagents": 0,
+            "score": 6.0
+          }
+        },
+        {
+          "id": "jacs2026-ketone-autoxidation-diosphenol-saponification-halenaquinone",
+          "level": "advanced",
+          "textbookLevel": "specialized",
+          "reaction": "One-pot base-mediated autoxidation of an aryl ketone to a diosphenol, then saponification of the hindered methyl ester. 1) Potassium tert-butoxide forms the C6 enolate, which transfers one electron to O₂ (α-keto radical) and is then trapped by O₂ (C6–O formed: peroxyl radical); hydrogen atom or electron transfer from another enolate gives the α-hydroperoxy ketone (as its anion; radical chain). The base removes the C6–H of the hydroperoxide and the O–O bond breaks (hydroxide leaves): the 1,2-diketone forms and enolizes towards C5 to the conjugated diosphenol (C5=C6 enol, C7 aryl ketone). 2) After the t-BuOH is removed, aqueous ethanolic KOH at 80 °C adds hydroxide to the C4 methyl ester (tetrahedral intermediate, C–O formed), methoxide is expelled (C–OMe broken) and the carboxylate gives the carboxylic acid on acidic work-up.",
+          "source": {
+            "citation": "J. D. Hart, J. K. Lawrence, P. N. Franqui, D. R. Perrott, B. Yi, Y. Xi, C. J. Sumby, C. G. Newton, J. H. George. Biomimetic Synthesis of Seven Halenaquinone Meroterpenoids. J. Am. Chem. Soc. 2026, 148, 23316–23324 (published online 2026-05-28).",
+            "doi": "10.1021/jacs.6c06760",
+            "context": "Route to orhalquinone and halenaquinone (Scheme 3; SI 'Part 3', optimized route, procedure B for 22, p. 43): ketone 19 in t-BuOH at 40 °C under O₂ (balloon) with KOt-Bu (6.0 equiv) for 1.5 h; the solvent is evaporated; the residue in EtOH with aqueous KOH (40 equiv, 3.0 M) at 80 °C for 8 h; 2 N HCl work-up; carboxylic acid 22 (90%). One pot ('aerobic oxidation of the enolate derived from 19, followed by solvent exchange and ester saponification'). The authors also ran the two transformations separately (diosphenol ester SI-07, 91%; 22, 97%)."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central PMC13266709) and the SI PDF (Europe PMC supplementary files): one-pot procedure B for 22 (amounts, solvents, temperatures, times as given in the conditions) and the stepwise procedures for SI-07 (HRMS C24H26O6, methyl ester δ 3.72) and 22 (HRMS C23H24O6); the masses of 19 (3.630 g = 9.156 mmol, 396 g/mol, C24H28O5), SI-07 and 22 agree with the SMILES used. Structure of 19 (C7 aryl ketone, C6 methylene, C4 methyl ester, 1,4-dimethoxynaphthalene) is drawn from the SI schemes as text and from the structures used for the earlier problems from this paper (14, 15 and 22); a chemist should check 19 against Scheme 3. The mechanism is not discussed in the paper (the SI cites a related procedure by Harada); the radical-chain autoxidation of the enolate (α-keto radical, peroxyl radical, α-hydroperoxide) and the base-induced conversion of the α-hydroperoxy ketone to the 1,2-diketone follow the generally accepted mechanisms, not the paper; the diketone is drawn as its diosphenol tautomer (the page treats them as one species). Stereochemistry is not required. PubChem (InChIKey connectivity layer): O₂ CID 977 matches; 19, SI-07 and 22 have no PubChem entry (searched by structure). Earlier problems from this paper used other reactions (aryne annulation of 14, CAN deprotection/aerobic decarboxylation to orhalquinone, I₂/DMSO furan formation).",
+          "substrate": {
+            "label": "Ketone 19 (methyl ester, 1,4-dimethoxynaphthalene)",
+            "smiles": "COC(=O)C1(C)CCCC2(C)C1CC(=O)c1cc3c(cc12)C(OC)=CC=C3OC"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "specialized",
+              "reagents": [
+                {
+                  "text": "KOt-Bu (6.0 equiv)"
+                },
+                {
+                  "text": "O₂ (balloon, bubbled through the solution)",
+                  "smiles": "O=O"
+                }
+              ],
+              "conditions": "t-BuOH, 40 °C, 1.5 h; then solvent evaporated",
+              "intermediates": [
+                {
+                  "label": "α-Keto (enoxyl) radical after one-electron transfer from the C6 enolate to O₂",
+                  "forms": [
+                    "COC(=O)C1(C)CCCC2(C)C1[CH]C(=O)c1cc3c(cc12)C(OC)=CC=C3OC",
+                    "COC(=O)C1(C)CCCC2(C)C1C=C([O])c1cc3c(cc12)C(OC)=CC=C3OC"
+                  ]
+                },
+                {
+                  "label": "Peroxyl radical: O₂ adds to C6 (C–O formed)",
+                  "forms": [
+                    "COC(=O)C1(C)CCCC2(C)C1C(O[O])C(=O)c1cc3c(cc12)C(OC)=CC=C3OC"
+                  ]
+                },
+                {
+                  "label": "α-Hydroperoxy ketone (as its anion) after hydrogen atom/electron transfer from another enolate",
+                  "forms": [
+                    "COC(=O)C1(C)CCCC2(C)C1C(OO)C(=O)c1cc3c(cc12)C(OC)=CC=C3OC",
+                    "COC(=O)C1(C)CCCC2(C)C1C(O[O-])C(=O)c1cc3c(cc12)C(OC)=CC=C3OC"
+                  ]
+                },
+                {
+                  "label": "Diosphenol ester SI-07: C6–H removed and the O–O bond broken (hydroxide leaves) to the 1,2-diketone, which enolizes towards C5",
+                  "forms": [
+                    "COC(=O)C1(C)CCCC2(C)C1=C(O)C(=O)c1cc3c(cc12)C(OC)=CC=C3OC",
+                    "COC(=O)C1(C)CCCC2(C)C1C(=O)C(=O)c1cc3c(cc12)C(OC)=CC=C3OC",
+                    "COC(=O)C1(C)CCCC2(C)C1=C([O-])C(=O)c1cc3c(cc12)C(OC)=CC=C3OC"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "KOH (40 equiv, 3.0 M in water)"
+                },
+                {
+                  "text": "2 N aqueous HCl (work-up, at 0 °C)"
+                }
+              ],
+              "conditions": "residue dissolved in EtOH, 80 °C, 8 h; then cooled",
+              "intermediates": [
+                {
+                  "label": "Tetrahedral intermediate: hydroxide adds to the ester carbonyl (C–O formed); methoxide is then expelled (C–OMe broken)",
+                  "forms": [
+                    "COC([O-])(O)C1(C)CCCC2(C)C1=C(O)C(=O)c1cc3c(cc12)C(OC)=CC=C3OC",
+                    "COC(O)(O)C1(C)CCCC2(C)C1=C(O)C(=O)c1cc3c(cc12)C(OC)=CC=C3OC"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Carboxylic acid 22 (ring-B diosphenol)",
+            "smiles": "OC(=O)C1(C)CCCC2(C)C1=C(O)C(=O)c1cc3c(cc12)C(OC)=CC=C3OC"
+          },
+          "byproducts": "Hydroxide/water from the hydroperoxide; t-BuOH; methanol; KCl",
+          "mechanismRefs": [
+            "H. R. Gersmann, A. F. Bickel, J. Chem. Soc. B 1971, 2230–2237 (autoxidation of ketones in basic media: enolate, radical chain, α-hydroperoxy ketone).",
+            "N. Kornblum, H. E. DeLaMare, J. Am. Chem. Soc. 1951, 73, 880–881 (base-induced conversion of peroxides with an α-C–H into ketones).",
+            "J. D. Hart et al., J. Am. Chem. Soc. 2026, 148, 23316 (aerobic oxidation of the enolate of 19 to the diosphenol, then saponification, in one pot)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 12
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "O₂ (balloon, bubbled through the solution)",
+              "atom": 0
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "substrate",
+              "atom": 2
+            },
+            {
+              "transition": "product",
+              "mol": "substrate",
+              "atom": 1
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 5,
+            "sigmaBondEvents": 4,
+            "textbookLevel": "specialized",
+            "stepScores": [
+              8.0,
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 9.0
+          }
+        }
+      ]
     }
   ]
 }

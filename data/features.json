@@ -3330,6 +3330,135 @@
    "heavyAtomChange": -12,
    "ringChange": -1,
    "verified": false
+  },
+  {
+   "id": "jacs2026-dibal-hemiacetal-hwe-olefination-rhabdobranin",
+   "date": "2026-11-24",
+   "level": "graduate",
+   "textbookLevel": "graduate",
+   "reaction": "One-pot partial reduction and Horner–Wadsworth–Emmons olefination. DIBAL delivers hydride to the ethyl ester at −78 °C; the tetrahedral aluminium hemiacetal is stable at this temperature, so the labile aldehyde (which would otherwise cyclize with the side-chain carbamate) is not formed until the phosphonate anion is present. On warming, the hemiacetal collapses (C–OEt broken) to the α-amino aldehyde, which is trapped by the sodium salt of triethyl phosphonoacetate: C–C bond formation gives the β-alkoxy phosphonate, the alkoxide adds to phosphorus (O–P formed: oxaphosphetane), and syn-elimination (C–P and C–O broken) releases diethyl phosphate and the (E)-α,β-unsaturated ethyl ester (two-carbon homologation).",
+   "source": "jacs",
+   "sourceYear": 2026,
+   "steps": 2,
+   "intermediates": 4,
+   "forms": 7,
+   "stepLevels": [
+    "undergraduate",
+    "graduate"
+   ],
+   "reagents": 2,
+   "reagentsWithSmiles": 2,
+   "uncommonReagents": 0,
+   "hints": 4,
+   "difficultyScore": 6,
+   "sigmaBondEvents": 7,
+   "substrate": {
+    "heavyAtoms": 35,
+    "rings": 3,
+    "aromaticRings": 2,
+    "heteroatoms": 8,
+    "stereocentres": 1,
+    "fsp3": 0.44,
+    "mw": 482.2
+   },
+   "product": {
+    "heavyAtoms": 37,
+    "rings": 3,
+    "aromaticRings": 2,
+    "heteroatoms": 8,
+    "stereocentres": 1,
+    "fsp3": 0.41,
+    "mw": 508.3
+   },
+   "heavyAtomChange": 2,
+   "ringChange": 0,
+   "verified": false
+  },
+  {
+   "id": "jacs2026-grignard-vinylogous-ester-acid-transposition-arnicenone",
+   "date": "2026-11-24",
+   "level": "undergraduate",
+   "textbookLevel": "undergraduate",
+   "reaction": "1,2-Addition of a Grignard reagent to a vinylogous ester followed by acid hydrolysis (carbonyl transposition, known as the Stork–Danheiser transposition) and ketal hydrolysis in the same acidic work-up. The alkylmagnesium chloride adds to the ketone carbonyl of 3-isobutoxycyclopent-2-en-1-one (C–C formed, tertiary alkoxide). Aqueous HCl protonates the tertiary alcohol, which leaves as water (C–O broken) to give an allyl cation stabilized by the isobutoxy group (oxocarbenium). Water adds to the oxocarbenium carbon (C–O formed: hemiacetal), and isobutanol is lost (C–O broken) to give the transposed enone. The same acid hydrolyses the 2-methyl-1,3-dioxolane: ring opening to an oxocarbenium (C–O broken), addition of water (hemiketal, C–O formed) and loss of ethylene glycol (C–O broken) release the methyl ketone.",
+   "source": "jacs",
+   "sourceYear": 2026,
+   "steps": 2,
+   "intermediates": 6,
+   "forms": 11,
+   "stepLevels": [
+    "undergraduate",
+    "undergraduate"
+   ],
+   "reagents": 2,
+   "reagentsWithSmiles": 1,
+   "uncommonReagents": 0,
+   "hints": 3,
+   "difficultyScore": 2,
+   "sigmaBondEvents": 8,
+   "substrate": {
+    "heavyAtoms": 11,
+    "rings": 1,
+    "aromaticRings": 0,
+    "heteroatoms": 2,
+    "stereocentres": 0,
+    "fsp3": 0.67,
+    "mw": 154.1
+   },
+   "product": {
+    "heavyAtoms": 12,
+    "rings": 1,
+    "aromaticRings": 0,
+    "heteroatoms": 2,
+    "stereocentres": 0,
+    "fsp3": 0.6,
+    "mw": 166.1
+   },
+   "heavyAtomChange": 1,
+   "ringChange": 0,
+   "verified": false
+  },
+  {
+   "id": "jacs2026-ketone-autoxidation-diosphenol-saponification-halenaquinone",
+   "date": "2026-11-24",
+   "level": "advanced",
+   "textbookLevel": "specialized",
+   "reaction": "One-pot base-mediated autoxidation of an aryl ketone to a diosphenol, then saponification of the hindered methyl ester. 1) Potassium tert-butoxide forms the C6 enolate, which transfers one electron to O₂ (α-keto radical) and is then trapped by O₂ (C6–O formed: peroxyl radical); hydrogen atom or electron transfer from another enolate gives the α-hydroperoxy ketone (as its anion; radical chain). The base removes the C6–H of the hydroperoxide and the O–O bond breaks (hydroxide leaves): the 1,2-diketone forms and enolizes towards C5 to the conjugated diosphenol (C5=C6 enol, C7 aryl ketone). 2) After the t-BuOH is removed, aqueous ethanolic KOH at 80 °C adds hydroxide to the C4 methyl ester (tetrahedral intermediate, C–O formed), methoxide is expelled (C–OMe broken) and the carboxylate gives the carboxylic acid on acidic work-up.",
+   "source": "jacs",
+   "sourceYear": 2026,
+   "steps": 2,
+   "intermediates": 5,
+   "forms": 10,
+   "stepLevels": [
+    "specialized",
+    "undergraduate"
+   ],
+   "reagents": 4,
+   "reagentsWithSmiles": 1,
+   "uncommonReagents": 0,
+   "hints": 4,
+   "difficultyScore": 9,
+   "sigmaBondEvents": 4,
+   "substrate": {
+    "heavyAtoms": 29,
+    "rings": 4,
+    "aromaticRings": 2,
+    "heteroatoms": 5,
+    "stereocentres": 3,
+    "fsp3": 0.5,
+    "mw": 396.2
+   },
+   "product": {
+    "heavyAtoms": 29,
+    "rings": 4,
+    "aromaticRings": 2,
+    "heteroatoms": 6,
+    "stereocentres": 2,
+    "fsp3": 0.39,
+    "mw": 396.2
+   },
+   "heavyAtomChange": 0,
+   "ringChange": 0,
+   "verified": false
   }
  ]
 }
