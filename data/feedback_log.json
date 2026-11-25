@@ -10,23 +10,25 @@
         "jacs1969-corey-saponification-iodolactonization",
         "oprd1999-haloform-veratric-acid",
         "jacs2026-chloroformate-dmap-ethyl-ester-rhabdobranin",
-        "jacs2026-vinylsilane-bromodesilylation-z-vinyl-bromide-merocyclophane"
+        "jacs2026-vinylsilane-bromodesilylation-z-vinyl-bromide-merocyclophane",
+        "jacs2026-grignard-vinylogous-ester-acid-transposition-arnicenone"
       ],
       "evidence": {
-        "ratings": 6,
-        "distinctProblems": 5,
-        "meanStars": 3.17,
-        "results": 14,
+        "ratings": 7,
+        "distinctProblems": 6,
+        "meanStars": 2.86,
+        "results": 17,
         "medianScore": {
           "jlac1850-strecker-alanine": 2,
           "jacs1969-corey-saponification-iodolactonization": 2,
           "oprd1999-haloform-veratric-acid": 4,
           "jacs2026-chloroformate-dmap-ethyl-ester-rhabdobranin": 1.5,
-          "jacs2026-vinylsilane-bromodesilylation-z-vinyl-bromide-merocyclophane": 1
+          "jacs2026-vinylsilane-bromodesilylation-z-vinyl-bromide-merocyclophane": 1,
+          "jacs2026-grignard-vinylogous-ester-acid-transposition-arnicenone": 1
         }
       },
       "firstSeen": "2026-11-06",
-      "lastSeen": "2026-11-18",
+      "lastSeen": "2026-11-24",
       "status": "proposed",
       "proposal": "Add a rule for the undergraduate level: the problem covers one textbook transformation; a preliminary or follow-up operation (e.g. a saponification before the key step, or hydrolysis of the product of the key step) is left out unless it is part of the same named textbook reaction.",
       "proposedOn": "2026-11-06"
@@ -124,16 +126,17 @@
       "problemIds": [
         "nature2026-acetal-hydrolysis-pyridine-rupestine-d",
         "nature2026-pd-decarboxylative-ring-expansion-rupestine-d",
-        "jacs2026-rh-hydrosilylation-protonation-narbomycin"
+        "jacs2026-rh-hydrosilylation-protonation-narbomycin",
+        "jacs2026-ketone-autoxidation-diosphenol-saponification-halenaquinone"
       ],
       "evidence": {
-        "ratings": 3,
-        "distinctProblems": 3,
-        "meanStars": 2.33,
-        "results": 4
+        "ratings": 4,
+        "distinctProblems": 4,
+        "meanStars": 2.5,
+        "results": 9
       },
       "firstSeen": "2026-11-10",
-      "lastSeen": "2026-11-11",
+      "lastSeen": "2026-11-24",
       "status": "proposed",
       "proposal": "For the advanced level, require that specialized steps and uncommon reagents provide at least two thirds of the difficulty score (undergraduate steps contributing at most one third), so that advanced problems rest on the specialized chemistry that was rated well (4 stars for the Pd-catalysed ring expansion).",
       "proposedOn": "2026-11-10"
@@ -148,16 +151,17 @@
         "jacs2026-seyferth-gilbert-ribose-alkyne-benthol",
         "jacs1969-hwe-enone-corey-prostaglandin",
         "os1959-vilsmeier-haack-indole-3-aldehyde",
-        "os1971-shapiro-camphor-tosylhydrazone-bornene"
+        "os1971-shapiro-camphor-tosylhydrazone-bornene",
+        "jacs2026-dibal-hemiacetal-hwe-olefination-rhabdobranin"
       ],
       "evidence": {
-        "ratings": 8,
-        "distinctProblems": 6,
-        "meanStars": 3.5,
-        "results": 11
+        "ratings": 9,
+        "distinctProblems": 7,
+        "meanStars": 3.56,
+        "results": 32
       },
       "firstSeen": "2026-11-10",
-      "lastSeen": "2026-11-21",
+      "lastSeen": "2026-11-24",
       "status": "proposed",
       "proposal": "Set an upper limit for the graduate difficulty score (for example 7) and no uncommon reagent at the graduate level, so that graduate problems stay below the advanced level in complexity.",
       "proposedOn": "2026-11-10"
@@ -508,6 +512,26 @@
         "skipped": 0
       },
       "note": "Evidence recounted from the current data and unchanged (same 22 ratings and 18 remarks as the previous run; 79 results on problems in data/problems.json, at most 4 per problem, so no kind of problem stands out). Rows whose problem_id is not in data/problems.json (test rows and a removed problem) are ignored. difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters (p_min default) returned no clusters; 86 rejected structures (by visitor) classified into data/wrong_answers.json."
+    },
+    {
+      "date": "2026-11-24",
+      "targetDate": "2026-11-25",
+      "store": "ok",
+      "results": 86,
+      "ratings": 25,
+      "remarks": 20,
+      "newObservations": [],
+      "updated": [
+        "undergraduate-problems-include-extra-steps",
+        "advanced-level-low-ratings",
+        "graduate-level-low-ratings"
+      ],
+      "newProposals": [],
+      "tierA": {
+        "applied": [],
+        "skipped": 0
+      },
+      "note": "Three new ratings since the previous run (all on the 2026-11-24 set). One remark on the undergraduate arnicenone problem (second step judged hard for the level) is merged into undergraduate-problems-include-extra-steps; one remark on the graduate rhabdobranin problem questions the step to which an intermediate is assigned (single rating, recorded here only). Level observations recounted (advanced: 4 ratings, mean 2.5; graduate: 9 ratings, mean 3.56). Results: 86 on problems in data/problems.json, at most 4 per problem, so no kind of problem stands out. Rows whose problem_id is not in data/problems.json (test rows and a removed problem) are ignored. difficulty_summary: at most 3 answers or votes per problem, so no calibration check. check_clusters returned no cluster qualifying for Tier A; 92 rejected structures (by visitor) classified into data/wrong_answers.json."
     }
   ]
 }

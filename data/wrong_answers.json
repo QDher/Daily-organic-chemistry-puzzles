@@ -62,11 +62,36 @@
     }
    ]
   },
+  "jacs2026-dibal-hemiacetal-hwe-olefination-rhabdobranin": {
+   "rejected": 1,
+   "visitors": 1,
+   "categories": {
+    "same_skeleton": 1
+   },
+   "examples": []
+  },
   "jacs2026-formyl-activated-robinson-annulation-grandifolia": {
    "rejected": 4,
    "visitors": 4,
    "categories": {
     "fragment_difference": 4
+   },
+   "examples": []
+  },
+  "jacs2026-grignard-vinylogous-ester-acid-transposition-arnicenone": {
+   "rejected": 1,
+   "visitors": 1,
+   "categories": {
+    "other": 1
+   },
+   "examples": []
+  },
+  "jacs2026-ketone-autoxidation-diosphenol-saponification-halenaquinone": {
+   "rejected": 4,
+   "visitors": 4,
+   "categories": {
+    "same_skeleton": 2,
+    "fragment_difference": 2
    },
    "examples": []
   },

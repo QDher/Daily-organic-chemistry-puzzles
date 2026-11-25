@@ -3459,6 +3459,134 @@
    "heavyAtomChange": 0,
    "ringChange": 0,
    "verified": false
+  },
+  {
+   "id": "jacs2026-libr-oxaspirohexane-ring-expansion-ibx-arnicenone",
+   "date": "2026-11-25",
+   "level": "advanced",
+   "textbookLevel": "specialized",
+   "reaction": "Lithium bromide-promoted ring expansion of a spiro-epoxide on a cyclobutane (1-oxaspiro[2.3]hexane), then IBX oxidation. Bromide opens the epoxide at the CH₂ (C–Br formed, C–O broken) to a lithium alkoxide; a cyclobutane C–C bond migrates to the bromomethyl carbon with loss of bromide (C–C broken, C–C formed, C–Br broken), so the alkoxide carbon becomes the ketone of a new cyclopentanone (cis,cis-angular triquinane, 3-hydroxy ketone 40, 1:5 with the regioisomeric 4-hydroxy ketone 39 from migration of the other ring bond). IBX then exchanges its OH for the secondary alcohol (alkoxy-λ⁵-iodane: O–I formed) and the C–H is removed with reductive elimination to IBA, giving the 1,3-diketone 41.",
+   "source": "jacs",
+   "sourceYear": 2026,
+   "steps": 2,
+   "intermediates": 3,
+   "forms": 4,
+   "stepLevels": [
+    "specialized",
+    "graduate"
+   ],
+   "reagents": 3,
+   "reagentsWithSmiles": 2,
+   "uncommonReagents": 0,
+   "hints": 4,
+   "difficultyScore": 11,
+   "sigmaBondEvents": 8,
+   "substrate": {
+    "heavyAtoms": 15,
+    "rings": 4,
+    "aromaticRings": 0,
+    "heteroatoms": 2,
+    "stereocentres": 5,
+    "fsp3": 1,
+    "mw": 208.1
+   },
+   "product": {
+    "heavyAtoms": 15,
+    "rings": 3,
+    "aromaticRings": 0,
+    "heteroatoms": 2,
+    "stereocentres": 3,
+    "fsp3": 0.85,
+    "mw": 206.1
+   },
+   "heavyAtomChange": 0,
+   "ringChange": -1,
+   "verified": false
+  },
+  {
+   "id": "jacs2026-ticl4-allenylsilane-annulation-arnicenone",
+   "date": "2026-11-25",
+   "level": "graduate",
+   "textbookLevel": "graduate",
+   "reaction": "Intramolecular [3+2] (Danheiser) annulation of an allenylsilane with a TiCl₄-activated enone: the allene terminus adds to the β-carbon of the enone (Hosomi–Sakurai-type spirocyclization, C–C formed) to give a titanium enolate and a vinyl cation stabilised by the β C–Si bond; a 1,2-silyl shift moves the trimethylsilyl group to the cationic carbon (C–Si broken and formed); the enolate α-carbon then closes onto the new vinyl cation (C–C formed), giving the angular triquinane with a trimethylsilyl-substituted cyclopentene (cis,cis/cis,trans 4:1 for this methyl-substituted substrate).",
+   "source": "jacs",
+   "sourceYear": 2026,
+   "steps": 1,
+   "intermediates": 2,
+   "forms": 4,
+   "stepLevels": [
+    "graduate"
+   ],
+   "reagents": 1,
+   "reagentsWithSmiles": 0,
+   "uncommonReagents": 0,
+   "hints": 3,
+   "difficultyScore": 4,
+   "sigmaBondEvents": 4,
+   "substrate": {
+    "heavyAtoms": 19,
+    "rings": 1,
+    "aromaticRings": 0,
+    "heteroatoms": 2,
+    "stereocentres": 0,
+    "fsp3": 0.65,
+    "mw": 276.2
+   },
+   "product": {
+    "heavyAtoms": 19,
+    "rings": 3,
+    "aromaticRings": 0,
+    "heteroatoms": 2,
+    "stereocentres": 3,
+    "fsp3": 0.82,
+    "mw": 276.2
+   },
+   "heavyAtomChange": 0,
+   "ringChange": 2,
+   "verified": false
+  },
+  {
+   "id": "os1948-performic-acid-trans-cyclohexanediol",
+   "date": "2026-11-25",
+   "level": "undergraduate",
+   "textbookLevel": "undergraduate",
+   "reaction": "anti-Dihydroxylation of cyclohexene via the epoxide: performic acid (formed in situ from formic acid and hydrogen peroxide) epoxidizes the alkene; the epoxide, protonated by formic acid, is opened from the back face by formic acid (C–O formed, C–O broken) to the trans-2-hydroxycyclohexyl formate; heating with aqueous sodium hydroxide then hydrolyses the formate ester (hydroxide adds to the C=O, the tetrahedral intermediate expels the alkoxide), giving trans-cyclohexane-1,2-diol and sodium formate.",
+   "source": "os",
+   "sourceYear": 1948,
+   "steps": 2,
+   "intermediates": 3,
+   "forms": 4,
+   "stepLevels": [
+    "undergraduate",
+    "undergraduate"
+   ],
+   "reagents": 3,
+   "reagentsWithSmiles": 3,
+   "uncommonReagents": 0,
+   "hints": 3,
+   "difficultyScore": 2,
+   "sigmaBondEvents": 6,
+   "substrate": {
+    "heavyAtoms": 6,
+    "rings": 1,
+    "aromaticRings": 0,
+    "heteroatoms": 0,
+    "stereocentres": 0,
+    "fsp3": 0.67,
+    "mw": 82.1
+   },
+   "product": {
+    "heavyAtoms": 8,
+    "rings": 1,
+    "aromaticRings": 0,
+    "heteroatoms": 2,
+    "stereocentres": 2,
+    "fsp3": 1,
+    "mw": 116.1
+   },
+   "heavyAtomChange": 2,
+   "ringChange": 0,
+   "verified": false
   }
  ]
 }

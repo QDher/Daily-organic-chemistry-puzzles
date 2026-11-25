@@ -9232,6 +9232,317 @@
           }
         }
       ]
+    },
+    {
+      "date": "2026-11-25",
+      "problems": [
+        {
+          "id": "os1948-performic-acid-trans-cyclohexanediol",
+          "level": "undergraduate",
+          "textbookLevel": "undergraduate",
+          "reaction": "anti-Dihydroxylation of cyclohexene via the epoxide: performic acid (formed in situ from formic acid and hydrogen peroxide) epoxidizes the alkene; the epoxide, protonated by formic acid, is opened from the back face by formic acid (C–O formed, C–O broken) to the trans-2-hydroxycyclohexyl formate; heating with aqueous sodium hydroxide then hydrolyses the formate ester (hydroxide adds to the C=O, the tetrahedral intermediate expels the alkoxide), giving trans-cyclohexane-1,2-diol and sodium formate.",
+          "source": {
+            "citation": "A. Roebuck, H. Adkins. trans-1,2-Cyclohexanediol. Org. Synth. 1948, 28, 35.",
+            "doi": "10.15227/orgsyn.028.0035",
+            "context": "Organic Syntheses preparation of trans-1,2-cyclohexanediol: cyclohexene is added to a mixture of 88% formic acid and 30% hydrogen peroxide kept at about 40 °C; after removal of the formic acid and water under reduced pressure, the residue (hydroxy formate esters) is warmed with aqueous sodium hydroxide, and the diol is isolated after neutralisation."
+          },
+          "verified": false,
+          "verificationNote": "The Organic Syntheses procedure itself could not be read in this run (orgsyn.org not reachable); title, volume and page were confirmed through Crossref. Sequence and conditions are given from the well-known published procedure (performic acid oxidation, then alkaline hydrolysis of the formate esters); a chemist should check the temperatures and amounts against the procedure, and whether some diformate is formed (only the monoformate is drawn). Intermediates follow the textbook mechanism (concerted epoxidation; acid-catalysed anti opening of the epoxide; BAc2 ester hydrolysis). PubChem (InChIKey connectivity layer, RDKit vs PubChem): cyclohexene CID 8079, trans-cyclohexane-1,2-diol (connectivity) CID 13601, formic acid CID 284, hydrogen peroxide CID 784, hydroxide CID 961: all match.",
+          "substrate": {
+            "label": "Cyclohexene",
+            "smiles": "C1=CCCCC1"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "HCO₂H (88%)",
+                  "smiles": "OC=O"
+                },
+                {
+                  "text": "H₂O₂ (30% aq.)",
+                  "smiles": "OO"
+                }
+              ],
+              "conditions": "40–45 °C during the addition, then room temperature; formic acid and water removed under reduced pressure",
+              "intermediates": [
+                {
+                  "label": "Cyclohexene oxide (epoxidation by performic acid formed in situ; two C–O formed)",
+                  "forms": [
+                    "C12OC1CCCC2"
+                  ]
+                },
+                {
+                  "label": "trans-2-Hydroxycyclohexyl formate (formic acid opens the protonated epoxide from the back face: C–O formed, epoxide C–O broken)",
+                  "forms": [
+                    "C1CCC(OC=O)C(O)C1"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "NaOH (aq.)",
+                  "smiles": "[OH-]"
+                }
+              ],
+              "conditions": "warmed (about 45 °C); then neutralised",
+              "intermediates": [
+                {
+                  "label": "Tetrahedral intermediate (hydroxide adds to the formate C=O)",
+                  "forms": [
+                    "C1CCC(OC(O)[O-])C(O)C1",
+                    "C1CCC(OC(O)O)C(O)C1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "trans-Cyclohexane-1,2-diol",
+            "smiles": "OC1CCCCC1O"
+          },
+          "byproducts": "H₂O; sodium formate",
+          "mechanismRefs": [
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., Oxford University Press, 2012, ch. 19 (epoxidation with peroxy acids) and ch. 15 (ring opening of epoxides); ch. 10 (ester hydrolysis).",
+            "D. Klein, Organic Chemistry, 3rd ed., Wiley, 2017, section 9.9 (anti dihydroxylation via epoxides)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 0
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "HCO₂H (88%)",
+              "atom": 0
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "HCO₂H (88%)",
+              "atom": 1
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 3,
+            "sigmaBondEvents": 6,
+            "textbookLevel": "undergraduate",
+            "stepScores": [
+              1,
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 2
+          }
+        },
+        {
+          "id": "jacs2026-ticl4-allenylsilane-annulation-arnicenone",
+          "level": "graduate",
+          "textbookLevel": "graduate",
+          "courseRef": "Kürti–Czakó, Strategic Applications of Named Reactions in Organic Synthesis (2005), entry \"Danheiser cyclopentene annulation\"",
+          "reaction": "Intramolecular [3+2] (Danheiser) annulation of an allenylsilane with a TiCl₄-activated enone: the allene terminus adds to the β-carbon of the enone (Hosomi–Sakurai-type spirocyclization, C–C formed) to give a titanium enolate and a vinyl cation stabilised by the β C–Si bond; a 1,2-silyl shift moves the trimethylsilyl group to the cationic carbon (C–Si broken and formed); the enolate α-carbon then closes onto the new vinyl cation (C–C formed), giving the angular triquinane with a trimethylsilyl-substituted cyclopentene (cis,cis/cis,trans 4:1 for this methyl-substituted substrate).",
+          "source": {
+            "citation": "C.-H. Liu, H.-T. Huang, H.-J. Li, S. A. Dighe, D.-L. Hou, L.-Y. Wu, Y.-W. Huang. Diastereodivergent Access to cis,cis- and cis,trans-Angular Triquinanes: Total Synthesis of (±)-Arnicenone. J. Am. Chem. Soc. 2026, 148, 41724–41732.",
+            "doi": "10.1021/jacs.6c09019",
+            "context": "Table 1 and Scheme 5 ([3+2] annulation route to (±)-arnicenone): the allene derived from 2-methyl-3-(4-oxopentyl)cyclopent-2-enone (substrate with R1 = Me) is treated with TiCl₄ (2.0 equiv) in CH₂Cl₂ (0.02 M) at 40 °C to give the cis,cis-angular triquinane 28m (10%, cis,cis/cis,trans 4:1; desilylation is the main competing pathway); 28m is desilylated, oxidised (Saegusa–Ito) to enone 36 and methylated (MeLi/CuI) to (±)-arnicenone. Mechanism (Scheme 6, DFT): Lewis-acid activation, spirocyclization to vinyl cation 46, 1,2-silyl shift to cation 47, enolate cyclization."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central PMC13651531, via NCBI E-utilities) without schemes or SI (the SI PDF and figure images were not reachable). Structures are reconstructed, not read from the scheme: the triquinane skeleton and the three methyl groups follow from (±)-arnicenone (PubChem CID 42608193), from the stated conversion 28m → desilylation → Saegusa–Ito → enone 36 → conjugate methylation, and from the mechanism in the text (Scheme 6). A chemist should check against Table 1/Scheme 5: the silyl group of the substrate of 28m (TMS assumed; TMS, TES, TBS, TIPS and DMPS were examined, and the DFT model uses TMS), the position of each methyl group (enone α-carbon, allene carbon bonded to the tether, allene carbon bearing silicon) and the reaction time. Intermediates (Ti enolate drawn as the free enolate) follow Scheme 6 of the paper. PubChem: the allenyl silane substrate and the trimethylsilyl triquinane product have no PubChem entry (structure search, no CID); arnicenone (CID 42608193) was used to place the skeleton and methyl groups.",
+          "substrate": {
+            "label": "2-Methyl-3-[4-methyl-6-(trimethylsilyl)hepta-4,5-dien-1-yl]cyclopent-2-en-1-one",
+            "smiles": "O=C1CCC(CCCC(C)=C=C(C)[Si](C)(C)C)=C1C"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "TiCl₄ (2.0 equiv)"
+                }
+              ],
+              "conditions": "CH₂Cl₂ (0.02 M), 40 °C, until the starting material is consumed",
+              "intermediates": [
+                {
+                  "label": "Spirocyclic titanium enolate / vinyl cation 46 (allene terminus adds to the enone β-carbon: C–C formed; cation β to the C–Si bond)",
+                  "forms": [
+                    "CC1=C([O-])CCC12CCCC2(C)[C+]=C(C)[Si](C)(C)C",
+                    "CC1C(=O)CCC12CCCC2(C)[C+]=C(C)[Si](C)(C)C"
+                  ]
+                },
+                {
+                  "label": "Vinyl cation 47 after 1,2-shift of the silyl group (C–Si broken and formed)",
+                  "forms": [
+                    "CC1=C([O-])CCC12CCCC2(C)C([Si](C)(C)C)=[C+]C",
+                    "CC1C(=O)CCC12CCCC2(C)C([Si](C)(C)C)=[C+]C"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Angular triquinane 28m (trimethylsilyl cyclopentene; enolate α-carbon bonded to the cationic carbon: C–C formed)",
+            "smiles": "CC12C(C)=C([Si](C)(C)C)C3(C)CCCC13CCC2=O"
+          },
+          "byproducts": "none (titanium salts removed on work-up); protodesilylated allene as the main side product",
+          "mechanismRefs": [
+            "R. L. Danheiser, D. J. Carini, A. Basak, J. Am. Chem. Soc. 1981, 103, 1604–1606 ((trimethylsilyl)cyclopentene annulation).",
+            "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis, Elsevier, 2005 (Danheiser cyclopentene annulation).",
+            "C.-H. Liu et al., J. Am. Chem. Soc. 2026, 148, 41724 (Scheme 6 and DFT, Figure 2)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 10
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 17
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 13
+            }
+          ],
+          "difficulty": {
+            "steps": 1,
+            "intermediates": 2,
+            "sigmaBondEvents": 4,
+            "textbookLevel": "graduate",
+            "stepScores": [
+              4.0
+            ],
+            "uncommonReagents": 0,
+            "score": 4.0
+          }
+        },
+        {
+          "id": "jacs2026-libr-oxaspirohexane-ring-expansion-ibx-arnicenone",
+          "level": "advanced",
+          "textbookLevel": "specialized",
+          "reaction": "Lithium bromide-promoted ring expansion of a spiro-epoxide on a cyclobutane (1-oxaspiro[2.3]hexane), then IBX oxidation. Bromide opens the epoxide at the CH₂ (C–Br formed, C–O broken) to a lithium alkoxide; a cyclobutane C–C bond migrates to the bromomethyl carbon with loss of bromide (C–C broken, C–C formed, C–Br broken), so the alkoxide carbon becomes the ketone of a new cyclopentanone (cis,cis-angular triquinane, 3-hydroxy ketone 40, 1:5 with the regioisomeric 4-hydroxy ketone 39 from migration of the other ring bond). IBX then exchanges its OH for the secondary alcohol (alkoxy-λ⁵-iodane: O–I formed) and the C–H is removed with reductive elimination to IBA, giving the 1,3-diketone 41.",
+          "source": {
+            "citation": "C.-H. Liu, H.-T. Huang, H.-J. Li, S. A. Dighe, D.-L. Hou, L.-Y. Wu, Y.-W. Huang. Diastereodivergent Access to cis,cis- and cis,trans-Angular Triquinanes: Total Synthesis of (±)-Arnicenone. J. Am. Chem. Soc. 2026, 148, 41724–41732.",
+            "doi": "10.1021/jacs.6c09019",
+            "context": "Scheme 4 ([2+2] cycloaddition / ring-expansion route to (±)-arnicenone): the photochemical [2+2] adduct 30n is reduced, and hydroxyl-directed m-CPBA epoxidation of the exocyclic alkene gives epoxide 38 (β only); (1) LiBr with HMPA in toluene at 130 °C gives the cis,cis-angular triquinane (99%, 1:5 of 4-hydroxy ketone 39 and 3-hydroxy ketone 40); (2) IBX oxidation of 40 gives the 1,3-diketone 41 (98%), later thioketalized on the way to arnicenone. These are two separate, consecutive operations of the same scheme, not a one-pot process."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central PMC13651531, via NCBI E-utilities) without schemes or SI (SI PDF and figure images not reachable), so the IBX conditions (solvent, temperature) are not given. Online publication 2026-09-22 (Crossref): the 31-day window had to be extended (papers of the last 31 days that could be read were either already used or could not be read with structures). Two separate operations, not one pot. Structures reconstructed, not read from the scheme: 41 is the substrate of the 2026-11-07 problem from this paper; 40 is its 3-hydroxy ketone (the hydroxyl on the carbonyl carbon of the original cyclopentenone, reduced before the epoxidation; the ketone formed in the ring expansion), and 38 follows from the [2+2] adduct of the enone C=C with the internal allene C=C (exocyclic methylene on the cyclobutane) and the stated regioisomers 39/40; all consistent with arnicenone (CID 42608193). A chemist should check against Scheme 4 the structure of 38, which ring bond migrates (assumed: the bond to the methyl-bearing quaternary carbon of the former allene, giving 40), and the IBX conditions. The bromohydrin alkoxide intermediate is the usual mechanism of lithium halide-promoted oxaspiro ring expansions; the paper only states 'LiBr-promoted ring expansion'. PubChem: lithium bromide CID 82050 and IBX (cyclic form, 1-hydroxy-1,2-benziodoxol-3(1H)-one 1-oxide) CID 339496 match (a name search for '2-iodoxybenzoic acid' returns CID 108794, the open-chain drawing of the same reagent); the spiro-epoxy alcohol 38 and the 1,3-diketone 41 have no PubChem entry.",
+          "substrate": {
+            "label": "Spiro-epoxy alcohol 38 (tetracyclic, C₁₃H₂₀O₂)",
+            "smiles": "CC12C3(CO3)C4(C)CCCC14CCC2O"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "specialized",
+              "reagents": [
+                {
+                  "text": "LiBr",
+                  "smiles": "[Li+].[Br-]"
+                },
+                {
+                  "text": "HMPA"
+                }
+              ],
+              "conditions": "toluene, 130 °C",
+              "intermediates": [
+                {
+                  "label": "Lithium alkoxide of the bromohydrin (bromide opens the epoxide at the CH₂: C–Br formed, C–O broken)",
+                  "forms": [
+                    "CC12C([O-])(CBr)C3(C)CCCC13CCC2O",
+                    "CC12C(O)(CBr)C3(C)CCCC13CCC2O"
+                  ]
+                },
+                {
+                  "label": "3-Hydroxy ketone 40 after ring expansion (cyclobutane C–C bond migrates to CH₂ with loss of bromide: C–C broken, C–C formed, C–Br broken) — isolated",
+                  "forms": [
+                    "CC12C(=O)CC3(C)CCCC13CCC2O"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "IBX (2-iodoxybenzoic acid)",
+                  "smiles": "O=C1OI(=O)(O)c2ccccc12"
+                }
+              ],
+              "conditions": "see SI",
+              "intermediates": [
+                {
+                  "label": "Alkoxy-λ⁵-iodane (ligand exchange of the alcohol with the I–OH of IBX: O–I formed, I–O broken)",
+                  "forms": [
+                    "CC12C(=O)CC3(C)CCCC13CCC2OI4(=O)OC(=O)c5ccccc54"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Angular triquinane 1,3-diketone 41 (C–H and O–I broken; IBA released)",
+            "smiles": "CC12C(=O)CC3(C)CCCC13CCC2=O"
+          },
+          "byproducts": "LiBr (regenerated); regioisomeric 4-hydroxy ketone 39 in step 1; 2-iodosobenzoic acid (IBA) and H₂O in step 2",
+          "mechanismRefs": [
+            "C.-H. Liu et al., J. Am. Chem. Soc. 2026, 148, 41724 (Scheme 4).",
+            "B. M. Trost, M. J. Bogdanowicz, J. Am. Chem. Soc. 1973, 95, 5321 (lithium salt-promoted ring expansion of oxaspiropentanes to cyclobutanones; same alkoxide-driven 1,2-shift).",
+            "M. Frigerio, M. Santagostino, Tetrahedron Lett. 1994, 35, 8019 (IBX oxidation of alcohols).",
+            "J. T. Su, W. A. Goddard III, J. Am. Chem. Soc. 2005, 127, 14146 (mechanism of IBX oxidation)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 3
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 4
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 2
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 5
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 3,
+            "sigmaBondEvents": 8,
+            "textbookLevel": "specialized",
+            "stepScores": [
+              7.5,
+              3.5
+            ],
+            "uncommonReagents": 0,
+            "score": 11.0
+          }
+        }
+      ]
     }
   ]
 }
