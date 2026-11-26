@@ -9543,6 +9543,353 @@
           }
         }
       ]
+    },
+    {
+      "date": "2026-11-26",
+      "problems": [
+        {
+          "id": "jacs1946-huang-minlon-wolff-kishner-phenoxyphenylbutyric",
+          "level": "undergraduate",
+          "textbookLevel": "undergraduate",
+          "reaction": "Wolff–Kishner reduction (Huang-Minlon modification): hydrazine adds to the aryl ketone to give the carbinolamine, which loses water to the hydrazone; on heating with hydroxide the hydrazone is deprotonated, the proton ends up on carbon (monoalkyl diazene), and a second deprotonation with loss of N₂ gives the benzylic carbanion, which takes a proton from the solvent. The ketone C=O is replaced by CH₂.",
+          "source": {
+            "citation": "Huang-Minlon. A Simple Modification of the Wolff-Kishner Reduction. J. Am. Chem. Soc. 1946, 68, 2487–2488.",
+            "doi": "10.1021/ja01216a013",
+            "context": "The paper introduces the one-flask procedure in which the ketone, hydrazine hydrate and potassium hydroxide are heated in diethylene glycol, the water and the excess hydrazine are then distilled off and the residue is heated at about 200 °C; the example commonly quoted from the paper is β-(p-phenoxybenzoyl)propionic acid, reduced to γ-(p-phenoxyphenyl)butyric acid in 95% yield (48% by the earlier procedure)."
+          },
+          "verified": false,
+          "verificationNote": "The paper itself could not be read in this run (ACS site returns 403); title, journal, volume, pages and year were confirmed through Crossref, and the substrate/product pair and the 95% yield are those commonly quoted from this paper in secondary sources, not read in the original. A chemist should check the substrate against the paper (whether the p-phenoxy or another aryl ketone was used) and the exact temperatures, times and amounts. Mechanism and intermediates follow the textbook Wolff–Kishner mechanism; the monoalkyl diazene and the carbanion are not asked for (the comparison key treats them as the hydrazone and the product). PubChem (InChIKey connectivity layer, RDKit vs PubChem): 4-oxo-4-(4-phenoxyphenyl)butanoic acid CID 247379, 4-(4-phenoxyphenyl)butanoic acid CID 248891, hydrazine CID 9321, potassium hydroxide CID 14797: all match. The intermediates have no PubChem entry.",
+          "substrate": {
+            "label": "4-Oxo-4-(4-phenoxyphenyl)butanoic acid",
+            "smiles": "OC(=O)CCC(=O)c1ccc(Oc2ccccc2)cc1"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "N₂H₄·H₂O (2 equiv)",
+                  "smiles": "NN"
+                },
+                {
+                  "text": "KOH (3 equiv)",
+                  "smiles": "[OH-]"
+                }
+              ],
+              "conditions": "diethylene glycol, 100–130 °C, 1 h",
+              "intermediates": [
+                {
+                  "label": "Carbinolamine (hydrazine adds to the ketone carbon: C–N formed)",
+                  "forms": [
+                    "OC(=O)CCC(O)(NN)c1ccc(Oc2ccccc2)cc1"
+                  ]
+                },
+                {
+                  "label": "Hydrazone (C–O broken, water lost)",
+                  "forms": [
+                    "OC(=O)CCC(=NN)c1ccc(Oc2ccccc2)cc1"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "undergraduate",
+              "reagents": [],
+              "conditions": "water and the excess hydrazine distilled off, then 195–200 °C, 3 h",
+              "intermediates": []
+            }
+          ],
+          "product": {
+            "label": "4-(4-Phenoxyphenyl)butanoic acid (C–N broken, N₂ lost, C–H formed)",
+            "smiles": "OC(=O)CCCc1ccc(Oc2ccccc2)cc1"
+          },
+          "byproducts": "H₂O; N₂; the carboxylic acid is present as its potassium salt until the acidic work-up",
+          "mechanismRefs": [
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., Oxford University Press, 2012, ch. 23 (Wolff–Kishner reduction).",
+            "D. Klein, Organic Chemistry, 3rd ed., Wiley, 2017, section 19.6 (Wolff–Kishner reduction).",
+            "J. McMurry, Organic Chemistry, 9th ed., Cengage, 2016, section 16.3."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 5
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "N₂H₄·H₂O (2 equiv)",
+              "atom": 0
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 2,
+            "sigmaBondEvents": 3,
+            "textbookLevel": "undergraduate",
+            "stepScores": [
+              1,
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 2
+          }
+        },
+        {
+          "id": "jacs1951-loftfield-favorskii-chlorocyclohexanone",
+          "level": "graduate",
+          "textbookLevel": "graduate",
+          "courseRef": "Kürti–Czakó, Strategic Applications of Named Reactions in Organic Synthesis (2005), entry \"Favorskii rearrangement\"; Carey–Sundberg, Advanced Organic Chemistry, Part B, 5th ed., ch. 10 (rearrangements of α-halo ketones)",
+          "reaction": "Favorskii rearrangement (ring contraction). Methoxide removes the α'-proton on the far side of the ketone; the enolate carbon displaces chloride intramolecularly (C–C formed, C–Cl broken) to give the bicyclic cyclopropanone (bicyclo[3.1.0]hexan-6-one). Methoxide then adds to the cyclopropanone carbonyl (C–O formed) and the strained C–C bond of the three-membered ring breaks, giving the cyclopentyl carbanion, which is protonated on work-up: methyl cyclopentanecarboxylate. Loftfield's ¹⁴C labelling showed the label scrambled over the two ring carbons of the symmetrical cyclopropanone.",
+          "source": {
+            "citation": "R. B. Loftfield. The Alkaline Rearrangement of α-Haloketones. II. The Mechanism of the Faworskii Reaction. J. Am. Chem. Soc. 1951, 73, 4707–4714.",
+            "doi": "10.1021/ja01154a066",
+            "context": "Mechanistic study of the rearrangement of 2-chlorocyclohexanone with sodium methoxide to methyl cyclopentanecarboxylate; the ¹⁴C label of the carbonyl carbon is found distributed over the carboxyl carbon and a ring carbon, which is the evidence for the symmetrical cyclopropanone intermediate."
+          },
+          "verified": false,
+          "verificationNote": "The paper itself could not be read in this run (ACS site returns 403); title, journal, volume, pages and year were confirmed through Crossref, and the transformation and the labelling result are taken from secondary descriptions of this classic study. A chemist should check the solvent, temperature, base equivalents and yield against the paper (ether is given here; later work of House used dimethoxyethane). Intermediates follow the accepted cyclopropanone mechanism. PubChem (InChIKey connectivity layer, RDKit vs PubChem): 2-chlorocyclohexanone CID 13203, methyl cyclopentanecarboxylate CID 78365, sodium methoxide CID 10942334: all match. The cyclopropanone and the methoxide adduct have no PubChem entry.",
+          "substrate": {
+            "label": "2-Chlorocyclohexan-1-one",
+            "smiles": "O=C1CCCCC1Cl"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "NaOMe (2 equiv)",
+                  "smiles": "[Na+].[O-]C"
+                }
+              ],
+              "conditions": "Et₂O, reflux, 20 h; aqueous work-up",
+              "intermediates": [
+                {
+                  "label": "Bicyclo[3.1.0]hexan-6-one (cyclopropanone; C–H and C–Cl broken, C–C formed)",
+                  "forms": [
+                    "O=C1C2CCCC12"
+                  ]
+                },
+                {
+                  "label": "Alkoxide from addition of methoxide to the cyclopropanone carbonyl (C–O formed)",
+                  "forms": [
+                    "[O-]C1(OC)C2CCCC12",
+                    "OC1(OC)C2CCCC12"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Methyl cyclopentane-1-carboxylate (the strained C–C bond breaks and the carbanion is protonated)",
+            "smiles": "COC(=O)C1CCCC1"
+          },
+          "byproducts": "NaCl; MeOH",
+          "mechanismRefs": [
+            "R. B. Loftfield, J. Am. Chem. Soc. 1951, 73, 4707–4714 (¹⁴C labelling).",
+            "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis, Elsevier, 2005, entry \"Favorskii rearrangement\".",
+            "F. A. Carey, R. J. Sundberg, Advanced Organic Chemistry, Part B, 5th ed., Springer, 2007, ch. 10."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 2
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 6
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 7
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 1
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "NaOMe (2 equiv)",
+              "atom": 1
+            }
+          ],
+          "difficulty": {
+            "steps": 1,
+            "intermediates": 2,
+            "sigmaBondEvents": 4,
+            "textbookLevel": "graduate",
+            "stepScores": [
+              4.0
+            ],
+            "uncommonReagents": 0,
+            "score": 4.0
+          }
+        },
+        {
+          "id": "anie2026-diazoacetate-ring-expansion-hosomi-sakurai-pestalustaine",
+          "level": "advanced",
+          "textbookLevel": "specialized",
+          "reaction": "Ring expansion of a γ,γ-disubstituted cyclohexenone with methyl diazoacetate, isomerization of the alkene into conjugation, then a Hosomi–Sakurai conjugate addition. (1) BF₃ activates the ketone; the diazoester carbon adds to the carbonyl carbon (C–C formed) to give the alkoxide bearing a diazonium group; the electron-rich sp² ring carbon migrates to that carbon with loss of N₂ (C–C broken, C–C formed), giving the seven-membered β,γ-unsaturated 1,3-ketoester (together with 10% of the regioisomer from migration of the sp³ carbon). (2) The amine removes the proton between the two carbonyls and the delocalized anion is protonated at the far end, moving the C=C into conjugation (α,β-unsaturated 1,3-ketoester). (3) Cu(OTf)₂ activates the enone; the terminal alkene carbon of the allylsilane attacks the β-carbon (C–C formed), giving the enol(ate) and a carbocation β to silicon, which loses the trimethylsilyl group (C–Si broken) to form the 1,1-disubstituted alkene of the new side chain.",
+          "source": {
+            "citation": "W. Cao, A. Ross, J.-P. Baltaze, R. Guillot, M. Xu, R. Qin, B. Yang, I. Wong, K. Formul, C. Kouklovsky, D. J. Tantillo, V. Gandon, G. Vincent. Toward the Synthesis of Pestalustaine A: Structural Revision and Formation of Original Strained Tricyclic Architectures. Angew. Chem. Int. Ed. 2026, 65, e7194437.",
+            "doi": "10.1002/anie.7194437",
+            "context": "Schemes 3 and 4 of the route to the pestalustaine A skeleton: 4-allyl-4-methylcyclohex-2-enone (14) is treated with methyl diazoacetate and boron trifluoride etherate, giving a 1:9 mixture of the two ring-expanded cycloheptenones (19 and the β,γ-unsaturated 1,3-ketoester 20); base then isomerizes the major compound to the α,β-unsaturated 1,3-ketoester 12, which undergoes 1,4-addition of 2-(trimethylsiloxymethyl)allyltrimethylsilane (21) with copper triflate. The silyl ether is removed with TBAF and the resulting alcohols 22a–d (3:3:1:1) are closed to the bicyclo[4.4.1]undec-3-ene by ring-closing metathesis. These are three separate, consecutive operations of the same route, not a one-pot process."
+          },
+          "verified": false,
+          "verificationNote": "Full text read (PubMed Central PMC13549017, via NCBI E-utilities) without the schemes (the figure images and the SI could not be fetched), so no structure was read from a drawing and the conditions of the three operations (solvent, temperature, time, equivalents) are not stated in the text; those given here are the usual conditions and are not verified. The base of operation 2 is only described as 'basic conditions'; DABCO is taken from the abbreviation list of Scheme 3 and should be checked. Structures reconstructed from the text: the substrate is the 'γ,γ-disubstituted cyclohexenone 14' made from 1,3-cyclohexanedione by double alkylation with allyl bromide and methyl iodide and a Stork–Danheiser manipulation (4-allyl-4-methylcyclohex-2-enone); 20 and 12 follow from the descriptions 'δ,δ-disubstituted-β,γ-unsaturated-1,3-ketoester' and 'δ,δ-disubstituted-α,β-unsaturated-1,3-ketoester'; the side chain of the product follows from the stated Hosomi–Sakurai reaction of allylsilane 21. The reconstruction is consistent with the paper naming the ring-closing metathesis product a bicyclo[4.4.1]undec-3-ene. A chemist should check against Schemes 3 and 4 which ring bond migrates, the position of the quaternary carbon, the regiochemistry of the 1,4-addition and all conditions. PubChem (InChIKey connectivity layer, RDKit vs PubChem): 4-allyl-4-methylcyclohex-2-en-1-one CID 12950353, methyl diazoacetate CID 53436957, 2-(trimethylsiloxymethyl)allyltrimethylsilane CID 10900064: all match; the cycloheptenones 20 and 12 and the addition product have no PubChem entry (synthetic intermediates).",
+          "substrate": {
+            "label": "4-Allyl-4-methylcyclohex-2-en-1-one (C₁₀H₁₄O)",
+            "smiles": "O=C1C=CC(C)(CC=C)CC1"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "specialized",
+              "reagents": [
+                {
+                  "text": "Methyl diazoacetate (1.5 equiv)",
+                  "smiles": "COC(=O)C=[N+]=[N-]",
+                  "uncommon": true
+                },
+                {
+                  "text": "BF₃·OEt₂ (1.2 equiv)"
+                }
+              ],
+              "conditions": "CH₂Cl₂, −20 °C to room temperature, 2 h",
+              "intermediates": [
+                {
+                  "label": "Alkoxide bearing the diazonium group (C–C formed to the carbonyl carbon)",
+                  "forms": [
+                    "[O-]C1(C(C(=O)OC)[N+]#N)C=CC(C)(CC=C)CC1",
+                    "OC1(C(C(=O)OC)[N+]#N)C=CC(C)(CC=C)CC1"
+                  ]
+                },
+                {
+                  "label": "Seven-membered β,γ-unsaturated 1,3-ketoester 20 (ring C–C broken, C–C formed, N₂ lost) — isolated as a 9:1 mixture with the regioisomer",
+                  "forms": [
+                    "O=C1CCC(C)(CC=C)C=CC1C(=O)OC"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "DABCO (0.3 equiv)"
+                }
+              ],
+              "conditions": "CH₂Cl₂, room temperature, 1 h",
+              "intermediates": [
+                {
+                  "label": "α,β-Unsaturated 1,3-ketoester 12 (C–H broken at the carbon between the two carbonyls, C–H formed at the far end of the allylic system) — isolated",
+                  "forms": [
+                    "O=C1CCC(C)(CC=C)CC=C1C(=O)OC"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 3,
+              "stepLevel": "specialized",
+              "reagents": [
+                {
+                  "text": "2-(Trimethylsiloxymethyl)allyltrimethylsilane (2 equiv)",
+                  "smiles": "C[Si](C)(C)CC(=C)CO[Si](C)(C)C",
+                  "uncommon": true
+                },
+                {
+                  "text": "Cu(OTf)₂ (20 mol%)",
+                  "uncommon": true
+                }
+              ],
+              "conditions": "CH₂Cl₂, 0 °C to room temperature, 16 h",
+              "intermediates": [
+                {
+                  "label": "Adduct with the carbocation β to silicon and the enol(ate) of the 1,3-ketoester (C–C formed)",
+                  "forms": [
+                    "[O-]C1=C(C(=O)OC)C(C[C+](C[Si](C)(C)C)CO[Si](C)(C)C)CC(C)(CC=C)CC1",
+                    "OC1=C(C(=O)OC)C(C[C+](C[Si](C)(C)C)CO[Si](C)(C)C)CC(C)(CC=C)CC1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "1,4-Addition product (silyl ether of 22; C–Si broken, the 1,1-disubstituted alkene formed)",
+            "smiles": "O=C1CCC(C)(CC=C)CC(CC(=C)CO[Si](C)(C)C)C1C(=O)OC"
+          },
+          "byproducts": "N₂ and the regioisomeric cycloheptenone 19 (step 1); Me₃Si–OTf (step 3); in the paper the trimethylsilyl ether is then removed with TBAF to give the alcohols 22a–d",
+          "mechanismRefs": [
+            "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis, Elsevier, 2005, entries \"Büchner–Curtius–Schlotterbeck reaction\" (ring expansion with diazo esters) and \"Hosomi–Sakurai reaction\".",
+            "H. Mayr, A. R. Ofial, Angew. Chem. Int. Ed. 2006, 45, 1844 (nucleophilicity of allylsilanes; β-silicon effect).",
+            "W. Cao et al., Angew. Chem. Int. Ed. 2026, 65, e7194437 (Schemes 3 and 4)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 1
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "Methyl diazoacetate (1.5 equiv)",
+              "atom": 4
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "substrate",
+              "atom": 2
+            },
+            {
+              "transition": "step 3 int 1",
+              "mol": "reagent",
+              "step": 3,
+              "reagent": "2-(Trimethylsiloxymethyl)allyltrimethylsilane (2 equiv)",
+              "atom": 6
+            },
+            {
+              "transition": "product",
+              "mol": "reagent",
+              "step": 3,
+              "reagent": "2-(Trimethylsiloxymethyl)allyltrimethylsilane (2 equiv)",
+              "atom": 1
+            },
+            {
+              "transition": "product",
+              "mol": "reagent",
+              "step": 3,
+              "reagent": "2-(Trimethylsiloxymethyl)allyltrimethylsilane (2 equiv)",
+              "atom": 4
+            }
+          ],
+          "difficulty": {
+            "steps": 3,
+            "intermediates": 4,
+            "sigmaBondEvents": 6,
+            "textbookLevel": "specialized",
+            "stepScores": [
+              7.0,
+              2.0,
+              5.0
+            ],
+            "uncommonReagents": 3,
+            "score": 16.0
+          }
+        }
+      ]
     }
   ]
 }

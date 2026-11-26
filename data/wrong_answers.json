@@ -95,6 +95,23 @@
    },
    "examples": []
   },
+  "jacs2026-libr-oxaspirohexane-ring-expansion-ibx-arnicenone": {
+   "rejected": 4,
+   "visitors": 5,
+   "categories": {
+    "fragment_difference": 4,
+    "same_skeleton": 1
+   },
+   "examples": [
+    {
+     "smiles": "CC12CCCC13CCC(O)C3(C)CC2=O",
+     "visitors": 2,
+     "category": "fragment_difference (-HBr)",
+     "nearest": "step 1 intermediate 1",
+     "similarity": 0.54
+    }
+   ]
+  },
   "jacs2026-lioh-h2o2-evans-auxiliary-cleavage-rhabdobranin": {
    "rejected": 1,
    "visitors": 1,
@@ -118,6 +135,16 @@
      "similarity": 0.84
     }
    ]
+  },
+  "jacs2026-ticl4-allenylsilane-annulation-arnicenone": {
+   "rejected": 14,
+   "visitors": 14,
+   "categories": {
+    "fragment_difference": 8,
+    "same_skeleton": 4,
+    "other": 2
+   },
+   "examples": []
   },
   "jacs2026-vinylsilane-bromodesilylation-z-vinyl-bromide-merocyclophane": {
    "rejected": 1,
@@ -196,6 +223,14 @@
     "fragment_difference": 2,
     "other": 1,
     "same_skeleton": 1
+   },
+   "examples": []
+  },
+  "os1948-performic-acid-trans-cyclohexanediol": {
+   "rejected": 2,
+   "visitors": 2,
+   "categories": {
+    "fragment_difference": 2
    },
    "examples": []
   },

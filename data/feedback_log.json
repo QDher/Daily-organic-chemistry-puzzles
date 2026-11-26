@@ -1,537 +1,595 @@
 {
-  "version": 1,
-  "observations": [
-    {
-      "id": "undergraduate-problems-include-extra-steps",
-      "topic": "Undergraduate problems are judged too long or confusing when the sequence includes events beyond the core textbook transformation (a preliminary or follow-up step, or a further reaction of a reagent-derived fragment).",
-      "kind": "remark",
-      "problemIds": [
-        "jlac1850-strecker-alanine",
-        "jacs1969-corey-saponification-iodolactonization",
-        "oprd1999-haloform-veratric-acid",
-        "jacs2026-chloroformate-dmap-ethyl-ester-rhabdobranin",
-        "jacs2026-vinylsilane-bromodesilylation-z-vinyl-bromide-merocyclophane",
-        "jacs2026-grignard-vinylogous-ester-acid-transposition-arnicenone"
-      ],
-      "evidence": {
-        "ratings": 7,
-        "distinctProblems": 6,
-        "meanStars": 2.86,
-        "results": 17,
-        "medianScore": {
-          "jlac1850-strecker-alanine": 2,
-          "jacs1969-corey-saponification-iodolactonization": 2,
-          "oprd1999-haloform-veratric-acid": 4,
-          "jacs2026-chloroformate-dmap-ethyl-ester-rhabdobranin": 1.5,
-          "jacs2026-vinylsilane-bromodesilylation-z-vinyl-bromide-merocyclophane": 1,
-          "jacs2026-grignard-vinylogous-ester-acid-transposition-arnicenone": 1
-        }
-      },
-      "firstSeen": "2026-11-06",
-      "lastSeen": "2026-11-24",
-      "status": "proposed",
-      "proposal": "Add a rule for the undergraduate level: the problem covers one textbook transformation; a preliminary or follow-up operation (e.g. a saponification before the key step, or hydrolysis of the product of the key step) is left out unless it is part of the same named textbook reaction.",
-      "proposedOn": "2026-11-06"
-    },
-    {
-      "id": "advanced-problems-built-on-deprotection-too-easy",
-      "topic": "Advanced problems whose sequence consists mainly of protecting-group removal or hydrolysis are judged too easy or better suited to a lower level.",
-      "kind": "remark",
-      "problemIds": [
-        "nature2026-acetal-hydrolysis-pyridine-rupestine-d",
-        "nature2026-pd-decarboxylative-ring-expansion-rupestine-d"
-      ],
-      "evidence": {
-        "ratings": 2,
-        "distinctProblems": 2,
-        "meanStars": 3.0,
-        "results": 3,
-        "medianScore": {
-          "nature2026-acetal-hydrolysis-pyridine-rupestine-d": 10,
-          "nature2026-pd-decarboxylative-ring-expansion-rupestine-d": 17
-        }
-      },
-      "firstSeen": "2026-11-06",
-      "lastSeen": "2026-11-11",
-      "status": "proposed",
-      "proposal": "Add a rule for the advanced level: at least half of the difficulty score must come from specialized steps and uncommon reagents, and a problem whose specialized character rests on a deprotection or hydrolysis step is not used at that level.",
-      "proposedOn": "2026-11-06"
-    },
-    {
-      "id": "graduate-danheiser-judged-too-hard",
-      "topic": "A graduate problem with a multi-step rearrangement sequence and an uncommon reagent was judged too hard for the graduate level.",
-      "kind": "remark",
-      "problemIds": [
-        "jacs2026-danheiser-benzannulation-pde-i"
-      ],
-      "evidence": {
-        "ratings": 2,
-        "distinctProblems": 1,
-        "meanStars": 2.0,
-        "results": 2,
-        "medianScore": 16
-      },
-      "firstSeen": "2026-11-06",
-      "lastSeen": "2026-11-10",
-      "status": "observing"
-    },
-    {
-      "id": "advanced-problems-small-structural-change-too-easy",
-      "topic": "Advanced problems whose product differs little from the substrate (small structural change, common reagents) are judged too easy.",
-      "kind": "remark",
-      "problemIds": [
-        "jacs2026-rh-hydrosilylation-protonation-narbomycin"
-      ],
-      "evidence": {
-        "ratings": 1,
-        "distinctProblems": 1,
-        "meanStars": 1.0,
-        "results": 1,
-        "medianScore": 2
-      },
-      "firstSeen": "2026-11-10",
-      "lastSeen": "2026-11-11",
-      "status": "proposed",
-      "proposal": "Add a rule for the advanced level: the product must differ from the substrate by at least two skeletal bonds (C–C or ring C–heteroatom bonds made or broken, protecting-group atoms not counted), so that a one-site reduction or deprotection cannot carry an advanced problem.",
-      "proposedOn": "2026-11-10"
-    },
-    {
-      "id": "undergraduate-steps-should-not-require-intermediates",
-      "topic": "In graduate and advanced problems, undergraduate-level steps (deprotection, acetal hydrolysis) are felt to add work without difficulty; solvers suggest not asking for their intermediates or not counting them in the difficulty.",
-      "kind": "remark",
-      "problemIds": [
-        "nature2026-acetal-hydrolysis-pyridine-rupestine-d",
-        "nature2026-pd-decarboxylative-ring-expansion-rupestine-d"
-      ],
-      "evidence": {
-        "ratings": 2,
-        "distinctProblems": 2,
-        "meanStars": 3.0,
-        "results": 3,
-        "medianScore": {
-          "nature2026-acetal-hydrolysis-pyridine-rupestine-d": 10,
-          "nature2026-pd-decarboxylative-ring-expansion-rupestine-d": 17
-        }
-      },
-      "firstSeen": "2026-11-10",
-      "lastSeen": "2026-11-10",
-      "status": "proposed",
-      "proposal": "Change the advanced-level shape rule: an undergraduate-level step (deprotection, hydrolysis, work-up) may be part of the sequence but does not count toward the minimum of 2 steps, and its intermediates are optional (shown after solving rather than required).",
-      "proposedOn": "2026-11-10"
-    },
-    {
-      "id": "advanced-level-low-ratings",
-      "topic": "Ratings of advanced problems are low overall.",
-      "kind": "rating",
-      "problemIds": [
-        "nature2026-acetal-hydrolysis-pyridine-rupestine-d",
-        "nature2026-pd-decarboxylative-ring-expansion-rupestine-d",
-        "jacs2026-rh-hydrosilylation-protonation-narbomycin",
-        "jacs2026-ketone-autoxidation-diosphenol-saponification-halenaquinone"
-      ],
-      "evidence": {
-        "ratings": 4,
-        "distinctProblems": 4,
-        "meanStars": 2.5,
-        "results": 9
-      },
-      "firstSeen": "2026-11-10",
-      "lastSeen": "2026-11-24",
-      "status": "proposed",
-      "proposal": "For the advanced level, require that specialized steps and uncommon reagents provide at least two thirds of the difficulty score (undergraduate steps contributing at most one third), so that advanced problems rest on the specialized chemistry that was rated well (4 stars for the Pd-catalysed ring expansion).",
-      "proposedOn": "2026-11-10"
-    },
-    {
-      "id": "graduate-level-low-ratings",
-      "topic": "Ratings of graduate problems average a little above 3 (lower than undergraduate problems), pulled down by one long multi-step graduate problem with an uncommon reagent.",
-      "kind": "rating",
-      "problemIds": [
-        "jacs2026-danheiser-benzannulation-pde-i",
-        "jacs2026-aspartic-acid-diazotization-bromosuccinic-benthol",
-        "jacs2026-seyferth-gilbert-ribose-alkyne-benthol",
-        "jacs1969-hwe-enone-corey-prostaglandin",
-        "os1959-vilsmeier-haack-indole-3-aldehyde",
-        "os1971-shapiro-camphor-tosylhydrazone-bornene",
-        "jacs2026-dibal-hemiacetal-hwe-olefination-rhabdobranin"
-      ],
-      "evidence": {
-        "ratings": 9,
-        "distinctProblems": 7,
-        "meanStars": 3.56,
-        "results": 32
-      },
-      "firstSeen": "2026-11-10",
-      "lastSeen": "2026-11-24",
-      "status": "proposed",
-      "proposal": "Set an upper limit for the graduate difficulty score (for example 7) and no uncommon reagent at the graduate level, so that graduate problems stay below the advanced level in complexity.",
-      "proposedOn": "2026-11-10"
-    },
-    {
-      "id": "undergraduate-single-transformation-rated-highly",
-      "topic": "Undergraduate problems built on one core textbook transformation with a short, direct sequence of intermediates receive the highest ratings, with solvers praising their clarity and level.",
-      "kind": "remark",
-      "problemIds": [
-        "hca1950-lialh4-sclareolide-ambradiol",
-        "ber1903-komppa-claisen-condensation-camphoric",
-        "os1933-friedel-crafts-succinic-anhydride-benzoylpropionic"
-      ],
-      "evidence": {
-        "ratings": 4,
-        "distinctProblems": 3,
-        "meanStars": 5.0,
-        "results": 10,
-        "medianScore": {
-          "hca1950-lialh4-sclareolide-ambradiol": 1,
-          "ber1903-komppa-claisen-condensation-camphoric": 2,
-          "os1933-friedel-crafts-succinic-anhydride-benzoylpropionic": 2
-        }
-      },
-      "firstSeen": "2026-11-12",
-      "lastSeen": "2026-11-15",
-      "status": "proposed",
-      "proposal": "Add to the selection rules of the procedure a preference for undergraduate problems consisting of one core textbook transformation whose intermediates all belong to that transformation (no preliminary deprotection, separate work-up step or further reaction of a reagent-derived fragment); this is the positive counterpart of the earlier proposal undergraduate-problems-include-extra-steps and could be decided together with it.",
-      "proposedOn": "2026-11-12"
+ "version": 1,
+ "observations": [
+  {
+   "id": "undergraduate-problems-include-extra-steps",
+   "topic": "Undergraduate problems are judged too long or confusing when the sequence includes events beyond the core textbook transformation (a preliminary or follow-up step, or a further reaction of a reagent-derived fragment).",
+   "kind": "remark",
+   "problemIds": [
+    "jlac1850-strecker-alanine",
+    "jacs1969-corey-saponification-iodolactonization",
+    "oprd1999-haloform-veratric-acid",
+    "jacs2026-chloroformate-dmap-ethyl-ester-rhabdobranin",
+    "jacs2026-vinylsilane-bromodesilylation-z-vinyl-bromide-merocyclophane",
+    "jacs2026-grignard-vinylogous-ester-acid-transposition-arnicenone"
+   ],
+   "evidence": {
+    "ratings": 8,
+    "distinctProblems": 6,
+    "meanStars": 2.88,
+    "results": 17,
+    "medianScore": {
+     "jacs1969-corey-saponification-iodolactonization": 2,
+     "jacs2026-vinylsilane-bromodesilylation-z-vinyl-bromide-merocyclophane": 1,
+     "oprd1999-haloform-veratric-acid": 4,
+     "jlac1850-strecker-alanine": 2,
+     "jacs2026-chloroformate-dmap-ethyl-ester-rhabdobranin": 1.5,
+     "jacs2026-grignard-vinylogous-ester-acid-transposition-arnicenone": 1
     }
-  ],
-  "runs": [
-    {
-      "date": "2026-11-05",
-      "targetDate": "2026-11-07",
-      "supabase": "unreachable",
-      "results": 0,
-      "ratings": 0,
-      "remarks": 0,
-      "newObservations": [],
-      "updated": [],
-      "newProposals": []
-    },
-    {
-      "date": "2026-11-06",
-      "targetDate": "2026-11-08",
-      "supabase": "ok",
-      "results": 14,
-      "ratings": 8,
-      "remarks": 8,
-      "newObservations": [
-        "undergraduate-problems-include-extra-steps",
-        "advanced-problems-built-on-deprotection-too-easy",
-        "graduate-danheiser-judged-too-hard"
-      ],
-      "updated": [],
-      "newProposals": [
-        "undergraduate-problems-include-extra-steps",
-        "advanced-problems-built-on-deprotection-too-easy"
-      ]
-    },
-    {
-      "date": "2026-11-07",
-      "targetDate": "2026-11-09",
-      "supabase": "ok",
-      "results": 14,
-      "ratings": 8,
-      "remarks": 8,
-      "newObservations": [],
-      "updated": [
-        "undergraduate-problems-include-extra-steps",
-        "advanced-problems-built-on-deprotection-too-easy",
-        "graduate-danheiser-judged-too-hard"
-      ],
-      "newProposals": [],
-      "note": "Same data as the 2026-11-06 run; evidence recounted, unchanged. difficulty_summary not available (function not found, HTTP 404), so no calibration check."
-    },
-    {
-      "date": "2026-11-08",
-      "targetDate": "2026-11-10",
-      "supabase": "ok",
-      "results": 14,
-      "ratings": 8,
-      "remarks": 8,
-      "newObservations": [],
-      "updated": [
-        "undergraduate-problems-include-extra-steps",
-        "advanced-problems-built-on-deprotection-too-easy",
-        "graduate-danheiser-judged-too-hard"
-      ],
-      "newProposals": [],
-      "note": "Same data as the 2026-11-06 and 2026-11-07 runs; evidence recounted, unchanged. difficulty_summary now responds but holds only one test answer (problem id outside the problem set), so no calibration check."
-    },
-    {
-      "date": "2026-11-10",
-      "targetDate": "2026-11-11",
-      "supabase": "ok",
-      "results": 26,
-      "ratings": 16,
-      "remarks": 15,
-      "newObservations": [
-        "advanced-problems-small-structural-change-too-easy",
-        "undergraduate-steps-should-not-require-intermediates",
-        "advanced-level-low-ratings",
-        "graduate-level-low-ratings"
-      ],
-      "updated": [
-        "undergraduate-problems-include-extra-steps",
-        "advanced-problems-built-on-deprotection-too-easy",
-        "graduate-danheiser-judged-too-hard"
-      ],
-      "newProposals": [
-        "advanced-problems-small-structural-change-too-easy",
-        "undergraduate-steps-should-not-require-intermediates",
-        "advanced-level-low-ratings",
-        "graduate-level-low-ratings"
-      ],
-      "note": "New data since the last run: ratings of the 2026-11-09 and 2026-11-10 sets. difficulty_summary: at most 1 answer per problem (plus one test entry outside the problem set), so no calibration check."
-    },
-    {
-      "date": "2026-11-11",
-      "targetDate": "2026-11-12",
-      "store": "ok",
-      "results": 30,
-      "ratings": 15,
-      "remarks": 14,
-      "newObservations": [],
-      "updated": [
-        "undergraduate-problems-include-extra-steps",
-        "advanced-problems-built-on-deprotection-too-easy",
-        "advanced-problems-small-structural-change-too-easy",
-        "advanced-level-low-ratings"
-      ],
-      "newProposals": [],
-      "tierA": {
-        "applied": [],
-        "skipped": 0
-      },
-      "note": "Evidence recounted from the current data. Rows for jacs2026-dithiane-hydrolysis-arnicenone (2 results, 2 ratings) are ignored: that id is no longer in data/problems.json (the 2026-11-05 advanced problem was replaced) and there is no archive yet. One new remark (2026-11-11 undergraduate problem: a reagent-derived fragment reacting further judged too complex for the level) was merged into undergraduate-problems-include-extra-steps. difficulty_summary: at most 2 answers and 2 votes per problem, so no calibration check. check_clusters returned no clusters."
-    },
-    {
-      "date": "2026-11-12",
-      "targetDate": "2026-11-13",
-      "store": "ok",
-      "results": 38,
-      "ratings": 18,
-      "remarks": 17,
-      "newObservations": [
-        "undergraduate-single-transformation-rated-highly"
-      ],
-      "updated": [
-        "undergraduate-problems-include-extra-steps",
-        "graduate-level-low-ratings"
-      ],
-      "newProposals": [
-        "undergraduate-single-transformation-rated-highly"
-      ],
-      "tierA": {
-        "applied": [],
-        "skipped": 0
-      },
-      "note": "Evidence recounted from the current data. Rows for jacs2026-dithiane-hydrolysis-arnicenone (2 results, 2 ratings) are ignored (not in data/problems.json; no archive yet). New since the last run: two 5-star ratings of the 2026-11-12 undergraduate problem and one 4-star rating of the 2026-11-12 graduate problem; one remark (a reagent's anionic form hard to recognize in the drawing) is a single rating and is not an observation yet. difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters returned no clusters."
-    },
-    {
-      "date": "2026-11-13",
-      "targetDate": "2026-11-14",
-      "store": "ok",
-      "results": 43,
-      "ratings": 19,
-      "remarks": 17,
-      "newObservations": [],
-      "updated": [
-        "undergraduate-single-transformation-rated-highly"
-      ],
-      "newProposals": [],
-      "tierA": {
-        "applied": [],
-        "skipped": 0
-      },
-      "note": "Evidence recounted from the current data. Rows for jacs2026-dithiane-hydrolysis-arnicenone (2 results, 2 ratings) and zz-test-ignore are ignored (not in data/problems.json; no archive yet). New since the last run: one 5-star rating without remark of the 2026-11-13 undergraduate problem (a single textbook transformation), added to undergraduate-single-transformation-rated-highly; results of the 2026-11-13 problems (Friedel-Crafts 3, Favorskii 2). difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters returned no clusters."
-    },
-    {
-      "date": "2026-11-14",
-      "targetDate": "2026-11-15",
-      "store": "ok",
-      "results": 45,
-      "ratings": 19,
-      "remarks": 17,
-      "newObservations": [],
-      "updated": [
-        "undergraduate-single-transformation-rated-highly"
-      ],
-      "newProposals": [],
-      "tierA": {
-        "applied": [],
-        "skipped": 0
-      },
-      "note": "Evidence recounted from the current data. Rows for jacs2026-dithiane-hydrolysis-arnicenone (2 results, 2 ratings) and zz-test-ignore are ignored (not in data/problems.json; no archive yet). New since the last run: one more result each for the 2026-11-13 undergraduate (Friedel-Crafts) and graduate (Favorskii) problems; no new ratings or remarks. difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters returned no clusters."
-    },
-    {
-      "date": "2026-11-15",
-      "targetDate": "2026-11-16",
-      "store": "ok",
-      "results": 49,
-      "ratings": 19,
-      "remarks": 17,
-      "newObservations": [],
-      "updated": [
-        "undergraduate-single-transformation-rated-highly"
-      ],
-      "newProposals": [],
-      "tierA": {
-        "applied": [],
-        "skipped": 0
-      },
-      "note": "Evidence recounted from the current data. Rows for jacs2026-dithiane-hydrolysis-arnicenone and zz-test-ignore are ignored (not in data/problems.json; no archive yet). New since the last run: 4 results (one of them for the 2026-11-13 undergraduate problem, whose median score rose from 1 to 2); no new ratings or remarks. difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters returned no clusters."
-    },
-    {
-      "date": "2026-11-16",
-      "targetDate": "2026-11-17",
-      "store": "ok",
-      "results": 55,
-      "ratings": 19,
-      "remarks": 17,
-      "newObservations": [],
-      "updated": [],
-      "newProposals": [],
-      "tierA": {
-        "applied": [],
-        "skipped": 0
-      },
-      "note": "Evidence recounted from the current data. Rows for jacs2026-dithiane-hydrolysis-arnicenone are ignored (not in data/problems.json; no archive yet). Since the last run: 6 new results (55 in total for problems in data/problems.json), no new ratings or remarks. difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters returned no clusters."
-    },
-    {
-      "date": "2026-11-17",
-      "targetDate": "2026-11-18",
-      "store": "ok",
-      "results": 59,
-      "ratings": 19,
-      "remarks": 17,
-      "newObservations": [],
-      "updated": [],
-      "newProposals": [],
-      "tierA": {
-        "applied": [],
-        "skipped": 0
-      },
-      "note": "Evidence recounted from the current data; unchanged since the last run except 4 new results (59 in total for problems in data/problems.json); no new ratings or remarks. Rows for jacs2026-dithiane-hydrolysis-arnicenone are ignored (not in data/problems.json; no archive yet). difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters returned no clusters."
-    },
-    {
-      "date": "2026-11-18",
-      "targetDate": "2026-11-19",
-      "store": "ok",
-      "results": 60,
-      "ratings": 20,
-      "remarks": 18,
-      "newObservations": [],
-      "updated": [
-        "undergraduate-problems-include-extra-steps"
-      ],
-      "newProposals": [],
-      "tierA": {
-        "applied": [],
-        "skipped": 0
-      },
-      "note": "Evidence recounted from the current data. One new rating with a remark (undergraduate problem of 2026-11-18): an event beyond the core textbook transformation was felt to exceed the undergraduate level; merged into undergraduate-problems-include-extra-steps (already proposed; status unchanged). Rows for jacs2026-dithiane-hydrolysis-arnicenone are ignored (not in data/problems.json; no archive yet). difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters returned no clusters."
-    },
-    {
-      "date": "2026-11-19",
-      "targetDate": "2026-11-20",
-      "store": "ok",
-      "results": 66,
-      "ratings": 20,
-      "remarks": 18,
-      "newObservations": [],
-      "updated": [],
-      "newProposals": [],
-      "tierA": {
-        "applied": [],
-        "skipped": 0
-      },
-      "note": "Evidence recounted from the current data: unchanged for all observations (no new ratings or remarks since the last run; 6 new results, all on problems without observations, at most 4 results per problem, so no kind of problem stands out). Rows for jacs2026-dithiane-hydrolysis-arnicenone are ignored (not in data/problems.json; no archive yet). difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters returned no clusters; 47 rejected structures classified into data/wrong_answers.json."
-    },
-    {
-      "date": "2026-11-20",
-      "targetDate": "2026-11-21",
-      "store": "ok",
-      "results": 70,
-      "ratings": 21,
-      "remarks": 18,
-      "newObservations": [],
-      "updated": [
-        "graduate-level-low-ratings"
-      ],
-      "newProposals": [],
-      "tierA": {
-        "applied": [],
-        "skipped": 0
-      },
-      "note": "Evidence recounted from the current data. One new rating without remark (graduate problem of 2026-11-20, 5 stars) added to graduate-level-low-ratings (mean now 3.29 over 7 ratings; already proposed, status unchanged). 4 new results, at most 4 results per problem, so no kind of problem stands out. Rows for jacs2026-dithiane-hydrolysis-arnicenone are ignored (not in data/problems.json; no archive yet). difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters (p_min default) returned no clusters; 49 rejected structures classified into data/wrong_answers.json."
-    },
-    {
-      "date": "2026-11-21",
-      "targetDate": "2026-11-22",
-      "store": "ok",
-      "results": 72,
-      "ratings": 22,
-      "remarks": 18,
-      "newObservations": [],
-      "updated": [
-        "graduate-level-low-ratings"
-      ],
-      "newProposals": [],
-      "tierA": {
-        "applied": [],
-        "skipped": 0
-      },
-      "note": "Evidence recounted from the current data. One new rating without remark (graduate problem of 2026-11-21, 5 stars) added to graduate-level-low-ratings (mean now 3.5 over 8 ratings on 6 problems; already proposed, status unchanged). 2 new results; at most 4 results per problem, so no kind of problem stands out. Rows for jacs2026-dithiane-hydrolysis-arnicenone are ignored (not in data/problems.json; no archive yet). difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters (p_min default) returned no clusters; 50 rejected structures classified into data/wrong_answers.json."
-    },
-    {
-      "date": "2026-11-23",
-      "targetDate": "2026-11-24",
-      "store": "ok",
-      "results": 73,
-      "ratings": 22,
-      "remarks": 18,
-      "newObservations": [],
-      "updated": [],
-      "newProposals": [],
-      "tierA": {
-        "applied": [],
-        "skipped": 0
-      },
-      "note": "Evidence recounted from the current data and unchanged (same 22 ratings and 18 remarks as the previous run; one new result, 73 in total, at most 4 per problem, so no kind of problem stands out). Rows for jacs2026-dithiane-hydrolysis-arnicenone are ignored (not in data/problems.json; no archive yet). difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters (p_min default) returned no clusters qualifying for Tier A; 50 rejected structures classified (data/wrong_answers.json unchanged). No set was published for 2026-11-24: no paper of the six-month window could be read in enough detail to write correct structures for an advanced problem (publisher sites and the Europe PMC supplementary-file service were not reachable from this run; PubMed Central gave text without schemes or SI)."
-    },
-    {
-      "date": "2026-11-23",
-      "targetDate": "2026-11-24",
-      "store": "ok",
-      "results": 79,
-      "ratings": 22,
-      "remarks": 18,
-      "newObservations": [],
-      "updated": [],
-      "newProposals": [],
-      "tierA": {
-        "applied": [],
-        "skipped": 0
-      },
-      "note": "Evidence recounted from the current data and unchanged (same 22 ratings and 18 remarks as the previous run; 79 results on problems in data/problems.json, at most 4 per problem, so no kind of problem stands out). Rows whose problem_id is not in data/problems.json (test rows and a removed problem) are ignored. difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters (p_min default) returned no clusters; 86 rejected structures (by visitor) classified into data/wrong_answers.json."
-    },
-    {
-      "date": "2026-11-24",
-      "targetDate": "2026-11-25",
-      "store": "ok",
-      "results": 86,
-      "ratings": 25,
-      "remarks": 20,
-      "newObservations": [],
-      "updated": [
-        "undergraduate-problems-include-extra-steps",
-        "advanced-level-low-ratings",
-        "graduate-level-low-ratings"
-      ],
-      "newProposals": [],
-      "tierA": {
-        "applied": [],
-        "skipped": 0
-      },
-      "note": "Three new ratings since the previous run (all on the 2026-11-24 set). One remark on the undergraduate arnicenone problem (second step judged hard for the level) is merged into undergraduate-problems-include-extra-steps; one remark on the graduate rhabdobranin problem questions the step to which an intermediate is assigned (single rating, recorded here only). Level observations recounted (advanced: 4 ratings, mean 2.5; graduate: 9 ratings, mean 3.56). Results: 86 on problems in data/problems.json, at most 4 per problem, so no kind of problem stands out. Rows whose problem_id is not in data/problems.json (test rows and a removed problem) are ignored. difficulty_summary: at most 3 answers or votes per problem, so no calibration check. check_clusters returned no cluster qualifying for Tier A; 92 rejected structures (by visitor) classified into data/wrong_answers.json."
+   },
+   "firstSeen": "2026-11-06",
+   "lastSeen": "2026-11-26",
+   "status": "proposed",
+   "proposal": "Add a rule for the undergraduate level: the problem covers one textbook transformation; a preliminary or follow-up operation (e.g. a saponification before the key step, or hydrolysis of the product of the key step) is left out unless it is part of the same named textbook reaction.",
+   "proposedOn": "2026-11-06"
+  },
+  {
+   "id": "advanced-problems-built-on-deprotection-too-easy",
+   "topic": "Advanced problems whose sequence consists mainly of protecting-group removal or hydrolysis are judged too easy or better suited to a lower level.",
+   "kind": "remark",
+   "problemIds": [
+    "nature2026-acetal-hydrolysis-pyridine-rupestine-d",
+    "nature2026-pd-decarboxylative-ring-expansion-rupestine-d"
+   ],
+   "evidence": {
+    "ratings": 2,
+    "distinctProblems": 2,
+    "meanStars": 3,
+    "results": 3,
+    "medianScore": {
+     "nature2026-pd-decarboxylative-ring-expansion-rupestine-d": 17,
+     "nature2026-acetal-hydrolysis-pyridine-rupestine-d": 10
     }
-  ]
+   },
+   "firstSeen": "2026-11-06",
+   "lastSeen": "2026-11-26",
+   "status": "proposed",
+   "proposal": "Add a rule for the advanced level: at least half of the difficulty score must come from specialized steps and uncommon reagents, and a problem whose specialized character rests on a deprotection or hydrolysis step is not used at that level.",
+   "proposedOn": "2026-11-06"
+  },
+  {
+   "id": "graduate-danheiser-judged-too-hard",
+   "topic": "A graduate problem with a multi-step rearrangement sequence and an uncommon reagent was judged too hard for the graduate level.",
+   "kind": "remark",
+   "problemIds": [
+    "jacs2026-danheiser-benzannulation-pde-i"
+   ],
+   "evidence": {
+    "ratings": 2,
+    "distinctProblems": 1,
+    "meanStars": 2,
+    "results": 2,
+    "medianScore": {
+     "jacs2026-danheiser-benzannulation-pde-i": 16
+    }
+   },
+   "firstSeen": "2026-11-06",
+   "lastSeen": "2026-11-26",
+   "status": "observing"
+  },
+  {
+   "id": "advanced-problems-small-structural-change-too-easy",
+   "topic": "Advanced problems whose product differs little from the substrate (small structural change, common reagents) are judged too easy.",
+   "kind": "remark",
+   "problemIds": [
+    "jacs2026-rh-hydrosilylation-protonation-narbomycin"
+   ],
+   "evidence": {
+    "ratings": 1,
+    "distinctProblems": 1,
+    "meanStars": 1,
+    "results": 1,
+    "medianScore": {
+     "jacs2026-rh-hydrosilylation-protonation-narbomycin": 2
+    }
+   },
+   "firstSeen": "2026-11-10",
+   "lastSeen": "2026-11-26",
+   "status": "proposed",
+   "proposal": "Add a rule for the advanced level: the product must differ from the substrate by at least two skeletal bonds (C–C or ring C–heteroatom bonds made or broken, protecting-group atoms not counted), so that a one-site reduction or deprotection cannot carry an advanced problem.",
+   "proposedOn": "2026-11-10"
+  },
+  {
+   "id": "undergraduate-steps-should-not-require-intermediates",
+   "topic": "In graduate and advanced problems, undergraduate-level steps (deprotection, acetal hydrolysis) are felt to add work without difficulty; solvers suggest not asking for their intermediates or not counting them in the difficulty.",
+   "kind": "remark",
+   "problemIds": [
+    "nature2026-acetal-hydrolysis-pyridine-rupestine-d",
+    "nature2026-pd-decarboxylative-ring-expansion-rupestine-d"
+   ],
+   "evidence": {
+    "ratings": 2,
+    "distinctProblems": 2,
+    "meanStars": 3,
+    "results": 3,
+    "medianScore": {
+     "nature2026-pd-decarboxylative-ring-expansion-rupestine-d": 17,
+     "nature2026-acetal-hydrolysis-pyridine-rupestine-d": 10
+    }
+   },
+   "firstSeen": "2026-11-10",
+   "lastSeen": "2026-11-26",
+   "status": "proposed",
+   "proposal": "Change the advanced-level shape rule: an undergraduate-level step (deprotection, hydrolysis, work-up) may be part of the sequence but does not count toward the minimum of 2 steps, and its intermediates are optional (shown after solving rather than required).",
+   "proposedOn": "2026-11-10"
+  },
+  {
+   "id": "advanced-level-low-ratings",
+   "topic": "Ratings of advanced problems are low overall.",
+   "kind": "rating",
+   "problemIds": [
+    "nature2026-acetal-hydrolysis-pyridine-rupestine-d",
+    "nature2026-pd-decarboxylative-ring-expansion-rupestine-d",
+    "jacs2026-rh-hydrosilylation-protonation-narbomycin",
+    "jacs2026-ketone-autoxidation-diosphenol-saponification-halenaquinone"
+   ],
+   "evidence": {
+    "ratings": 4,
+    "distinctProblems": 4,
+    "meanStars": 2.5,
+    "results": 5
+   },
+   "firstSeen": "2026-11-10",
+   "lastSeen": "2026-11-26",
+   "status": "proposed",
+   "proposal": "For the advanced level, require that specialized steps and uncommon reagents provide at least two thirds of the difficulty score (undergraduate steps contributing at most one third), so that advanced problems rest on the specialized chemistry that was rated well (4 stars for the Pd-catalysed ring expansion).",
+   "proposedOn": "2026-11-10"
+  },
+  {
+   "id": "graduate-level-low-ratings",
+   "topic": "Ratings of graduate problems average a little above 3 (lower than undergraduate problems), pulled down by one long multi-step graduate problem with an uncommon reagent.",
+   "kind": "rating",
+   "problemIds": [
+    "jacs2026-danheiser-benzannulation-pde-i",
+    "jacs2026-aspartic-acid-diazotization-bromosuccinic-benthol",
+    "jacs2026-seyferth-gilbert-ribose-alkyne-benthol",
+    "jacs1969-hwe-enone-corey-prostaglandin",
+    "os1959-vilsmeier-haack-indole-3-aldehyde",
+    "os1971-shapiro-camphor-tosylhydrazone-bornene",
+    "jacs2026-dibal-hemiacetal-hwe-olefination-rhabdobranin"
+   ],
+   "evidence": {
+    "ratings": 10,
+    "distinctProblems": 8,
+    "meanStars": 3.6,
+    "results": 16
+   },
+   "firstSeen": "2026-11-10",
+   "lastSeen": "2026-11-26",
+   "status": "proposed",
+   "proposal": "Set an upper limit for the graduate difficulty score (for example 7) and no uncommon reagent at the graduate level, so that graduate problems stay below the advanced level in complexity.",
+   "proposedOn": "2026-11-10"
+  },
+  {
+   "id": "undergraduate-single-transformation-rated-highly",
+   "topic": "Undergraduate problems built on one core textbook transformation with a short, direct sequence of intermediates receive the highest ratings, with solvers praising their clarity and level.",
+   "kind": "remark",
+   "problemIds": [
+    "hca1950-lialh4-sclareolide-ambradiol",
+    "ber1903-komppa-claisen-condensation-camphoric",
+    "os1933-friedel-crafts-succinic-anhydride-benzoylpropionic"
+   ],
+   "evidence": {
+    "ratings": 5,
+    "distinctProblems": 4,
+    "meanStars": 4.8,
+    "results": 11,
+    "medianScore": {
+     "hca1950-lialh4-sclareolide-ambradiol": 1,
+     "ber1903-komppa-claisen-condensation-camphoric": 2,
+     "os1948-performic-acid-trans-cyclohexanediol": 2,
+     "os1933-friedel-crafts-succinic-anhydride-benzoylpropionic": 2
+    }
+   },
+   "firstSeen": "2026-11-12",
+   "lastSeen": "2026-11-26",
+   "status": "proposed",
+   "proposal": "Add to the selection rules of the procedure a preference for undergraduate problems consisting of one core textbook transformation whose intermediates all belong to that transformation (no preliminary deprotection, separate work-up step or further reaction of a reagent-derived fragment); this is the positive counterpart of the earlier proposal undergraduate-problems-include-extra-steps and could be decided together with it.",
+   "proposedOn": "2026-11-12"
+  },
+  {
+   "id": "silicon-steps-judged-unexpected",
+   "topic": "Two remarks on different problems say that the silicon-specific event of the step (loss of a silyl group with inversion of an alkene; a 1,2-shift of silicon) was not anticipated, although the rest of the step was judged to be at the right level.",
+   "kind": "remark",
+   "problemIds": [
+    "jacs2026-ticl4-allenylsilane-annulation-arnicenone",
+    "jacs2026-vinylsilane-bromodesilylation-z-vinyl-bromide-merocyclophane"
+   ],
+   "evidence": {
+    "ratings": 2,
+    "distinctProblems": 2,
+    "meanStars": 3.5,
+    "results": 3,
+    "medianScore": {
+     "jacs2026-vinylsilane-bromodesilylation-z-vinyl-bromide-merocyclophane": 1,
+     "jacs2026-ticl4-allenylsilane-annulation-arnicenone": 12.5
+    }
+   },
+   "firstSeen": "2026-11-26",
+   "lastSeen": "2026-11-26",
+   "status": "proposed",
+   "proposal": "Treat a step whose key event is a silicon-specific process (beta-silicon effect, 1,2-silyl shift, halodesilylation) as at least \"graduate\" in the stepLevel guidance of this procedure, and avoid such a step in undergraduate problems; the remarks come from two different problems (one undergraduate, one graduate).",
+   "proposedOn": "2026-11-26"
+  }
+ ],
+ "runs": [
+  {
+   "date": "2026-11-05",
+   "targetDate": "2026-11-07",
+   "supabase": "unreachable",
+   "results": 0,
+   "ratings": 0,
+   "remarks": 0,
+   "newObservations": [],
+   "updated": [],
+   "newProposals": []
+  },
+  {
+   "date": "2026-11-06",
+   "targetDate": "2026-11-08",
+   "supabase": "ok",
+   "results": 14,
+   "ratings": 8,
+   "remarks": 8,
+   "newObservations": [
+    "undergraduate-problems-include-extra-steps",
+    "advanced-problems-built-on-deprotection-too-easy",
+    "graduate-danheiser-judged-too-hard"
+   ],
+   "updated": [],
+   "newProposals": [
+    "undergraduate-problems-include-extra-steps",
+    "advanced-problems-built-on-deprotection-too-easy"
+   ]
+  },
+  {
+   "date": "2026-11-07",
+   "targetDate": "2026-11-09",
+   "supabase": "ok",
+   "results": 14,
+   "ratings": 8,
+   "remarks": 8,
+   "newObservations": [],
+   "updated": [
+    "undergraduate-problems-include-extra-steps",
+    "advanced-problems-built-on-deprotection-too-easy",
+    "graduate-danheiser-judged-too-hard"
+   ],
+   "newProposals": [],
+   "note": "Same data as the 2026-11-06 run; evidence recounted, unchanged. difficulty_summary not available (function not found, HTTP 404), so no calibration check."
+  },
+  {
+   "date": "2026-11-08",
+   "targetDate": "2026-11-10",
+   "supabase": "ok",
+   "results": 14,
+   "ratings": 8,
+   "remarks": 8,
+   "newObservations": [],
+   "updated": [
+    "undergraduate-problems-include-extra-steps",
+    "advanced-problems-built-on-deprotection-too-easy",
+    "graduate-danheiser-judged-too-hard"
+   ],
+   "newProposals": [],
+   "note": "Same data as the 2026-11-06 and 2026-11-07 runs; evidence recounted, unchanged. difficulty_summary now responds but holds only one test answer (problem id outside the problem set), so no calibration check."
+  },
+  {
+   "date": "2026-11-10",
+   "targetDate": "2026-11-11",
+   "supabase": "ok",
+   "results": 26,
+   "ratings": 16,
+   "remarks": 15,
+   "newObservations": [
+    "advanced-problems-small-structural-change-too-easy",
+    "undergraduate-steps-should-not-require-intermediates",
+    "advanced-level-low-ratings",
+    "graduate-level-low-ratings"
+   ],
+   "updated": [
+    "undergraduate-problems-include-extra-steps",
+    "advanced-problems-built-on-deprotection-too-easy",
+    "graduate-danheiser-judged-too-hard"
+   ],
+   "newProposals": [
+    "advanced-problems-small-structural-change-too-easy",
+    "undergraduate-steps-should-not-require-intermediates",
+    "advanced-level-low-ratings",
+    "graduate-level-low-ratings"
+   ],
+   "note": "New data since the last run: ratings of the 2026-11-09 and 2026-11-10 sets. difficulty_summary: at most 1 answer per problem (plus one test entry outside the problem set), so no calibration check."
+  },
+  {
+   "date": "2026-11-11",
+   "targetDate": "2026-11-12",
+   "store": "ok",
+   "results": 30,
+   "ratings": 15,
+   "remarks": 14,
+   "newObservations": [],
+   "updated": [
+    "undergraduate-problems-include-extra-steps",
+    "advanced-problems-built-on-deprotection-too-easy",
+    "advanced-problems-small-structural-change-too-easy",
+    "advanced-level-low-ratings"
+   ],
+   "newProposals": [],
+   "tierA": {
+    "applied": [],
+    "skipped": 0
+   },
+   "note": "Evidence recounted from the current data. Rows for jacs2026-dithiane-hydrolysis-arnicenone (2 results, 2 ratings) are ignored: that id is no longer in data/problems.json (the 2026-11-05 advanced problem was replaced) and there is no archive yet. One new remark (2026-11-11 undergraduate problem: a reagent-derived fragment reacting further judged too complex for the level) was merged into undergraduate-problems-include-extra-steps. difficulty_summary: at most 2 answers and 2 votes per problem, so no calibration check. check_clusters returned no clusters."
+  },
+  {
+   "date": "2026-11-12",
+   "targetDate": "2026-11-13",
+   "store": "ok",
+   "results": 38,
+   "ratings": 18,
+   "remarks": 17,
+   "newObservations": [
+    "undergraduate-single-transformation-rated-highly"
+   ],
+   "updated": [
+    "undergraduate-problems-include-extra-steps",
+    "graduate-level-low-ratings"
+   ],
+   "newProposals": [
+    "undergraduate-single-transformation-rated-highly"
+   ],
+   "tierA": {
+    "applied": [],
+    "skipped": 0
+   },
+   "note": "Evidence recounted from the current data. Rows for jacs2026-dithiane-hydrolysis-arnicenone (2 results, 2 ratings) are ignored (not in data/problems.json; no archive yet). New since the last run: two 5-star ratings of the 2026-11-12 undergraduate problem and one 4-star rating of the 2026-11-12 graduate problem; one remark (a reagent's anionic form hard to recognize in the drawing) is a single rating and is not an observation yet. difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters returned no clusters."
+  },
+  {
+   "date": "2026-11-13",
+   "targetDate": "2026-11-14",
+   "store": "ok",
+   "results": 43,
+   "ratings": 19,
+   "remarks": 17,
+   "newObservations": [],
+   "updated": [
+    "undergraduate-single-transformation-rated-highly"
+   ],
+   "newProposals": [],
+   "tierA": {
+    "applied": [],
+    "skipped": 0
+   },
+   "note": "Evidence recounted from the current data. Rows for jacs2026-dithiane-hydrolysis-arnicenone (2 results, 2 ratings) and zz-test-ignore are ignored (not in data/problems.json; no archive yet). New since the last run: one 5-star rating without remark of the 2026-11-13 undergraduate problem (a single textbook transformation), added to undergraduate-single-transformation-rated-highly; results of the 2026-11-13 problems (Friedel-Crafts 3, Favorskii 2). difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters returned no clusters."
+  },
+  {
+   "date": "2026-11-14",
+   "targetDate": "2026-11-15",
+   "store": "ok",
+   "results": 45,
+   "ratings": 19,
+   "remarks": 17,
+   "newObservations": [],
+   "updated": [
+    "undergraduate-single-transformation-rated-highly"
+   ],
+   "newProposals": [],
+   "tierA": {
+    "applied": [],
+    "skipped": 0
+   },
+   "note": "Evidence recounted from the current data. Rows for jacs2026-dithiane-hydrolysis-arnicenone (2 results, 2 ratings) and zz-test-ignore are ignored (not in data/problems.json; no archive yet). New since the last run: one more result each for the 2026-11-13 undergraduate (Friedel-Crafts) and graduate (Favorskii) problems; no new ratings or remarks. difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters returned no clusters."
+  },
+  {
+   "date": "2026-11-15",
+   "targetDate": "2026-11-16",
+   "store": "ok",
+   "results": 49,
+   "ratings": 19,
+   "remarks": 17,
+   "newObservations": [],
+   "updated": [
+    "undergraduate-single-transformation-rated-highly"
+   ],
+   "newProposals": [],
+   "tierA": {
+    "applied": [],
+    "skipped": 0
+   },
+   "note": "Evidence recounted from the current data. Rows for jacs2026-dithiane-hydrolysis-arnicenone and zz-test-ignore are ignored (not in data/problems.json; no archive yet). New since the last run: 4 results (one of them for the 2026-11-13 undergraduate problem, whose median score rose from 1 to 2); no new ratings or remarks. difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters returned no clusters."
+  },
+  {
+   "date": "2026-11-16",
+   "targetDate": "2026-11-17",
+   "store": "ok",
+   "results": 55,
+   "ratings": 19,
+   "remarks": 17,
+   "newObservations": [],
+   "updated": [],
+   "newProposals": [],
+   "tierA": {
+    "applied": [],
+    "skipped": 0
+   },
+   "note": "Evidence recounted from the current data. Rows for jacs2026-dithiane-hydrolysis-arnicenone are ignored (not in data/problems.json; no archive yet). Since the last run: 6 new results (55 in total for problems in data/problems.json), no new ratings or remarks. difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters returned no clusters."
+  },
+  {
+   "date": "2026-11-17",
+   "targetDate": "2026-11-18",
+   "store": "ok",
+   "results": 59,
+   "ratings": 19,
+   "remarks": 17,
+   "newObservations": [],
+   "updated": [],
+   "newProposals": [],
+   "tierA": {
+    "applied": [],
+    "skipped": 0
+   },
+   "note": "Evidence recounted from the current data; unchanged since the last run except 4 new results (59 in total for problems in data/problems.json); no new ratings or remarks. Rows for jacs2026-dithiane-hydrolysis-arnicenone are ignored (not in data/problems.json; no archive yet). difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters returned no clusters."
+  },
+  {
+   "date": "2026-11-18",
+   "targetDate": "2026-11-19",
+   "store": "ok",
+   "results": 60,
+   "ratings": 20,
+   "remarks": 18,
+   "newObservations": [],
+   "updated": [
+    "undergraduate-problems-include-extra-steps"
+   ],
+   "newProposals": [],
+   "tierA": {
+    "applied": [],
+    "skipped": 0
+   },
+   "note": "Evidence recounted from the current data. One new rating with a remark (undergraduate problem of 2026-11-18): an event beyond the core textbook transformation was felt to exceed the undergraduate level; merged into undergraduate-problems-include-extra-steps (already proposed; status unchanged). Rows for jacs2026-dithiane-hydrolysis-arnicenone are ignored (not in data/problems.json; no archive yet). difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters returned no clusters."
+  },
+  {
+   "date": "2026-11-19",
+   "targetDate": "2026-11-20",
+   "store": "ok",
+   "results": 66,
+   "ratings": 20,
+   "remarks": 18,
+   "newObservations": [],
+   "updated": [],
+   "newProposals": [],
+   "tierA": {
+    "applied": [],
+    "skipped": 0
+   },
+   "note": "Evidence recounted from the current data: unchanged for all observations (no new ratings or remarks since the last run; 6 new results, all on problems without observations, at most 4 results per problem, so no kind of problem stands out). Rows for jacs2026-dithiane-hydrolysis-arnicenone are ignored (not in data/problems.json; no archive yet). difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters returned no clusters; 47 rejected structures classified into data/wrong_answers.json."
+  },
+  {
+   "date": "2026-11-20",
+   "targetDate": "2026-11-21",
+   "store": "ok",
+   "results": 70,
+   "ratings": 21,
+   "remarks": 18,
+   "newObservations": [],
+   "updated": [
+    "graduate-level-low-ratings"
+   ],
+   "newProposals": [],
+   "tierA": {
+    "applied": [],
+    "skipped": 0
+   },
+   "note": "Evidence recounted from the current data. One new rating without remark (graduate problem of 2026-11-20, 5 stars) added to graduate-level-low-ratings (mean now 3.29 over 7 ratings; already proposed, status unchanged). 4 new results, at most 4 results per problem, so no kind of problem stands out. Rows for jacs2026-dithiane-hydrolysis-arnicenone are ignored (not in data/problems.json; no archive yet). difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters (p_min default) returned no clusters; 49 rejected structures classified into data/wrong_answers.json."
+  },
+  {
+   "date": "2026-11-21",
+   "targetDate": "2026-11-22",
+   "store": "ok",
+   "results": 72,
+   "ratings": 22,
+   "remarks": 18,
+   "newObservations": [],
+   "updated": [
+    "graduate-level-low-ratings"
+   ],
+   "newProposals": [],
+   "tierA": {
+    "applied": [],
+    "skipped": 0
+   },
+   "note": "Evidence recounted from the current data. One new rating without remark (graduate problem of 2026-11-21, 5 stars) added to graduate-level-low-ratings (mean now 3.5 over 8 ratings on 6 problems; already proposed, status unchanged). 2 new results; at most 4 results per problem, so no kind of problem stands out. Rows for jacs2026-dithiane-hydrolysis-arnicenone are ignored (not in data/problems.json; no archive yet). difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters (p_min default) returned no clusters; 50 rejected structures classified into data/wrong_answers.json."
+  },
+  {
+   "date": "2026-11-23",
+   "targetDate": "2026-11-24",
+   "store": "ok",
+   "results": 73,
+   "ratings": 22,
+   "remarks": 18,
+   "newObservations": [],
+   "updated": [],
+   "newProposals": [],
+   "tierA": {
+    "applied": [],
+    "skipped": 0
+   },
+   "note": "Evidence recounted from the current data and unchanged (same 22 ratings and 18 remarks as the previous run; one new result, 73 in total, at most 4 per problem, so no kind of problem stands out). Rows for jacs2026-dithiane-hydrolysis-arnicenone are ignored (not in data/problems.json; no archive yet). difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters (p_min default) returned no clusters qualifying for Tier A; 50 rejected structures classified (data/wrong_answers.json unchanged). No set was published for 2026-11-24: no paper of the six-month window could be read in enough detail to write correct structures for an advanced problem (publisher sites and the Europe PMC supplementary-file service were not reachable from this run; PubMed Central gave text without schemes or SI)."
+  },
+  {
+   "date": "2026-11-23",
+   "targetDate": "2026-11-24",
+   "store": "ok",
+   "results": 79,
+   "ratings": 22,
+   "remarks": 18,
+   "newObservations": [],
+   "updated": [],
+   "newProposals": [],
+   "tierA": {
+    "applied": [],
+    "skipped": 0
+   },
+   "note": "Evidence recounted from the current data and unchanged (same 22 ratings and 18 remarks as the previous run; 79 results on problems in data/problems.json, at most 4 per problem, so no kind of problem stands out). Rows whose problem_id is not in data/problems.json (test rows and a removed problem) are ignored. difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. check_clusters (p_min default) returned no clusters; 86 rejected structures (by visitor) classified into data/wrong_answers.json."
+  },
+  {
+   "date": "2026-11-24",
+   "targetDate": "2026-11-25",
+   "store": "ok",
+   "results": 86,
+   "ratings": 25,
+   "remarks": 20,
+   "newObservations": [],
+   "updated": [
+    "undergraduate-problems-include-extra-steps",
+    "advanced-level-low-ratings",
+    "graduate-level-low-ratings"
+   ],
+   "newProposals": [],
+   "tierA": {
+    "applied": [],
+    "skipped": 0
+   },
+   "note": "Three new ratings since the previous run (all on the 2026-11-24 set). One remark on the undergraduate arnicenone problem (second step judged hard for the level) is merged into undergraduate-problems-include-extra-steps; one remark on the graduate rhabdobranin problem questions the step to which an intermediate is assigned (single rating, recorded here only). Level observations recounted (advanced: 4 ratings, mean 2.5; graduate: 9 ratings, mean 3.56). Results: 86 on problems in data/problems.json, at most 4 per problem, so no kind of problem stands out. Rows whose problem_id is not in data/problems.json (test rows and a removed problem) are ignored. difficulty_summary: at most 3 answers or votes per problem, so no calibration check. check_clusters returned no cluster qualifying for Tier A; 92 rejected structures (by visitor) classified into data/wrong_answers.json."
+  },
+  {
+   "date": "2026-11-26",
+   "targetDate": "2026-11-26",
+   "store": "ok",
+   "results": 91,
+   "ratings": 27,
+   "remarks": 21,
+   "newObservations": [
+    "silicon-steps-judged-unexpected"
+   ],
+   "updated": [
+    "undergraduate-problems-include-extra-steps",
+    "advanced-problems-built-on-deprotection-too-easy",
+    "graduate-danheiser-judged-too-hard",
+    "advanced-problems-small-structural-change-too-easy",
+    "undergraduate-steps-should-not-require-intermediates",
+    "advanced-level-low-ratings",
+    "graduate-level-low-ratings",
+    "undergraduate-single-transformation-rated-highly"
+   ],
+   "newProposals": [
+    "silicon-steps-judged-unexpected"
+   ],
+   "tierA": {
+    "applied": [],
+    "skipped": 0
+   },
+   "note": "Two new ratings since the previous run (2026-11-25 set): the undergraduate performic-acid problem (4 stars, no remark) and the graduate allenylsilane annulation (4 stars, remark that the 1,2-silyl shift was unexpected). That remark and the earlier one on the vinylsilane problem give a new observation (silicon-steps-judged-unexpected), proposed. Level counts recounted: undergraduate 13 ratings mean 3.62, graduate 10 ratings mean 3.6, advanced 4 ratings mean 2.5; 91 results on problems in data/problems.json or the archive, at most 4 per problem, so no kind of problem stands out on results alone. difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. Rows whose problem_id is in neither file (test rows and a removed problem) are ignored. check_clusters returned no cluster qualifying for Tier A."
+  }
+ ]
 }
