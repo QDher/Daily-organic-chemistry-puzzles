@@ -156,13 +156,14 @@
     "jacs1969-hwe-enone-corey-prostaglandin",
     "os1959-vilsmeier-haack-indole-3-aldehyde",
     "os1971-shapiro-camphor-tosylhydrazone-bornene",
-    "jacs2026-dibal-hemiacetal-hwe-olefination-rhabdobranin"
+    "jacs2026-dibal-hemiacetal-hwe-olefination-rhabdobranin",
+    "jacs1951-loftfield-favorskii-chlorocyclohexanone"
    ],
    "evidence": {
     "ratings": 10,
     "distinctProblems": 8,
-    "meanStars": 3.6,
-    "results": 16
+    "meanStars": 3.7,
+    "results": 15
    },
    "firstSeen": "2026-11-10",
    "lastSeen": "2026-11-26",
@@ -590,6 +591,24 @@
     "skipped": 0
    },
    "note": "Two new ratings since the previous run (2026-11-25 set): the undergraduate performic-acid problem (4 stars, no remark) and the graduate allenylsilane annulation (4 stars, remark that the 1,2-silyl shift was unexpected). That remark and the earlier one on the vinylsilane problem give a new observation (silicon-steps-judged-unexpected), proposed. Level counts recounted: undergraduate 13 ratings mean 3.62, graduate 10 ratings mean 3.6, advanced 4 ratings mean 2.5; 91 results on problems in data/problems.json or the archive, at most 4 per problem, so no kind of problem stands out on results alone. difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. Rows whose problem_id is in neither file (test rows and a removed problem) are ignored. check_clusters returned no cluster qualifying for Tier A."
+  },
+  {
+   "date": "2026-11-26",
+   "targetDate": "2026-11-27",
+   "store": "ok",
+   "results": 93,
+   "ratings": 28,
+   "remarks": 21,
+   "newObservations": [],
+   "updated": [
+    "graduate-level-low-ratings"
+   ],
+   "newProposals": [],
+   "tierA": {
+    "applied": [],
+    "skipped": 0
+   },
+   "note": "One new rating since the previous run: the graduate Favorskii problem (2026-11-26 set), 5 stars, no remark; it is added to graduate-level-low-ratings (now 10 ratings on 8 listed problems, mean 3.7). Level counts over all problems: undergraduate 13 ratings mean 3.62, graduate 11 mean 3.73, advanced 4 mean 2.5; 93 results on problems in data/problems.json, at most 4 per problem, so no kind of problem stands out on results alone. Other observations: no new ratings or remarks on their problems; evidence unchanged. difficulty_summary: at most 3 answers and 3 votes per problem, so no calibration check. Rows whose problem_id is not in data/problems.json (test rows and a removed problem) are ignored. check_clusters returned no cluster qualifying for Tier A."
   }
  ]
 }

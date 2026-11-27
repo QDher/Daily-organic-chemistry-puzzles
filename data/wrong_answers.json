@@ -18,6 +18,22 @@
    },
    "examples": []
   },
+  "jacs1946-huang-minlon-wolff-kishner-phenoxyphenylbutyric": {
+   "rejected": 1,
+   "visitors": 1,
+   "categories": {
+    "fragment_difference": 1
+   },
+   "examples": []
+  },
+  "jacs1951-loftfield-favorskii-chlorocyclohexanone": {
+   "rejected": 1,
+   "visitors": 1,
+   "categories": {
+    "fragment_difference": 1
+   },
+   "examples": []
+  },
   "jacs1969-hwe-enone-corey-prostaglandin": {
    "rejected": 1,
    "visitors": 1,

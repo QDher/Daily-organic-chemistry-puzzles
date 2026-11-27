@@ -3716,6 +3716,136 @@
    "heavyAtomChange": 1,
    "ringChange": 0,
    "verified": false
+  },
+  {
+   "id": "anie2026-claisen-condensation-cyclodehydration-chromone-chaetosemin",
+   "date": "2026-11-27",
+   "level": "undergraduate",
+   "textbookLevel": "undergraduate",
+   "reaction": "Crossed Claisen condensation followed by acid-catalysed cyclodehydration (chromone synthesis). NaH deprotonates the phenol and the methyl ketone; the ketone enolate adds to the carbonyl carbon of ethyl acetate (C–C formed) to give a tetrahedral alkoxide, which expels ethoxide (C–O broken) to give the aryl 1,3-diketone (present as its enolate under the basic conditions). Concentrated HCl then protonates the acetyl ketone; the ortho phenol oxygen adds to it (C–O formed) to give the cyclic hemiketal (2-hydroxychroman-4-one); loss of water (C–O broken, via the oxocarbenium ion, which is the C3-protonated chromone) and loss of the C3 proton give the aromatic 4H-chromen-4-one.",
+   "source": "anie",
+   "sourceYear": 2026,
+   "steps": 2,
+   "intermediates": 3,
+   "forms": 4,
+   "stepLevels": [
+    "undergraduate",
+    "undergraduate"
+   ],
+   "reagents": 3,
+   "reagentsWithSmiles": 1,
+   "uncommonReagents": 0,
+   "hints": 3,
+   "difficultyScore": 2,
+   "sigmaBondEvents": 4,
+   "substrate": {
+    "heavyAtoms": 15,
+    "rings": 1,
+    "aromaticRings": 1,
+    "heteroatoms": 4,
+    "stereocentres": 0,
+    "fsp3": 0.36,
+    "mw": 210.1
+   },
+   "product": {
+    "heavyAtoms": 17,
+    "rings": 2,
+    "aromaticRings": 2,
+    "heteroatoms": 4,
+    "stereocentres": 0,
+    "fsp3": 0.31,
+    "mw": 234.1
+   },
+   "heavyAtomChange": 2,
+   "ringChange": 1,
+   "verified": false
+  },
+  {
+   "id": "jacs2026-nitrile-anion-cyclization-k-crown-decyanation-triquinane",
+   "date": "2026-11-27",
+   "level": "advanced",
+   "textbookLevel": "specialized",
+   "reaction": "Two consecutive operations of the route. 1) One pot: HMDS with catalytic iodine silylates the secondary alcohol (O–Si formed) to the TMS ether; KHMDS removes the proton α to the nitrile, and the nitrile-stabilized carbanion displaces the chloromethanesulfonate from the neopentyl CH₂ on the ring-fusion carbon (C–C formed, C–O broken), closing the third five-membered ring of the angular triquinane (3.6:1 at the nitrile carbon); aqueous HCl then cleaves the TMS ether (O–Si broken). 2) Reductive decyanation with potassium and 18-crown-6 in toluene: an electron is transferred to the nitrile, giving the radical anion; the C–CN bond breaks (cyanide released), giving the secondary ring radical; a second electron gives the carbanion, which is protonated (C–H formed) to the hydrocarbon skeleton of the triquinane alcohol.",
+   "source": "jacs",
+   "sourceYear": 2026,
+   "steps": 4,
+   "intermediates": 5,
+   "forms": 5,
+   "stepLevels": [
+    "undergraduate",
+    "undergraduate",
+    "undergraduate",
+    "specialized"
+   ],
+   "reagents": 6,
+   "reagentsWithSmiles": 1,
+   "uncommonReagents": 1,
+   "hints": 4,
+   "difficultyScore": 9.5,
+   "sigmaBondEvents": 6,
+   "substrate": {
+    "heavyAtoms": 22,
+    "rings": 2,
+    "aromaticRings": 0,
+    "heteroatoms": 7,
+    "stereocentres": 5,
+    "fsp3": 0.93,
+    "mw": 349.1
+   },
+   "product": {
+    "heavyAtoms": 14,
+    "rings": 3,
+    "aromaticRings": 0,
+    "heteroatoms": 1,
+    "stereocentres": 5,
+    "fsp3": 1,
+    "mw": 194.2
+   },
+   "heavyAtomChange": -8,
+   "ringChange": 1,
+   "verified": false
+  },
+  {
+   "id": "rscadv2024-johnson-claisen-arylcyclohexenol-mesembranol",
+   "date": "2026-11-27",
+   "level": "graduate",
+   "textbookLevel": "graduate",
+   "reaction": "Johnson (orthoester) Claisen rearrangement. The secondary allylic alcohol exchanges with triethyl orthoacetate (C–O formed, C–OEt broken, EtOH lost) to give the mixed orthoester; loss of a second molecule of ethanol (C–O and C–H broken) gives the ketene acetal (allyl vinyl ether). Its [3,3]-sigmatropic rearrangement breaks the allylic C–O bond and forms a C–C bond at the aryl-bearing alkene carbon, moving the ring alkene and creating the benzylic all-carbon quaternary centre: ethyl (1-aryl-cyclohex-2-enyl)acetate, a γ,δ-unsaturated ester.",
+   "source": "rscadv",
+   "sourceYear": 2024,
+   "steps": 1,
+   "intermediates": 2,
+   "forms": 2,
+   "stepLevels": [
+    "graduate"
+   ],
+   "reagents": 3,
+   "reagentsWithSmiles": 1,
+   "uncommonReagents": 0,
+   "hints": 5,
+   "difficultyScore": 4.5,
+   "sigmaBondEvents": 5,
+   "substrate": {
+    "heavyAtoms": 17,
+    "rings": 2,
+    "aromaticRings": 1,
+    "heteroatoms": 3,
+    "stereocentres": 1,
+    "fsp3": 0.43,
+    "mw": 234.1
+   },
+   "product": {
+    "heavyAtoms": 22,
+    "rings": 2,
+    "aromaticRings": 1,
+    "heteroatoms": 4,
+    "stereocentres": 1,
+    "fsp3": 0.5,
+    "mw": 304.2
+   },
+   "heavyAtomChange": 5,
+   "ringChange": 0,
+   "verified": false
   }
  ]
 }

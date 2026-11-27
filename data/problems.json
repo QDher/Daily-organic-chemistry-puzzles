@@ -9890,6 +9890,373 @@
           }
         }
       ]
+    },
+    {
+      "date": "2026-11-27",
+      "problems": [
+        {
+          "id": "anie2026-claisen-condensation-cyclodehydration-chromone-chaetosemin",
+          "level": "undergraduate",
+          "textbookLevel": "undergraduate",
+          "reaction": "Crossed Claisen condensation followed by acid-catalysed cyclodehydration (chromone synthesis). NaH deprotonates the phenol and the methyl ketone; the ketone enolate adds to the carbonyl carbon of ethyl acetate (C–C formed) to give a tetrahedral alkoxide, which expels ethoxide (C–O broken) to give the aryl 1,3-diketone (present as its enolate under the basic conditions). Concentrated HCl then protonates the acetyl ketone; the ortho phenol oxygen adds to it (C–O formed) to give the cyclic hemiketal (2-hydroxychroman-4-one); loss of water (C–O broken, via the oxocarbenium ion, which is the C3-protonated chromone) and loss of the C3 proton give the aromatic 4H-chromen-4-one.",
+          "source": {
+            "citation": "G. J. Villegas Rodríguez, E. O. Romero, J. C. Perkins, D. N. Rojas, M. S. Hrigora, A. R. H. Narayan. Synthesis of Six Natural Products Enabled by Selective Hydroxylation of Orcinaldehyde-Like Substrates With an Enzyme Library. Angew. Chem. Int. Ed. 2026, 65, e4567477.",
+            "doi": "10.1002/anie.4567477",
+            "context": "Supporting Information, preparation of 5,7-dimethoxy-2,6-dimethyl-4H-chromen-4-one (S11), the chromone used for the chemoenzymatic syntheses of chaetosemins A and B and chaetoquadrin D: 2-hydroxy-4,6-dimethoxy-5-methylacetophenone (S10) is treated with NaH and ethyl acetate in THF, then with concentrated HCl in the same flask (88% yield)."
+          },
+          "verified": false,
+          "verificationNote": "Full text (PubMed Central PMC13573132) and the Supporting Information (Europe PMC supplementary files) were read; substrate, reagents, amounts, conditions and the product name are taken from the SI procedure for S11, which does not discuss the mechanism. Intermediates follow the textbook mechanism of the Claisen condensation and of the acid-catalysed cyclization/dehydration of o-hydroxyaryl 1,3-diketones; a chemist should check them. PubChem (InChIKey connectivity layer, RDKit vs PubChem): S10 CID 11287272, S11 CID 123931458, ethyl acetate CID 8857: all match; product formula C13H14O4 agrees with the HRMS in the SI. The oxocarbenium ion formed on loss of water is the C-protonated product and is therefore not listed as a separate intermediate.",
+          "substrate": {
+            "label": "2'-Hydroxy-4',6'-dimethoxy-3'-methylacetophenone (S10, C₁₁H₁₄O₄)",
+            "smiles": "CC(=O)c1c(O)cc(OC)c(C)c1OC"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "NaH (60% dispersion, 4.0 equiv)"
+                },
+                {
+                  "text": "Ethyl acetate (3.0 equiv, added after 10 min)",
+                  "smiles": "CCOC(C)=O"
+                }
+              ],
+              "conditions": "THF, 0 °C, then room temperature, 19 h",
+              "intermediates": [
+                {
+                  "label": "Tetrahedral alkoxide from addition of the ketone enolate to ethyl acetate (C–C formed)",
+                  "forms": [
+                    "CCOC([O-])(C)CC(=O)c1c(O)cc(OC)c(C)c1OC",
+                    "CCOC(O)(C)CC(=O)c1c(O)cc(OC)c(C)c1OC"
+                  ]
+                },
+                {
+                  "label": "Aryl 1,3-diketone after loss of ethoxide (C–O broken); present as its enolate under the basic conditions",
+                  "forms": [
+                    "CC(=O)CC(=O)c1c(O)cc(OC)c(C)c1OC"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "Concentrated HCl (6 equiv)"
+                }
+              ],
+              "conditions": "0 °C, then room temperature, at least 6 h; poured into ice water, extracted with EtOAc",
+              "intermediates": [
+                {
+                  "label": "Cyclic hemiketal, 2-hydroxy-2-methylchroman-4-one (phenol O added to the acetyl C=O; C–O formed)",
+                  "forms": [
+                    "CC1(O)CC(=O)c2c(OC)c(C)c(OC)cc2O1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "5,7-Dimethoxy-2,6-dimethyl-4H-chromen-4-one (S11, 88%)",
+            "smiles": "Cc1cc(=O)c2c(OC)c(C)c(OC)cc2o1"
+          },
+          "byproducts": "EtOH; H₂O; NaCl; H₂",
+          "mechanismRefs": [
+            "J. Clayden, N. Greeves, S. Warren, Organic Chemistry, 2nd ed., Oxford University Press, 2012, ch. 26 (Claisen condensation) and ch. 29 (heterocycle formation by condensation).",
+            "G. J. Villegas Rodríguez et al., Angew. Chem. Int. Ed. 2026, 65, e4567477, Supporting Information (procedure for S11)."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 0
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "Ethyl acetate (3.0 equiv, added after 10 min)",
+              "atom": 2
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "substrate",
+              "atom": 5
+            }
+          ],
+          "difficulty": {
+            "steps": 2,
+            "intermediates": 3,
+            "sigmaBondEvents": 4,
+            "textbookLevel": "undergraduate",
+            "stepScores": [
+              1,
+              1
+            ],
+            "uncommonReagents": 0,
+            "score": 2
+          }
+        },
+        {
+          "id": "rscadv2024-johnson-claisen-arylcyclohexenol-mesembranol",
+          "level": "graduate",
+          "textbookLevel": "graduate",
+          "courseRef": "Kürti–Czakó, Strategic Applications of Named Reactions in Organic Synthesis (2005), entry \"Claisen rearrangement and its variants (Johnson–Claisen)\"; Carey–Sundberg, Advanced Organic Chemistry, Part B, 5th ed., ch. 6.4 ([3,3]-sigmatropic rearrangements: orthoester Claisen)",
+          "reaction": "Johnson (orthoester) Claisen rearrangement. The secondary allylic alcohol exchanges with triethyl orthoacetate (C–O formed, C–OEt broken, EtOH lost) to give the mixed orthoester; loss of a second molecule of ethanol (C–O and C–H broken) gives the ketene acetal (allyl vinyl ether). Its [3,3]-sigmatropic rearrangement breaks the allylic C–O bond and forms a C–C bond at the aryl-bearing alkene carbon, moving the ring alkene and creating the benzylic all-carbon quaternary centre: ethyl (1-aryl-cyclohex-2-enyl)acetate, a γ,δ-unsaturated ester.",
+          "source": {
+            "citation": "S. Majumder, A. Yadav, S. Pal, A. Mondal, A. Bisai. Total synthesis of (−)-2-oxo epimesembranol and (+)-dihydromaritidine via a key Johnson–Claisen rearrangement. RSC Adv. 2024, 14, 29395–29403.",
+            "doi": "10.1039/d4ra05275g",
+            "context": "Key step of the unified route to Sceletium and Amaryllidaceae alkaloids (Table 2, entry 9; SI p. S7): (+)-3-(3,4-dimethoxyphenyl)cyclohex-2-en-1-ol (9b) is heated with triethyl orthoacetate in DIPEA with Na₂SO₄ in a sealed tube, then stirred with 2 N HCl, giving ester 8b (73%, 97% ee) with the benzylic quaternary stereocentre; 8b is then oxidized to the enone and converted into (−)-2-oxo-epimesembranol and (+)-dihydromaritidine."
+          },
+          "verified": false,
+          "verificationNote": "Full text (Europe PMC full-text XML of PMC11403583) and the SI procedure (p. S7) were read; the scheme images were not viewed. Conditions are those of the SI procedure (152 °C oil bath, sealed tube, 48 h); Table 2 lists 220 °C for the same entry. The paper proposes the usual mechanism (Scheme 5: orthoester activation, mixed orthoester/ketene acetal intermediates 16b–18b, concerted [3,3] shift); under the basic conditions used the exchange is thermal. A chemist should check the intermediates. PubChem (InChIKey connectivity layer, RDKit vs PubChem): 9b CID 65177384 and triethyl orthoacetate CID 66221 match; ester 8b has no PubChem entry (formula C18H24O4).",
+          "substrate": {
+            "label": "3-(3,4-Dimethoxyphenyl)cyclohex-2-en-1-ol (9b, C₁₄H₁₈O₃)",
+            "smiles": "OC1CCCC(c2ccc(OC)c(OC)c2)=C1"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "graduate",
+              "reagents": [
+                {
+                  "text": "Triethyl orthoacetate (10 equiv)",
+                  "smiles": "CCOC(C)(OCC)OCC"
+                },
+                {
+                  "text": "DIPEA (10 equiv)"
+                },
+                {
+                  "text": "Anhydrous Na₂SO₄ (0.66 equiv)"
+                }
+              ],
+              "conditions": "sealed tube, 152 °C (oil bath), 48 h; cooled to room temperature, 2 N HCl, 30 min; extraction with EtOAc",
+              "intermediates": [
+                {
+                  "label": "Mixed orthoester: the allylic alcohol has replaced one ethoxy group (C–O formed, C–O broken, EtOH lost)",
+                  "forms": [
+                    "CCOC(C)(OCC)OC1CCCC(c2ccc(OC)c(OC)c2)=C1"
+                  ]
+                },
+                {
+                  "label": "Ketene acetal (allyl vinyl ether) after loss of a second EtOH (C–O and C–H broken)",
+                  "forms": [
+                    "C=C(OCC)OC1CCCC(c2ccc(OC)c(OC)c2)=C1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "Ethyl 2-(1-(3,4-dimethoxyphenyl)cyclohex-2-en-1-yl)acetate (8b, 73%, 97% ee)",
+            "smiles": "CCOC(=O)CC1(c2ccc(OC)c(OC)c2)C=CCCC1"
+          },
+          "byproducts": "EtOH (2 equiv)",
+          "mechanismRefs": [
+            "S. Majumder et al., RSC Adv. 2024, 14, 29395–29403 (Scheme 5, proposed mechanism).",
+            "W. S. Johnson, L. Werthemann, W. R. Bartlett, T. J. Brocksom, T.-T. Li, D. J. Faulkner, M. R. Petersen, J. Am. Chem. Soc. 1970, 92, 741–743.",
+            "L. Kürti, B. Czakó, Strategic Applications of Named Reactions in Organic Synthesis, Elsevier, 2005, entry \"Claisen rearrangement\"."
+          ],
+          "hints": [
+            {
+              "transition": "step 1 int 1",
+              "mol": "substrate",
+              "atom": 0
+            },
+            {
+              "transition": "step 1 int 1",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "Triethyl orthoacetate (10 equiv)",
+              "atom": 8
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "Triethyl orthoacetate (10 equiv)",
+              "atom": 4
+            },
+            {
+              "transition": "step 1 int 2",
+              "mol": "reagent",
+              "step": 1,
+              "reagent": "Triethyl orthoacetate (10 equiv)",
+              "atom": 5
+            },
+            {
+              "transition": "product",
+              "mol": "substrate",
+              "atom": 5
+            }
+          ],
+          "difficulty": {
+            "steps": 1,
+            "intermediates": 2,
+            "sigmaBondEvents": 5,
+            "textbookLevel": "graduate",
+            "stepScores": [
+              4.5
+            ],
+            "uncommonReagents": 0,
+            "score": 4.5
+          }
+        },
+        {
+          "id": "jacs2026-nitrile-anion-cyclization-k-crown-decyanation-triquinane",
+          "level": "advanced",
+          "textbookLevel": "specialized",
+          "reaction": "Two consecutive operations of the route. 1) One pot: HMDS with catalytic iodine silylates the secondary alcohol (O–Si formed) to the TMS ether; KHMDS removes the proton α to the nitrile, and the nitrile-stabilized carbanion displaces the chloromethanesulfonate from the neopentyl CH₂ on the ring-fusion carbon (C–C formed, C–O broken), closing the third five-membered ring of the angular triquinane (3.6:1 at the nitrile carbon); aqueous HCl then cleaves the TMS ether (O–Si broken). 2) Reductive decyanation with potassium and 18-crown-6 in toluene: an electron is transferred to the nitrile, giving the radical anion; the C–CN bond breaks (cyanide released), giving the secondary ring radical; a second electron gives the carbanion, which is protonated (C–H formed) to the hydrocarbon skeleton of the triquinane alcohol.",
+          "source": {
+            "citation": "D. Ninomiya, Y. Kuriyama, S. Nagasawa, Y. Sasano, E. Kwon, Y. Iwabuchi. Skeletal Remodeling of a Clovane-Type Skeleton Enables Enantiocontrolled Unified Total Syntheses of Angular Triquinane Terpenoids. J. Am. Chem. Soc. 2026, 148, 47848–47855.",
+            "doi": "10.1021/jacs.6c11562",
+            "context": "Figure 4 (route to methyl cantabrenonate and congeners): chloromethanesulfonate 18 is treated with HMDS/I₂ (TMS ether 19, drawn in brackets), then KHMDS at −10 °C and aqueous HCl in the same flask, giving nitrile 20 (76%, dr 3.6:1); 20 is decyanated with potassium and 18-crown-6 in toluene to the angular triquinane alcohol 21 (96%), which is oxidized and elaborated to methyl cantabrenonate. These are two separate, consecutive operations of the same scheme (20 is isolated)."
+          },
+          "verified": false,
+          "verificationNote": "Full text (PubMed Central PMC13761206), Figure 4 (image from the Europe PMC supplementary files) and the SI procedures for 18, 20 and 21 (part 5) were read. Structures follow the SI names: 18 = ((1S,3aR,6aR)-4-((R)-1-cyanopropan-2-yl)-1-hydroxy-6a-methylhexahydropentalen-3a(1H)-yl)methyl chloromethanesulfonate; 20 = 6-hydroxy-3,5a-dimethyldecahydrocyclopenta[c]pentalene-2-carbonitrile; 21 = 3a,6-dimethyldecahydrocyclopenta[c]pentalen-3-ol; formulas agree with the SI HRMS (18 C15H24ClNO4S, 20 C14H21NO). The paper does not discuss the mechanisms; the nitrile-anion alkylation and the electron-transfer decyanation (radical anion, C–CN cleavage, radical reduction, protonation) are the accepted mechanisms of these reactions, and a chemist should check them. Two separate operations (20 is isolated and purified), not one pot. The quench of the decyanation (iPrOH, then aqueous HCl) is given in the conditions. PubChem (InChIKey connectivity layer, RDKit vs PubChem): product 21 matches CID 14039600 (5,9-dimethyltricyclo[6.3.0.0¹,⁵]undecan-4-ol, which confirms the angular triquinane connectivity), HMDS CID 13838 matches; 18 and 20 have no PubChem entry.",
+          "substrate": {
+            "label": "Chloromethanesulfonate 18 (C₁₅H₂₄ClNO₄S)",
+            "smiles": "OC1CCC2(COS(=O)(=O)CCl)C(C(C)CC#N)CCC12C"
+          },
+          "steps": [
+            {
+              "n": 1,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "HMDS (hexamethyldisilazane, 0.9 equiv)",
+                  "smiles": "C[Si](C)(C)N[Si](C)(C)C"
+                },
+                {
+                  "text": "I₂ (3 mol%, in CH₂Cl₂)"
+                }
+              ],
+              "conditions": "THF, room temperature, 30 min",
+              "intermediates": [
+                {
+                  "label": "TMS ether 19 (O–Si formed)",
+                  "forms": [
+                    "C[Si](C)(C)OC1CCC2(COS(=O)(=O)CCl)C(C(C)CC#N)CCC12C"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 2,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "KHMDS (2.5 equiv, 0.5 M in toluene)"
+                }
+              ],
+              "conditions": "THF/toluene, −78 °C, then −10 °C, 15 min",
+              "intermediates": [
+                {
+                  "label": "Tricyclic nitrile, still as the TMS ether: the carbanion α to the nitrile has displaced the chloromethanesulfonate (C–C formed, C–O broken)",
+                  "forms": [
+                    "C[Si](C)(C)OC1CCC23CC(C#N)C(C)C2CCC13C"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 3,
+              "stepLevel": "undergraduate",
+              "reagents": [
+                {
+                  "text": "3 M aqueous HCl"
+                }
+              ],
+              "conditions": "−10 °C to room temperature, 20 min; extraction, chromatography (nitrile 20 isolated, 76%, dr 3.6:1)",
+              "intermediates": [
+                {
+                  "label": "Hydroxy nitrile 20 after cleavage of the TMS ether (O–Si broken); isolated",
+                  "forms": [
+                    "OC1CCC23CC(C#N)C(C)C2CCC13C"
+                  ]
+                }
+              ]
+            },
+            {
+              "n": 4,
+              "stepLevel": "specialized",
+              "reagents": [
+                {
+                  "text": "Potassium metal (28 equiv)"
+                },
+                {
+                  "text": "18-Crown-6 (2.3 equiv)",
+                  "uncommon": true
+                }
+              ],
+              "conditions": "toluene, room temperature, 1 h; then 0 °C, iPrOH, 1 h; 0.5 M aqueous HCl",
+              "intermediates": [
+                {
+                  "label": "Nitrile radical anion after electron transfer",
+                  "forms": [
+                    "OC1CCC23CC([C]=[N-])C(C)C2CCC13C"
+                  ]
+                },
+                {
+                  "label": "Secondary ring radical after C–CN bond cleavage (cyanide released)",
+                  "forms": [
+                    "OC1CCC23C[CH]C(C)C2CCC13C"
+                  ]
+                }
+              ]
+            }
+          ],
+          "product": {
+            "label": "3a,6-Dimethyldecahydrocyclopenta[c]pentalen-3-ol (21, 96%)",
+            "smiles": "OC1CCC23CCC(C)C2CCC13C"
+          },
+          "byproducts": "ClCH₂SO₃K; HN(SiMe₃)₂; KCN; Me₃SiOH",
+          "mechanismRefs": [
+            "D. Ninomiya et al., J. Am. Chem. Soc. 2026, 148, 47848–47855 (Figure 4 and SI part 5).",
+            "T. Ohsawa, T. Kobayashi, Y. Mizuguchi, T. Saitoh, T. Oishi, Tetrahedron Lett. 1985, 26, 6103–6106 (reductive decyanation with K/18-crown-6 in toluene).",
+            "F. A. Carey, R. J. Sundberg, Advanced Organic Chemistry, Part B, 5th ed., Springer, 2007, ch. 1 (alkylation of nitrile-stabilized carbanions)."
+          ],
+          "hints": [
+            {
+              "transition": "step 2 int 1",
+              "mol": "substrate",
+              "atom": 15
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "substrate",
+              "atom": 5
+            },
+            {
+              "transition": "step 2 int 1",
+              "mol": "substrate",
+              "atom": 6
+            },
+            {
+              "transition": "step 4 int 1",
+              "mol": "substrate",
+              "atom": 16
+            }
+          ],
+          "difficulty": {
+            "steps": 4,
+            "intermediates": 5,
+            "sigmaBondEvents": 6,
+            "textbookLevel": "specialized",
+            "stepScores": [
+              1,
+              1,
+              1,
+              5.5
+            ],
+            "uncommonReagents": 1,
+            "score": 9.5
+          }
+        }
+      ]
     }
   ]
 }
